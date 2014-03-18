@@ -1,0 +1,6 @@
+from .base import *  # noqa
+
+
+# set this to something unique
+SECRET_KEY = 'it is a sekrit'
+DEBUG = TEMPLATE_DEBUG = True
