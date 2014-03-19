@@ -1,10 +1,19 @@
+{% load staticfiles %}
+{% load compress %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Glow</title>
+    {% compress css %}
+      <link rel="stylesheet" href="{% static 'css/main.less' %}" type="text/less" charset="utf-8">
+    {% endcompress %}
   </head>
   <body>
     <h1>GLOW MAN... YEAH!</h1>
+    <p><img src="{% static 'img/glowburns.png' %}" alt="I bring you love!"></p>
     <p>Glow world</p>
+    {% compress js %}
+      <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
+    {% endcompress %}
   </body>
 </html>

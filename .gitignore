@@ -2,3 +2,4 @@
 *.pot
 *.pyc
 */settings/local.py
+/static
