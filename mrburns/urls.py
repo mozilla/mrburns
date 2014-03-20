@@ -3,10 +3,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf.urls import patterns, url
+from django.conf.urls.i18n import i18n_patterns
 
-from mrburns.main.views import GlowView
+from mrburns.main.views import GlowView, ShareView
 
 
-urlpatterns = patterns('',
-    url('^$', GlowView.as_view(), name='glow.home')
+urlpatterns = i18n_patterns('',
+    url('^$', GlowView.as_view(), name='glow.home'),
+)
+
+urlpatterns += patterns('',
+    url('^share/$', ShareView.as_view(), name='glow.share'),
 )
