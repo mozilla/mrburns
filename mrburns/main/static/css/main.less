@@ -1,15 +1,65 @@
+@import "mixins.less";
+@import "fonts.less";
+
+
+* {
+  .box-sizing(border-box);
+}
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+html,
 body {
-  background: #ddd;
-  background-image: url(/static/img/glowburns.png);
-  background-size: cover;
-  color: #c00;
-  border: 5px solid #00c;
-  margin: 100px auto;
-  padding: 10px;
-  border-radius: 20px;
-  width: 400px;
-  
-  h1 {
-    color: #00c;
-  }
+    height: 100%;
+}
+
+body {
+    background: #1876bb;
+    background-image: -webkit-repeating-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+    background-image: repeating-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+}
+
+.wrapper {
+    background: url(/static/img/grain.png) repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.map {
+    img {
+        position: absolute;
+        padding-top: 80px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        max-height: 100%;
+        height: auto;
+        opacity: .2;
+    }
+}
+
+header {
+    position: relative;
+    margin: 20px 40px;
+    h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 75px;
+        width: 200px;
+        .text-hide();
+        .img-retina('/static/img/logo.png'; 'logo@2x.png'; '400'; '150';);
+    }
+    h2 {
+        margin-left: 240px;
+        font-family: "Open Sans Light";
+        font-weight: 300;
+        padding: 20px 0 0 0;
+    }
 }
