@@ -7,18 +7,28 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% load compress %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Glow</title>
-    {% compress css %}
-      <link rel="stylesheet" href="{% static 'css/main.less' %}" type="text/less" charset="utf-8">
-    {% endcompress %}
-  </head>
-  <body>
-    <h1>GLOW MAN... YEAH!</h1>
-    <p><img src="{% static 'img/glowburns.png' %}" alt="I bring you love!"></p>
-    <p>Glow world</p>
-    {% compress js %}
-      <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
-    {% endcompress %}
-  </body>
+<head>
+  <title>Glow</title>
+  {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/main.less' %}" type="text/less" charset="utf-8">
+  {% endcompress %}
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <h1>{{ _('Firefox') }}</h1>
+    <h2>{{ _('Lorem ipsum dolor sit amet, consectetuer adipiscing elit.') }}</h2>
+  </header>
+
+  <div class="map">
+    <img src="{% static 'img/continents.svg' %}" alt="World map">
+  </div>
+
+</div>
+
+{% compress js %}
+  <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
+{% endcompress %}
+</body>
 </html>
