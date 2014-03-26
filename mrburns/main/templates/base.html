@@ -10,6 +10,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 <head>
   <title>Glow</title>
   {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.less' %}" type="text/less" charset="utf-8">
     <link rel="stylesheet" href="{% static 'css/main.less' %}" type="text/less" charset="utf-8">
   {% endcompress %}
 </head>
@@ -19,25 +20,55 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   <header>
     <h1>{{ _('Firefox') }}</h1>
     <h2>{{ _('Lorem ipsum dolor sit amet, consectetuer adipiscing elit.') }}</h2>
+    <div class="actions">
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+      </button>
+    </div>
   </header>
 
   <div class="map">
     <img src="{% static 'img/continents.svg' %}" alt="World map">
   </div>
 
-
-  <div class="panel">
-    <a href="#" class="panel-tab">{{ _('Panel Tab') }}</a>
-    <div class="panel-contents">
+  <div class="stats-panel">
+    <a href="#" class="stats-panel-tab">
+      <i class="fa fa-chevron-up"></i>
+      {{ _('Panel Tab') }}
+    </a>
+    <div class="stats-panel-contents">
     Monorail!
     </div>
   </div>
 
 </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            {{ _('Close') }}
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h1>{{ _('What kind of Web do you want?') }}</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default">Twitter</button>
+          <button type="button" class="btn btn-primary">Facebook</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {% compress js %}
   <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>
   <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endcompress %}
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

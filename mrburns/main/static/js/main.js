@@ -1,5 +1,5 @@
 console.log('I bring you love!');
 
-$( '.panel-tab' ).click(function() {
-    $( '.panel' ).toggleClass( "open" );
+$( '.stats-panel-tab' ).click(function() {
+    $( '.stats-panel' ).toggleClass( "open" );
 });

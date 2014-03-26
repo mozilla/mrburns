@@ -1,0 +1,37 @@
+@import "mixins.less";
+
+.modal-dialog {
+    margin-top: 140px;
+}
+
+.modal-content {
+    background: rgb(40,40,40) url(/static/img/grain.png) repeat;
+    border-radius: 0;
+    border: 0;
+}
+
+.modal-header,
+.modal-footer {
+    border: 0;
+    .clearfix();
+}
+
+.modal-header {
+    padding: 0;
+    .close {
+        padding: 15px;
+        color: #fff;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 14px;
+        text-shadow: none;
+    }
+}
+
+
+// buttons
+
+.btn {
+    min-height: 50px;
+    border-radius: 25px;
+}
