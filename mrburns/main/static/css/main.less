@@ -1,5 +1,6 @@
 @import "mixins.less";
 @import "fonts.less";
+@import "panel.less";
 
 
 * {
@@ -25,10 +26,17 @@ body {
     color: #fff;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .wrapper {
     background: url(/static/img/grain.png) repeat;
     height: 100%;
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .map {

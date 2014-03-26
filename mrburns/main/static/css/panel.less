@@ -1,0 +1,47 @@
+@import "mixins.less";
+
+.panel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 98%;
+    .transition(all .3s ease-in-out);
+}
+
+.panel.open {
+    top: 200px;
+}
+
+.panel-contents {
+    background: rgba(40,40,40,.9);
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    clear: left;
+}
+
+.panel-tab {
+    position: absolute;
+    top: -48px;
+    float: left;
+    background: rgba(40,40,40,.9);
+    height: 48px;
+    padding: 10px 0;
+    margin: 0 56px;
+    text-decoration: none;
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: -56px;
+        height: 48px;
+        width: 56px;
+        background: url(/static/img/tab.png) 0 0;
+    }
+    &:after {
+        background-position: top right;
+        left: auto;
+        right: -56px;
+    }
+}

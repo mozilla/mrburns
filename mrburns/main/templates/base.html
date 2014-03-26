@@ -25,9 +25,18 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     <img src="{% static 'img/continents.svg' %}" alt="World map">
   </div>
 
+
+  <div class="panel">
+    <a href="#" class="panel-tab">{{ _('Panel Tab') }}</a>
+    <div class="panel-contents">
+    Monorail!
+    </div>
+  </div>
+
 </div>
 
 {% compress js %}
+  <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>
   <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endcompress %}
 </body>
