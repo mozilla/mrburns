@@ -46,20 +46,19 @@ body {
 
 header {
     position: relative;
-    margin: 20px 40px;
+    padding: 20px 40px;
     h1 {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 20px;
+        left: 40px;
         height: 75px;
         width: 200px;
         .text-hide();
-        .img-retina('/static/img/logo.png'; 'logo@2x.png'; '400'; '150';);
+        .img-retina('/static/img/logo.png'; '/static/img/logo@2x.png'; 200px; 75px;);
     }
     h2 {
         margin-left: 240px;
         font-family: "Open Sans Light";
         font-weight: 300;
-        padding: 20px 0 0 0;
     }
 }
