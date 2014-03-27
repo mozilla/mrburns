@@ -16,3 +16,8 @@ class ShareView(View):
         # place holder. clearly.
         print data
         return HttpResponse()  # 200 ok
+
+
+class StringsView(TemplateView):
+    content_type = 'text/plain'
+    template_name = 'strings.html'

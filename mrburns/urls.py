@@ -5,11 +5,12 @@
 from django.conf.urls import patterns, url
 from django.conf.urls.i18n import i18n_patterns
 
-from mrburns.main.views import GlowView, ShareView
+from mrburns.main.views import GlowView, ShareView, StringsView
 
 
 urlpatterns = i18n_patterns('',
     url('^$', GlowView.as_view(), name='glow.home'),
+    url('^l10n_strings/$', StringsView.as_view(), name='glow.strings')
 )
 
 urlpatterns += patterns('',
