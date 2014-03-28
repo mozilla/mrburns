@@ -1,7 +1,8 @@
-@import "mixins.less";
+@import "bootstrap/mixins.less";
 @import "fonts.less";
 @import "panel.less";
-
+@import "bootstrap-theme.less";
+@import "font-awesome/font-awesome.less";
 
 * {
   .box-sizing(border-box);
@@ -66,7 +67,14 @@ header {
     }
     h2 {
         margin-left: 240px;
+        margin-right: 240px;
         font-family: "Open Sans Light";
         font-weight: 300;
+    }
+    .actions {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        z-index: 1;
     }
 }
