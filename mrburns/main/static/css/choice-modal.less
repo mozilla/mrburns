@@ -1,0 +1,105 @@
+@import "mixins.less";
+
+.choice-modal {
+    font-style: italic;
+}
+
+.choices {
+    margin: 0 -10px;
+    padding: 0;
+    .clearfix();
+}
+
+.choices li {
+    list-style-type: none;
+    float: left;
+    width: 33.3%;
+    padding: 10px;
+    font-style: normal;
+    &:nth-child(4) {
+        clear: left;
+    }
+    a {
+        .clearfix();
+        min-height: 2.9em;
+        position: relative;
+        display: block;
+        background: #fff;
+        border: 0;
+        padding: 0;
+        white-space: normal;
+        text-align: inherit;
+        .fa-stack {
+            position: absolute;
+            top: 50%;
+            left: .1em;
+            margin-top: -1em;
+        }
+        .choice-title {
+            .transition(all .1s ease-in-out);
+            height: 2.9em;
+            line-height: 1;
+            padding: .5em 1em .5em 3em;
+            display: table;
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+        &:hover,
+        &:active {
+            .choice-title {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.choice-privacy {
+    .fa-circle,
+    .choice-title {
+        color: @color-privacy;
+    }
+}
+
+.choice-opportunity {
+    .fa-circle,
+    .choice-title {
+        color: @color-opportunity;
+    }
+}
+
+.choice-access {
+    .fa-circle,
+    .choice-title {
+        color: @color-access;
+    }
+}
+
+.choice-freedom {
+    .fa-circle,
+    .choice-title {
+        color: @color-freedom;
+    }
+}
+
+.choice-education {
+    .fa-circle,
+    .choice-title {
+        color: @color-education;
+    }
+}
+
+.choice-control {
+    .fa-circle,
+    .choice-title {
+        color: @color-control;
+    }
+}
+
+.choice-privacy     a:hover, a:active { background: @color-privacy; }
+.choice-opportunity a:hover, a:active { background: @color-opportunity; }
+.choice-access      a:hover, a:active { background: @color-access; }
+.choice-freedom     a:hover, a:active { background: @color-freedom; }
+.choice-education   a:hover, a:active { background: @color-education; }
+.choice-control     a:hover, a:active { background: @color-control; }

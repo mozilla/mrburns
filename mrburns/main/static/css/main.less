@@ -1,7 +1,9 @@
+@import "variables.less";
 @import "bootstrap/mixins.less";
 @import "fonts.less";
-@import "panel.less";
 @import "bootstrap-theme.less";
+@import "panel.less";
+@import "choice-modal.less";
 @import "font-awesome/font-awesome.less";
 
 * {
@@ -19,8 +21,8 @@ body {
 
 body {
     background: #1876bb;
-    background-image: -webkit-repeating-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
-    background-image: repeating-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+    background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+    background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
     margin: 0;
     padding: 0;
     font-family: "Open Sans", sans-serif;
@@ -30,6 +32,10 @@ body {
 a {
     color: #fff;
     text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-style: italic;
 }
 
 .wrapper {
@@ -68,7 +74,6 @@ header {
     h2 {
         margin-left: 240px;
         margin-right: 240px;
-        font-family: "Open Sans Light";
         font-weight: 300;
     }
     .actions {
