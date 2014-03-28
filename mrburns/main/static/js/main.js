@@ -1,4 +1,4 @@
-console.log('I bring you love!');
+console.log('The Dude minds, man!');
 
 $( '.panel-tab' ).click(function() {
     $( '.panel' ).toggleClass( "open" );
