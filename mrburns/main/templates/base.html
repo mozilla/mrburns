@@ -15,6 +15,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   {% endcompress %}
 </head>
 <body>
+
 <div class="wrapper">
 
   <header>
@@ -31,94 +32,11 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     <img src="{% static 'img/continents.svg' %}" alt="World map">
   </div>
 
-  <div class="stats-panel">
-    <nav class="stats-panel-nav">
-      <a href="#" class="stats-panel-tab">
-        <i class="fa fa-chevron-up"></i>
-        <span class="title">{{ _('View details') }}</span>
-      </a>
-      <a href="#" class="stats-panel-link">
-        <i class="fa fa-list-ul"></i>
-        <span class="title">{{ _('What matters to you?') }}</span>
-      </a>
-      <a href="#" class="stats-panel-link">
-        <i class="fa fa-share-square-o"></i>
-        <span class="title">{{ _('Share the map') }}</span>
-      </a>
-    </nav>
-    <div class="stats-panel-contents">
-    Monorail!
-    </div>
-  </div>
+  {% include 'stats-panel.html' %}
 
 </div>
-  <!-- Modal -->
-  <div class="modal fade choice-modal" id="choice" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            {{ _('Close') }}
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h1>{{ _('By using Firefox, you help shape the future of the Web.') }}</h1>
-          <h2>{{ _('What kind of Web do you want?') }}</h1>
-          <p>I want a Web that:</p>
-          <ul class="choices">
-            <li class="choice-privacy"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
-              </span></span>
-              <span class="choice-title"><span>{{ _('Safeguards privacy') }}</span></span>
-            </a></li>
-            <li class="choice-opportunity"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
-              </span></span>
-              <span class="choice-title"><span>{{ _('Creates opportunity') }}</span></span>
-            </a></li>
-            <li class="choice-access"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-              </span></span>
-              <span class="choice-title"><span>{{ _('Is available to all') }}</span></span>
-            </a></li>
-            <li class="choice-freedom"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
-              </span></span>
-              <span class="choice-title"><span>{{ _('Promotes freedom') }}</span></span>
-            </a></li>
-            <li class="choice-education"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-              </span></span>
-              <span class="choice-title"><span>{{ _('Inspires learning') }}</span></span>
-            </a></li>
-            <li class="choice-control"><a href="#" class="btn btn-default">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-              </span>
-              <span class="choice-title"><span><span>{{ _('Puts me in control') }}</span></span>
-            </a></li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default">Twitter</button>
-          <button type="button" class="btn btn-primary">Facebook</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
+{% include 'choice-modal.html' %}
 
 {% compress js %}
   <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>
