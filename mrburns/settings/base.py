@@ -18,7 +18,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*.mozilla.org',
+    '*.allizom.org',
+]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mrburns.db',
+    }
+}
 
 
 # Application definition
@@ -28,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'compressor',
     'mrburns.main',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (

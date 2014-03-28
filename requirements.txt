@@ -21,3 +21,9 @@ BeautifulSoup==3.2.1
 
 # sha256: th84eGr2uNZEtTBVIBLWacdBX89YUt4yDykIANuXmD0
 gunicorn==18.0
+
+# sha256: Xq3Xc16Qo9r3fzPFVMWo4pMCdDKQIWk2QedPlXqvnfw
+django-extensions==1.3.3
+
+# sha256: wbr3o-i-cPNNkx7hcyg_QGh3vT0X83K76CMYpbPFEMw
+Werkzeug==0.9.4

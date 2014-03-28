@@ -1,7 +1,9 @@
 *.log
 *.pot
 *.pyc
+*.db
 */settings/local.py
+/tmp
 /static
 /venv
 /locale
