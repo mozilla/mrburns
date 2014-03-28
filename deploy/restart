@@ -2,4 +2,4 @@
 touch tmp/restart.txt
 echo "restarting mrburns"
 
-# sudo supervisorctl restart mrburns
+sudo supervisorctl restart mrburns
