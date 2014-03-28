@@ -5,7 +5,7 @@ newrev=$2
 
 source /data/venvs/mrburns/bin/activate
 
-bin/peep.py install -r requirements.txt
+bin/peep.py install -r requirements.txt -r requirements-server.txt
 
 python manage.py collectstatic --noinput
 python manage.py compress
