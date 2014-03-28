@@ -6,3 +6,10 @@ newrev=$2
 source /data/venvs/mrburns/bin/activate
 
 bin/peep.py install -r requirements.txt
+
+python manage.py collectstatic --noinput
+python manage.py compress
+
+if [ -n $newrev ]; then
+    echo $newrev > static/revision.txt
+fi

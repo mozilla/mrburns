@@ -1,5 +1,5 @@
 #!/bin/sh
 touch tmp/restart.txt
-echo "restarting mrburns' daemons"
+echo "restarting mrburns"
 
 # sudo supervisorctl restart mrburns
