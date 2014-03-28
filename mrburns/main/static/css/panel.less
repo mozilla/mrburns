@@ -20,9 +20,25 @@
     clear: left;
 }
 
-.stats-panel-tab {
+.stats-panel-nav {
     position: absolute;
     top: -48px;
+    .title {
+        margin-left: .2em;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+        color: #fff;
+        text-decoration: none;
+        .title {
+            text-decoration: underline;
+        }
+    }
+}
+
+.stats-panel-tab {
+    position: relative;
     float: left;
     background: rgba(40,40,40,.9);
     height: 48px;
@@ -44,4 +60,11 @@
         left: auto;
         right: -56px;
     }
+}
+
+.stats-panel-link {
+    float: left;
+    height: 48px;
+    padding: 10px 10px;
+    margin-right: 10px;
 }
