@@ -27,9 +27,6 @@ body {
     padding: 0;
     font-family: "Open Sans", sans-serif;
     color: #fff;
-}
-
-h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
@@ -56,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
     position: relative;
+    z-index: 2;
     padding: 20px 40px;
     h1 {
         position: absolute;
@@ -71,11 +69,13 @@ header {
         margin-right: 240px;
         font-weight: 300;
         .number-help {
+            display: inline-block;
             font-size: 14px;
             vertical-align: top;
             position: relative;
             top: .2em;
-            left: .2em;
+            left: -1em;
+            padding: .5em;
         }
     }
     .actions {
