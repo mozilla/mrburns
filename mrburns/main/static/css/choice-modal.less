@@ -2,11 +2,14 @@
 
 .choice-modal {
     font-style: italic;
+    p {
+        font-size: 16px;
+   }
 }
 
 .choices {
     margin: 0 -10px;
-    padding: 0;
+    padding: 0 0 30px 0;
     .clearfix();
 }
 
@@ -14,7 +17,7 @@
     list-style-type: none;
     float: left;
     width: 33.3%;
-    padding: 10px;
+    padding: 15px 10px;
     font-style: normal;
     &:nth-child(4) {
         clear: left;
@@ -52,6 +55,43 @@
                 color: #fff;
             }
         }
+    }
+}
+
+.choice-modal .modal-footer {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    .btn {
+        min-width: 10em;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+        .fa {
+            position: relative;
+            left: -.2em;
+            font-size: 1.4em;
+        }
+    }
+}
+
+.choice-footnotes {
+    .link,
+    .note {
+        float: left;
+        padding: 20px;
+        width: 30%;
+    }
+    .note {
+        width: 70%;
+        font-size: 12px;
+        opacity: .5;
+    }
+    a {
+        text-decoration: underline;
+        font-style: normal;
     }
 }
 

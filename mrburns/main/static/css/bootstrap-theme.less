@@ -15,7 +15,7 @@
 }
 
 .modal-content {
-    background: rgb(40,40,40) url(/static/img/grain.png) repeat;
+    background: #182d3c url(/static/img/grain.png) repeat;
     border-radius: 0;
     border: 0;
 }
@@ -24,6 +24,10 @@
 .modal-footer {
     border: 0;
     .clearfix();
+}
+
+.modal-footer {
+    background: rgba(255,255,255,.07) url(/static/img/grain.png) repeat;
 }
 
 .modal-header {
@@ -55,7 +59,22 @@
 // buttons
 
 .btn {
-    min-height: 50px;
+    min-height: 2.9em;
     border-radius: 25px;
     .transition(all .1s ease-in-out);
+}
+
+.btn.btn-primary {
+    background: #0095dd;
+    #gradient.vertical(#1fb3fb; #0095dd; 0%; 100%);
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.2);
+    &:hover,
+    &:active,
+    &:focus {
+        background: lighten(#0095dd, 10%);
+        #gradient.vertical(lighten(#1fb3fb, 10%); lighten(#0095dd, 10%); 0%; 100%);
+    }
 }

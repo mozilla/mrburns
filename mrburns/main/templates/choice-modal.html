@@ -10,42 +10,42 @@
         </div>
         <div class="modal-body">
           <h1>{{ _('By using Firefox, you help shape the future of the Web.') }}</h1>
-          <h2>{{ _('What kind of Web do you want?') }}</h1>
+          <h2>{{ _('What kind of Web do you want?') }}</h2>
           <p>I want a Web that:</p>
           <ul class="choices">
             <li class="choice-privacy"><a href="#" class="btn btn-default">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
-              </span></span>
+              </span>
               <span class="choice-title"><span>{{ _('Safeguards privacy') }}</span></span>
             </a></li>
             <li class="choice-opportunity"><a href="#" class="btn btn-default">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
-              </span></span>
+              </span>
               <span class="choice-title"><span>{{ _('Creates opportunity') }}</span></span>
             </a></li>
             <li class="choice-access"><a href="#" class="btn btn-default">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-              </span></span>
+              </span>
               <span class="choice-title"><span>{{ _('Is available to all') }}</span></span>
             </a></li>
             <li class="choice-freedom"><a href="#" class="btn btn-default">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
-              </span></span>
+              </span>
               <span class="choice-title"><span>{{ _('Promotes freedom') }}</span></span>
             </a></li>
             <li class="choice-education"><a href="#" class="btn btn-default">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-              </span></span>
+              </span>
               <span class="choice-title"><span>{{ _('Inspires learning') }}</span></span>
             </a></li>
             <li class="choice-control"><a href="#" class="btn btn-default">
@@ -53,14 +53,25 @@
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
               </span>
-              <span class="choice-title"><span><span>{{ _('Puts me in control') }}</span></span>
+              <span class="choice-title"><span>{{ _('Puts me in control') }}</span></span>
             </a></li>
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default">Twitter</button>
-          <button type="button" class="btn btn-primary">Facebook</button>
+          <span class="title">{{ _('Share your web on:') }}</span>
+          <button type="button" class="btn btn-primary">
+            <i class="fa fa-twitter"></i>
+            <span class="title">{{ _('Twitter') }}</span>
+          </button>
+          <button type="button" class="btn btn-primary">
+            <i class="fa fa-facebook"></i>
+            <span class="title">{{ _('Facebook') }}</span>
+          </button>
         </div>
+      </div>
+      <div class="choice-footnotes">
+        <div class="link"><a href="#" class="local-share">{{ _('Share on this site') }}</a></div>
+        <p class="note">{{ _('By sharing your choice with us, you can add your voice to our global map. We use geolocation to show you how people around the world share your vision for the Web.') }}</p>
       </div>
     </div>
   </div>

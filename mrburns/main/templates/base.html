@@ -20,7 +20,13 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
   <header>
     <h1>{{ _('Firefox') }}</h1>
-    <h2>{{ _('Lorem ipsum dolor sit amet, consectetuer adipiscing elit.') }}</h2>
+    <h2>
+      {{ _('Lorem ipsum dolor sit amet, consecqtetuer adipiscing elit.') }}
+      <a href="#number" class="number-help" data-toggle="modal"
+        title="{{ _('What does this number mean?') }}">
+        <i class="fa fa-question-circle"></i>
+      </a>
+    </h2>
     <div class="actions">
       <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#choice">
         Launch demo modal
