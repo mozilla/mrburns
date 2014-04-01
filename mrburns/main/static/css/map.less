@@ -1,0 +1,96 @@
+.c {
+    clear: both;
+}
+
+circle {
+    fill: #28d917;
+}
+
+.continent {
+    fill: #166c9e;
+    stroke-width: 0px;
+}
+
+.continent_label {
+    color: white;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    position: absolute;
+    z-index: 6;
+}
+
+.continent_label .header {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#donut {
+    position: absolute;
+    left: 0px;
+    top: 175px;
+    width: 400px;
+}
+
+#donut_prose {
+    position: absolute;
+    left: 240px;
+    top: 190px;
+    width: 400px;
+}
+
+#donut_prose p {
+    font-size: 30px;
+    font-weight: 300;
+    font-style: italic;
+    color: white;
+}
+
+.key {
+    bottom: 80px;
+    left: 30px;
+    position: absolute;
+    z-index: 10;
+    font-size: 12px;
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style-type: none;
+        margin: 0;
+        padding: 3px 0;
+    }
+    a {
+        display: block;
+        .choice-title {
+            opacity: .2;
+            .transition(all .2s ease-out);
+        }
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            .choice-title {
+                opacity: 1;
+                .transition(all .1s ease-in-out);
+            }
+        }
+        &.selected {
+            .choice-title {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.key .title {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+#map_container {
+    z-index: 2;
+}

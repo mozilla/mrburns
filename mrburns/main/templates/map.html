@@ -1,0 +1,70 @@
+{% comment %}
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+{% endcomment %}
+
+<div id="na_top_issue" class="continent_label"></div>
+<div id="sa_top_issue" class="continent_label"></div>
+<div id="africa_top_issue" class="continent_label"></div>
+<div id="asia_top_issue" class="continent_label"></div>
+<div id="europe_top_issue" class="continent_label"></div>
+<div id="oceania_top_issue" class="continent_label"></div>
+
+<div id="map_container"></div>
+
+
+<div class="key">
+  <div class="title c">{{ _('View by:') }}</div>
+  <ul>
+    <li class="choice-region"><a href="#" id="view_by_region">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Region') }}</span></span>
+    </a></li>
+    <li class="choice-privacy"><a href="#" id="switch_to_privacy">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Privacy') }}</span></span>
+    </a></li>
+    <li class="choice-opportunity"><a href="#" id="switch_to_opportunity">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Opportunity') }}</span></span>
+    </a></li>
+    <li class="choice-access"><a href="#" id="switch_to_access">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Accessibility') }}</span></span>
+    </a></li>
+    <li class="choice-freedom"><a href="#" id="switch_to_freedom">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Freedom') }}</span></span>
+    </a></li>
+    <li class="choice-learning"><a href="#" id="switch_to_learning">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('Learning') }}</span></span>
+    </a></li>
+    <li class="choice-control"><a href="#" id="switch_to_control">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="choice-title"><span>{{ _('User control') }}</span></span>
+    </a></li>
+  </ul>
+</div>
