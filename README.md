@@ -13,6 +13,7 @@ Installation
 1. Clone the repo: `git clone https://github.com/mozilla/mrburns.git`
 2. `cd mrburns`
 3. Assuming you have [virtualenv](http://www.virtualenv.org/en/latest/) and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) installed: `mkvirtualenv mrburns`
+    * If you don't have virtualenv(wrapper) you can install them: `pip install virtualenvwrapper`
 4. Upgrade pip: `pip install -U pip`
 5. `bin/peep.py install -r requirements.txt`
 6. `cp mrburns/settings/local.py{-dist,}`
