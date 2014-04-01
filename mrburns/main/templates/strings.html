@@ -3,13 +3,228 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% endcomment %}
+
 {% load i18n %}
-{# Translators: The Dude is a proper name #}
-{% trans "The Dude abides." %}
 
-{# Translators: This is in reference to the Little Lebowski Urban Achievers #}
-{% trans "And proud we are of all of them." %}
+{# Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php #}
 
-{# Translators: Quoth Donny #}
-{% trans "I am the Walrus." %}
+{% comment %}INITIAL OVERLAY{% endcomment %}
+{# Translators: Initial Overlay Question #}
+{% trans "By using Firefox, you help shape the future of the Web." %}
 
+{# Translators: Initial Overlay Subtext #}
+{% trans "What kind of Web do you want?" %}
+
+{# Translators: Initial Overlay Subtext 2 #}
+{% trans "I want a Web that:" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Safeguards privacy" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Creates opportunity" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Is available to all" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Promotes freedom" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Inspires learning" %}
+
+{# Translators: Initial Overlay Answer #}
+{% trans "Puts me in control" %}
+
+
+{% comment %}SHARE TEXT{% endcomment %}
+{# Translators: Facebook Open Graph Meta Text #}
+{% trans "Join millions of Firefox users around the world who are shaping the future of the Web." %}
+
+{# Translators: Tweet Share Text: Privacy #}
+{% trans "Join me in fighting for privacy on the Web." %}
+
+{# Translators: Tweet Share Text: Oppurtunity #}
+{% trans "Shouldn't the Web provide people with more opportunity? Join us if you think so too." %}
+
+{# Translators: Tweet Share Text: Accessibility #}
+{% trans "The Web I want is accessible to anyone and everyone. What kind of Web do you want?" %}
+
+{# Translators: Tweet Share Text: Freedom #}
+{% trans "Join me in supporting a Web that promotes freedom and democracy!" %}
+
+{# Translators: Tweet Share Text: Learning #}
+{% trans "I want a Web that people today and future generations can learn from. What about you?" %}
+
+{# Translators: Tweet Share Text: User Control #}
+{% trans "I don't believe that other companies should control my online experience. Join me in fighting for user control." %}
+
+{# Translators: Share Call To Action #}
+{% trans "Share your Web on:" %}
+
+{# Translators: Share Only On Mozilla Choice #}
+{% blocktrans with site=domain %}
+Share only on {{ site }}
+{% endblocktrans %}
+
+{# Translators: Legal Disclaimer #}
+{% trans "When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community." %}
+
+
+{% comment %}INTERSTITIAL{% endcomment %}
+{# Translators: Interstitial: Headline #}
+{% trans "Did you know?" %}
+
+{# Translators: Interstitial: Privacy - Text Is Still TBD #}
+
+
+{# Translators: Interstitial: Opportunity #}
+{% trans "Firefox is made by a global volunteer community 6,000 strong, open to participation from anyone." %}
+
+{# Translators: Interstitial: Accessibility #}
+{% trans "Firefox disrupted the mobile industry with the first free, open-source, Web-based operating system to help bring the next billion people online." %}
+
+{# Translators: Interstitial: Freedom #}
+{% trans "Firefox protested and lobbied against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web." %}
+
+{# Translators: Interstitial: Learning #}
+{% trans "Firefox teaches digital literacy to millions of people around the world to give them the tools and skills they need to move from using the Web to actively making it." %}
+
+{# Translators: Interstitial: User Control #}
+{% trans "Firefox innovations like Do Not Track and Lightbeam are leading the way to give users greater control online." %}
+
+{# Translators: Interstitial: Closing Line #}
+{% trans "Now see what kind of Web the world wants" %}
+
+
+{% comment %}MAP{% endcomment %}
+{# Translators: Map Headline With Count #}
+{% blocktrans with count=0 %}
+Join {{ count }} people shaping the future of the Web
+{% endblocktrans %}
+
+{# Translators: Map Overlay #}
+{% trans "What does this number mean?" %}
+
+{# Translators: Map Overlay #}
+{% blocktrans with url=blogpost%}
+Anyone who uses Firefox helps shape the future of the Web and that's something we want to celebrate. That's why this number represents new downloads, automatic updates and any sharing that happens from this page - the worldwide impact of our global community. If you're interested in how it all works, you can <a href="{{ url }}">check out the blog post.</a>
+{% endblocktrans %}
+
+{# Translators: Map Overlay : Closing Line #}
+{% trans "Thanks for visiting, sharing and for using Firefox." %}
+
+{# Translators: Link To Initial Start Page #}
+{% trans "What matters to you?" %}
+
+{# Translators: Link To Share Map #}
+{% trans "Share the map" %}
+
+{# Translators: Twitter Share Map #}
+{% trans "Join millions of Firefox users around the world who are shaping the future of the Web." %}
+
+{# Translators: Watch Video Link #}
+{% trans "The Web we want" %}
+
+{# Translators: Twitter Share Video #}
+{% trans "Watch the next generation of Internet users talk about the Web they want!" %}
+
+{# Translators: Sidebar Navigation #}
+{% trans "View by:" %}
+{% trans "Region" %}
+{% trans "Privacy" %}
+{% trans "Opportunity" %}
+{% trans "Accessibility" %}
+{% trans "Freedom" %}
+{% trans "Learning" %}
+{% trans "User control" %}
+
+{# Translators: Map Overlay #}
+{% trans "Most Want:" %}
+
+{# Translators: Link To Stats Page #}
+{% trans "Facts & figures" %}
+
+{# Translators: Link To Map Page #}
+{% trans "Back To Map" %}
+
+{% comment %}STATS PAGE{% endcomment %}
+{# Translators: Stat Headline: Privacy #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% want a Web that keeps their information safe and private.
+{% endblocktrans %}
+
+
+{# Translators: Stat Headline: Opportunity #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% want a Web that creates opportunity and prosperity.
+{% endblocktrans %}
+
+{# Translators: Stat Headline: Accessibility #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% believe the Web should be available and accessible to all.
+{% endblocktrans %}
+
+{# Translators: Stat Headline: Freedom #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% want the Web to be a forum for democratic exchange and free speech.
+{% endblocktrans %}
+
+{# Translators: Stat Headline: Learning #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% want a Web that promotes learning & knowledge.
+{% endblocktrans %}
+
+{# Translators: Stat Headline: User Control #}
+{% blocktrans with percentage=0 %}
+{{ percentage }}% want a Web that keeps them in control of their lives online.
+{% endblocktrans %}
+
+{# Translators: Stats Header #}
+{% trans "What matters most by country?" %}
+
+{# Translators: Stats Header #}
+{% trans "How does that compare globally?" %}
+
+{# Translators: Stats Privacy - Text Is Still TBD #}
+
+
+{# Translators: Stats OPPORTUNITY #}
+{% trans "Firefox & opportunity" %}
+{% trans "Firefox is the only browser made of 100% free, open source code that anyone can view, remix and contribute to." %}
+{% trans "Did you know?" %}
+{% trans "Firefox is made by a global volunteer community 6,000 strong, open to participation from anyone." %}
+{# Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox #}
+{% trans "is made by a global volunteer community 6,000 strong, open to participation from anyone." %}
+
+{# Translators: Stats ACCESSIBILITY #}
+{% trans "Firefox & accessibility" %}
+{% trans "Firefox is made with the belief that the Internet is a global public resource that must remain open and accessible to all." %}
+{% trans "Did you know?" %}
+{% trans "Firefox disrupted the mobile industry with the first free, open-source, Web-based operating system to help bring the next billion people online." %}
+{# Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox #}
+{% trans "disrupted the mobile industry with the first Web-based OS to help bring the next billion people online" %}
+
+{# Translators: Stats FREEDOM #}
+{% trans "Firefox & freedom" %}
+{% trans "Firefox is the only non-profit browser that prioritizes principles over profits and answers to no one but you." %}
+{% trans "Did you know?" %}
+{% trans "Firefox protested and lobbied against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web." %}
+{# Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox #}
+{% trans "protested against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web." %}
+
+{# Translators: Stats LEARNING #}
+{% trans "Firefox & learning" %}
+{% trans "Firefox is the only browser made by a non-profit foundation working to unlock the full educational potential of the Web." %}
+{% trans "Did you know?" %}
+{% trans "Firefox teaches digital literacy to millions of people around the world to give them the tools and skills they need to move from using the Web to actively making it." %}
+{# Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox #}
+{% trans "teaches digital skills to millions of people to help them move from using the Web to actively making it." %}
+
+{# Translators: Stats USER CONTROL #}
+{% trans "Firefox & user control" %}
+{% trans "Firefox is the only browser made with a mission to put users first and to keep the power of the Web in your hands." %}
+{% trans "Did you know?" %}
+{% trans "Firefox innovations like Do Not Track and Lightbeam are leading the way to give users greater control online." %}
+{# Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox #}
+{% trans "innovations like Do Not Track and Lightbeam are leading the way to give users greater control online." %}
