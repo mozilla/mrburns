@@ -5,6 +5,7 @@
 @import "panel.less";
 @import "choice-modal.less";
 @import "font-awesome/font-awesome.less";
+@import "map.less";
 
 * {
   .box-sizing(border-box);
@@ -39,16 +40,6 @@ body {
 }
 
 .map {
-    img {
-        position: absolute;
-        padding-top: 80px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        max-height: 100%;
-        height: auto;
-        opacity: .2;
-    }
 }
 
 header {
@@ -83,5 +74,50 @@ header {
         top: 20px;
         right: 40px;
         z-index: 1;
+    }
+}
+
+.choice-region {
+    .fa-circle {
+        color: #fff;
+    }
+    .fa-globe {
+        color: @color-region;
+    }
+}
+
+.choice-privacy {
+    .fa-circle {
+        color: @color-privacy;
+    }
+}
+
+.choice-opportunity {
+    .fa-circle {
+        color: @color-opportunity;
+    }
+}
+
+.choice-access {
+    .fa-circle {
+        color: @color-access;
+    }
+}
+
+.choice-freedom {
+    .fa-circle {
+        color: @color-freedom;
+    }
+}
+
+.choice-learning {
+    .fa-circle {
+        color: @color-learning;
+    }
+}
+
+.choice-control {
+    .fa-circle {
+        color: @color-control;
     }
 }
