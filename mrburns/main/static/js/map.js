@@ -122,41 +122,43 @@ function drawMap(ht) {
 }
 
 function addTopIssueLabels() {
-	var na_position = [width / 5, 100 + height / 4.6],
-        sa_position = [width / 3.2, 100 + height / 1.65],
-        africa_position = [width / 1.9, 100 + height / 2.2],
-        europe_position = [width / 1.9, 100 + height / 4.6],
-        asia_position = [width / 1.42, 100 + height / 3.2],
-        oceania_position = [width / 1.2, 100 + height / 1.46];
+	var top_offset = 0;
+	
+	var na_position = [width / 5, top_offset + height / 4.6],
+        sa_position = [width / 3.2, top_offset + height / 1.65],
+        africa_position = [width / 1.9, top_offset + height / 2.2],
+        europe_position = [width / 1.9, top_offset + height / 4.6],
+        asia_position = [width / 1.42, top_offset + height / 3.2],
+        oceania_position = [width / 1.2, top_offset + height / 1.46];
 
     $("#na_top_issue")
-        .css("left", na_position[0] + "px")
-        .css("top", na_position[1] + "px")
+        .css("margin-left", na_position[0] + "px")
+        .css("margin-top", na_position[1] + "px")
         .html("<div class='header'>Top Issue</div>Freedom");
 
     $("#sa_top_issue")
-        .css("left", sa_position[0] + "px")
-        .css("top", sa_position[1] + "px")
+        .css("margin-left", sa_position[0] + "px")
+        .css("margin-top", sa_position[1] + "px")
         .html("<div class='header'>Top Issue</div>Accessibility");
 
     $("#africa_top_issue")
-        .css("left", africa_position[0] + "px")
-        .css("top", africa_position[1] + "px")
+        .css("margin-left", africa_position[0] + "px")
+        .css("margin-top", africa_position[1] + "px")
         .html("<div class='header'>Top Issue</div>Opportunity");
 
     $("#asia_top_issue")
-        .css("left", asia_position[0] + "px")
-        .css("top", asia_position[1] + "px")
+        .css("margin-left", asia_position[0] + "px")
+        .css("margin-top", asia_position[1] + "px")
         .html("<div class='header'>Top Issue</div>Privacy");
 
     $("#europe_top_issue")
-        .css("left", europe_position[0] + "px")
-        .css("top", europe_position[1] + "px")
+        .css("margin-left", europe_position[0] + "px")
+        .css("margin-top", europe_position[1] + "px")
         .html("<div class='header'>Top Issue</div>Learning");
 
     $("#oceania_top_issue")
-        .css("left", oceania_position[0] + "px")
-        .css("top", oceania_position[1] + "px")
+        .css("margin-left", oceania_position[0] + "px")
+        .css("margin-top", oceania_position[1] + "px")
         .html("<div class='header'>Top Issue</div>User control");
 }
 
