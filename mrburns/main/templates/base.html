@@ -5,6 +5,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% endcomment %}
 {% load staticfiles %}
 {% load compress %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,16 +22,19 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   <header>
     <h1>{{ _('Firefox') }}</h1>
     <h2>
-      {{ _('Lorem <b>9,999,999</b> ipsum dolor sit amet, consecqtetuer adipiscing elit.') }}
+      {% blocktrans with count='<b>9,999,999</b>' %}
+        Join {{ count }} people shaping the future of the Web
+      {% endblocktrans %}
       <a href="#number" class="number-help" data-toggle="modal"
         title="{{ _('What does this number mean?') }}">
         <i class="fa fa-question-circle"></i>
       </a>
     </h2>
     <div class="actions">
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#choice">
-        Launch demo modal
-      </button>
+      <a class="btn btn-download" href="http://www.mozilla.org/en-US/firefox/new/#download-fx">
+        <span class="title">{{ _('Get Firefox') }}</span>
+        <span class="sub-title">{{ _('Free Download') }}</span>
+      </a>
     </div>
   </header>
 

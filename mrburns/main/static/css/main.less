@@ -75,6 +75,50 @@ header {
         right: 40px;
         z-index: 1;
     }
+    .btn-download {
+        text-align: inherit;
+        background-color: #81bc2e;
+        #gradient > .vertical(#81bc2e, darken(#81bc2e, 10%));
+        min-height: 0;
+        border-radius: 6px;
+        border: 0;
+        padding: 6px 12px 8px;
+        min-width: 200px;
+        font-style: normal;
+        font-size: 20px;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+        line-height: 1.1;
+        .box-shadow(@buttonShadow);
+        span {
+            display: block;
+        }
+        .sub-title {
+            font-size: 12px;
+            color: #b8e779;
+        }
+        &:focus {
+            .box-shadow(@buttonShadowFocus);
+        }
+        &:hover {
+            .box-shadow(@buttonShadowHover);
+        }
+        &:active {
+            .box-shadow(@buttonShadowActive);
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            color: #fff;
+        }
+    }
+}
+
+.australis {
+    header .btn-download {
+        // if visitor is already using Australis
+        // then don't show download button
+        display: none;
+    }
 }
 
 .choice-region {
