@@ -1,0 +1,18 @@
+{
+  "GLOBAL": {
+    "choice-privacy": 0.28,
+    "choice-opportunity": 0.24,
+    "choice-access": 0.08,
+    "choice-freedom": 0.15,
+    "choice-learning": 0.20,
+    "choice-control": 0.10
+  },
+  "US": {
+    "choice-privacy": 0.28,
+    "choice-opportunity": 0.24,
+    "choice-access": 0.06,
+    "choice-freedom": 0.15,
+    "choice-learning": 0.15,
+    "choice-control": 0.12
+  }
+}
