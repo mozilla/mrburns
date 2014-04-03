@@ -19,8 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [
-    '*.mozilla.org',
-    '*.allizom.org',
+    'webwewant.mozilla.org',
+    'webwewant.allizom.org',
 ]
 
 DATABASES = {
