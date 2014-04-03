@@ -17,16 +17,14 @@ $(document).ready(function() {
 });
 
 function assignEventListeners() {
-    $(".key a").on("click", function(i, d) {
+    $(".key_map a").on("click", function(i, d) {
         if ($(this).attr("id") != "view_by_region") {
             d3.selectAll(".continent").style("stroke", "#166c9e").style("fill", "#166c9e");
 
             $(".continent_label").html("");
         }
 
-        $(".key a").removeClass("selected");
-
-        $(this).toggleClass("selected");
+        $(".key_map a").removeClass("selected");
 
         return false;
     });

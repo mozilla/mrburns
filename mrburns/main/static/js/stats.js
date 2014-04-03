@@ -26,6 +26,9 @@ function assignStatsEventListeners() {
     $(".key_stats_panel a").on("click", function () {
         var choice = $(this)[0].parentNode.className;
         updateDonut(data.GLOBAL[choice], choice);
+        
+        $(".key_stats_panel a").removeClass("selected");
+        $(this).toggleClass("selected");
     
         return false;
     });
