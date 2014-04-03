@@ -1,0 +1,27 @@
+{% comment %}
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+{% endcomment %}
+
+{% load i18n %}
+<!-- Modal -->
+<div class="modal fade video-modal" id="video" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          {{ _('Close') }}
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          width="640"
+          height="480"
+          src="//www.youtube-nocookie.com/embed/oHg5SJYRHA0?rel=0"
+          frameborder="0"
+          allowfullscreen></iframe>
+      </div>
+  </div>
+</div>

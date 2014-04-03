@@ -1,0 +1,30 @@
+@import "mixins.less";
+
+.video-modal {
+    .modal-dialog {
+        width: 640px;
+    }
+    .modal-header {
+        min-height: 0;
+        height: 0;
+        .close {
+            position: absolute;
+            top: -50px;
+            right: -10px;
+            opacity: .5;
+            .transition(@transitionIn);
+            &:active,
+            &:hover,
+            &:focus {
+                opacity: 1;
+                .transition(@transitionIn);
+            }
+        }
+    }
+    .modal-body {
+        padding: 0;
+        iframe {
+            display: block;
+        }
+    }
+}

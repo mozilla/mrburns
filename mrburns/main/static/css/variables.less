@@ -7,3 +7,24 @@
 @color-freedom:     #79ba2f;
 @color-learning:    #f18903;
 @color-control:     #c43a31;
+
+@linkYellow: #ffcb00;
+
+@darkBackground: url(/static/img/darkbg.png) repeat;
+
+// Download button
+@shadowPartBottom: 0px 1px 0px 0px rgba(0, 0, 0, 0.2);
+@shadowPartBottomInset: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.3);
+@shadowPartHover: inset 0px 12px 24px 2px saturate(#81bc2e, 10%);
+@shadowPartFocusRing: 0 0 0 2px rgba(73,173,227,0.4);
+
+@buttonShadow: @shadowPartBottom, @shadowPartBottomInset;
+@buttonShadowHover: @shadowPartBottom, @shadowPartBottomInset, @shadowPartHover;
+@buttonShadowFocus: @shadowPartBottom, @shadowPartBottomInset, @shadowPartHover, @shadowPartFocusRing;
+
+@buttonShadowActive: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.2),
+                         inset 0px 12px 24px 6px rgba(0,0,0,0.2),
+                         inset 0px 0px 2px 2px rgba(0,0,0,0.2);
+
+@transitionIn:  all .1s ease-in-out;
+@transitionOut: all .2s ease-out;
