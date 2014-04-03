@@ -9,10 +9,24 @@
       <i class="fa fa-list-ul"></i>
       <span class="title">{{ _('What matters to you?') }}</span>
     </a>
-    <a href="#" class="stats-panel-link">
-      <i class="fa fa-share-square-o"></i>
-      <span class="title">{{ _('Share the map') }}</span>
-    </a>
+    <div class="stats-panel-link popover-markup">
+      <a href="#" class="trigger" data-placement="top">
+        <i class="fa fa-share-square-o"></i>
+        <span class="title">{{ _('Share the map') }}</span>
+      </a>
+      <div class="content hide">
+        <a class="btn btn-link" target="_blank"
+            href="https://twitter.com/share?url={{ 'https://webwewant.mozilla.org/#map'|urlencode }}">
+          <i class="fa fa-twitter"></i>
+          <span class="title">{{ _('Twitter') }}</span>
+        </a>
+        <a class="btn btn-link" target="_blank" 
+            href="https://www.facebook.com/sharer/sharer.php?u={{ 'https://webwewant.mozilla.org/#map'|urlencode }}">
+          <i class="fa fa-facebook"></i>
+          <span class="title">{{ _('Facebook') }}</span>
+        </a>
+      </div>
+    </div>
   </nav>
   <div class="stats-panel-contents">
       <div class="key key-stats-panel">

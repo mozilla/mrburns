@@ -80,3 +80,19 @@
         #gradient.vertical(lighten(#1fb3fb, 10%); lighten(#0095dd, 10%); 0%; 100%);
     }
 }
+
+// popovers
+
+.popover {
+    text-align: center;
+    .btn-link {
+        color: @linkBlue;
+        &:hover,
+        &:active {
+            text-decoration: none;
+            .title {
+                text-decoration: underline;
+            }
+        }
+    }
+}
