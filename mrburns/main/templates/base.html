@@ -32,6 +32,10 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
         ><i class="fa fa-question-circle"></i></a>
     </h2>
     <div class="actions">
+      <a href="#video" class="video-panel-link" data-toggle="modal">
+        <i class="fa fa-play"></i>
+        <span class="title">{{ _('The Web we want') }}</span>
+      </a>
       <a class="btn btn-download" href="http://www.mozilla.org/en-US/firefox/new/#download-fx">
         <span class="title">{{ _('Get Firefox') }}</span>
         <span class="sub-title">{{ _('Free Download') }}</span>
@@ -47,6 +51,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 {% include 'choice-modal.html' %}
 {% include 'number-modal.html' %}
+{% include 'video-modal.html' %}
 
 {% compress js %}
   <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>

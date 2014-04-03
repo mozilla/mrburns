@@ -5,6 +5,7 @@
 @import "panel.less";
 @import "choice-modal.less";
 @import "number-modal.less";
+@import "video-modal.less";
 @import "font-awesome/font-awesome.less";
 @import "map.less";
 
@@ -61,7 +62,7 @@ header {
         margin-top: 10px;
         margin-bottom: 10px;
         margin-left: 240px;
-        margin-right: 240px;
+        margin-right: 390px;
         font-weight: 300;
         .number-help {
             display: inline-block;
@@ -75,9 +76,21 @@ header {
     }
     .actions {
         position: absolute;
-        top: 20px;
+        top: 30px;
         right: 40px;
         z-index: 1;
+    }
+    .video-panel-link {
+        position: relative;
+        display: inline-block;
+        max-width: 175px;
+        padding: 10px 10px 10px 1.3em;
+        .fa {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -.5em;
+        }
     }
     .btn-download {
         text-align: inherit;
@@ -86,6 +99,7 @@ header {
         min-height: 0;
         border-radius: 6px;
         border: 0;
+        margin-left: 20px;
         padding: 6px 12px 8px;
         min-width: 200px;
         font-style: normal;
@@ -118,10 +132,15 @@ header {
 }
 
 .australis {
-    header .btn-download {
-        // if visitor is already using Australis
-        // then don't show download button
-        display: none;
+    header {
+        h2 {
+            margin-right: 180px;
+        }
+        .btn-download {
+            // if visitor is already using Australis
+            // then don't show download button
+            display: none;
+        }
     }
 }
 
