@@ -4,6 +4,7 @@
 @import "bootstrap-theme.less";
 @import "panel.less";
 @import "choice-modal.less";
+@import "number-modal.less";
 @import "font-awesome/font-awesome.less";
 @import "map.less";
 
@@ -52,10 +53,13 @@ header {
         left: 40px;
         height: 75px;
         width: 200px;
+        margin: 0;
         .text-hide();
         .img-retina('/static/img/logo.png'; '/static/img/logo@2x.png'; 200px; 75px;);
     }
     h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
         margin-left: 240px;
         margin-right: 240px;
         font-weight: 300;
@@ -64,8 +68,8 @@ header {
             font-size: 14px;
             vertical-align: top;
             position: relative;
-            top: .2em;
-            left: -1em;
+            top: 0em;
+            left: 0em;
             padding: .5em;
         }
     }

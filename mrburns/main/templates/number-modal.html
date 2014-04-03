@@ -1,16 +1,29 @@
-  <!-- Modal -->
-  <div class="modal fade number-modal" id="number" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            {{ _('Close') }}
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h1>{{ _('What does this number mean?') }}</h1>
-          <p>{{ _('Lorem ipsum...') }}</p>
-        </div>
+{% comment %}
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+{% endcomment %}
+
+{% load i18n %}
+<!-- Modal -->
+<div class="modal fade number-modal" id="number" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          {{ _('Close') }}
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>{{ _('What does this number mean?') }}</h1>
+        <p>
+        {% blocktrans with url='#'%}
+          Anyone who uses Firefox helps shape the future of the Web and that's something we want to celebrate. That's why this number represents new downloads, automatic updates and any sharing that happens from this page - the worldwide impact of our global community. If you're interested in how it all works, you can <a href="{{ url }}">check out the blog post.</a>
+        {% endblocktrans %}
+        </p>
+        <p>{{ _('Thanks for visiting, sharing and for using Firefox.') }}</p>
+      </div>
     </div>
   </div>
+</div>
