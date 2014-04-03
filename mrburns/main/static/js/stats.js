@@ -13,6 +13,14 @@ var color = new Object();
     color["choice-freedom"] = "#81bc2e",
     color["choice-learning"] = "#f18903",
     color["choice-control"] = "#c43a31";
+    
+var icon = new Object();
+	icon["choice-privacy"] = 'fa-eye';
+    icon["choice-opportunity"] = 'fa-heart';
+    icon["choice-access"] = 'fa-user';
+    icon["choice-freedom"] = 'fa-check-circle-o';
+    icon["choice-learning"] = 'fa-book';
+    icon["choice-control"] = 'fa-cogs';
 
 $(document).ready(function () {
     assignStatsEventListeners();
@@ -25,7 +33,12 @@ $(document).ready(function () {
 function assignStatsEventListeners() {
     $(".key_stats_panel a").on("click", function () {
         var choice = $(this)[0].parentNode.className;
+        
+        //update chart 1
         updateDonut(data.GLOBAL[choice], choice);
+        $(".donut_icon i")
+            .removeClass("fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs")
+            .addClass(icon[choice]);
         
         $(".key_stats_panel a").removeClass("selected");
         $(this).toggleClass("selected");
