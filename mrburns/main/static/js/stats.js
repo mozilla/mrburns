@@ -15,7 +15,7 @@ var color = new Object();
     color["choice-control"] = "#c43a31";
     
 var icon = new Object();
-	icon["choice-privacy"] = 'fa-eye';
+    icon["choice-privacy"] = 'fa-eye';
     icon["choice-opportunity"] = 'fa-heart';
     icon["choice-access"] = 'fa-user';
     icon["choice-freedom"] = 'fa-check-circle-o';
@@ -55,11 +55,11 @@ function drawCharts() {
     d3.json("/static/data/dummy-stats.json", function(json_data) {
         data = json_data;
         
-	    //add donut prose, all of them, to the html page
-	    $.each(json_data.GLOBAL, function(i, d) {
-	        $("." + i + "-prose .percentage").html(Math.round(d*100));
-	    })
-	    
+        //add donut prose, all of them, to the html page
+        $.each(json_data.GLOBAL, function(i, d) {
+            $("." + i + "-prose .percentage").html(Math.round(d*100) + '%');
+        })
+        
         drawDonut(json_data.GLOBAL[default_choice]);
     });
 }
