@@ -21,3 +21,9 @@ django-extensions==1.3.3
 
 # sha256: wbr3o-i-cPNNkx7hcyg_QGh3vT0X83K76CMYpbPFEMw
 Werkzeug==0.9.4
+
+# sha256: tb0uG3jSgFEQjrqmJIdQIh-czvUrTwVMtyfeYbBAbeA
+requests==2.2.1
+
+# sha256: qND2ipz6Bq5iHMJsapEMeaAeFdnRZixkUhXsox0nBKY
+django-countries==2.1.2

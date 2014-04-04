@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'compressor',
     'mrburns.main',
     'django_extensions',
+    'django_countries',
 )
 
 MIDDLEWARE_CLASSES = (
