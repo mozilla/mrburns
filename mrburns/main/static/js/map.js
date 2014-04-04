@@ -13,23 +13,23 @@ var color_dummy = new Object();
 
 $(document).ready(function() {
     assignEventListeners();
-    drawMap($("#map_container").width() / 2 - 100);
+    drawMap($("#map-container").width() / 2 - 100);
 });
 
 function assignEventListeners() {
-    $(".key_map a").on("click", function(i, d) {
-        if ($(this).attr("id") != "view_by_region") {
+    $(".key-map a").on("click", function(i, d) {
+        if ($(this).attr("id") != "view-by-region") {
             d3.selectAll(".continent").style("stroke", "#166c9e").style("fill", "#166c9e");
 
-            $(".continent_label").html("");
+            $(".continent-label").html("");
         }
 
-        $(".key_map a").removeClass("selected");
+        $(".key-map a").removeClass("selected");
 
         return false;
     });
 
-    $("#view_by_region").on("click", function() {
+    $("#view-by-region").on("click", function() {
         d3.selectAll(".continent").each(function(d, i) {
             d3.select(this).style("fill", function(d, i) {
                 return color_dummy[d.name];
@@ -45,7 +45,7 @@ function assignEventListeners() {
 }
 
 function drawMap(ht) {
-    $("#map_container").html("<svg id='map' xmlns='http://www.w3.org/2000/svg' width='100%' height='" + ht + "'></svg>");
+    $("#map-container").html("<svg id='map' xmlns='http://www.w3.org/2000/svg' width='100%' height='" + ht + "'></svg>");
     var svg = d3.select("svg");
 
     width = $("svg#map").parent().width();
@@ -103,12 +103,12 @@ function addTopIssueLabels() {
         asia_position = [width / 1.42, top_offset + height / 3.2],
         oceania_position = [width / 1.2, top_offset + height / 1.46];
 
-    $("#na_top_issue").css("margin-left", na_position[0] + "px").css("margin-top", na_position[1] + "px").html("<div class='header'>Top Issue</div>Freedom");
-    $("#sa_top_issue").css("margin-left", sa_position[0] + "px").css("margin-top", sa_position[1] + "px").html("<div class='header'>Top Issue</div>Accessibility");
-    $("#africa_top_issue").css("margin-left", africa_position[0] + "px").css("margin-top", africa_position[1] + "px").html("<div class='header'>Top Issue</div>Opportunity");
-    $("#asia_top_issue").css("margin-left", asia_position[0] + "px").css("margin-top", asia_position[1] + "px").html("<div class='header'>Top Issue</div>Privacy");
-    $("#europe_top_issue").css("margin-left", europe_position[0] + "px").css("margin-top", europe_position[1] + "px").html("<div class='header'>Top Issue</div>Learning");
-    $("#oceania_top_issue").css("margin-left", oceania_position[0] + "px").css("margin-top", oceania_position[1] + "px").html("<div class='header'>Top Issue</div>User control");
+    $("#na-top-issue").css("margin-left", na_position[0] + "px").css("margin-top", na_position[1] + "px").html("<div class='header'>Top Issue</div>Freedom");
+    $("#sa-top-issue").css("margin-left", sa_position[0] + "px").css("margin-top", sa_position[1] + "px").html("<div class='header'>Top Issue</div>Accessibility");
+    $("#africa-top-issue").css("margin-left", africa_position[0] + "px").css("margin-top", africa_position[1] + "px").html("<div class='header'>Top Issue</div>Opportunity");
+    $("#asia-top-issue").css("margin-left", asia_position[0] + "px").css("margin-top", asia_position[1] + "px").html("<div class='header'>Top Issue</div>Privacy");
+    $("#europe-top-issue").css("margin-left", europe_position[0] + "px").css("margin-top", europe_position[1] + "px").html("<div class='header'>Top Issue</div>Learning");
+    $("#oceania-top-issue").css("margin-left", oceania_position[0] + "px").css("margin-top", oceania_position[1] + "px").html("<div class='header'>Top Issue</div>User control");
 }
 
 function populateGlowsFromLastTick(projection, svg) {
