@@ -21,16 +21,6 @@ var icon = new Object();
     icon["choice-freedom"] = 'fa-check-circle-o';
     icon["choice-learning"] = 'fa-book';
     icon["choice-control"] = 'fa-cogs';
-    
-//i'm guessing this is the wrong way to do it...
-var prose = new Object();
-	prose["choice-privacy"] = 'want a Web that keeps their information safe and private.';
-    prose["choice-opportunity"] = 'want a Web that creates opportunity and prosperity.';
-    prose["choice-access"] = 'believe the Web should be available and accessible to all.';
-    prose["choice-freedom"] = 'want the Web to be a forum for democratic exchange and free speech.';
-    prose["choice-learning"] = 'want a Web that promotes learning & knowledge.';
-    prose["choice-control"] = 'want a Web that keeps them in control of their lives online.';
-    
 
 $(document).ready(function () {
     $("#country").select2();
@@ -64,13 +54,18 @@ function drawCharts() {
   
     d3.json("/static/data/dummy-stats.json", function(json_data) {
         data = json_data;
+        
+	    //add donut prose, all of them, to the html page
+	    $.each(json_data.GLOBAL, function(i, d) {
+	        $("." + i + "-prose .percentage").html(Math.round(d*100) + "%");
+	    })
+	    
         drawDonut(json_data.GLOBAL[default_choice]);
     });
 }
 
 function updateDonut(data, current_choice) {
-    $(".donut-global-value").html(Math.round(data*100) + "%");
-    $(".donut-global-prose").html(prose[current_choice]);
+    $(".donut-prose p").html($("." + current_choice + "-prose").html());
 
     d3.select(".donut-foreground").transition()
         .duration(950)
@@ -90,8 +85,7 @@ function updateDonut(data, current_choice) {
 }
 
 function drawDonut(data) {
-    $(".donut-global-value").html(Math.round(data*100) + "%");
-    $(".donut-global-prose").html(prose[default_choice]);
+    $(".donut-prose p").html($("." + default_choice + "-prose").html());
   
     var width = 170,
         height = 200;
