@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="stats-panel">
   <nav class="stats-panel-nav">
     <a href="#" class="stats-panel-tab">
@@ -325,9 +326,38 @@
 </div>
 
 
-<p class="choice-prose choice-privacy-prose"><span class="percentage"></span> want a Web that keeps their information safe and private.</p>
-<p class="choice-prose choice-opportunity-prose"><span class="percentage"></span> want a Web that creates opportunity and prosperity.</p>
-<p class="choice-prose choice-access-prose"><span class="percentage"></span> believe the Web should be available and accessible to all.</p>
-<p class="choice-prose choice-freedom-prose"><span class="percentage"></span> want the Web to be a forum for democratic exchange and free speech.</p>
-<p class="choice-prose choice-learning-prose"><span class="percentage"></span> want a Web that promotes learning & knowledge.</p>
-<p class="choice-prose choice-control-prose"><span class="percentage"></span> want a Web that keeps them in control of their lives online.</p>
+<p class="choice-prose choice-privacy-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} want a Web that keeps their information safe and private.
+{% endblocktrans %}
+</p>
+
+<p class="choice-prose choice-opportunity-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} want a Web that creates opportunity and prosperity.
+{% endblocktrans %}
+</p>
+
+<p class="choice-prose choice-access-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} believe the Web should be available and accessible to all.
+{% endblocktrans %}
+</p>
+
+<p class="choice-prose choice-freedom-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} want the Web to be a forum for democratic exchange and free speech.
+{% endblocktrans %}
+</p>
+
+<p class="choice-prose choice-learning-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} want a Web that promotes learning & knowledge.
+{% endblocktrans %}
+</p>
+
+<p class="choice-prose choice-control-prose">
+{% blocktrans with value='<span class="percentage"></span>' %}
+{{ value }} want a Web that keeps them in control of their lives online.
+{% endblocktrans %}
+</p>
