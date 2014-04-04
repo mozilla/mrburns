@@ -57,7 +57,7 @@ function drawCharts() {
         
 	    //add donut prose, all of them, to the html page
 	    $.each(json_data.GLOBAL, function(i, d) {
-	        $("." + i + "-prose .percentage").html(Math.round(d*100) + "%");
+	        $("." + i + "-prose .percentage").html(Math.round(d*100));
 	    })
 	    
         drawDonut(json_data.GLOBAL[default_choice]);
