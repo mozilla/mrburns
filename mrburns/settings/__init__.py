@@ -13,3 +13,6 @@ else:
         exc.args = tuple(['%s (did you rename mrburns/settings/local.py-dist?)' %
                           exc.args[0]])
         raise exc
+
+
+COMPRESS_OFFLINE = not DEBUG
