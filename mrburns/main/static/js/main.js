@@ -2,6 +2,7 @@ console.log('Calmer than you are.');
 
 $( '.stats-panel-tab' ).click(function() {
     $( '.stats-panel' ).toggleClass( "open" );
+    $( 'body' ).toggleClass( "stats-panel-open" );
 });
 
 //get Master firefox version
@@ -55,7 +56,8 @@ $(document).ready(function () {
         if (hash.indexOf("#") === -1) {
             $( '#choice' ).modal();
         }
-
+    } else {
+        $('html').addClass('non-australis');
     }
 
     if (hash.indexOf("choice") != -1) {

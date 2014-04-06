@@ -33,6 +33,7 @@ circle {
     position: absolute;
     z-index: 10;
     font-size: 12px;
+    .transition(all .1s ease-in-out);
     ul {
         margin: 0;
         padding: 0;
@@ -62,6 +63,10 @@ circle {
             }
         }
     }
+}
+
+.stats-panel-open .key {
+	opacity: 0;
 }
 
 .key .title {

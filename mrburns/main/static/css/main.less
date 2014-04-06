@@ -10,6 +10,8 @@
 @import "font-awesome/font-awesome.less";
 @import "map.less";
 @import "stats.less";
+@import "animate.less";
+@import "animation.less";
 
 * {
   .box-sizing(border-box);
@@ -50,6 +52,7 @@ header {
     position: relative;
     z-index: 2;
     padding: 20px 40px;
+    .transition(all .3s ease-in-out);
     h1 {
         position: absolute;
         top: 20px;
@@ -95,6 +98,7 @@ header {
         }
     }
     .btn-download {
+        display: none;
         text-align: inherit;
         background-color: #81bc2e;
         #gradient > .vertical(#81bc2e, darken(#81bc2e, 10%));
@@ -138,11 +142,14 @@ header {
         h2 {
             margin-right: 180px;
         }
-        .btn-download {
-            // if visitor is already using Australis
-            // then don't show download button
-            display: none;
-        }
+    }
+}
+
+.non-australis {
+    .btn-download {
+        // if visitor is not using Australis
+        // then show download button
+        display: inline-block;
     }
 }
 
