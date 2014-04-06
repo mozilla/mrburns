@@ -52,7 +52,6 @@ $(document).ready(function () {
         $('html').addClass('australis');
 
         // if we're on australis and there's no hash tag, show the choice modal
-        window.alert(hash.indexOf("#") === -1);
         if (hash.indexOf("#") === -1) {
             $( '#choice' ).modal();
         }
