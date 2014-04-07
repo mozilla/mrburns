@@ -18,10 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = False
-ALLOWED_HOSTS = [
-    'webwewant.mozilla.org',
-    'webwewant.allizom.org',
-]
 
 DATABASES = {
     'default': {
@@ -30,6 +26,16 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379:0',
+    },
+    'smithers': {
+        'BACKEND': 'redis_cache.cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379:0',
+    }
+}
 
 # Application definition
 
@@ -78,3 +84,7 @@ STATICFILES_FINDERS = (
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
+
+DJANGO_REDIS_IGNORE_EXCEPTIONS = True
+
+LATEST_TIMESTAMP_KEY = 'latest:timestamp'

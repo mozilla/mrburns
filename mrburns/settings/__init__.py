@@ -4,8 +4,10 @@
 import os
 
 
-if os.getenv('TRAVIS', False):
+if 'TRAVIS' in os.environ:
     from .travis import *  # noqa
+elif 'DJANGO_SERVER_ENV' in os.environ:
+    from .server import *  # noqa
 else:
     try:
         from .local import *  # noqa
