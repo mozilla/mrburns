@@ -6,11 +6,13 @@ import json
 from urllib import urlencode
 
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
 
 from redis_cache import get_redis_connection
+from smithers import data_types
+from smithers import redis_keys as rkeys
 
 
 redis = get_redis_connection('smithers')
@@ -48,11 +50,19 @@ class GlowView(TemplateView):
 
 
 class ShareView(View):
-    def post(self, request, *args, **kwargs):
-        data = request.POST.dict()
-        # place holder. clearly.
-        print data
-        return HttpResponse()  # 200 ok
+    def post(self, request):
+        issue = request.POST.get('issue')
+        if issue not in data_types.name_to_id:
+            return HttpResponseBadRequest('invalid issue id',
+                                          content_type='text/plain')
+
+        client_ip = request.META.get('HTTP_X_CLUSTER_CLIENT_IP',
+                                     request.META.get('REMOTE_ADDR'))
+        if client_ip:
+            redis.lpush(rkeys.IPLOGS, '{},{}'.format(data_types.name_to_id[issue],
+                                                     client_ip))
+
+        return HttpResponse(status=204)  # 204 no content
 
 
 class StringsView(TemplateView):
@@ -62,7 +72,7 @@ class StringsView(TemplateView):
 
 class CurrentDataView(View):
     def get(self, request):
-        timestamp = int(redis.get(settings.LATEST_TIMESTAMP_KEY) or 0)
+        timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
         if timestamp:
             response_data = {
                 'status': 'OK',
