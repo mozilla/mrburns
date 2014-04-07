@@ -3,7 +3,7 @@
 var width,
     height;
 
-var max_simultaneous_glows = 600,
+var max_simultaneous_glows = 400,
     glow_tick = 60000; //in ms
 
 var color_dummy = new Object();
@@ -115,7 +115,9 @@ function addTopIssueLabels() {
 }
 
 function populateGlowsFromLastTick(projection, svg) {
-    d3.json(getJsonDataUrl(), function(places) {        
+    d3.json(getJsonDataUrl(), function(places) {
+        $(".share_total").html(addCommas(places.share_total));
+        
         places.map_geo.splice(max_simultaneous_glows, places.map_geo.length-max_simultaneous_glows);
         
         svg.selectAll(".pin")
@@ -143,4 +145,16 @@ function populateGlowsFromLastTick(projection, svg) {
 function randomRange(minVal, maxVal, floatVal) {
     var randVal = minVal + (Math.random() * (maxVal - minVal));
     return typeof floatVal == 'undefined' ? Math.round(randVal) : randVal.toFixed(floatVal);
+}
+
+function addCommas(nStr) {
+	nStr += '';
+	var x = nStr.split('.');
+	var x1 = x[0];
+	var x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
 }
