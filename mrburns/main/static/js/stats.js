@@ -5,32 +5,32 @@ var arc,
     xScale;
   
 var data,
-    current_choice = "choice-privacy",
+    current_choice = "privacy",
     current_country = "US";
 
 var color = new Object();
-    color["choice-privacy"] = "#e24063";
-    color["choice-opportunity"] = "#682567";
-    color["choice-access"] = "#092c74",
-    color["choice-freedom"] = "#81bc2e",
-    color["choice-learning"] = "#f18903",
-    color["choice-control"] = "#c43a31";
+    color["privacy"] = "#e24063";
+    color["opportunity"] = "#682567";
+    color["access"] = "#092c74",
+    color["freedom"] = "#81bc2e",
+    color["learning"] = "#f18903",
+    color["control"] = "#c43a31";
     
 var clean_choice = new Object();
-    clean_choice["choice-privacy"] = "Privacy";
-    clean_choice["choice-opportunity"] = "Opportunity";
-    clean_choice["choice-access"] = "Accessibility",
-    clean_choice["choice-freedom"] = "Freedom",
-    clean_choice["choice-learning"] = "Learning",
-    clean_choice["choice-control"] = "User control";
+    clean_choice["privacy"] = "Privacy";
+    clean_choice["opportunity"] = "Opportunity";
+    clean_choice["access"] = "Accessibility",
+    clean_choice["freedom"] = "Freedom",
+    clean_choice["learning"] = "Learning",
+    clean_choice["control"] = "User control";
     
 var icon = new Object();
-    icon["choice-privacy"] = 'fa-eye';
-    icon["choice-opportunity"] = 'fa-heart';
-    icon["choice-access"] = 'fa-user';
-    icon["choice-freedom"] = 'fa-check-circle-o';
-    icon["choice-learning"] = 'fa-book';
-    icon["choice-control"] = 'fa-cogs';
+    icon["privacy"] = 'fa-eye';
+    icon["opportunity"] = 'fa-heart';
+    icon["access"] = 'fa-user';
+    icon["freedom"] = 'fa-check-circle-o';
+    icon["learning"] = 'fa-book';
+    icon["control"] = 'fa-cogs';
 
 $(document).ready(function () {
     $("#country").select2({
@@ -41,11 +41,11 @@ $(document).ready(function () {
     $(".what-is-mozilla-doing-about-it .seperator")
         .css("background-color", color[current_choice]);
     $(".what-is-mozilla-doing-about-it h2")
-        .html($("." + current_choice + "-prose-title-rhs").html());
+        .html($(".choice-" + current_choice + "-prose-title-rhs").html());
     $(".what-is-mozilla-doing-about-it .paragraph1")
-        .html($("." + current_choice + "-prose-rhs1").html());
+        .html($(".choice-" + current_choice + "-prose-rhs1").html());
     $(".what-is-mozilla-doing-about-it .paragraph2")
-        .html($("." + current_choice + "-prose-rhs2").html());
+        .html($(".choice-" + current_choice + "-prose-rhs2").html());
             
     assignStatsEventListeners();
     drawCharts();
@@ -56,21 +56,21 @@ $(document).ready(function () {
 
 function assignStatsEventListeners() {
     $(".key-stats-panel a").on("click", function () {
-        var choice = $(this)[0].parentNode.className;
+        var choice = $(this)[0].parentNode.className.split("choice-")[1];
         current_choice = choice;
         
         //update right-hand-side
         $(".what-is-mozilla-doing-about-it .seperator")
             .css("background-color", color[current_choice]);
         $(".what-is-mozilla-doing-about-it h2")
-            .html($("." + current_choice + "-prose-title-rhs").html());
+            .html($(".choice-" + current_choice + "-prose-title-rhs").html());
         $(".what-is-mozilla-doing-about-it .paragraph1")
-            .html($("." + current_choice + "-prose-rhs1").html());
+            .html($(".choice-" + current_choice + "-prose-rhs1").html());
         $(".what-is-mozilla-doing-about-it .paragraph2")
-            .html($("." + current_choice + "-prose-rhs2").html());
+            .html($(".choice-" + current_choice + "-prose-rhs2").html());
         
         //update chart 1
-        updateDonut(data.GLOBAL[choice], choice);
+        updateDonut(data.country_issues.GLOBAL[choice], choice);
         $(".donut-icon i")
             .removeClass("fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs")
             .addClass(icon[choice]);
@@ -92,28 +92,28 @@ function assignStatsEventListeners() {
         current_country = d.val;
         
         //update chart 2
-        updateStackedBarChart(eval("data." + current_country));
+        updateStackedBarChart(eval("data.country_issues." + current_country));
     });
 }
 
 function drawCharts() {
     $(".stats-panel-contents svg").empty();
-  
-    d3.json("/static/data/dummy-stats.json", function(json_data) {
+
+    d3.json(getJsonDataUrl(), function(json_data) {
         data = json_data;
         
         //add donut prose, all of them, to the html page
-        $.each(json_data.GLOBAL, function(i, d) {
-            $("." + i + "-prose .percentage").html(Math.round(d*100) + '%');
+        $.each(json_data.country_issues.GLOBAL, function(i, d) {
+            $(".choice-" + i + "-prose .percentage").html(Math.round(d*100) + '%');
         })
         
-        drawDonut(json_data.GLOBAL[current_choice]);
-        drawStackedBarChart(eval("json_data." + current_country));
+        drawDonut(json_data.country_issues.GLOBAL[current_choice]);
+        drawStackedBarChart(eval("json_data.country_issues." + current_country));
     });
 }
 
 function updateDonut(data, current_choice) {
-    $(".donut-prose p").html($("." + current_choice + "-prose").html());
+    $(".donut-prose p").html($(".choice-" + current_choice + "-prose").html());
 
     d3.select(".donut-foreground")
         .transition()
@@ -134,7 +134,7 @@ function updateDonut(data, current_choice) {
 }
 
 function drawDonut(data) {
-    $(".donut-prose p").html($("." + current_choice + "-prose").html());
+    $(".donut-prose p").html($(".choice-" + current_choice + "-prose").html());
   
     var width = 170,
         height = 200;
@@ -263,7 +263,7 @@ function drawStackedBarChart(data) {
                 $(".tippytext_" + d.key).show();
             }
         })
-        .on('mouseenter', function (d) {
+        .on('mouseenter', function (d) {            
             $(".tippy").hide();
             $(".tippy_" + d.key).show();
             

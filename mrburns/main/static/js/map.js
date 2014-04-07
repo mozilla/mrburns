@@ -3,6 +3,9 @@
 var width,
     height;
 
+var max_simultaneous_glows = 600,
+    glow_tick = 60000; //in ms
+
 var color_dummy = new Object();
     color_dummy["Asia"] = "#d6557a";
     color_dummy["Africa"] = "#6e3f7d";
@@ -86,10 +89,10 @@ function drawMap(ht) {
         //add glows
         populateGlowsFromLastTick(projection, svg);
 
-        //repull the glow data and show new ones does that after 5s, change once we have actual data
+        //repull the glow data and show new ones does that after 60s
         setInterval(function() {
             populateGlowsFromLastTick(projection, svg);
-        }, 5000);
+        }, glow_tick);
     });
 }
 
@@ -112,21 +115,22 @@ function addTopIssueLabels() {
 }
 
 function populateGlowsFromLastTick(projection, svg) {
-    d3.json("/static/data/dummy.json", function(places) {
-        console.log(places);
+    d3.json(getJsonDataUrl(), function(places) {        
+        places.map_geo.splice(max_simultaneous_glows, places.map_geo.length-max_simultaneous_glows);
+        
         svg.selectAll(".pin")
-            .data(places.downloads_geo)
+            .data(places.map_geo)
             .enter().append("circle")
                 .attr("r", 0)
                 .style("opacity", 0)
                 .attr("transform", function(d) {
-                    return "translate(" + projection([d.long, d.lat]) + ")"
+                    return "translate(" + projection([d.lon, d.lat]) + ")"
                 })
                 .transition()
                     .delay(function(d, i) {
-                        return randomRange(0, 2000, 0);
+                        return randomRange(0, glow_tick, 0);
                     })
-                    .duration(2000)
+                    .duration(1000)
                     .attr("r", 3)
                     .style("opacity", 0.8)
                     .transition()

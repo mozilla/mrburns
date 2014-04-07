@@ -2,7 +2,7 @@ console.log('Calmer than you are.');
 
 $( '.stats-panel-tab' ).click(function() {
     $( '.stats-panel' ).toggleClass( "open" );
-    $( 'body' ).toggleClass( "stats-panel-open" );
+    //$( 'body' ).toggleClass( "stats-panel-open" ); //TODO check with sgarrity
 });
 
 //get Master firefox version
@@ -40,6 +40,37 @@ function isAustralis() {
     } else {
         return false;
     }
+}
+
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+}
+
+function getJsonDataUrl() {   
+    //TODO we'll just need this once deployed on dev
+    /*$.ajax({ 
+             type: "GET",
+             dataType: "json",
+             url: "https://webwewant.allizom.org/latest_data/",
+             success: function(data){        
+                rounded_timestamp = data.timestamp - (60 * 5);
+             }
+         });*/
+
+    var coeff = 1000 * 60;
+    
+    //TODO remove this once deployed on dev
+    var date = new Date().addHours(7);
+    
+    //get data file from 2 mins ago
+    //TODO revisit once in dev
+    rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
+    
+    console.log(rounded_timestamp);
+    console.log("https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json");
+    
+    return "https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json";
 }
 
 $(document).ready(function () {
