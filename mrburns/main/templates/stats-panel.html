@@ -193,7 +193,7 @@
             <option value="IS">Iceland</option>
             <option value="IN">India</option>
             <option value="ID">Indonesia</option>
-            <option value="IR">Iran, Islamic Republic of</option>
+            <option value="IR">Iran</option>
             <option value="IQ">Iraq</option>
             <option value="IE">Ireland</option>
             <option value="IM">Isle of Man</option>
@@ -215,7 +215,7 @@
             <option value="LB">Lebanon</option>
             <option value="LS">Lesotho</option>
             <option value="LR">Liberia</option>
-            <option value="LY">Libyan Arab Jamahiriya</option>
+            <option value="LY">Libya</option>
             <option value="LI">Liechtenstein</option>
             <option value="LT">Lithuania</option>
             <option value="LU">Luxembourg</option>
@@ -234,7 +234,7 @@
             <option value="YT">Mayotte</option>
             <option value="MX">Mexico</option>
             <option value="FM">Micronesia</option>
-            <option value="MD">Moldova, Republic of</option>
+            <option value="MD">Moldova</option>
             <option value="MC">Monaco</option>
             <option value="MN">Mongolia</option>
             <option value="ME">Montenegro</option>
@@ -335,10 +335,52 @@
             <option value="ZW">Zimbabwe</option>
           </select>
         </div>
+        <!-- stacked bar is appended here -->
+      </div>
+      
+      <div class="chart3">
+        <h2>{{ _('How does that compare globally?') }}</h2>
+        <!-- stats pane is appended here -->
+      </div>
+      
+      <div class="what-is-mozilla-doing-about-it">
+        <i class="fa fa-share-square-o fa-1x"></i> 
+        <p class="share-this-page">Share this page</p>
+        
+        <h2></h2>
+        <div class="seperator"></div>
+        
+        <p class="paragraph1"></p>
+        <p class="did-you-know">{{ _('Did you know?') }}</p>
+        <p class="paragraph2"></p>
       </div>
   </div>
 </div>
 
+
+
+
+<p class="choice-prose-rhs-title choice-privacy-prose-title-rhs">{{ _('Firefox & privacy') }}</p>
+<p class="choice-prose-rhs-title choice-opportunity-prose-title-rhs">{{ _('Firefox & opportunity') }}</p>
+<p class="choice-prose-rhs-title choice-access-prose-title-rhs">{{ _('Firefox & accessibility') }}</p>
+<p class="choice-prose-rhs-title choice-freedom-prose-title-rhs">{{ _('Firefox & freedom') }}</p>
+<p class="choice-prose-rhs-title choice-learning-prose-title-rhs">{{ _('Firefox & learning') }}</p>
+<p class="choice-prose-rhs-title choice-control-prose-title-rhs">{{ _('Firefox & user control') }}</p>
+
+
+<p class="choice-prose-rhs1 choice-privacy-prose-rhs1">Firefox is made under the principle that security and privacy are fundamental and must be treated as optional.</p>
+<p class="choice-prose-rhs1 choice-opportunity-prose-rhs1">{{ _('Firefox is the only browser made of 100% free, open source code that anyone can view, remix and contribute to.') }}</p>
+<p class="choice-prose-rhs1 choice-access-prose-rhs1">{{ _('Firefox is made with the belief that the Internet is a global public resource that must remain open and accessible to all.') }}</p>
+<p class="choice-prose-rhs1 choice-freedom-prose-rhs1">{{ _('Firefox is the only non-profit browser that prioritizes principles over profits and answers to no one but you.') }}</p>
+<p class="choice-prose-rhs1 choice-learning-prose-rhs1">{{ _('Firefox is the only browser made by a non-profit foundation working to unlock the full educational potential of the Web.') }}</p>
+<p class="choice-prose-rhs1 choice-control-prose-rhs1">{{ _('Firefox is the only browser made with a mission to put users first and to keep the power of the Web in your hands.') }}</p>
+
+<p class="choice-prose-rhs2 choice-privacy-prose-rhs2">Firefox is the only major browser that didn't share your personal information with the NSA.</p>
+<p class="choice-prose-rhs2 choice-opportunity-prose-rhs2">{{ _('Firefox is made by a global volunteer community 6,000 strong, open to participation from anyone.') }}</p>
+<p class="choice-prose-rhs2 choice-access-prose-rhs2">{{ _('Firefox disrupted the mobile industry with the first free, open-source, Web-based operating system to help bring the next billion people online.') }}</p>
+<p class="choice-prose-rhs2 choice-freedom-prose-rhs2">{{ _('Firefox protested and lobbied against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web.') }}</p>
+<p class="choice-prose-rhs2 choice-learning-prose-rhs2">{{ _('Firefox teaches digital literacy to millions of people around the world to give them the tools and skills they need to move from using the Web to actively making it.') }}</p>
+<p class="choice-prose-rhs2 choice-control-prose-rhs2">{{ _('Firefox innovations like Do Not Track and Lightbeam are leading the way to give users greater control online.') }}</p>
 
 <p class="choice-prose choice-privacy-prose">
 {% blocktrans with percentage='<span class="percentage"></span>' %}
