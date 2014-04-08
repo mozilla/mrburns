@@ -97,6 +97,7 @@ $(document).ready(function () {
     } else if (hash.indexOf("video") != -1) {
         // if #video is in the URL, show the video modal
         $( '#video' ).modal();
+        insertVideo();
     } else if (hash.indexOf("number") != -1) {
         // if #number is in the URL, show the number modal
         $( '#number' ).modal();
@@ -173,5 +174,26 @@ $(document).ready(function () {
             )
             .css('height', '80px');
     }
+
+    // Insert YouTube video into #video modal
+    function insertVideo(autoplay) {
+        if (autoplay) {
+            autoplay = '1';
+        } else {
+            autoplay = '0';
+        }
+        var width = 853;
+        var height = 480;
+        var id = 'WB98kYqQt9c';
+        $('#video .modal-body').html('<iframe width="' + width + '" height="' +
+            height + '" src="//www.youtube-nocookie.com/embed/' +
+            id + '?autoplay=' + autoplay + '&' +
+            '" frameborder="0" allowfullscreen></iframe>')
+    }
+
+    $('#video').on('show.bs.modal', function (e) {
+        // Insert YouTube player when video modal is opened
+        insertVideo(true);
+    })
 
 });
