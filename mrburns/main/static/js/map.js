@@ -59,12 +59,12 @@ function drawMap(ht) {
     $("#map-container").html("<svg id='map' xmlns='http://www.w3.org/2000/svg' width='100%' height='" + ht + "'></svg>");
     var svg = d3.select("svg");
 
-    width = $("svg#map").parent().width() + 30;
+    width = $("svg#map").parent().width() + 35;
     height = ht;
 
     var projection = d3.geo.equirectangular()
         .scale((width / 640) * 100)
-        .translate([width / 2 - 10, height / 2 + 40])
+        .translate([width / 2 - 20, height / 2 + 40])
         .precision(.1);
         
     var path = d3.geo.path().projection(projection);
