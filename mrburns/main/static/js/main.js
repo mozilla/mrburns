@@ -159,7 +159,4 @@ $(document).ready(function () {
         }
     });
 
-    function showChoiceShare() {
-    }
-
 });
