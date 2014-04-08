@@ -42,6 +42,42 @@ class GlowView(TemplateView):
                 'text': _('Join millions of Firefox users around the world '
                           'who are shaping the future of the Web.'),
             }),
+            'share_map_twitter_access': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('ACCESS'),
+            }),
+            'share_map_twitter_control': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('CONTROL'),
+            }),
+            'share_map_twitter_freedom': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('FREEDOM'),
+            }),
+            'share_map_twitter_learning': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('LEARNING'),
+            }),
+            'share_map_twitter_opportunity': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('OPPORTUNITY'),
+            }),
+            'share_map_twitter_privacy': get_tw_share_url({
+                'url': 'https://webwewant.mozilla.org/#web',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('PRIVACY'),
+            }),
             'share_map_facebook': get_fb_share_url({
                 'u': 'https://webwewant.mozilla.org/#web'
             }),
