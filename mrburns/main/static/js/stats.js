@@ -16,14 +16,6 @@ var color = new Object();
     color["learning"] = "#f18903",
     color["control"] = "#c43a31";
     
-var clean_choice = new Object();
-    clean_choice["privacy"] = "Privacy";
-    clean_choice["opportunity"] = "Opportunity";
-    clean_choice["access"] = "Accessibility",
-    clean_choice["freedom"] = "Freedom",
-    clean_choice["learning"] = "Learning",
-    clean_choice["control"] = "User control";
-    
 var icon = new Object();
     icon["privacy"] = 'fa-eye';
     icon["opportunity"] = 'fa-heart';
@@ -178,14 +170,29 @@ function drawDonut(data) {
     }
 }
 
-function drawStackedBarChart(data) {
-    data = d3.entries(data);
-    console.log(data);
+function drawStackedBarChart(data_unsorted) {
+    data_unsorted = d3.entries(data_unsorted);
+    
+    var data = new Array();
+    $.each(data_unsorted, function(i, d) {
+        if(d.key == "privacy")
+            data[0] = d;
+        else if(d.key == "opportunity")
+            data[1] = d;
+        else if(d.key == "access")
+            data[2] = d;
+        else if(d.key == "freedom")
+            data[3] = d;
+        else if(d.key == "learning")
+            data[4] = d;
+        else if(d.key == "control")
+            data[5] = d;
+    })
 
     var width = 565,
         height = 120,
-        x_padding_left = 20,
-        x_padding_right = 50,
+        x_padding_left = 30,
+        x_padding_right = 60,
         bar_y_position = 30,
         bar_height = 17;
   
@@ -240,7 +247,9 @@ function drawStackedBarChart(data) {
                     return bar_y_position + bar_height + 22;
                 })
                 .text(function() {
-                    return clean_choice[d.key] + " (" + Math.round(d.value*100) + "%)";
+                    return $(".choice-" + [d.key]
+                        + " .choice-title span").html()
+                        + " (" + Math.round(d.value*100) + "%)";
                 })
                 .style("fill", function () {
                     return "white";
@@ -273,7 +282,9 @@ function drawStackedBarChart(data) {
 }
 
 function updateStackedBarChart(new_data) {
-    var x_padding_left = 20,
+    console.log(new_data);
+    
+    var x_padding_left = 30,
         x_marker = 0;
     
     d3.selectAll(".bar")
@@ -285,7 +296,7 @@ function updateStackedBarChart(new_data) {
             .attr("x", function (d) {
                 var x_marker_this = x_marker;
                 x_marker += new_data[d.key];
-                
+                console.log(d.key, new_data[d.key]);
                 //update circles
                 d3.select(".tippy_" + d.key)
                     .transition()
@@ -308,7 +319,7 @@ function updateStackedBarChart(new_data) {
                             return x_padding_left + xScale(x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
                         .text(function() {
-                            return clean_choice[d.key] + " (" + Math.round(new_data[d.key]*100) + "%)";
+                            return $(".choice-" + [d.key] + " .choice-title span").html() + " (" + Math.round(new_data[d.key]*100) + "%)";
                         });
                 
                 return x_padding_left + xScale(x_marker_this);
