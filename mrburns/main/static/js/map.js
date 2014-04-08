@@ -3,7 +3,7 @@
 var width,
     height;
 
-var max_simultaneous_glows = 400,
+var max_simultaneous_glows = 300,
     glow_tick = 60000; //in ms
 
 $(document).ready(function() {
@@ -59,10 +59,14 @@ function drawMap(ht) {
     $("#map-container").html("<svg id='map' xmlns='http://www.w3.org/2000/svg' width='100%' height='" + ht + "'></svg>");
     var svg = d3.select("svg");
 
-    width = $("svg#map").parent().width();
+    width = $("svg#map").parent().width() + 30;
     height = ht;
 
-    var projection = d3.geo.equirectangular().scale((width / 640) * 100).translate([width / 2, height / 2 + 40]).precision(.1);
+    var projection = d3.geo.equirectangular()
+        .scale((width / 640) * 100)
+        .translate([width / 2 - 10, height / 2 + 40])
+        .precision(.1);
+        
     var path = d3.geo.path().projection(projection);
 
     d3.json("/static/data/world-continents-110m.json", function(error, world) {
@@ -157,8 +161,7 @@ function populateGlowsFromLastTick(projection, svg) {
         //we sort by count to give preference to locations that have the most downloads
         //dots for locations that have a lot of downloads persist for the entire length of the tick
         //for now, cycle through subsets of 400 glows every 10s, any more and the animation becomes less graceful
-        //start from the end
-        places.map_geo.sort(function(a, b) { return a.count - b.count; })
+        //places.map_geo.sort(function(a, b) { return a.count - b.count; })
         
         displaySubsetOfGlows(places.map_geo.splice(places.map_geo.length-max_simultaneous_glows, places.map_geo.length), projection, svg);
         
