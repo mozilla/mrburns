@@ -52,11 +52,15 @@
                 vertical-align: middle;
             }
         }
+        &.selected,
         &:hover,
         &:active {
             .choice-title {
                 color: #fff;
             }
+        }
+        &:focus {
+            outline: none;
         }
     }
 }
@@ -104,6 +108,7 @@
         .choice-title {
             color: @color-privacy;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-privacy;
@@ -114,6 +119,7 @@
         .choice-title {
             color: @color-opportunity;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-opportunity;
@@ -124,6 +130,7 @@
         .choice-title {
             color: @color-access;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-access;
@@ -134,6 +141,7 @@
         .choice-title {
             color: @color-freedom;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-freedom;
@@ -144,6 +152,7 @@
         .choice-title {
             color: @color-learning;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-learning;
@@ -154,6 +163,7 @@
         .choice-title {
             color: @color-control;
         }
+        .btn.selected,
         .btn:hover,
         .btn:active {
             background: @color-control;

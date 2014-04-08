@@ -1,3 +1,4 @@
+// vim:set et ts=4 sw=4
 console.log('Calmer than you are.');
 
 $( '.stats-panel-tab' ).click(function() {
@@ -132,6 +133,12 @@ $(document).ready(function () {
         event.preventDefault();
         $('.popover-markup  .trigger').popover('hide');
         window.open(this.href, '_blank', "height=420,width=550");
+    });
+
+    var $choices = $('.choices .btn');
+    $choices.click(function() {
+        $choices.removeClass('selected');
+        $(this).addClass('selected');
     });
 
 });
