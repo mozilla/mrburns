@@ -13,11 +13,12 @@ circle {
 
 .continent-label {
     color: white;
+    display: none;
     font-size: 14px;
     font-style: italic;
     font-weight: 300;
     position: absolute;
-    width:180px;
+    width: 180px;
     z-index: 6;
 }
 
@@ -25,6 +26,20 @@ circle {
     display: block;
     font-size: 13px;
     font-weight: bold;
+}
+
+.continent-for-issue-label {
+    background-color: white;
+    border-radius: 30px;
+    color: #3b3b3b;
+    display: none;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    z-index: 6;
 }
 
 .key {
@@ -66,7 +81,7 @@ circle {
 }
 
 .stats-panel-open .key {
-	opacity: 0;
+    opacity: 0;
 }
 
 .key .title {
