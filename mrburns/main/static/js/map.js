@@ -1,7 +1,9 @@
 "use strict";
 
 var width,
-    height;
+    height,
+    showing_regions = false,
+    showing_glows = true;
 
 var max_simultaneous_glows = 300,
     glow_tick = 60000; //in ms
@@ -32,6 +34,18 @@ function assignEventListeners() {
     });
 
     $("#view-by-region").on("click", function() {
+        if(showing_regions) {
+            d3.selectAll(".continent")
+                .style("stroke", "#166c9e")
+                .style("fill", "#166c9e");
+                
+            showing_regions = !showing_regions;
+            
+            return;
+        }
+                
+        showing_regions = !showing_regions;
+        
         var top_issues = new Object();
         
         d3.selectAll(".continent").each(function(d, i) {
@@ -259,6 +273,10 @@ function displaySubsetOfGlows(places, projection, svg) {
                 .style("opacity", 0)
                 .attr("transform", function(d) {
                     return "translate(" + projection([d.lon, d.lat]) + ")"
+                })
+                .attr("display", function() {
+                    if(!showing_glows)
+                        return "none";
                 })
                 .transition()
                     .delay(function(d, i) {

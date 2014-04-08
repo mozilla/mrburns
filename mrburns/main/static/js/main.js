@@ -2,6 +2,14 @@ console.log('Calmer than you are.');
 
 $( '.stats-panel-tab' ).click(function() {
     $( 'body' ).toggleClass( "stats-panel-open" );
+
+    //hide glows on stats panel open    
+    if(showing_glows)
+        $("#map-container svg circle").hide();
+    else
+        $("#map-container svg circle").show();
+    
+    showing_glows = !showing_glows;
 });
 
 //get Master firefox version
