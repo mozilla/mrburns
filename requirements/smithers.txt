@@ -1,0 +1,8 @@
+# sha256: G1VbiogAE0_a_jK30MtS9b2_3Qk3B8PdSExepZ8dmLc
+ipaddr==2.1.11
+
+# sha256: GrguX3jFnvhJqQpscbWQknX1Eb6faWGHOHA9CC5jAs8
+maxminddb==0.3.2
+
+# sha256: RdsWgxKmgg_XhpfHtv0BlvOvkiyOvIhUDt0Nb6_tVU0
+statsd==2.1.2
