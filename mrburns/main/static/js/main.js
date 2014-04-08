@@ -1,8 +1,7 @@
 console.log('Calmer than you are.');
 
 $( '.stats-panel-tab' ).click(function() {
-    $( '.stats-panel' ).toggleClass( "open" );
-    //$( 'body' ).toggleClass( "stats-panel-open" ); //TODO check with sgarrity
+    $( 'body' ).toggleClass( "stats-panel-open" );
 });
 
 //get Master firefox version
