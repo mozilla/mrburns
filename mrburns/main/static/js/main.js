@@ -128,11 +128,15 @@ $(document).ready(function () {
         });
     });
 
+    function openShareWindow(href) {
+        $('.popover-markup  .trigger').popover('hide');
+        window.open(href, '_blank', "height=420,width=550");
+    }
+
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
-        $('.popover-markup  .trigger').popover('hide');
-        window.open(this.href, '_blank', "height=420,width=550");
+        openShareWindow(this.href);
     });
 
     var $choices = $('.choices .btn');
@@ -140,5 +144,22 @@ $(document).ready(function () {
         $choices.removeClass('selected');
         $(this).addClass('selected');
     });
+
+    $('.modal-footer .share-twitter').click(function(e) {
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            openShareWindow($selected.data('twitter'));
+        }
+    });
+
+    $('.modal-footer .share-facebook').click(function(e) {
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            openShareWindow($selected.data('facebook'));
+        }
+    });
+
+    function showChoiceShare() {
+    }
 
 });
