@@ -143,6 +143,7 @@ $(document).ready(function () {
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
+        showShareButtons();
     });
 
     $('.modal-footer .share-twitter').click(function(e) {
@@ -158,5 +159,19 @@ $(document).ready(function () {
             openShareWindow($selected.data('facebook'));
         }
     });
+
+    function showShareButtons() {
+        $('.choice-footer-container')
+            .bind(
+                'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
+                function (event) {
+                    if (event.target === event.currentTarget) {
+                        $('.choice-footnotes').css('display', 'block');
+                        $('.choice-footer-content, .choice-footnotes').css('opacity', '1');
+                    }
+                }
+            )
+            .css('height', '80px');
+    }
 
 });

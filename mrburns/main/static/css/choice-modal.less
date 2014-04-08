@@ -7,6 +7,18 @@
    }
 }
 
+.choice-footer-container {
+    overflow: hidden;
+    height: 0px;
+    .transition(height 0.25s ease-in-out);
+}
+
+.choice-footer-content,
+.choice-footnotes {
+    opacity: 0;
+    .transition(opacity 0.25s ease-in-out);
+}
+
 .choices {
     margin: 0 -10px;
     padding: 0;
@@ -85,6 +97,7 @@
 }
 
 .choice-footnotes {
+    display: none;
     .link,
     .note {
         float: left;
