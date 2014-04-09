@@ -36,3 +36,15 @@ nose==1.3.1
 
 # sha256: mq4WtWKGak3apeiXhymrrbvtVEco2I4LnJr3sx3Qcu0
 django-nose==1.2
+
+# sha256: CYq3mRBnwIz6pHFt4gBm2Q9m28cVAhFOqMrZqf1clRI
+flake8==2.1.0
+
+# sha256: rEVxaVwQzhU2vNuhopS58tPmzJ0OoXG2fVCghkzj4EI
+pyflakes==0.8.1
+
+# sha256: DtLVY9v-K_Wc__ROGq3JL_mnlY2irOLuPcM1ng5OQYw
+pep8==1.5.4
+
+# sha256: WioXDkfeVZOmq_rh6VQr0sOSSsYrvk5u2WyVPANSJDo
+mccabe==0.2.1
