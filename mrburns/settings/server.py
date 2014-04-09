@@ -4,9 +4,6 @@ from .base import *  # noqa
 
 
 SERVER_ENV = os.getenv('DJANGO_SERVER_ENV')
-ADMINS = (
-    ('pmac', 'pmac@mozilla.com'),
-)
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [

@@ -118,12 +118,12 @@ function addIssueBreakOutOverContinents(choice, choice_data) {
 
 function drawMap(ht) {
     $("#map-container")
-        .html("<svg id='map' xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
+        .html("<svg id='map-vector' xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
             + ht + "'></svg>");
         
     var svg = d3.select("svg");
 
-    width = $("svg#map").parent().width() + 35;
+    width = $("svg#map-vector").parent().width() + 35;
     height = ht;
 
     var projection = d3.geo.equirectangular()

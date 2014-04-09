@@ -1,16 +1,5 @@
+// vim:set et ts=4 sw=4
 console.log('Calmer than you are.');
-
-$( '.stats-panel-tab' ).click(function() {
-    $( 'body' ).toggleClass( "stats-panel-open" );
-
-    //hide glows on stats panel open    
-    if(showing_glows)
-        $("#map-container svg circle").hide();
-    else
-        $("#map-container svg circle").show();
-    
-    showing_glows = !showing_glows;
-});
 
 //get Master firefox version
 function getFirefoxMasterVersion(userAgent) {
@@ -92,7 +81,7 @@ $(document).ready(function () {
 
         // if we're on australis and there's no hash tag, show the choice modal
         if (hash.indexOf("#") === -1) {
-            $( '#choice' ).modal();
+            $( '#choice-modal' ).modal();
         }
     } else {
         $('html').addClass('non-australis');
@@ -100,15 +89,30 @@ $(document).ready(function () {
 
     if (hash.indexOf("choice") != -1) {
         // if #choice is in the URL, show the choice modal
-        $( '#choice' ).modal();
+        $( '#choice-modal' ).modal();
     } else if (hash.indexOf("video") != -1) {
         // if #video is in the URL, show the video modal
-        $( '#video' ).modal();
+        $( '#video-modal' ).modal();
+        insertVideo();
     } else if (hash.indexOf("number") != -1) {
         // if #number is in the URL, show the number modal
-        $( '#number' ).modal();
+        $( '#number-modal' ).modal();
+    } else if (hash.indexOf("stats") != -1) {
+        // if #number is in the URL, show the number modal
+        $( 'body' ).addClass('stats-panel-open');
     }
 
+    $( '.stats-panel-tab' ).click(function() {
+        $( 'body' ).toggleClass( "stats-panel-open" );
+    
+        //hide glows on stats panel open    
+        if(showing_glows)
+            $("#map-container svg circle").hide();
+        else
+            $("#map-container svg circle").show();
+    
+        showing_glows = !showing_glows;
+    });
 
     // "Share the map" popopver
     $('.popover-markup > .trigger').popover({
@@ -135,11 +139,71 @@ $(document).ready(function () {
         });
     });
 
+    function openShareWindow(href) {
+        $('.popover-markup  .trigger').popover('hide');
+        window.open(href, '_blank', "height=420,width=550");
+    }
+
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
-        $('.popover-markup  .trigger').popover('hide');
-        window.open(this.href, '_blank', "height=420,width=550");
+        openShareWindow(this.href);
     });
+
+    var $choices = $('.choices .btn');
+    $choices.click(function() {
+        $choices.removeClass('selected');
+        $(this).addClass('selected');
+        showShareButtons();
+    });
+
+    $('.modal-footer .share-twitter').click(function(e) {
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            openShareWindow($selected.data('twitter'));
+        }
+    });
+
+    $('.modal-footer .share-facebook').click(function(e) {
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            openShareWindow($selected.data('facebook'));
+        }
+    });
+
+    function showShareButtons() {
+        $('.choice-footer-container')
+            .bind(
+                'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
+                function (event) {
+                    if (event.target === event.currentTarget) {
+                        $('.choice-footnotes').css('display', 'block');
+                        $('.choice-footer-content, .choice-footnotes').css('opacity', '1');
+                    }
+                }
+            )
+            .css('height', '80px');
+    }
+
+    // Insert YouTube video into #video modal
+    function insertVideo(autoplay) {
+        if (autoplay) {
+            autoplay = '1';
+        } else {
+            autoplay = '0';
+        }
+        var width = 853;
+        var height = 480;
+        var id = 'WB98kYqQt9c';
+        $('#video-modal .modal-body').html('<iframe width="' + width + '" height="' +
+            height + '" src="//www.youtube-nocookie.com/embed/' +
+            id + '?autoplay=' + autoplay + '&' +
+            '" frameborder="0" allowfullscreen></iframe>')
+    }
+
+    $('#video-modal').on('show.bs.modal', function (e) {
+        // Insert YouTube player when video modal is opened
+        insertVideo(true);
+    })
 
 });

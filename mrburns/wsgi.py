@@ -14,10 +14,8 @@ import os
 import site
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-SMITHERS_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'smithers'))
+site.addsitedir(os.path.join(BASE_DIR, 'smithers'))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrburns.settings")
-smithers_dir = os.environ.setdefault("SMITHERS_DIR", SMITHERS_DIR)
-site.addsitedir(smithers_dir)
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
