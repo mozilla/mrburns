@@ -1,3 +1,4 @@
+{% load i18n %}
   <!-- Modal -->
   <div class="modal fade choice-modal" id="choice-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -97,21 +98,23 @@
           <div class="modal-footer">
             <div class="choice-footer-content">
               <span class="title">{{ _('Share your web on:') }}</span>
-              <button type="button" class="btn btn-primary share-twitter">
-                <i class="fa fa-twitter"></i>
-                <span class="title">{{ _('Twitter') }}</span>
-              </button>
               <button type="button" class="btn btn-primary share-facebook">
                 <i class="fa fa-facebook"></i>
                 <span class="title">{{ _('Facebook') }}</span>
+              </button>
+              <button type="button" class="btn btn-primary share-twitter">
+                <i class="fa fa-twitter"></i>
+                <span class="title">{{ _('Twitter') }}</span>
               </button>
             </div>
           </div>
         </div>
       </div>
       <div class="choice-footnotes">
-        <div class="link"><a href="#" class="share-local">{{ _('Share on this site') }}</a></div>
-        <p class="note">{{ _('By sharing your choice with us, you can add your voice to our global map. We use geolocation to show you how people around the world share your vision for the Web.') }}</p>
+        <div class="link"><a href="#" class="share-local">
+          {% blocktrans with site='webwewant.mozilla.org' %}Share only on {{ site }}{% endblocktrans %}</a>
+        </div>
+        <p class="note">{{ _('When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community.') }}</p>
       </div>
     </div>
   </div>
