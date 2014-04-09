@@ -9,3 +9,6 @@ gunicorn==18.0
 
 # sha256: xE35VNncyfV2gr-Pq_FyoRLt9T_zW7XOj4__GxmFq7E
 hiredis==0.1.2
+
+# sha256: QEExjkSAyzPXvAVv8Ld4OHoIIgHsqXrwujoIXBGj714
+newrelic==2.18.1.15
