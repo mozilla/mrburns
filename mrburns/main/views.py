@@ -36,14 +36,24 @@ class GlowView(TemplateView):
         context = super(GlowView, self).get_context_data(**kwargs)
         context.update({
             'share_map_twitter': get_tw_share_url({
-                'url': 'https://webwewant.mozilla.org/#web',
+                'url': 'http://mzl.la/1g5k6OK',
                 'hashtags': '#firefox',
                 'dnt': True,
                 'text': _('Join millions of Firefox users around the world '
                           'who are shaping the future of the Web.'),
             }),
             'share_map_facebook': get_fb_share_url({
-                'u': 'https://webwewant.mozilla.org/#web'
+                'u': 'http://mzl.la/1oKbBCb'
+            }),
+            'share_stats_twitter': get_tw_share_url({
+                'url': 'http://mzl.la/1n0x8lA',
+                'hashtags': '#firefox',
+                'dnt': True,
+                'text': _('Join millions of Firefox users around the world '
+                          'who are shaping the future of the Web.'),
+            }),
+            'share_stats_facebook': get_fb_share_url({
+                'u': 'http://mzl.la/1sxET6z'
             }),
             'share_twitter_access': get_tw_share_url({
                 'url': 'http://mzl.la/1irtltn',
