@@ -13,10 +13,9 @@ The Daemons
 Installation
 ------------
 
-1. Setup a virtualenv using [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/):
-   `mkvirtualenv smithers`
-2. Install the dependencies:
-   `bin/peep.py install -r requirements.txt`
+1. Hopefully you already have a virtualenv setup for mrburns, so just use that. If not follow that readme to get it going, you'll need all of those requirements as well.
+2. Install the smithers dependencies from the base of the repo:
+   `bin/peep.py install -r requirements/smithers.txt`
 3. Run the daemon of your choice.
 
 Terminology
