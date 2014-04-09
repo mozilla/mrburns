@@ -1,7 +1,9 @@
 "use strict";
 
 var width,
-    height;
+    height,
+    showing_regions = false,
+    showing_glows = true;
 
 var max_simultaneous_glows = 300,
     glow_tick = 60000; //in ms
@@ -12,26 +14,35 @@ $(document).ready(function() {
 });
 
 function assignEventListeners() {
+    //view by choice listener
     $(".key-map a").on("click", function(e) {
-        var choice = $(this)[0].parentNode.className.split("choice-")[1];
+        $(".key-map a").removeClass("selected");
+        $(this).toggleClass("selected");
         
         if ($(this).attr("id") != "view-by-region") {
-            d3.selectAll(".continent")
-                .style("stroke", "#166c9e")
-                .style("fill", "#166c9e");
-
-            $(".continent-label").html("");
+            var choice = $(this)[0].parentNode.className.split("choice-")[1];
+            removeMapOverlays();            
+            showing_regions = false;
             
             //color continents per that choice and show percentages
             addIssueBreakOutOverContinents(choice, eval("data.issue_continents." + choice));
         }
 
-        $(".key-map a").removeClass("selected");
-
         return false;
     });
 
+    //view by region listener
     $("#view-by-region").on("click", function() {
+        if(showing_regions) {
+            $(this).toggleClass("selected");
+            removeMapOverlays(); 
+            showing_regions = !showing_regions;
+            
+            return;
+        }
+                
+        showing_regions = !showing_regions;
+        
         var top_issues = new Object();
         
         d3.selectAll(".continent").each(function(d, i) {
@@ -53,6 +64,23 @@ function assignEventListeners() {
 
         return false;
     });
+}
+
+function showGlows() {
+    $("#map-container svg circle").show();
+}
+
+function hideGlows() {
+    $("#map-container svg circle").hide();
+}
+
+function removeMapOverlays() {
+    d3.selectAll(".continent")
+        .style("stroke", "#166c9e")
+        .style("fill", "#166c9e");
+                
+    $(".continent-label").hide();
+    $(".continent-for-issue-label").hide();
 }
 
 function addIssueBreakOutOverContinents(choice, choice_data) {
@@ -259,6 +287,10 @@ function displaySubsetOfGlows(places, projection, svg) {
                 .style("opacity", 0)
                 .attr("transform", function(d) {
                     return "translate(" + projection([d.lon, d.lat]) + ")"
+                })
+                .attr("display", function() {
+                    if(!showing_glows)
+                        return "none";
                 })
                 .transition()
                     .delay(function(d, i) {
