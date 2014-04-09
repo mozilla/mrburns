@@ -3,9 +3,11 @@
 """
 Grab IP addresses from Redis and lookup Geo info.
 """
+from __future__ import division
 
 import argparse
 import logging
+import math
 import signal
 import sys
 
@@ -63,16 +65,20 @@ signal.signal(signal.SIGINT, handle_signals)
 signal.signal(signal.SIGTERM, handle_signals)
 
 
+def round_map_coord(coord):
+    return math.floor(coord * 10) / 10
+
+
 def process_map(geo_data):
     """Add download aggregate data to redis."""
     redis.incr(rkeys.MAP_TOTAL)
     try:
         # rounding to aid in geo aggregation
         location = {
-            'lat': round(geo_data['location']['latitude'], 2),
-            'lon': round(geo_data['location']['longitude'], 2),
+            'lat': round_map_coord(geo_data['location']['latitude']),
+            'lon': round_map_coord(geo_data['location']['longitude']),
         }
-    except KeyError:
+    except (KeyError, TypeError):
         # this appears to mostly happen with anonymous proxies
         log.info('Geo data contained no location.')
         log.debug(geo_data)
