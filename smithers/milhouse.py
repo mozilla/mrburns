@@ -29,9 +29,12 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-statsd = StatsClient(host=conf.STATSD_HOST,
-                     port=conf.STATSD_PORT,
-                     prefix=conf.STATSD_PREFIX)
+if hasattr(conf, 'STATSD_HOST'):
+    statsd = StatsClient(host=conf.STATSD_HOST,
+                         port=conf.STATSD_PORT,
+                         prefix=conf.STATSD_PREFIX)
+else:
+    statsd = False
 
 # has the system requested shutdown
 KILLED = False

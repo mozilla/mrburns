@@ -38,9 +38,12 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-statsd = StatsClient(host=conf.STATSD_HOST,
-                     port=conf.STATSD_PORT,
-                     prefix=conf.STATSD_PREFIX)
+if hasattr(conf, 'STATSD_HOST'):
+    statsd = StatsClient(host=conf.STATSD_HOST,
+                         port=conf.STATSD_PORT,
+                         prefix=conf.STATSD_PREFIX)
+else:
+    statsd = False
 
 try:
     geo = maxminddb.Reader(args.file)
@@ -144,10 +147,11 @@ def main():
             sys.stdout.write('.')
             sys.stdout.flush()
 
-        counter += 1
-        if counter >= 1000:
-            counter = 0
-            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        if statsd:
+            counter += 1
+            if counter >= 1000:
+                counter = 0
+                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
