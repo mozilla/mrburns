@@ -45,13 +45,6 @@ if hasattr(conf, 'STATSD_HOST'):
 else:
     statsd = False
 
-try:
-    geo = maxminddb.Reader(args.file)
-except IOError:
-    log.error('ERROR: Can\'t find MaxMind Database file (%s). '
-              'Try setting the --file flag.' % args.file)
-    sys.exit(1)
-
 
 def handle_signals(signum, frame):
     # NOTE: Makes this thing non-thread-safe
@@ -155,4 +148,10 @@ def main():
 
 
 if __name__ == '__main__':
+    try:
+        geo = maxminddb.Reader(args.file)
+    except IOError:
+        log.error('ERROR: Can\'t find MaxMind Database file (%s). '
+                  'Try setting the --file flag.' % args.file)
+        sys.exit(1)
     sys.exit(main())
