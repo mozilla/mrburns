@@ -6,3 +6,6 @@ BeautifulSoup==3.2.1
 
 # sha256: th84eGr2uNZEtTBVIBLWacdBX89YUt4yDykIANuXmD0
 gunicorn==18.0
+
+# sha256: xE35VNncyfV2gr-Pq_FyoRLt9T_zW7XOj4__GxmFq7E
+hiredis==0.1.2
