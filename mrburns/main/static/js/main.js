@@ -131,22 +131,37 @@ $(document).ready(function () {
         });
     });
 
+    var $choices = $('.choices .btn');
+    $choices.click(function() {
+        $choices.removeClass('selected');
+        $(this).addClass('selected');
+        showShareButtons();
+    });
+
     function openShareWindow(href) {
         $('.popover-markup  .trigger').popover('hide');
         window.open(href, '_blank', "height=420,width=550");
+
+        $( '#choice-modal' ).modal('hide');
+
+        $interstitial_modal = $('.interstitial-modal');
+
+        $choices.each(function(i) {
+            $interstitial_modal.removeClass('interstitial-modal-' + $(this).data('choice'));
+        });
+
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            $interstitial_modal.addClass('interstitial-modal-' + $selected.data('choice'));
+        }
+
+        $interstitial_modal.modal('show');
     }
 
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
         openShareWindow(this.href);
-    });
-
-    var $choices = $('.choices .btn');
-    $choices.click(function() {
-        $choices.removeClass('selected');
-        $(this).addClass('selected');
-        showShareButtons();
     });
 
     $('.modal-footer .share-twitter').click(function(e) {
