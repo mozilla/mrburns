@@ -16,6 +16,9 @@ $(document).ready(function() {
 function assignEventListeners() {
     //view by choice listener
     $(".key-map a").on("click", function(e) {
+        $(".key-map a").removeClass("selected");
+        $(this).toggleClass("selected");
+        
         if ($(this).attr("id") != "view-by-region") {
             var choice = $(this)[0].parentNode.className.split("choice-")[1];
             removeMapOverlays();            
@@ -29,8 +32,9 @@ function assignEventListeners() {
     });
 
     //view by region listener
-    $("#view-by-region").on("click", function() {   
+    $("#view-by-region").on("click", function() {
         if(showing_regions) {
+            $(this).toggleClass("selected");
             removeMapOverlays(); 
             showing_regions = !showing_regions;
             
