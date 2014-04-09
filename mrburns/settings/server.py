@@ -1,4 +1,5 @@
 import os
+import socket
 
 from .base import *  # noqa
 
@@ -9,6 +10,8 @@ DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [
     'webwewant.mozilla.org',
     'webwewant.allizom.org',
+    # the server's IP (for monitors)
+    socket.gethostbyname(socket.gethostname()),
 ]
 
 CACHES = {
