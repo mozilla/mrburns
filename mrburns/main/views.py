@@ -15,7 +15,10 @@ from smithers import data_types
 from smithers import redis_keys as rkeys
 
 
-redis = get_redis_connection('smithers')
+if settings.ENABLE_REDIS:
+    redis = get_redis_connection('smithers')
+else:
+    redis = False
 
 TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
@@ -122,7 +125,7 @@ class ShareView(View):
 
         client_ip = request.META.get('HTTP_X_CLUSTER_CLIENT_IP',
                                      request.META.get('REMOTE_ADDR'))
-        if client_ip:
+        if redis and client_ip:
             redis.lpush(rkeys.IPLOGS, '{},{}'.format(data_types.name_to_id[issue],
                                                      client_ip))
 
@@ -136,7 +139,10 @@ class StringsView(TemplateView):
 
 class CurrentDataView(View):
     def get(self, request):
-        timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
+        if redis:
+            timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
+        else:
+            timestamp = 1397098140
         if timestamp:
             response_data = {
                 'status': 'OK',
