@@ -14,31 +14,24 @@ $(document).ready(function() {
 });
 
 function assignEventListeners() {
+    //view by choice listener
     $(".key-map a").on("click", function(e) {
-        var choice = $(this)[0].parentNode.className.split("choice-")[1];
-        
         if ($(this).attr("id") != "view-by-region") {
-            d3.selectAll(".continent")
-                .style("stroke", "#166c9e")
-                .style("fill", "#166c9e");
-
-            $(".continent-label").html("");
+            var choice = $(this)[0].parentNode.className.split("choice-")[1];
+            removeMapOverlays();            
+            showing_regions = false;
             
             //color continents per that choice and show percentages
             addIssueBreakOutOverContinents(choice, eval("data.issue_continents." + choice));
         }
 
-        $(".key-map a").removeClass("selected");
-
         return false;
     });
 
-    $("#view-by-region").on("click", function() {
+    //view by region listener
+    $("#view-by-region").on("click", function() {   
         if(showing_regions) {
-            d3.selectAll(".continent")
-                .style("stroke", "#166c9e")
-                .style("fill", "#166c9e");
-                
+            removeMapOverlays(); 
             showing_regions = !showing_regions;
             
             return;
@@ -47,7 +40,6 @@ function assignEventListeners() {
         showing_regions = !showing_regions;
         
         var top_issues = new Object();
-        
         d3.selectAll(".continent").each(function(d, i) {
             var country_attribs = data.continent_issues[d.name];
             var top_issue_for_this_continent = d3.entries(country_attribs).sort()[0].key;
@@ -67,6 +59,15 @@ function assignEventListeners() {
 
         return false;
     });
+}
+
+function removeMapOverlays() {
+    d3.selectAll(".continent")
+        .style("stroke", "#166c9e")
+        .style("fill", "#166c9e");
+                
+    $(".continent-label").hide();
+    $(".continent-for-issue-label").hide();
 }
 
 function addIssueBreakOutOverContinents(choice, choice_data) {
