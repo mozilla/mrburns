@@ -69,6 +69,16 @@ function getJsonDataUrl() {
     return "https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json";
 }
 
+function openStatsPanel() {
+    //hide glows on stats panel open    
+    if(showing_glows)
+        hideGlows();
+    else
+        showGlows();
+    
+    showing_glows = !showing_glows;
+}
+
 $(document).ready(function () {
 
     var hash = window.location.hash;
@@ -100,18 +110,12 @@ $(document).ready(function () {
     } else if (hash.indexOf("stats") != -1) {
         // if #number is in the URL, show the number modal
         $( 'body' ).addClass('stats-panel-open');
+        openStatsPanel();
     }
 
     $( '.stats-panel-tab' ).click(function() {
         $( 'body' ).toggleClass( "stats-panel-open" );
-        
-        //hide glows on stats panel open    
-        if(showing_glows)
-            hideGlows();
-        else
-            showGlows();
-    
-        showing_glows = !showing_glows;
+        openStatsPanel();
     });
 
     // "Share the map" popopver
