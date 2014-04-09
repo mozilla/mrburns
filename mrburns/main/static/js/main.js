@@ -1,10 +1,6 @@
 // vim:set et ts=4 sw=4
 console.log('Calmer than you are.');
 
-$( '.stats-panel-tab' ).click(function() {
-    $( 'body' ).toggleClass( "stats-panel-open" );
-});
-
 //get Master firefox version
 function getFirefoxMasterVersion(userAgent) {
     var version = 0;
@@ -85,7 +81,7 @@ $(document).ready(function () {
 
         // if we're on australis and there's no hash tag, show the choice modal
         if (hash.indexOf("#") === -1) {
-            $( '#choice' ).modal();
+            $( '#choice-modal' ).modal();
         }
     } else {
         $('html').addClass('non-australis');
@@ -93,16 +89,22 @@ $(document).ready(function () {
 
     if (hash.indexOf("choice") != -1) {
         // if #choice is in the URL, show the choice modal
-        $( '#choice' ).modal();
+        $( '#choice-modal' ).modal();
     } else if (hash.indexOf("video") != -1) {
         // if #video is in the URL, show the video modal
-        $( '#video' ).modal();
+        $( '#video-modal' ).modal();
         insertVideo();
     } else if (hash.indexOf("number") != -1) {
         // if #number is in the URL, show the number modal
-        $( '#number' ).modal();
+        $( '#number-modal' ).modal();
+    } else if (hash.indexOf("stats") != -1) {
+        // if #number is in the URL, show the number modal
+        $( 'body' ).addClass('stats-panel-open');
     }
 
+    $( '.stats-panel-tab' ).click(function() {
+        $( 'body' ).toggleClass( "stats-panel-open" );
+    });
 
     // "Share the map" popopver
     $('.popover-markup > .trigger').popover({
@@ -185,13 +187,13 @@ $(document).ready(function () {
         var width = 853;
         var height = 480;
         var id = 'WB98kYqQt9c';
-        $('#video .modal-body').html('<iframe width="' + width + '" height="' +
+        $('#video-modal .modal-body').html('<iframe width="' + width + '" height="' +
             height + '" src="//www.youtube-nocookie.com/embed/' +
             id + '?autoplay=' + autoplay + '&' +
             '" frameborder="0" allowfullscreen></iframe>')
     }
 
-    $('#video').on('show.bs.modal', function (e) {
+    $('#video-modal').on('show.bs.modal', function (e) {
         // Insert YouTube player when video modal is opened
         insertVideo(true);
     })
