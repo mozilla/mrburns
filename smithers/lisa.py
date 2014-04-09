@@ -3,9 +3,11 @@
 """
 Grab IP addresses from Redis and lookup Geo info.
 """
+from __future__ import division
 
 import argparse
 import logging
+import math
 import signal
 import sys
 
@@ -36,16 +38,12 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-statsd = StatsClient(host=conf.STATSD_HOST,
-                     port=conf.STATSD_PORT,
-                     prefix=conf.STATSD_PREFIX)
-
-try:
-    geo = maxminddb.Reader(args.file)
-except IOError:
-    log.error('ERROR: Can\'t find MaxMind Database file (%s). '
-              'Try setting the --file flag.' % args.file)
-    sys.exit(1)
+if hasattr(conf, 'STATSD_HOST'):
+    statsd = StatsClient(host=conf.STATSD_HOST,
+                         port=conf.STATSD_PORT,
+                         prefix=conf.STATSD_PREFIX)
+else:
+    statsd = False
 
 
 def handle_signals(signum, frame):
@@ -63,16 +61,20 @@ signal.signal(signal.SIGINT, handle_signals)
 signal.signal(signal.SIGTERM, handle_signals)
 
 
+def round_map_coord(coord):
+    return math.floor(coord * 10) / 10
+
+
 def process_map(geo_data):
     """Add download aggregate data to redis."""
     redis.incr(rkeys.MAP_TOTAL)
     try:
         # rounding to aid in geo aggregation
         location = {
-            'lat': round(geo_data['location']['latitude'], 2),
-            'lon': round(geo_data['location']['longitude'], 2),
+            'lat': round_map_coord(geo_data['location']['latitude']),
+            'lon': round_map_coord(geo_data['location']['longitude']),
         }
-    except KeyError:
+    except (KeyError, TypeError):
         # this appears to mostly happen with anonymous proxies
         log.info('Geo data contained no location.')
         log.debug(geo_data)
@@ -138,11 +140,18 @@ def main():
             sys.stdout.write('.')
             sys.stdout.flush()
 
-        counter += 1
-        if counter >= 1000:
-            counter = 0
-            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        if statsd:
+            counter += 1
+            if counter >= 1000:
+                counter = 0
+                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
+    try:
+        geo = maxminddb.Reader(args.file)
+    except IOError:
+        log.error('ERROR: Can\'t find MaxMind Database file (%s). '
+                  'Try setting the --file flag.' % args.file)
+        sys.exit(1)
     sys.exit(main())

@@ -1,11 +1,13 @@
-import os.path
 
+# where to put your JSON files.
+# defaults to /mrburns/smithers/JSON
+#JSON_OUTPUT_DIR = '/var/www/some/dir'
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+# where is your maxmind geoip db file?
+# defaults to /mrburns/smithers/GeoIP2-City.mmdb
+#GEOIP_DB_FILE = '/var/www/some/dir/GeoIP2-City.mmdb'
 
-JSON_OUTPUT_DIR = os.path.join(BASE_DIR, 'JSON')
-GEOIP_DB_FILE = os.path.join(BASE_DIR, 'GeoIP2-City.mmdb')
-
-STATSD_HOST = 'localhost'
-STATSD_PORT = 8125
-STATSD_PREFIX = 'glow-workers-dev'
+# for graphite, you probably don't need it
+#STATSD_HOST = 'localhost'
+#STATSD_PORT = 8125
+#STATSD_PREFIX = 'glow-workers-dev'
