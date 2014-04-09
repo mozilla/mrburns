@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'mrburns.main',
     'django_extensions',
     'django_countries',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,3 +88,4 @@ COMPRESS_PRECOMPILERS = (
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
 ENABLE_REDIS = False
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
