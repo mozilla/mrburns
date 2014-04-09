@@ -104,6 +104,14 @@ $(document).ready(function () {
 
     $( '.stats-panel-tab' ).click(function() {
         $( 'body' ).toggleClass( "stats-panel-open" );
+        
+        //hide glows on stats panel open    
+        if(showing_glows)
+            hideGlows();
+        else
+            showGlows();
+    
+        showing_glows = !showing_glows;
     });
 
     // "Share the map" popopver
