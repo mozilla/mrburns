@@ -153,7 +153,9 @@ $(document).ready(function () {
     function openShareWindow(href) {
         $('.popover-markup  .trigger').popover('hide');
         window.open(href, '_blank', "height=420,width=550");
+    }
 
+    function openInterstitialModal() {
         $( '#choice-modal' ).modal('hide');
 
         $interstitial_modal = $('.interstitial-modal');
@@ -180,6 +182,7 @@ $(document).ready(function () {
         var $selected = $('.choices .selected');
         if ($selected.length) {
             openShareWindow($selected.data('twitter'));
+            openInterstitialModal();
         }
     });
 
@@ -187,6 +190,14 @@ $(document).ready(function () {
         var $selected = $('.choices .selected');
         if ($selected.length) {
             openShareWindow($selected.data('facebook'));
+            openInterstitialModal();
+        }
+    });
+
+    $('.choice-footnotes .share-local').click(function(e) {
+        var $selected = $('.choices .selected');
+        if ($selected.length) {
+            openInterstitialModal();
         }
     });
 
