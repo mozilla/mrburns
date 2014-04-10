@@ -29,54 +29,56 @@
     </div>
   </nav>
   <div class="stats-panel-contents">
-      <div class="key key-stats-panel">
-        <div class="title c">{{ _('View by:') }}</div>
-        <ul>
-          <li class="choice-privacy"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('Privacy') }}</span></span>
-          </a></li>
-          <li class="choice-opportunity"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('Opportunity') }}</span></span>
-          </a></li>
-          <li class="choice-access"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('Accessibility') }}</span></span>
-          </a></li>
-          <li class="choice-freedom"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('Freedom') }}</span></span>
-          </a></li>
-          <li class="choice-learning"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('Learning') }}</span></span>
-          </a></li>
-          <li class="choice-control"><a href="#">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="choice-title"><span>{{ _('User control') }}</span></span>
-          </a></li>
-        </ul>
-      </div>
-      
+    <div class="key key-stats-panel">
+      <div class="title c">{{ _('View by:') }}</div>
+      <ul>
+        <li class="choice-privacy"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Privacy') }}</span></span>
+        </a></li>
+        <li class="choice-opportunity"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Opportunity') }}</span></span>
+        </a></li>
+        <li class="choice-access"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Accessibility') }}</span></span>
+        </a></li>
+        <li class="choice-freedom"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Freedom') }}</span></span>
+        </a></li>
+        <li class="choice-learning"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Learning') }}</span></span>
+        </a></li>
+        <li class="choice-control"><a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('User control') }}</span></span>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="stats-panel-column">
+
       <div class="chart1">
         <div class="donut-icon">
           <i class="fa fa-fw fa-eye fa-4x fa-inverse"></i>
@@ -347,34 +349,37 @@
         <!-- stats pane is appended here -->
       </div>
 
-      <div class="what-is-mozilla-doing-about-it">
-        <div class="stats-share-link popover-markup">
-          <a href="#" class="trigger" data-placement="top" data-toggle="popover">
-            <i class="fa fa-share-square-o"></i>
-            <span class="title">{{ _('Share this page') }}</span>
-          </a>
-          <div class="content hide">
-            <a class="btn btn-link share-window" target="_blank"
-                href="{{ share_stats_twitter }}">
-              <i class="fa fa-twitter"></i>
-              <span class="title">{{ _('Twitter') }}</span>
-            </a>
-            <a class="btn btn-link share-window" target="_blank" 
-                href="{{ share_stats_facebook }}">
-              <i class="fa fa-facebook"></i>
-              <span class="title">{{ _('Facebook') }}</span>
-            </a>
-          </div>
-        </div>
-
-        <h2></h2>
-        <div class="seperator"></div>
-
-        <p class="paragraph1"></p>
-        <p class="did-you-know">{{ _('Did you know?') }}</p>
-        <p class="paragraph2"></p>
-      </div>
     </div>
+
+    <div class="stats-panel-column-right">
+      <div class="what-is-mozilla-doing-about-it">
+      <div class="stats-share-link popover-markup">
+        <a href="#" class="trigger" data-placement="top" data-toggle="popover">
+          <i class="fa fa-share-square-o"></i>
+          <span class="title">{{ _('Share this page') }}</span>
+        </a>
+        <div class="content hide">
+          <a class="btn btn-link share-window" target="_blank"
+              href="{{ share_stats_twitter }}">
+            <i class="fa fa-twitter"></i>
+            <span class="title">{{ _('Twitter') }}</span>
+          </a>
+          <a class="btn btn-link share-window" target="_blank" 
+              href="{{ share_stats_facebook }}">
+            <i class="fa fa-facebook"></i>
+            <span class="title">{{ _('Facebook') }}</span>
+          </a>
+        </div>
+      </div>
+
+      <h2></h2>
+      <div class="seperator"></div>
+
+      <p class="paragraph1"></p>
+      <p class="did-you-know">{{ _('Did you know?') }}</p>
+      <p class="paragraph2"></p>
+    </div>
+  </div>
 </div>
 
 

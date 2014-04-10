@@ -17,8 +17,9 @@
     background: @darkBackground;
     height: 100%;
     width: 100%;
-    padding: 40px;
+    padding: 40px 40px 40px 200px;
     clear: left;
+    overflow: scroll;
 }
 
 .stats-panel-nav {
@@ -77,18 +78,28 @@
     }
 }
 
-.chart1 {
-    margin-left: 200px;
-    position: absolute;
+.stats-panel-column {
+    float: left;
     width: 570px;
+    margin-right: 40px;
+    .clearfix();
+}
+
+.stats-panel-column-right {
+    float: left;
+    width: 230px;
+}
+
+.chart1 {
+    position: relative;
+    width: 570px;
+    .clearfix();
 }
 
 .chart2 {
-    margin-left: 200px;
-    position: absolute;
-    top: 260px;
+    position: relative;
     width: 570px;
-    
+    .clearfix();
     .country-picker {
         font-size: 18px;
         position: absolute;
@@ -107,10 +118,10 @@
 }
 
 .chart3 {
-    margin-left: 200px;
-    position: absolute;
-    top: 430px;
-    width: 570px
+    position: relative;
+    float: left;
+    width: 570px;
+    .clearfix();
 }
 
 .chart3 svg {
@@ -218,10 +229,7 @@ select.country {
 }
 
 .what-is-mozilla-doing-about-it {
-    margin-left: 880px;
-    position: absolute;
-    top: 85px;
-    width: 230px;
+    position: relative;
     
     h2 {
         font-size: 26px;
