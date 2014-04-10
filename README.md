@@ -1,7 +1,10 @@
 Mr. Burns
 =========
 
-Source for the 2014 version of the Glow Firefox download stats site. 
+Source for the 2014 version of the Glow Firefox download stats site.
+
+[![Build Status](https://travis-ci.org/mozilla/mrburns.svg?branch=master)](https://travis-ci.org/mozilla/mrburns)
+[![Coverage Status](https://coveralls.io/repos/mozilla/mrburns/badge.png)](https://coveralls.io/r/mozilla/mrburns)
 
 **We bring you... Love!**
 
