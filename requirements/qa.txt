@@ -1,0 +1,25 @@
+-r mrburns.txt
+-r smithers.txt
+
+# sha256: gFDCJvpzI0uI5iYw1k4EFsh5ICiRMJy827i1ViIsMCA
+cov-core==1.7
+
+# sha256: 0a6hxKphuDZtakLdNlBiL7-cY07STq9_N5yLlw5e1E4
+coverage==3.7.1
+
+# sha256: i-wDNVmPHMaeMmLMUNdnjBpgEPpEYlzjQ8TsFQB3RBI
+nose-cov==1.6
+
+# sha256: CYq3mRBnwIz6pHFt4gBm2Q9m28cVAhFOqMrZqf1clRI
+flake8==2.1.0
+
+# sha256: rEVxaVwQzhU2vNuhopS58tPmzJ0OoXG2fVCghkzj4EI
+# sha256: P6gKELNtUWhr93RPXcmWIs1cmM6O1kAi5imGiq_Bd2k
+pyflakes==0.8.1
+
+# sha256: DtLVY9v-K_Wc__ROGq3JL_mnlY2irOLuPcM1ng5OQYw
+# sha256: I3D1Z_TK_0nS5Epq6t3GVxhr7WYS9PWzpwTzqpLT3jc
+pep8==1.5.4
+
+# sha256: WioXDkfeVZOmq_rh6VQr0sOSSsYrvk5u2WyVPANSJDo
+mccabe==0.2.1

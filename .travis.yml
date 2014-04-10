@@ -3,9 +3,9 @@ python:
   - "2.7"
 before_script:
   - flake8 mrburns smithers
-script: cd smithers && coverage run nosetests
+script: coverage run manage.py test && cd smithers && NOSE_WITH_COV=1 nosetests
 install:
-  - bin/peep.py install -r requirements/mrburns.txt -r requirements/smithers.txt
+  - bin/peep.py install -r requirements/qa.txt
 after_success:
   # Report coverage results to coveralls.io
   - pip install coveralls

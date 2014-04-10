@@ -16,7 +16,7 @@ MAP_TIMESTAMPS = 'map:timestamps'
 # last timestamp processed
 LATEST_TIMESTAMP = 'latest:timestamp'
 
-#### SHARE ####
+# SHARE #
 
 SHARE_TOTAL = 'share:total'
 
@@ -32,4 +32,3 @@ SHARE_COUNTRY_ISSUES = 'share:country:{}'
 SHARE_CONTINENTS = 'share:continents'
 # shares per continent per issue
 SHARE_CONTINENT_ISSUES = 'share:continent:{}'
-

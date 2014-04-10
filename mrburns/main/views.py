@@ -131,4 +131,3 @@ class CurrentDataView(View):
         }
         return HttpResponseNotFound(json.dumps(response_data),
                                     content_type='application/json')
-
