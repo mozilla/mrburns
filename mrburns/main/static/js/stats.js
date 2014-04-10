@@ -540,7 +540,7 @@ function getDataSubsetForCountryComparisonChart(data) {
 
 function addVerticalLine(data, label, x_scale_country_comparison, height, bar_width) {
     d3.select('.chart3 svg').append('line')
-	    .attr('x1', function() {
+        .attr('x1', function() {
             return x_scale_country_comparison(data) + (bar_width / 2);
         })
         .attr('x2', function() {
