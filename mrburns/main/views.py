@@ -24,12 +24,14 @@ TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
 
 
-def get_tw_share_url(params):
-    return '?'.join([TWITTER_URL, urlencode(params)])
+def get_tw_share_url(**kwargs):
+    kwargs.setdefault('hashtags', '#firefox')
+    kwargs.setdefault('dnt', 'true')
+    return '?'.join([TWITTER_URL, urlencode(kwargs)])
 
 
-def get_fb_share_url(params):
-    return '?'.join([FB_URL, urlencode(params)])
+def get_fb_share_url(url):
+    return '?'.join([FB_URL, urlencode({'u': url})])
 
 
 class GlowView(TemplateView):
@@ -38,80 +40,52 @@ class GlowView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(GlowView, self).get_context_data(**kwargs)
         context.update({
-            'share_map_twitter': get_tw_share_url({
-                'url': 'http://mzl.la/1g5k6OK',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('Join millions of Firefox users around the world '
-                          'who are shaping the future of the Web.'),
-            }),
-            'share_map_facebook': get_fb_share_url({
-                'u': 'http://mzl.la/1oKbBCb'
-            }),
-            'share_stats_twitter': get_tw_share_url({
-                'url': 'http://mzl.la/1n0x8lA',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('Join millions of Firefox users around the world '
-                          'who are shaping the future of the Web.'),
-            }),
-            'share_stats_facebook': get_fb_share_url({
-                'u': 'http://mzl.la/1sxET6z'
-            }),
-            'share_twitter_access': get_tw_share_url({
-                'url': 'http://mzl.la/1irtltn',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('The Web I want is accessible to anyone and everyone. What kind of Web do you want?'),
-            }),
-            'share_twitter_control': get_tw_share_url({
-                'url': 'http://mzl.la/Ozq8jb',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('I don\'t believe that other companies should control my online experience. Join me in fighting for user control.'),
-            }),
-            'share_twitter_freedom': get_tw_share_url({
-                'url': 'http://mzl.la/1gJ5La4',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('Join me in supporting a Web that promotes freedom and democracy!'),
-            }),
-            'share_twitter_learning': get_tw_share_url({
-                'url': 'http://mzl.la/1kHRIWk',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('I want a Web that people today and future generations can learn from. What about you?'),
-            }),
-            'share_twitter_opportunity': get_tw_share_url({
-                'url': 'http://mzl.la/1kHRC0K',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('Shouldn\'t the Web provide people with more opportunity? Join us if you think so too.'),
-            }),
-            'share_twitter_privacy': get_tw_share_url({
-                'url': 'http://mzl.la/1hpPf50',
-                'hashtags': '#firefox',
-                'dnt': True,
-                'text': _('Join me in fighting for privacy on the Web.'),
-            }),
-            'share_facebook_privacy': get_fb_share_url({
-                'u': 'http://mzl.la/1lOxH4s'
-            }),
-            'share_facebook_opportunity': get_fb_share_url({
-                'u': 'http://mzl.la/1sxE79C'
-            }),
-            'share_facebook_access': get_fb_share_url({
-                'u': 'http://mzl.la/1lOxLRw'
-            }),
-            'share_facebook_freedom': get_fb_share_url({
-                'u': 'http://mzl.la/1iugfNc'
-            }),
-            'share_facebook_learning': get_fb_share_url({
-                'u': 'http://mzl.la/1egbqu6'
-            }),
-            'share_facebook_control': get_fb_share_url({
-                'u': 'http://mzl.la/1kHRq1y'
-            }),
+            'share_map_twitter': get_tw_share_url(
+                url='http://mzl.la/1g5k6OK',
+                text=_('Join millions of Firefox users around the world '
+                       'who are shaping the future of the Web.'),
+            ),
+            'share_stats_twitter': get_tw_share_url(
+                url='http://mzl.la/1n0x8lA',
+                text=_('Join millions of Firefox users around the world '
+                       'who are shaping the future of the Web.'),
+            ),
+            'share_twitter_access': get_tw_share_url(
+                url='http://mzl.la/1irtltn',
+                text=_('The Web I want is accessible to anyone and everyone. '
+                       'What kind of Web do you want?'),
+            ),
+            'share_twitter_control': get_tw_share_url(
+                url='http://mzl.la/Ozq8jb',
+                text=_("I don't believe that other companies should control my "
+                       "online experience. Join me in fighting for user control."),
+            ),
+            'share_twitter_freedom': get_tw_share_url(
+                url='http://mzl.la/1gJ5La4',
+                text=_('Join me in supporting a Web that promotes freedom and democracy!'),
+            ),
+            'share_twitter_learning': get_tw_share_url(
+                url='http://mzl.la/1kHRIWk',
+                text=_('I want a Web that people today and future generations can learn from. '
+                       'What about you?'),
+            ),
+            'share_twitter_opportunity': get_tw_share_url(
+                url='http://mzl.la/1kHRC0K',
+                text=_("Shouldn't the Web provide people with more opportunity? "
+                       "Join us if you think so too."),
+            ),
+            'share_twitter_privacy': get_tw_share_url(
+                url='http://mzl.la/1hpPf50',
+                text=_('Join me in fighting for privacy on the Web.'),
+            ),
+            'share_map_facebook': get_fb_share_url('http://mzl.la/1oKbBCb'),
+            'share_stats_facebook': get_fb_share_url('http://mzl.la/1sxET6z'),
+            'share_facebook_privacy': get_fb_share_url('http://mzl.la/1lOxH4s'),
+            'share_facebook_opportunity': get_fb_share_url('http://mzl.la/1sxE79C'),
+            'share_facebook_access': get_fb_share_url('http://mzl.la/1lOxLRw'),
+            'share_facebook_freedom': get_fb_share_url('http://mzl.la/1iugfNc'),
+            'share_facebook_learning': get_fb_share_url('http://mzl.la/1egbqu6'),
+            'share_facebook_control': get_fb_share_url('http://mzl.la/1kHRq1y'),
         })
         return context
 
