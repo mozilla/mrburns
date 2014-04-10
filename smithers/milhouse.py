@@ -102,7 +102,7 @@ def get_data_for_timestamp(timestamp):
             'count': int(count),
         })
 
-    ## CONTINENTS ##
+    # CONTINENTS #
     continent_totals = redis.hgetall(rkeys.SHARE_CONTINENTS)
     continent_issues = data['continent_issues']
     for continent, count in continent_totals.iteritems():
@@ -119,7 +119,7 @@ def get_data_for_timestamp(timestamp):
                 'count': percent,
             })
 
-    ## COUNTRIES ##
+    # COUNTRIES #
     country_totals = redis.hgetall(rkeys.SHARE_COUNTRIES)
     country_issues = data['country_issues']
     for country, count in country_totals.iteritems():
@@ -138,7 +138,7 @@ def get_data_for_timestamp(timestamp):
                 'count': percent,
             })
 
-    ## GLOBAL ##
+    # GLOBAL #
     share_issues = redis.hgetall(rkeys.SHARE_ISSUES)
     share_total = data['share_total']
     global_issues = country_issues['GLOBAL'] = {}
