@@ -409,7 +409,24 @@ function drawCountryComparisonChart(data) {
         })
         .style('fill', function (d) {
             return color[current_choice];
-        })  
+        })
+        .each(function(d, i) {
+            svg.append('rect')
+                .attr('class', 'band')
+                .attr('x', function() {
+                    return x_scale_country_comparison(min) + 11;
+                })
+                .attr('y', function() {
+                    return i * (bar_height + 15) + y_padding_top;
+                })
+                .attr('height', function (d) {
+                    return bar_height;
+                })
+                .attr('width', function() {
+                    return x_scale_country_comparison(max) + (bar_width / 2) 
+                        - (x_scale_country_comparison(min) + 11);
+                });
+        });
 }
 
 function updateCountryComparisonChart(data) {
@@ -458,13 +475,34 @@ function updateCountryComparisonChart(data) {
                             return (data_subset[i].count * 100).toFixed(1) + "%";
                         })
                         .attr('x', function() {
-                            return x_scale_country_comparison(data_subset[i].count) + bar_width + 6;
+                            return x_scale_country_comparison(data_subset[i].count) 
+                                + bar_width + 6;
                         });
                     
                 return x_scale_country_comparison(data_subset[i].count);
             });
+            
+    d3.selectAll('.band')
+        .transition()
+            .duration(1000)
+                .attr('x', function() {
+                    return x_scale_country_comparison(min) + 11;
+                })
+                .attr('width', function() {
+                    return x_scale_country_comparison(max) + (bar_width / 2) 
+                        - (x_scale_country_comparison(min) + 11);
+                });
 }
 
+function gimmeUniquePosition(random_i_map, start, end) {
+    var i = randomRange(start, end);
+    if(random_i_map[i] != 1) {
+        return i;
+    }
+            
+    gimmeAnotherPosition(random_i_map, start, end);
+}
+    
 function getDataSubsetForCountryComparisonChart(data) {
     var current_country_i = 0;
     
@@ -475,25 +513,34 @@ function getDataSubsetForCountryComparisonChart(data) {
         }
     });
     
-    //current country first, min first, max last, arbitrary set of ones {below, above} the
-    //median, we may wish to experiment with various combinations
+    //current country first, two sets of arbitrarily populated countries, each on
+    //either side of the chosen country
+    var random_i_map = new Object();
+    for(var i=0; i<4;i++) {
+        random_i_map[gimmeUniquePosition(
+            random_i_map, 0, current_country_i-1)] = 1;
+            
+        random_i_map[gimmeUniquePosition(
+            random_i_map, current_country_i+1, data.length-1)] = 1;
+    }
+    
+    var random_i_arr = d3.keys(random_i_map);
     return [
         data[current_country_i],
-        data[randomRange(0, current_country_i-1)],
-        data[randomRange(0, current_country_i-1)],
-        data[randomRange(0, current_country_i-1)],
-        data[randomRange(0, current_country_i-1)],
-        data[randomRange(current_country_i+1, data.length-1)],
-        data[randomRange(current_country_i+1, data.length-1)],
-        data[randomRange(current_country_i+1, data.length-1)],
-        data[randomRange(current_country_i+1, data.length-1)]
+        data[random_i_arr[0]],
+        data[random_i_arr[1]],
+        data[random_i_arr[2]],
+        data[random_i_arr[3]],
+        data[random_i_arr[4]],
+        data[random_i_arr[5]],
+        data[random_i_arr[6]],
+        data[random_i_arr[7]]
     ];
 }
 
 function addVerticalLine(data, label, x_scale_country_comparison, height, bar_width) {
     d3.select('.chart3 svg').append('line')
-		.attr('text-anchor', 'start')
-        .attr('x1', function() {
+		.attr('x1', function() {
             return x_scale_country_comparison(data) + (bar_width / 2);
         })
         .attr('x2', function() {
