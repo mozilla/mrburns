@@ -500,7 +500,7 @@ function gimmeUniquePosition(random_i_map, start, end) {
         return i;
     }
             
-    gimmeAnotherPosition(random_i_map, start, end);
+    gimmeUniquePosition(random_i_map, start, end);
 }
     
 function getDataSubsetForCountryComparisonChart(data) {
