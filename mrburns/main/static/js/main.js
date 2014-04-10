@@ -155,7 +155,7 @@ $(document).ready(function () {
         window.open(href, '_blank', "height=420,width=550");
     }
 
-    function openInterstitialModal() {
+    function openInterstitialModal(choice) {
         $( '#choice-modal' ).modal('hide');
 
         $interstitial_modal = $('.interstitial-modal');
@@ -164,12 +164,18 @@ $(document).ready(function () {
             $interstitial_modal.removeClass('interstitial-modal-' + $(this).data('choice'));
         });
 
-        var $selected = $('.choices .selected');
-        if ($selected.length) {
-            $interstitial_modal.addClass('interstitial-modal-' + $selected.data('choice'));
+        if (choice) {
+            $interstitial_modal.addClass('interstitial-modal-' + choice);
         }
 
         $interstitial_modal.modal('show');
+    }
+
+    function shareChoice(choice) {
+        var url = $('#choice-modal').data('share-url');
+        if (url) {
+            $.post(url, { 'issue': choice });
+        }
     }
 
     // Open .share-window links in a new window, and close any popovers
@@ -182,7 +188,8 @@ $(document).ready(function () {
         var $selected = $('.choices .selected');
         if ($selected.length) {
             openShareWindow($selected.data('twitter'));
-            openInterstitialModal();
+            openInterstitialModal($selected.data('choice'));
+            shareChoice($selected.data('choice'));
         }
     });
 
@@ -190,14 +197,16 @@ $(document).ready(function () {
         var $selected = $('.choices .selected');
         if ($selected.length) {
             openShareWindow($selected.data('facebook'));
-            openInterstitialModal();
+            openInterstitialModal($selected.data('choice'));
+            shareChoice($selected.data('choice'));
         }
     });
 
     $('.choice-footnotes .share-local').click(function(e) {
         var $selected = $('.choices .selected');
         if ($selected.length) {
-            openInterstitialModal();
+            openInterstitialModal($selected.data('choice'));
+            shareChoice($selected.data('choice'));
         }
     });
 
@@ -234,6 +243,6 @@ $(document).ready(function () {
     $('#video-modal').on('show.bs.modal', function (e) {
         // Insert YouTube player when video modal is opened
         insertVideo(true);
-    })
+    });
 
 });
