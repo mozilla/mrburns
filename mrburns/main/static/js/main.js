@@ -69,14 +69,26 @@ function getJsonDataUrl() {
     return "https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json";
 }
 
+var $stats_panel_tab_title = $('.stats-panel-tab .title');
+var stats_panel_opened_title = $stats_panel_tab_title.data('open-title');
+var stats_panel_closed_title = $stats_panel_tab_title.text();
+
 function openStatsPanel() {
-    //hide glows on stats panel open    
-    if(showing_glows)
+    // hide glows on stats panel open
+    if (showing_glows) {
         hideGlows();
-    else
+    } else {
         showGlows();
-    
+    }
+
     showing_glows = !showing_glows;
+
+    // update tab title
+    if ($('body').hasClass('stats-panel-open')) {
+        $stats_panel_tab_title.text(stats_panel_opened_title);
+    } else {
+        $stats_panel_tab_title.text(stats_panel_closed_title);
+    }
 }
 
 $(document).ready(function () {
