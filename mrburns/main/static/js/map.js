@@ -284,7 +284,7 @@ function displaySubsetOfGlows(places, projection, svg) {
             .data(places)
             .enter().append("circle")
                 .attr("r", 0)
-                .style("opacity", 0)
+                .style("opacity", 0.8)
                 .attr("transform", function(d) {
                     return "translate(" + projection([d.lon, d.lat]) + ")"
                 })
@@ -297,13 +297,13 @@ function displaySubsetOfGlows(places, projection, svg) {
                         if(d.count > 30)
                             return randomRange(0, 2000, 0);
                         else
-                            return randomRange(0, 10000, 0); //10s is the sub-tick length
+                            //10s is the sub-tick length
+                            return randomRange(0, 10000, 0);
                     })
                     .duration(function(d, i) {
                         return 1000; //show for 1s
                     })
-                    .attr("r", 3)
-                    .style("opacity", 0.8)
+                    .attr("r", 2)
                     .transition()
                         .duration(function(d, i) {
                             if(d.count > 30) 
