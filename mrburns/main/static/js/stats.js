@@ -485,13 +485,13 @@ function updateCountryComparisonChart(data) {
     d3.selectAll('.band')
         .transition()
             .duration(1000)
-                .attr('x', function() {
-                    return x_scale_country_comparison(min) + 11;
-                })
-                .attr('width', function() {
-                    return x_scale_country_comparison(max) + (bar_width / 2) 
-                        - (x_scale_country_comparison(min) + 11);
-                });
+            .attr('x', function() {
+                return x_scale_country_comparison(min) + 11;
+            })
+            .attr('width', function() {
+                return x_scale_country_comparison(max) + (bar_width / 2) 
+                    - (x_scale_country_comparison(min) + 11);
+            });
 }
 
 function gimmeUniquePosition(random_i_map, start, end) {
