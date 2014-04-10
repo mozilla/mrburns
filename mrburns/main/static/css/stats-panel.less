@@ -118,8 +118,9 @@
 }
 
 .chart3 {
-    position: relative;
     float: left;
+    position: relative;
+    height: 650px;
     width: 570px;
     .clearfix();
 }
@@ -138,14 +139,14 @@
 .country-label-stats {
     fill: white;
     font-size: 13px;
-    font-weight: 200;
+    font-weight: normal;
     opacity: 0.7;
 }
 
 .country-value-stats {
     fill: white;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: normal;
     opacity: 0.9;
 }
 
@@ -205,6 +206,7 @@ select.country {
 
 .stats-vertical-line {
     opacity: 0.2;
+    shape-rendering: crispEdges;
     stroke: #fff;
 }
 
@@ -212,9 +214,8 @@ select.country {
     fill: white;
     font-size: 13px;
     font-style: italic;
-    font-weight: 400;
-    opacity: 0.6;
-
+    font-weight: normal;
+    opacity: 0.7;
 }
 
 .tippy,
@@ -225,7 +226,7 @@ select.country {
 .tippytext {
     color: #f4f4f4;
     font-size: 13px;
-    font-weight: 200;
+    font-weight: normal;
 }
 
 .what-is-mozilla-doing-about-it {
