@@ -61,6 +61,7 @@ function getJsonDataUrl() {
         'https://webwewant.mozilla.org/static/';
         
     //get data file from 2 mins ago
+    url = 'https://webwewant.allizom.org/static/'; //TODO for local development only
     rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
     console.log(url + 'data/stats_' + rounded_timestamp + '.json');
     
