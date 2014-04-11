@@ -27,6 +27,9 @@ FB_URL = 'https://www.facebook.com/sharer/sharer.php'
 def get_tw_share_url(**kwargs):
     kwargs.setdefault('hashtags', '#firefox')
     kwargs.setdefault('dnt', 'true')
+    text = kwargs.get('text')
+    if text:
+        kwargs['text'] = text.encode('utf8')
     return '?'.join([TWITTER_URL, urlencode(kwargs)])
 
 
