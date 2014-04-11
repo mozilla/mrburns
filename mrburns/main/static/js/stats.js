@@ -196,7 +196,7 @@ function drawStackedBarChart(data_unsorted) {
     })
 
     var width = 565,
-        height = 120,
+        height = 90,
         x_padding_left = 40,
         x_padding_right = 70,
         bar_y_position = 30,

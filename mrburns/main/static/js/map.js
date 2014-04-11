@@ -5,7 +5,7 @@ var width,
     showing_regions = false,
     showing_glows = true;
 
-var max_simultaneous_glows = 300,
+var max_simultaneous_glows = 400,
     glow_tick = 60000; //in ms
 
 $(document).ready(function() {
@@ -236,11 +236,20 @@ function populateGlowsFromLastTick(projection, svg) {
     d3.json(getJsonDataUrl(), function(places) {
         $(".share_total").html(addCommas(places.share_total));
         
+        //split map_geos by 6 for use below, we don't want to overwhelm the browser, and
+        //so regardless of how many we actually have, they're capped by 
+        //max_simultaneous_flows, we do not use just the constant so that in the case that
+        //it is erroneously set too high, we don't end up showing all the map_geos in the
+        //first 10 seconds
+        var glows_per_subtick = Math.floor(places.map_geo.length / 6);
+        max_simultaneous_glows = Math.min(glows_per_subtick, max_simultaneous_glows);
+        console.log(max_simultaneous_glows);
+        
         //we sort by count to give preference to locations that have the most downloads
         //dots for locations that have a lot of downloads persist for the entire length 
-        //of the tick, for now, cycle through subsets of 400 glows every 10s, any more 
-        //and the animation becomes less graceful
-        //places.map_geo.sort(function(a, b) { return a.count - b.count; })
+        //of the tick, for now, cycle through subsets of max_simultaneous_glows 
+        //glows every 10s, any more and the animation becomes less graceful
+        places.map_geo.sort(function(a, b) { return a.count - b.count; })
         
         displaySubsetOfGlows(places.map_geo.splice(
             places.map_geo.length-max_simultaneous_glows, 
