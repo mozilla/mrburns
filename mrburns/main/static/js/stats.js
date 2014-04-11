@@ -197,8 +197,8 @@ function drawStackedBarChart(data_unsorted) {
 
     var width = 565,
         height = 120,
-        x_padding_left = 30,
-        x_padding_right = 60,
+        x_padding_left = 40,
+        x_padding_right = 70,
         bar_y_position = 30,
         bar_height = 17;
   
@@ -220,9 +220,13 @@ function drawStackedBarChart(data_unsorted) {
             return "bar bar_" + d.key;
         })
         .attr("width", function(d) {
-            return x_scale_stacked_bar(d.value);
+            return (d.value == undefined) 
+                ? x_scale_stacked_bar(0)
+                : x_scale_stacked_bar(d.value);
         })
         .attr("x", function (d) {
+            if(d.value == undefined) d.value = 0;
+                
             var x_marker_this = x_marker;
             x_marker += d.value;
                 
@@ -231,7 +235,8 @@ function drawStackedBarChart(data_unsorted) {
                 .attr("r", 8)
                 .attr("class", function() { return "tippy tippy_" + d.key; })
                 .attr("cx", function() {
-                    return x_padding_left + x_scale_stacked_bar(x_marker_this + ((x_marker - x_marker_this) / 2));
+                    return x_padding_left + x_scale_stacked_bar(
+                        x_marker_this + ((x_marker - x_marker_this) / 2));
                 })
                 .attr("cy", bar_y_position + bar_height - 3)
                 .style("fill", function () {
@@ -247,7 +252,8 @@ function drawStackedBarChart(data_unsorted) {
                 .attr("class", function() { return "tippytext tippytext_" + d.key; })
                 .attr("text-anchor", "middle")
                 .attr("x", function() {
-                    return x_padding_left + x_scale_stacked_bar(x_marker_this + ((x_marker - x_marker_this) / 2));
+                    return x_padding_left + x_scale_stacked_bar(
+                        x_marker_this + ((x_marker - x_marker_this) / 2));
                 })
                 .attr("y", function() {
                     return bar_y_position + bar_height + 22;
@@ -290,16 +296,20 @@ function drawStackedBarChart(data_unsorted) {
 function updateStackedBarChart(new_data) {
     console.log(new_data);
     
-    var x_padding_left = 30,
+    var x_padding_left = 40,
         x_marker = 0;
     
     d3.selectAll(".bar")
         .transition()
             .duration(300)
             .attr("width", function(d) {
-                return x_scale_stacked_bar(new_data[d.key]);
+                return (new_data[d.key] == undefined) 
+                    ? x_scale_stacked_bar(0)
+                    : x_scale_stacked_bar(new_data[d.key]);
             })
             .attr("x", function (d) {
+                if(new_data[d.key] == undefined) new_data[d.key] = 0;
+            
                 var x_marker_this = x_marker;
                 x_marker += new_data[d.key];
                 console.log(d.key, new_data[d.key]);
@@ -308,7 +318,8 @@ function updateStackedBarChart(new_data) {
                     .transition()
                         .duration(300)
                         .attr("cx", function() {
-                            return x_padding_left + x_scale_stacked_bar(x_marker_this + ((x_marker - x_marker_this) / 2));
+                            return x_padding_left + x_scale_stacked_bar(
+                                x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
                         .style("opacity", function() {
                             if(new_data[d.key] < 0.04)
@@ -322,10 +333,13 @@ function updateStackedBarChart(new_data) {
                     .transition()
                         .duration(300)
                         .attr("x", function() {
-                            return x_padding_left + x_scale_stacked_bar(x_marker_this + ((x_marker - x_marker_this) / 2));
+                            return x_padding_left + x_scale_stacked_bar(
+                                x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
                         .text(function() {
-                            return $(".choice-" + [d.key] + " .choice-title span").html() + " (" + Math.round(new_data[d.key]*100) + "%)";
+                            return $(".choice-" + [d.key] + 
+                                " .choice-title span").html() + " (" 
+                                + Math.round(new_data[d.key]*100) + "%)";
                         });
                 
                 return x_padding_left + x_scale_stacked_bar(x_marker_this);
@@ -381,7 +395,8 @@ function drawCountryComparisonChart(data) {
                 .attr('y', function() {
                     return i * (bar_height + 15) + 15 + y_padding_top;
                 })
-                .text(function() {console.log(d.country);
+                .text(function() {
+                    console.log(d, d.country);
                     return $('.country-' + d.country).html();
                 });
                 
@@ -464,7 +479,7 @@ function updateCountryComparisonChart(data) {
             .duration(1000)
             .attr('x', function (d, i) {
                 d3.select('.country-label-stats_' + i)
-                    .text(function() {console.log(data_subset[i].country);
+                    .text(function() {
                         return $('.country-' + data_subset[i].country).html();
                     });
                     
@@ -496,16 +511,31 @@ function updateCountryComparisonChart(data) {
 
 function gimmeUniquePosition(random_i_map, start, end) {
     var i = randomRange(start, end);
+    if(random_i_map[i] != 1)
+        return i;
+    else
+        return probeForUnique(i, random_i_map);
+}
+
+function probeForUnique(i, random_i_map) {
     if(random_i_map[i] != 1) {
+        //console.log("probe returning --> ", i);
         return i;
     }
+    
+    while(random_i_map[i] == 1) {
+        if(i+1 == data.length - 1) i = 0;
+        else  i++;
             
-    gimmeUniquePosition(random_i_map, start, end);
+        if(random_i_map[i] != 1) {
+            //console.log("probe returning --> ", i);
+            return i;
+        }
+    }
 }
     
 function getDataSubsetForCountryComparisonChart(data) {
     var current_country_i = 0;
-    
     $.each(data, function(i, d) {
         if(d.country == current_country) {
             current_country_i = i;
@@ -516,12 +546,20 @@ function getDataSubsetForCountryComparisonChart(data) {
     //current country first, two sets of arbitrarily populated countries, each on
     //either side of the chosen country
     var random_i_map = new Object();
-    for(var i=0; i<4;i++) {
+
+    var end = 0, start = 0;
+    if(current_country_i == 0) end = data.length - 1;
+    else end = current_country_i - 1;
+        
+    if(current_country_i == data.length - 1) start = 0;
+    else start = current_country_i + 1;
+
+    for(var i=0; i<4; i++) {
         random_i_map[gimmeUniquePosition(
-            random_i_map, 0, current_country_i-1)] = 1;
+            random_i_map, 0, end)] = 1;
             
         random_i_map[gimmeUniquePosition(
-            random_i_map, current_country_i+1, data.length-1)] = 1;
+            random_i_map, start, data.length - 1)] = 1;
     }
     
     var random_i_arr = d3.keys(random_i_map);
