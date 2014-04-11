@@ -3,76 +3,76 @@
   <nav class="stats-panel-nav">
     <a href="#stats-panel" class="stats-panel-tab">
       <i class="fa fa-chevron-up"></i>
-      <span class="title" data-open-title="{{ _('Back to Map') }}">{{ _('Facts & figures') }}</span>
+      <span class="title" data-open-title="{% trans 'Back to Map' %}">{% trans 'Facts & figures' %}</span>
     </a>
     <a href="#choice-modal" class="stats-panel-link" data-toggle="modal">
       <i class="fa fa-list-ul"></i>
-      <span class="title">{{ _('What matters to you?') }}</span>
+      <span class="title">{% trans 'What matters to you?' %}</span>
     </a>
     <div class="stats-panel-link popover-markup">
       <a href="#" class="trigger" data-placement="top" data-toggle="popover">
         <i class="fa fa-share-square-o"></i>
-        <span class="title">{{ _('Share the map') }}</span>
+        <span class="title">{% trans 'Share the map' %}</span>
       </a>
       <div class="content hide">
         <a class="btn btn-link share-window" target="_blank"
             href="{{ share_map_twitter }}">
           <i class="fa fa-twitter"></i>
-          <span class="title">{{ _('Twitter') }}</span>
+          <span class="title">{% trans 'Twitter' %}</span>
         </a>
         <a class="btn btn-link share-window" target="_blank" 
             href="{{ share_map_facebook }}">
           <i class="fa fa-facebook"></i>
-          <span class="title">{{ _('Facebook') }}</span>
+          <span class="title">{% trans 'Facebook' %}</span>
         </a>
       </div>
     </div>
   </nav>
   <div class="stats-panel-contents">
     <div class="key key-stats-panel">
-      <div class="title c">{{ _('View by:') }}</div>
+      <div class="title c">{% trans 'View by:' %}</div>
       <ul>
         <li class="choice-privacy"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Privacy') }}</span></span>
+          <span class="choice-title"><span>{% trans 'Privacy' %}</span></span>
         </a></li>
         <li class="choice-opportunity"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Opportunity') }}</span></span>
+          <span class="choice-title"><span>{% trans 'Opportunity' %}</span></span>
         </a></li>
         <li class="choice-access"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-user fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Accessibility') }}</span></span>
+          <span class="choice-title"><span>{% trans 'Accessibility' %}</span></span>
         </a></li>
         <li class="choice-freedom"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Freedom') }}</span></span>
+          <span class="choice-title"><span>{% trans 'Freedom' %}</span></span>
         </a></li>
         <li class="choice-learning"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-book fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Learning') }}</span></span>
+          <span class="choice-title"><span>{% trans 'Learning' %}</span></span>
         </a></li>
         <li class="choice-control"><a href="#">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('User control') }}</span></span>
+          <span class="choice-title"><span>{% trans 'User control' %}</span></span>
         </a></li>
       </ul>
     </div>
@@ -88,7 +88,7 @@
       </div>
       
       <div class="chart2">
-        <h2>{{ _('What matters most by country?') }}</h2>
+        <h2>{% trans 'What matters most by country?' %}</h2>
         
         <div class="country-picker">
           <i class="fa fa-globe fa-x fa-inverse"></i>
@@ -345,7 +345,7 @@
       </div>
       
       <div class="chart3">
-        <h2>{{ _('How does that compare globally?') }}</h2>
+        <h2>{% trans 'How does that compare globally?' %}</h2>
         <!-- stats pane is appended here -->
       </div>
 
@@ -356,18 +356,18 @@
       <div class="stats-share-link popover-markup">
         <a href="#" class="trigger" data-placement="top" data-toggle="popover">
           <i class="fa fa-share-square-o"></i>
-          <span class="title">{{ _('Share this page') }}</span>
+          <span class="title">{% trans 'Share this page' %}</span>
         </a>
         <div class="content hide">
           <a class="btn btn-link share-window" target="_blank"
               href="{{ share_stats_twitter }}">
             <i class="fa fa-twitter"></i>
-            <span class="title">{{ _('Twitter') }}</span>
+            <span class="title">{% trans 'Twitter' %}</span>
           </a>
           <a class="btn btn-link share-window" target="_blank" 
               href="{{ share_stats_facebook }}">
             <i class="fa fa-facebook"></i>
-            <span class="title">{{ _('Facebook') }}</span>
+            <span class="title">{% trans 'Facebook' %}</span>
           </a>
         </div>
       </div>
@@ -376,7 +376,7 @@
       <div class="seperator"></div>
 
       <p class="paragraph1"></p>
-      <p class="did-you-know">{{ _('Did you know?') }}</p>
+      <p class="did-you-know">{% trans 'Did you know?' %}</p>
       <p class="paragraph2"></p>
     </div>
   </div>
@@ -385,27 +385,27 @@
 
 
 
-<p class="choice-prose-rhs-title choice-privacy-prose-title-rhs">{{ _('Firefox & privacy') }}</p>
-<p class="choice-prose-rhs-title choice-opportunity-prose-title-rhs">{{ _('Firefox & opportunity') }}</p>
-<p class="choice-prose-rhs-title choice-access-prose-title-rhs">{{ _('Firefox & accessibility') }}</p>
-<p class="choice-prose-rhs-title choice-freedom-prose-title-rhs">{{ _('Firefox & freedom') }}</p>
-<p class="choice-prose-rhs-title choice-learning-prose-title-rhs">{{ _('Firefox & learning') }}</p>
-<p class="choice-prose-rhs-title choice-control-prose-title-rhs">{{ _('Firefox & user control') }}</p>
+<p class="choice-prose-rhs-title choice-privacy-prose-title-rhs">{% trans 'Firefox & privacy' %}</p>
+<p class="choice-prose-rhs-title choice-opportunity-prose-title-rhs">{% trans 'Firefox & opportunity' %}</p>
+<p class="choice-prose-rhs-title choice-access-prose-title-rhs">{% trans 'Firefox & accessibility' %}</p>
+<p class="choice-prose-rhs-title choice-freedom-prose-title-rhs">{% trans 'Firefox & freedom' %}</p>
+<p class="choice-prose-rhs-title choice-learning-prose-title-rhs">{% trans 'Firefox & learning' %}</p>
+<p class="choice-prose-rhs-title choice-control-prose-title-rhs">{% trans 'Firefox & user control' %}</p>
 
 
-<p class="choice-prose-rhs1 choice-privacy-prose-rhs1">{{ _('Firefox is made under the principle that security and privacy are fundamental and must not be treated as optional.') }}</p>
-<p class="choice-prose-rhs1 choice-opportunity-prose-rhs1">{{ _('Firefox is the only browser made of 100% free, open source code that anyone can view, remix and contribute to.') }}</p>
-<p class="choice-prose-rhs1 choice-access-prose-rhs1">{{ _('Firefox is made with the belief that the Internet is a global public resource that must remain open and accessible to all.') }}</p>
-<p class="choice-prose-rhs1 choice-freedom-prose-rhs1">{{ _('Firefox is the only non-profit browser that prioritizes principles over profits and answers to no one but you.') }}</p>
-<p class="choice-prose-rhs1 choice-learning-prose-rhs1">{{ _('Firefox is the only browser made by a non-profit foundation working to unlock the full educational potential of the Web.') }}</p>
-<p class="choice-prose-rhs1 choice-control-prose-rhs1">{{ _('Firefox is the only browser made with a mission to put users first and to keep the power of the Web in your hands.') }}</p>
+<p class="choice-prose-rhs1 choice-privacy-prose-rhs1">{% trans 'Firefox is made under the principle that security and privacy are fundamental and must not be treated as optional.' %}</p>
+<p class="choice-prose-rhs1 choice-opportunity-prose-rhs1">{% trans 'Firefox is the only browser made of 100% free, open source code that anyone can view, remix and contribute to.' %}</p>
+<p class="choice-prose-rhs1 choice-access-prose-rhs1">{% trans 'Firefox is made with the belief that the Internet is a global public resource that must remain open and accessible to all.' %}</p>
+<p class="choice-prose-rhs1 choice-freedom-prose-rhs1">{% trans 'Firefox is the only non-profit browser that prioritizes principles over profits and answers to no one but you.' %}</p>
+<p class="choice-prose-rhs1 choice-learning-prose-rhs1">{% trans 'Firefox is the only browser made by a non-profit foundation working to unlock the full educational potential of the Web.' %}</p>
+<p class="choice-prose-rhs1 choice-control-prose-rhs1">{% trans 'Firefox is the only browser made with a mission to put users first and to keep the power of the Web in your hands.' %}</p>
 
-<p class="choice-prose-rhs2 choice-privacy-prose-rhs2">{{ _("Firefox is the only major browser not targeted by the NSA scandal and we're fighting to reform government surveillance for you.") }}</p>
-<p class="choice-prose-rhs2 choice-opportunity-prose-rhs2">{{ _('Firefox is made by a global volunteer community 6,000 strong, open to participation from anyone.') }}</p>
-<p class="choice-prose-rhs2 choice-access-prose-rhs2">{{ _('Firefox disrupted the mobile industry with the first free, open-source, Web-based operating system to help bring the next billion people online.') }}</p>
-<p class="choice-prose-rhs2 choice-freedom-prose-rhs2">{{ _('Firefox protested and lobbied against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web.') }}</p>
-<p class="choice-prose-rhs2 choice-learning-prose-rhs2">{{ _('Firefox teaches digital literacy to millions of people around the world to give them the tools and skills they need to move from using the Web to actively making it.') }}</p>
-<p class="choice-prose-rhs2 choice-control-prose-rhs2">{{ _('Firefox innovations like Do Not Track and Lightbeam are leading the way to give users greater control online.') }}</p>
+<p class="choice-prose-rhs2 choice-privacy-prose-rhs2">{% trans "Firefox is the only major browser not targeted by the NSA scandal and we're fighting to reform government surveillance for you." %}</p>
+<p class="choice-prose-rhs2 choice-opportunity-prose-rhs2">{% trans 'Firefox is made by a global volunteer community 6,000 strong, open to participation from anyone.' %}</p>
+<p class="choice-prose-rhs2 choice-access-prose-rhs2">{% trans 'Firefox disrupted the mobile industry with the first free, open-source, Web-based operating system to help bring the next billion people online.' %}</p>
+<p class="choice-prose-rhs2 choice-freedom-prose-rhs2">{% trans 'Firefox protested and lobbied against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web.' %}</p>
+<p class="choice-prose-rhs2 choice-learning-prose-rhs2">{% trans 'Firefox teaches digital literacy to millions of people around the world to give them the tools and skills they need to move from using the Web to actively making it.' %}</p>
+<p class="choice-prose-rhs2 choice-control-prose-rhs2">{% trans 'Firefox innovations like Do Not Track and Lightbeam are leading the way to give users greater control online.' %}</p>
 
 <p class="choice-prose choice-privacy-prose">
 {% blocktrans with percentage='<span class="percentage"></span>' %}
