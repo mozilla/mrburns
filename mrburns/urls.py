@@ -5,7 +5,7 @@
 from django.conf.urls import patterns, url
 from django.conf.urls.i18n import i18n_patterns
 
-from mrburns.main.views import (CurrentDataView, GlowView,
+from mrburns.main.views import (GlowView, LatestTimestampView,
                                 ShareView, StringsView)
 
 
@@ -16,5 +16,5 @@ urlpatterns = i18n_patterns('',
 
 urlpatterns += patterns('',
     url('^share/$', ShareView.as_view(), name='glow.share'),
-    url('^latest_data/$', CurrentDataView.as_view(), name='glow.latest')
+    url('^latest-timestamp/$', LatestTimestampView.as_view(), name='glow.latest')
 )

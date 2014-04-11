@@ -6,7 +6,7 @@ import json
 from urllib import urlencode
 
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
 
@@ -114,23 +114,16 @@ class StringsView(TemplateView):
     template_name = 'strings.html'
 
 
-class CurrentDataView(View):
+class LatestTimestampView(View):
     def get(self, request):
         if redis:
             timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
         else:
-            timestamp = 1397098140
-        if timestamp:
-            response_data = {
-                'status': 'OK',
-                'timestamp': timestamp,
-                'filename': '/static/data/stats_{}.json'.format(timestamp),
-            }
-            return HttpResponse(json.dumps(response_data),
-                                content_type='application/json')
+            timestamp = 0
 
         response_data = {
-            'status': 'NOT FOUND',
+            'status': 'OK',
+            'timestamp': timestamp,
         }
-        return HttpResponseNotFound(json.dumps(response_data),
-                                    content_type='application/json')
+        return HttpResponse(json.dumps(response_data),
+                            content_type='application/json')

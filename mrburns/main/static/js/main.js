@@ -44,28 +44,31 @@ Date.prototype.addHours= function(h){
 }
 
 function getJsonDataUrl() {
+    var $body = $('body');
+    var staticDataUrl = $body.data('staticDataUrl');
+    var latestTimestampUrl = $body.data('latestTimestampUrl');
+
     //TODO get the timestamp this way once deployed on dev
-    /*$.ajax({ 
-             type: "GET",
-             dataType: "json",
-             url: "/latest_data/",
-             success: function(data){        
-                rounded_timestamp = data.timestamp;
-             }
-         });*/
+    // TODO make everything async so this will work
+    /**
+     * NOTE: data.timestamp will be 0 when redis is
+     *       off, so this can be used to switch to the
+     *       "2 minutes ago" method. Alternately you
+     *       can set the LATEST_TIMESTAMP_URL setting
+     *       to the dev instance, and this will work.
+    $.getJSON(latestTimestampUrl).done(function(data){
+        rounded_timestamp = data.timestamp;
+    });
+    */
 
     var coeff = 1000 * 60;
     var date = new Date().addHours(7);
-    var url = ($('body').attr('data-static-url') != undefined) ?
-        $('body').attr('data-static-url') :
-        'https://webwewant.mozilla.org/static/';
-        
+
     //get data file from 2 mins ago
-    url = 'https://webwewant.allizom.org/static/'; //TODO for local development only
     rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
-    console.log(url + 'data/stats_' + rounded_timestamp + '.json');
+    console.log(staticDataUrl + 'stats_' + rounded_timestamp + '.json');
     
-    return url + 'data/stats_' + rounded_timestamp + '.json';
+    return staticDataUrl + 'stats_' + rounded_timestamp + '.json';
 }
 
 var $stats_panel_tab_title = $('.stats-panel-tab .title');
