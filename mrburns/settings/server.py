@@ -6,6 +6,7 @@ from .base import *  # noqa
 
 SERVER_ENV = os.getenv('DJANGO_SERVER_ENV')
 SECRET_KEY = os.getenv('SECRET_KEY')
+STATIC_URL = os.getenv('STATIC_URL', STATIC_URL)
 DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [
     'webwewant.mozilla.org',
