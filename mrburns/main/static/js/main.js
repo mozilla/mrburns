@@ -43,30 +43,29 @@ Date.prototype.addHours= function(h){
     return this;
 }
 
-function getJsonDataUrl() {   
-    //TODO we'll just need this once deployed on dev
+function getJsonDataUrl() {
+    //TODO get the timestamp this way once deployed on dev
     /*$.ajax({ 
              type: "GET",
              dataType: "json",
-             url: "https://webwewant.allizom.org/latest_data/",
+             url: "/latest_data/",
              success: function(data){        
-                rounded_timestamp = data.timestamp - (60 * 5);
+                rounded_timestamp = data.timestamp;
              }
          });*/
 
     var coeff = 1000 * 60;
-    
-    //TODO remove this once deployed on dev
     var date = new Date().addHours(7);
-    
+    var url = ($('body').attr('data-static-url') != undefined) ?
+        $('body').attr('data-static-url') :
+        'https://webwewant.mozilla.org/static/';
+        
     //get data file from 2 mins ago
-    //TODO revisit once in dev
+    url = 'https://webwewant.allizom.org/static/'; //TODO for local development only
     rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
+    console.log(url + 'data/stats_' + rounded_timestamp + '.json');
     
-    console.log(rounded_timestamp);
-    console.log("https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json");
-    
-    return "https://webwewant.allizom.org/static/data/stats_" + rounded_timestamp + ".json";
+    return url + 'data/stats_' + rounded_timestamp + '.json';
 }
 
 var $stats_panel_tab_title = $('.stats-panel-tab .title');
