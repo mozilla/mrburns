@@ -11,6 +11,7 @@ DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [
     'webwewant.mozilla.org',
     'webwewant.allizom.org',
+    'glow.cdn.mozilla.net',
     # the server's IP (for monitors)
     socket.gethostbyname(socket.gethostname()),
 ]
