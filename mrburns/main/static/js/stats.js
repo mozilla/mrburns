@@ -1,127 +1,127 @@
-"use strict";
+'use strict';
 
 var arc,
     τ = 2 * Math.PI,
     x_scale_stacked_bar;
   
 var data,
-    current_choice = "privacy",
-    current_country = "US";
+    current_choice = 'privacy',
+    current_country = 'US';
 
 var color = new Object();
-    color["privacy"] = "#e24063";
-    color["opportunity"] = "#682567";
-    color["access"] = "#092c74",
-    color["freedom"] = "#81bc2e",
-    color["learning"] = "#f18903",
-    color["control"] = "#c43a31";
+    color['privacy'] = '#e24063';
+    color['opportunity'] = '#682567';
+    color['access'] = '#092c74',
+    color['freedom'] = '#81bc2e',
+    color['learning'] = '#f18903',
+    color['control'] = '#c43a31';
     
 var icon = new Object();
-    icon["privacy"] = 'fa-eye';
-    icon["opportunity"] = 'fa-heart';
-    icon["access"] = 'fa-user';
-    icon["freedom"] = 'fa-check-circle-o';
-    icon["learning"] = 'fa-book';
-    icon["control"] = 'fa-cogs';
+    icon['privacy'] = 'fa-eye';
+    icon['opportunity'] = 'fa-heart';
+    icon['access'] = 'fa-user';
+    icon['freedom'] = 'fa-check-circle-o';
+    icon['learning'] = 'fa-book';
+    icon['control'] = 'fa-cogs';
 
 $(document).ready(function () {
-    $("#country").select2({
+    $('#country').select2({
         width: 200
     });
     
     //set rhs
-    $(".what-is-mozilla-doing-about-it .seperator")
-        .css("background-color", color[current_choice]);
-    $(".what-is-mozilla-doing-about-it h2")
-        .html($(".choice-" + current_choice + "-prose-title-rhs").html());
-    $(".what-is-mozilla-doing-about-it .paragraph1")
-        .html($(".choice-" + current_choice + "-prose-rhs1").html());
-    $(".what-is-mozilla-doing-about-it .paragraph2")
-        .html($(".choice-" + current_choice + "-prose-rhs2").html());
+    $('.what-is-mozilla-doing-about-it .seperator')
+        .css('background-color', color[current_choice]);
+    $('.what-is-mozilla-doing-about-it h2')
+        .html($('.choice-' + current_choice + '-prose-title-rhs').html());
+    $('.what-is-mozilla-doing-about-it .paragraph1')
+        .html($('.choice-' + current_choice + '-prose-rhs1').html());
+    $('.what-is-mozilla-doing-about-it .paragraph2')
+        .html($('.choice-' + current_choice + '-prose-rhs2').html());
     
     assignStatsEventListeners();
     drawCharts();
   
-    $(".key-stats-panel ul .choice-privacy a")
-        .toggleClass("selected")
+    $('.key-stats-panel ul .choice-privacy a')
+        .toggleClass('selected')
 });
 
 function assignStatsEventListeners() {
-    $(".key-stats-panel a").on("click", function () {
-        var choice = $(this)[0].parentNode.className.split("choice-")[1];
+    $('.key-stats-panel a').on('click', function () {
+        var choice = $(this)[0].parentNode.className.split('choice-')[1];
         current_choice = choice;
         
         //update right-hand-side
-        $(".what-is-mozilla-doing-about-it .seperator")
-            .css("background-color", color[current_choice]);
-        $(".what-is-mozilla-doing-about-it h2")
-            .html($(".choice-" + current_choice + "-prose-title-rhs").html());
-        $(".what-is-mozilla-doing-about-it .paragraph1")
-            .html($(".choice-" + current_choice + "-prose-rhs1").html());
-        $(".what-is-mozilla-doing-about-it .paragraph2")
-            .html($(".choice-" + current_choice + "-prose-rhs2").html());
+        $('.what-is-mozilla-doing-about-it .seperator')
+            .css('background-color', color[current_choice]);
+        $('.what-is-mozilla-doing-about-it h2')
+            .html($('.choice-' + current_choice + '-prose-title-rhs').html());
+        $('.what-is-mozilla-doing-about-it .paragraph1')
+            .html($('.choice-' + current_choice + '-prose-rhs1').html());
+        $('.what-is-mozilla-doing-about-it .paragraph2')
+            .html($('.choice-' + current_choice + '-prose-rhs2').html());
         
         //update chart 1
         updateDonut(data.country_issues.GLOBAL[choice], choice);
-        $(".donut-icon i")
-            .removeClass("fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs")
+        $('.donut-icon i')
+            .removeClass('fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs')
             .addClass(icon[choice]);
         
         //update chart 2
-        $(".tippy").hide();
-        $(".tippytext").hide();
-        $(".tippy_" + current_choice).show();
-        $(".tippytext_" + current_choice).show();
+        $('.tippy').hide();
+        $('.tippytext').hide();
+        $('.tippy_' + current_choice).show();
+        $('.tippytext_' + current_choice).show();
         
         //update chart 3
-        updateCountryComparisonChart(eval("data.issue_countries." + current_choice));
+        updateCountryComparisonChart(eval('data.issue_countries.' + current_choice));
         
-        $(".key-stats-panel a").removeClass("selected");
-        $(this).toggleClass("selected");
+        $('.key-stats-panel a').removeClass('selected');
+        $(this).toggleClass('selected');
     
         return false;
     });
     
-    $("select").on("change", function(d) {
+    $('select').on('change', function(d) {
         current_country = d.val;
         
         //update chart 2
-        updateStackedBarChart(eval("data.country_issues." + current_country));
+        updateStackedBarChart(eval('data.country_issues.' + current_country));
         
         //update chart 3
-        updateCountryComparisonChart(eval("data.issue_countries." + current_choice));
+        updateCountryComparisonChart(eval('data.issue_countries.' + current_choice));
     });
 }
 
 function drawCharts() {
-    $(".stats-panel-contents svg").empty();
+    $('.stats-panel-contents svg').empty();
 
     d3.json(getJsonDataUrl(), function(json_data) {
         data = json_data;
         
         //add donut prose, all of them, to the html page
         $.each(json_data.country_issues.GLOBAL, function(i, d) {
-            $(".choice-" + i + "-prose .percentage").html(Math.round(d*100) + '%');
+            $('.choice-' + i + '-prose .percentage').html(Math.round(d*100) + '%');
         })
         
         drawDonut(json_data.country_issues.GLOBAL[current_choice]);
-        drawStackedBarChart(eval("json_data.country_issues." + current_country));
-        drawCountryComparisonChart(eval("json_data.issue_countries." + current_choice));
+        drawStackedBarChart(eval('json_data.country_issues.' + current_country));
+        drawCountryComparisonChart(eval('json_data.issue_countries.' + current_choice));
     });
 }
 
 function updateDonut(data, current_choice) {
-    $(".donut-prose p").html($(".choice-" + current_choice + "-prose").html());
+    $('.donut-prose p').html($('.choice-' + current_choice + '-prose').html());
 
-    d3.select(".donut-foreground")
+    d3.select('.donut-foreground')
         .transition()
             .duration(950)
-            .style("fill", color[current_choice])
-            .style("stroke", color[current_choice])
+            .style('fill', color[current_choice])
+            .style('stroke', color[current_choice])
             .call(arcTween, data * τ);
       
     function arcTween(transition, newAngle) {
-        transition.attrTween("d", function(d) {
+        transition.attrTween('d', function(d) {
             var interpolate = d3.interpolate(d.endAngle, newAngle);
             return function(t) {
                 d.endAngle = interpolate(t);
@@ -132,7 +132,7 @@ function updateDonut(data, current_choice) {
 }
 
 function drawDonut(data) {
-    $(".donut-prose p").html($(".choice-" + current_choice + "-prose").html());
+    $('.donut-prose p').html($('.choice-' + current_choice + '-prose').html());
   
     var width = 170,
         height = 200;
@@ -142,31 +142,31 @@ function drawDonut(data) {
         .outerRadius(80)
         .startAngle(0);
   
-    var svg = d3.select(".donut").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    var svg = d3.select('.donut').append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
 
     //add the background arc, from 0 to 100% (τ)
-    var background = svg.append("path")
+    var background = svg.append('path')
         .datum({endAngle: τ})
-        .attr("d", arc);
+        .attr('d', arc);
 
     //add the foreground arc
-    var foreground = svg.append("path")
+    var foreground = svg.append('path')
         .datum({endAngle: 0 * τ})
-        .attr("class", "donut-foreground")
-        .style("fill", color[current_choice])
-        .style("stroke", color[current_choice])
-        .attr("d", arc);
+        .attr('class', 'donut-foreground')
+        .style('fill', color[current_choice])
+        .style('stroke', color[current_choice])
+        .attr('d', arc);
 
     foreground.transition()
         .duration(950)
         .call(arcTween, data * τ);
 
     function arcTween(transition, newAngle) {
-        transition.attrTween("d", function(d) {
+        transition.attrTween('d', function(d) {
         var interpolate = d3.interpolate(d.endAngle, newAngle);
             return function(t) {
                 d.endAngle = interpolate(t);
@@ -181,17 +181,17 @@ function drawStackedBarChart(data_unsorted) {
     
     var data = new Array();
     $.each(data_unsorted, function(i, d) {
-        if(d.key == "privacy")
+        if(d.key == 'privacy')
             data[0] = d;
-        else if(d.key == "opportunity")
+        else if(d.key == 'opportunity')
             data[1] = d;
-        else if(d.key == "access")
+        else if(d.key == 'access')
             data[2] = d;
-        else if(d.key == "freedom")
+        else if(d.key == 'freedom')
             data[3] = d;
-        else if(d.key == "learning")
+        else if(d.key == 'learning')
             data[4] = d;
-        else if(d.key == "control")
+        else if(d.key == 'control')
             data[5] = d;
     })
 
@@ -206,122 +206,120 @@ function drawStackedBarChart(data_unsorted) {
        .domain([0, 1])
        .range([0, width - x_padding_right]);
   
-    var svg = d3.select(".chart2").append("svg")
-        .attr("width", width+50)
-        .attr("height", height);
+    var svg = d3.select('.chart2 svg')
+        .attr('width', width + 50)
+        .attr('height', height);
         
     var x_marker = 0;
     
     //add stacked bar chart
-    svg.selectAll("rect.bar")
+    svg.selectAll('rect.bar')
         .data(data)
-        .enter().append("rect")
-        .attr("class", function(d) {
-            return "bar bar_" + d.key;
+        .enter().append('rect')
+        .attr('class', function(d) {
+            return 'bar bar_' + d.key;
         })
-        .attr("width", function(d) {
+        .attr('width', function(d) {
             return (d.value == undefined) 
                 ? x_scale_stacked_bar(0)
                 : x_scale_stacked_bar(d.value);
         })
-        .attr("x", function (d) {
+        .attr('x', function (d) {
             if(d.value == undefined) d.value = 0;
                 
             var x_marker_this = x_marker;
             x_marker += d.value;
                 
             //append circle
-            svg.append("circle")
-                .attr("r", 8)
-                .attr("class", function() { return "tippy tippy_" + d.key; })
-                .attr("cx", function() {
+            svg.append('circle')
+                .attr('r', 8)
+                .attr('class', function() { return 'tippy tippy_' + d.key; })
+                .attr('cx', function() {
                     return x_padding_left + x_scale_stacked_bar(
                         x_marker_this + ((x_marker - x_marker_this) / 2));
                 })
-                .attr("cy", bar_y_position + bar_height - 3)
-                .style("fill", function () {
+                .attr('cy', bar_y_position + bar_height - 3)
+                .style('fill', function () {
                     return color[d.key];
                 })
-                .style("opacity", function() {
+                .style('opacity', function() {
                     if(d.value < 0.04)
                         return 0;
                 });
                 
             //append text labels
-            svg.append("text")
-                .attr("class", function() { return "tippytext tippytext_" + d.key; })
-                .attr("text-anchor", "middle")
-                .attr("x", function() {
+            svg.append('text')
+                .attr('class', function() { return 'tippytext tippytext_' + d.key; })
+                .attr('text-anchor', 'middle')
+                .attr('x', function() {
                     return x_padding_left + x_scale_stacked_bar(
                         x_marker_this + ((x_marker - x_marker_this) / 2));
                 })
-                .attr("y", function() {
+                .attr('y', function() {
                     return bar_y_position + bar_height + 22;
                 })
                 .text(function() {
-                    return $(".choice-" + [d.key]
-                        + " .choice-title span").html()
-                        + " (" + Math.round(d.value*100) + "%)";
+                    return $('.choice-' + [d.key]
+                        + ' .choice-title span').html()
+                        + ' (' + Math.round(d.value*100) + '%)';
                 })
-                .style("fill", function () {
-                    return "white";
+                .style('fill', function () {
+                    return 'white';
                 });
             
             return x_padding_left + x_scale_stacked_bar(x_marker_this);
         })
-        .attr("y", function (d) {
+        .attr('y', function (d) {
             return bar_y_position;
         })
-        .attr("height", function (d) {
+        .attr('height', function (d) {
             return bar_height;
         })
-        .style("fill", function (d) {
+        .style('fill', function (d) {
             return color[d.key];
         })
-        .style("display", function(d) {
+        .style('display', function(d) {
             if(d.key == current_choice) {
-                $(".tippy_" + d.key).show();
-                $(".tippytext_" + d.key).show();
+                $('.tippy_' + d.key).show();
+                $('.tippytext_' + d.key).show();
             }
         })
         .on('mouseenter', function (d) {            
-            $(".tippy").hide();
-            $(".tippy_" + d.key).show();
+            $('.tippy').hide();
+            $('.tippy_' + d.key).show();
             
-            $(".tippytext").hide();
-            $(".tippytext_" + d.key).show();
+            $('.tippytext').hide();
+            $('.tippytext_' + d.key).show();
         });    
 }
 
 function updateStackedBarChart(new_data) {
-    console.log(new_data);
-    
     var x_padding_left = 40,
         x_marker = 0;
     
-    d3.selectAll(".bar")
+    d3.selectAll('.bar')
         .transition()
             .duration(300)
-            .attr("width", function(d) {
+            .attr('width', function(d) {
                 return (new_data[d.key] == undefined) 
                     ? x_scale_stacked_bar(0)
                     : x_scale_stacked_bar(new_data[d.key]);
             })
-            .attr("x", function (d) {
+            .attr('x', function (d) {
                 if(new_data[d.key] == undefined) new_data[d.key] = 0;
             
                 var x_marker_this = x_marker;
                 x_marker += new_data[d.key];
-                console.log(d.key, new_data[d.key]);
+                
                 //update circles
-                d3.select(".tippy_" + d.key)
+                d3.select('.tippy_' + d.key)
                     .transition()
                         .duration(300)
-                        .attr("cx", function() {
+                        .attr('cx', function() {
                             return x_padding_left + x_scale_stacked_bar(
                                 x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
-                        .style("opacity", function() {
+                        .style('opacity', function() {
                             if(new_data[d.key] < 0.04)
                                 return 0;
                             else
@@ -329,17 +327,17 @@ function updateStackedBarChart(new_data) {
                         });
                 
                 //update text labels
-                d3.selectAll(".tippytext_" + d.key)
+                d3.selectAll('.tippytext_' + d.key)
                     .transition()
                         .duration(300)
-                        .attr("x", function() {
+                        .attr('x', function() {
                             return x_padding_left + x_scale_stacked_bar(
                                 x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
                         .text(function() {
-                            return $(".choice-" + [d.key] + 
-                                " .choice-title span").html() + " (" 
-                                + Math.round(new_data[d.key]*100) + "%)";
+                            return $('.choice-' + [d.key] + 
+                                ' .choice-title span').html() + ' (' 
+                                + Math.round(new_data[d.key]*100) + '%)';
                         });
                 
                 return x_padding_left + x_scale_stacked_bar(x_marker_this);
@@ -365,7 +363,7 @@ function drawCountryComparisonChart(data) {
        .domain([min, max])
        .range([x_padding_left, width - x_padding_right]);
   
-    var svg = d3.select('.chart3').append('svg')
+    var svg = d3.select('.chart3 svg')
         .attr('width', width + 50)
         .attr('height', height);
     
@@ -396,7 +394,6 @@ function drawCountryComparisonChart(data) {
                     return i * (bar_height + 15) + 15 + y_padding_top;
                 })
                 .text(function() {
-                    console.log(d, d.country);
                     return $('.country-' + d.country).html();
                 });
                 
@@ -411,7 +408,7 @@ function drawCountryComparisonChart(data) {
                     return i * (bar_height + 15) + 15 + y_padding_top;
                 })
                 .text(function() {
-                    return (d.count * 100).toFixed(1) + "%";
+                    return (d.count * 100).toFixed(1) + '%';
                 });
             
             return x_scale_country_comparison(d.count);
@@ -445,8 +442,8 @@ function drawCountryComparisonChart(data) {
 }
 
 function updateCountryComparisonChart(data) {
-    $(".country-bar")
-        .css("fill", color[current_choice]);
+    $('.country-bar')
+        .css('fill', color[current_choice]);
           
     var width = 565,
         height = 350,
@@ -487,7 +484,7 @@ function updateCountryComparisonChart(data) {
                     .transition()
                     .duration(1000)
                         .text(function() {
-                            return (data_subset[i].count * 100).toFixed(1) + "%";
+                            return (data_subset[i].count * 100).toFixed(1) + '%';
                         })
                         .attr('x', function() {
                             return x_scale_country_comparison(data_subset[i].count) 
@@ -519,7 +516,6 @@ function gimmeUniquePosition(random_i_map, start, end) {
 
 function probeForUnique(i, random_i_map) {
     if(random_i_map[i] != 1) {
-        //console.log("probe returning --> ", i);
         return i;
     }
     
@@ -528,7 +524,6 @@ function probeForUnique(i, random_i_map) {
         else  i++;
             
         if(random_i_map[i] != 1) {
-            //console.log("probe returning --> ", i);
             return i;
         }
     }
@@ -603,7 +598,7 @@ function addVerticalLine(data, label, x_scale_country_comparison, height, bar_wi
             return height;
         })
         .text(function() {
-            return label + " (" + (data * 100).toFixed(1) + "%)";
+            return label + ' (' + (data * 100).toFixed(1) + '%)';
         });
 }
 
@@ -618,13 +613,13 @@ function updateVerticalLine(data, label, x_scale_country_comparison, bar_width) 
                 return x_scale_country_comparison(data) + (bar_width / 2);
             });
             
-    d3.select('.' + label + "_text")
+    d3.select('.' + label + '_text')
         .transition()
             .duration(1000)
             .attr('x', function() {
                 return x_scale_country_comparison(data) + bar_width + 6;
             })
             .text(function() {
-                return label + " (" + (data * 100).toFixed(1) + "%)";
+                return label + ' (' + (data * 100).toFixed(1) + '%)';
             });
 }
