@@ -4,7 +4,72 @@
     font-style: italic;
     p {
         font-size: 16px;
-   }
+    }
+    #choice-modal-choice-page {
+        display: block;
+    }
+    #choice-modal-interstitial-page {
+        display: none;
+    }
+}
+
+.choice-modal.fade .modal-dialog {
+    .transition-append-transform(0.3s ease-out);
+    .transition-append(width 0.25s ease-in-out);
+}
+
+.choice-modal .choice-body-container {
+    width: 100%;
+    overflow: hidden;
+    .transition(
+        opacity 0.25s ease-in-out,
+        height 0.25s ease-in-out;
+    );
+}
+
+.choice-modal-interstitial {
+    #choice-modal-choice-page {
+        display: none;
+    }
+    #choice-modal-interstitial-page {
+        display: block;
+    }
+    .modal-dialog, .modal-body {
+        width: 980px;
+    }
+    .modal-body {
+        position: relative;
+        h1,
+        h2,
+        p {
+            padding-left: 200px;
+        }
+        h1 {
+            padding-top: 20px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+        h2 .fa-stack {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 100px;
+            margin-bottom: 30px;
+            .fa-stack-1x {
+                font-size: 80px;
+            }
+        }
+        p {
+            font-weight: 300;
+            font-size: 18px;
+            a {
+                color: @linkYellow;
+            }
+        }
+    }
 }
 
 .choice-footer-container {

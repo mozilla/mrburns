@@ -146,6 +146,16 @@
        -o-transition: -o-transform @transition;
           transition: transform @transition;
 }
+.transition-append(@transition) {
+  -webkit-transition+: @transition;
+          transition+: @transition;
+}
+.transition-append-transform(@transition) {
+  -webkit-transition+: -webkit-transform @transition;
+     -moz-transition+: -moz-transform @transition;
+       -o-transition+: -o-transform @transition;
+          transition+: transform @transition;
+}
 
 // Transformations
 .rotate(@degrees) {
