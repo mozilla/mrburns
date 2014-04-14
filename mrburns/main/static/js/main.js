@@ -147,7 +147,6 @@ $(document).ready(function () {
             if (event.target === event.currentTarget) {
                 var state = $body.data('state');
                 if (state === 'opening-opacity-out') {
-                    console.log('dialog body opacity finished, sapping content and setting height');
                     $('.choices').removeClass('in-progress');
                     $choices.each(function(i) {
                         $(this).removeClass('selected');
