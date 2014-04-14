@@ -274,4 +274,9 @@ $(document).ready(function () {
         insertVideo(true);
     });
 
+    $('#video-modal').on('hidden.bs.modal', function (e) {
+        // Stop YouTube player when video modal is closed
+        $('#video-modal .modal-body').html('');
+    });
+
 });
