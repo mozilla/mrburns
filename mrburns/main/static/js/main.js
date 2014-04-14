@@ -102,7 +102,7 @@ $(document).ready(function () {
 
         // if we're on australis and there's no hash tag, show the choice modal
         if (hash.indexOf("#") === -1) {
-            $( '#choice-modal' ).modal();
+            $('#choice-modal').modal();
         }
     } else {
         $('html').addClass('non-australis');
@@ -128,6 +128,10 @@ $(document).ready(function () {
         $( 'body' ).toggleClass( "stats-panel-open" );
         openStatsPanel();
     });
+
+    // turn on fading for choice modal after initial load so it fades
+    // on subsequent open/closes, but not the first time
+    $('#choice-modal').addClass('fade');
 
     // "Share the map" popopver
     $('.popover-markup > .trigger').popover({
@@ -158,6 +162,7 @@ $(document).ready(function () {
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
+        $('.choices').addClass('in-progress');
         showShareButtons();
     });
 

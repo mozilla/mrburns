@@ -7,8 +7,10 @@
 
 .modal-backdrop {
     background: #1876bb;
-    background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
-    background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+    background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
+                      url(/static/img/grain.png);
+    background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
+                      url(/static/img/grain.png);
     &.in {
         opacity: .8;
     }
@@ -27,7 +29,7 @@
 }
 
 .modal-footer {
-    background: rgba(255,255,255,.07) url(/static/img/grain.png) repeat;
+    background: url(/static/img/grain.png) repeat;
     margin: 0;
 }
 
@@ -45,6 +47,7 @@
 }
 
 .modal-content {
+    .box-shadow(0 3px 5px rgba(0,0,0,.2));
     h1 {
         font-weight: bold;
         margin: 0;
@@ -63,7 +66,11 @@
 .btn {
     min-height: 2.9em;
     border-radius: 25px;
-    .transition(@transitionIn);
+    .transition(@transitionOut);
+    &:hover,
+    &:focus {
+        .transition(@transitionIn);
+    }
 }
 
 .btn.btn-primary {
@@ -85,6 +92,7 @@
 
 .popover {
     text-align: center;
+    .box-shadow(0 3px 5px rgba(0,0,0,.2));
     .btn-link {
         color: @linkBlue;
         min-height: 0;
