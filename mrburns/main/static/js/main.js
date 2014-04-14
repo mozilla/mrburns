@@ -142,7 +142,7 @@ $(document).ready(function () {
 
     $choice_modal.find('.choice-body-container').on(
         events,
-        function () {
+        function (event) {
             var $body = $(this);
             if (event.target === event.currentTarget) {
                 var state = $body.data('state');
