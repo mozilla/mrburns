@@ -45,29 +45,22 @@ Date.prototype.addHours= function(h){
 function getJsonDataUrl() {
     var $body = $('body');
     var staticDataUrl = $body.data('staticDataUrl');
-    var latestTimestampUrl = $body.data('latestTimestampUrl');
 
-    //TODO get the timestamp this way once deployed on dev
-    // TODO make everything async so this will work
-    /**
-     * NOTE: data.timestamp will be 0 when redis is
-     *       off, so this can be used to switch to the
-     *       "2 minutes ago" method. Alternately you
-     *       can set the LATEST_TIMESTAMP_URL setting
-     *       to the dev instance, and this will work.
-    $.getJSON(latestTimestampUrl).done(function(data){
-        rounded_timestamp = data.timestamp;
-    });
-    */
+    // NOTE: will be 0 when redis is off or returns nothing
+    var latestTimestamp = $body.data('timestamp'); // an int
 
-    var coeff = 1000 * 60;
-    var date = new Date().addHours(7);
+    if (!latestTimestamp) {
+        // guess at the latest timestamp (mostly for dev)
+        var coeff = 1000 * 60;
+        var date = new Date().addHours(7);
+        latestTimestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime();
+    }
 
-    //get data file from 2 mins ago
-    rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
-    console.log(staticDataUrl + 'stats_' + rounded_timestamp + '.json');
-    
-    return staticDataUrl + 'stats_' + rounded_timestamp + '.json';
+    // two minutes ago
+    latestTimestamp -= 120;  // seconds
+    var url = staticDataUrl + 'stats_' + latestTimestamp + '.json';
+    console.log(url);
+    return url;
 }
 
 var $stats_panel_tab_title = $('.stats-panel-tab .title');
