@@ -22,7 +22,12 @@ else:
 
 TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
-
+COUNT_FOOTNOTE = (
+    '<a href="#number-modal" class="number-help" '
+    'data-toggle="modal" title="{{ title }}">'
+    '<span class="share_total"></span>'
+    '<i class="fa fa-question-circle"></i></a>').format(
+        title = _('What does this number mean?'))
 
 def get_tw_share_url(**kwargs):
     kwargs.setdefault('hashtags', '#firefox')
@@ -89,6 +94,7 @@ class GlowView(TemplateView):
             'share_facebook_freedom': get_fb_share_url('http://mzl.la/1iugfNc'),
             'share_facebook_learning': get_fb_share_url('http://mzl.la/1egbqu6'),
             'share_facebook_control': get_fb_share_url('http://mzl.la/1kHRq1y'),
+            'count_footnote': COUNT_FOOTNOTE,
         })
         return context
 
