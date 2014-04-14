@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load staticfiles %}
 <div class="stats-panel animated fadeInUp">
   <nav class="stats-panel-nav">
     <a href="#stats-panel" class="stats-panel-tab">
@@ -88,7 +89,7 @@
       </div>
 
       <div class="chart2">
-        <img src='/static/img/shadow.png' class='shadow-seperator' />
+        <img src="{% static 'img/shadow.png' %}" class="shadow-seperator">
         <h2>{% trans 'What matters most by country?' %}</h2>
 
         <div class="country-picker">
@@ -349,7 +350,7 @@
       </div>
 
       <div class="chart3">
-        <img src='/static/img/shadow.png' class='shadow-seperator' />
+        <img src="{% static 'img/shadow.png' %}" class="shadow-seperator">
         <h2>{% trans 'How does that compare globally?' %}</h2>
         <!-- stats pane is appended here -->
         <svg></svg>
