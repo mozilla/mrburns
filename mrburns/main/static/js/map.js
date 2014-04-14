@@ -126,18 +126,24 @@ function addIssueBreakOutOverContinents(choice, choice_data) {
 }
 
 function drawMap(ht) {
-    $("#map-container")
-        .html("<svg id='map-vector' xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
+    width = $('#map-container').parent().width() + 35;
+    height = ht;
+    
+    $('#map-container')
+        .html(
+            "<svg id='map-vector' preserveAspectRatio='xMaxYMin meet' viewBox='0 0 "
+            + width + " "
+            + ht + "' "
+            + "xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
             + ht + "'></svg>");
         
     var svg = d3.select("svg");
 
-    width = $("svg#map-vector").parent().width() + 35;
-    height = ht;
+    
 
     var projection = d3.geo.equirectangular()
-        .scale((width / 640) * 100)
-        .translate([width / 2 - 20, height / 2 + 40])
+        .scale((width / 628) * 100)
+        .translate([width / 2, height / 2 + 40])
         .precision(.1);
         
     var path = d3.geo.path().projection(projection);
