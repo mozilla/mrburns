@@ -227,17 +227,19 @@ $(document).ready(function () {
     });
 
     function showShareButtons() {
+        var height = $('.choice-footer-container .modal-footer').outerHeight();
         $('.choice-footer-container')
             .bind(
                 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
                 function (event) {
                     if (event.target === event.currentTarget) {
+                        $(this).css('height', 'auto');
                         $('.choice-footnotes').css('display', 'block');
                         $('.choice-footer-content, .choice-footnotes').css('opacity', '1');
                     }
                 }
             )
-            .css('height', '80px');
+            .css('height', height);
     }
 
     // Insert YouTube video into #video modal
