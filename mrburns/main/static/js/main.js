@@ -1,4 +1,3 @@
-// vim:set et ts=4 sw=4
 console.log('Calmer than you are.');
 
 //get Master firefox version
@@ -123,6 +122,18 @@ $(document).ready(function () {
         $( 'body' ).addClass('stats-panel-open');
         openStatsPanel();
     }
+
+    function centerModal() {
+        $(this).css('display', 'block');
+        var $dialog = $(this).find('.modal-dialog');
+        var offset = Math.max(
+            // 150 pixels to approximately account for share buttons
+            ($(window).height() - $dialog.height() - 150) / 2,
+            20
+        );
+        $dialog.css('margin-top', offset);
+    }
+    $('.choice-modal').on('show.bs.modal', centerModal);
 
     $( '.stats-panel-tab' ).click(function() {
         $( 'body' ).toggleClass( "stats-panel-open" );
