@@ -1,4 +1,3 @@
-// vim:set et ts=4 sw=4
 console.log('Calmer than you are.');
 
 //get Master firefox version
@@ -91,6 +90,18 @@ function openStatsPanel() {
 }
 
 $(document).ready(function () {
+
+    function centerModal() {
+        $(this).css('display', 'block');
+        var $dialog = $(this).find('.modal-dialog');
+        var offset = Math.max(
+            // 150 pixels to approximately account for share buttons
+            ($(window).height() - $dialog.height() - 150) / 2,
+            20
+        );
+        $dialog.css('margin-top', offset);
+    }
+    $('.choice-modal').on('show.bs.modal', centerModal);
 
     var hash = window.location.hash;
 
@@ -227,17 +238,19 @@ $(document).ready(function () {
     });
 
     function showShareButtons() {
+        var height = $('.choice-footer-container .modal-footer').outerHeight();
         $('.choice-footer-container')
             .bind(
                 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
                 function (event) {
                     if (event.target === event.currentTarget) {
+                        $(this).css('height', 'auto');
                         $('.choice-footnotes').css('display', 'block');
                         $('.choice-footer-content, .choice-footnotes').css('opacity', '1');
                     }
                 }
             )
-            .css('height', '80px');
+            .css('height', height);
     }
 
     // Insert YouTube video into #video modal
