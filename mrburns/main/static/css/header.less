@@ -20,13 +20,24 @@ header {
         margin-right: 390px;
         font-weight: 300;
         .number-help {
-            display: inline-block;
-            font-size: 14px;
-            vertical-align: top;
-            position: relative;
-            top: 0em;
-            left: 0em;
-            padding: .5em;
+            &:hover,
+            &:active {
+                text-decoration: none;
+                color: #fff;
+                .fa {
+                    color: @link-hover-color;
+                }
+            }
+            .fa {
+                display: inline-block;
+                font-size: 14px;
+                vertical-align: top;
+                position: relative;
+                top: 0;
+                left: 0;
+                padding: .2em;
+                margin-right: -.3em;
+            }
         }
     }
     .actions {
@@ -85,6 +96,10 @@ header {
             color: #fff;
         }
     }
+}
+
+.share_total {
+    font-weight: bold;
 }
 
 .australis {
