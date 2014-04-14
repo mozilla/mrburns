@@ -18,3 +18,7 @@ else:
 
 
 COMPRESS_OFFLINE = not DEBUG
+
+if 'MAP_DATA_URL' not in locals():
+    # Set MAP_DATA_URL in local.py to override.
+    MAP_DATA_URL = STATIC_URL + 'data/'

@@ -47,12 +47,25 @@ INSTALLED_APPS = (
     'django_extensions',
     'django_countries',
     'django_nose',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages'
+    'mrburns.main.context_processors.glow_variables',
 )
 
 ROOT_URLCONF = 'mrburns.urls'
@@ -89,3 +102,8 @@ COMPRESS_PRECOMPILERS = (
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
 ENABLE_REDIS = False
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/latest-timestamp/$'
+
+LATEST_TIMESTAMP_URL = '/latest-timestamp/'
