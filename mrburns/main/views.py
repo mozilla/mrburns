@@ -24,7 +24,7 @@ TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
 COUNT_FOOTNOTE = (
     '<a href="#number-modal" class="number-help" '
-    'data-toggle="modal" title="{{ title }}">'
+    'data-toggle="modal" title="{title}">'
     '<span class="share_total"></span>'
     '<i class="fa fa-question-circle"></i></a>').format(
         title = _('What does this number mean?'))
