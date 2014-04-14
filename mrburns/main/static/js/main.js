@@ -94,17 +94,143 @@ function openStatsPanel() {
 
 $(document).ready(function () {
 
-    function centerModal() {
-        $(this).css('display', 'block');
-        var $dialog = $(this).find('.modal-dialog');
-        var offset = Math.max(
-            // 150 pixels to approximately account for share buttons
-            ($(window).height() - $dialog.height() - 150) / 2,
-            20
-        );
-        $dialog.css('margin-top', offset);
+    var $choice_modal = $('.choice-modal');
+    var $choices = $('.choices .btn');
+    var events = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
+
+    $('.choice-footer-container').on(
+        events,
+        function (event) {
+            if (event.target === event.currentTarget) {
+                var state = $(this).data('state');
+                if (state === 'opening-height') {
+                    $(this).data('state', '');
+                    $('.choice-footnotes').css('display', 'block');
+                    $('.choice-footer-content, .choice-footnotes')
+                        .data('state', 'opening-opacity')
+                        .css('opacity', '1');
+                }
+            }
+        }
+    );
+
+    $('.choice-footnotes').on(
+        events,
+        function (event) {
+            if (event.target === event.currentTarget) {
+                var state = $(this).data('state');
+                if (state === 'closing-opacity') {
+                    $(this).data('state', '').css('display', 'none');
+                }
+            }
+        }
+    );
+
+    $('.choice-footer-content').on(
+        events,
+        function (event) {
+            if (event.target === event.currentTarget) {
+                var state = $(this).data('state');
+                if (state === 'closing-opacity') {
+                    $('.choice-footer-container')
+                        .data('state', 'closing-height')
+                        .css('height', 0);
+                }
+            }
+        }
+    );
+
+    $choice_modal.find('.choice-body-container').on(
+        events,
+        function () {
+            var $body = $(this);
+            if (event.target === event.currentTarget) {
+                var state = $body.data('state');
+                if (state === 'opening-opacity-out') {
+                    console.log('dialog body opacity finished, sapping content and setting height');
+                    $('.choices').removeClass('in-progress');
+                    $choices.each(function(i) {
+                        $(this).removeClass('selected');
+                    });
+
+                    var from_height = $body.height();
+
+                    // TODO: we need to ignore this transition
+                    $body.css('height', from_height);
+
+                    $choice_modal.addClass('choice-modal-interstitial');
+
+                    var to_height = $body.find('.modal-body').outerHeight();
+
+                    setTimeout(function() {
+                        // TODO: this gets triggered on initial height event
+                        $body.data('state', 'opening-height');
+                        $body.css('height', to_height);
+                    }, 0);
+                } else if (state === 'opening-height') {
+                    $body.data('state', 'opening-opacity-in').css('opacity', 1);
+                } else if (state === 'opening-opacity-in') {
+                    $body.data('state', '');
+                }
+            }
+        }
+    );
+
+    function showShareButtons() {
+        var height = $('.choice-footer-container .modal-footer').outerHeight();
+        $('.choice-footer-container').data('state', 'opening-height').height(height);
     }
-    $('.choice-modal').on('show.bs.modal', centerModal);
+
+    function hideShareButtons() {
+        $('.choice-footnotes, .choice-footer-content')
+            .data('state', 'closing-opacity')
+            .css('opacity', 0);
+    }
+
+
+    function openInterstitialModal(choice) {
+        hideShareButtons();
+
+        $choice_modal.find('.choice-body-container')
+            .data('state', 'opening-opacity-out')
+            .css('opacity', 0);
+
+        $choices.each(function(i) {
+            $choice_modal.removeClass('interstitial-modal-' + $(this).data('choice'));
+        });
+
+        if (choice) {
+            $choice_modal.addClass('interstitial-modal-' + choice);
+        }
+    }
+
+    function handleChoiceModalOpen() {
+        var $choice_modal = $(this);
+
+        // remove any selection
+        $choices.each(function(i) {
+            $choice_modal.removeClass('interstitial-modal-' + $(this).data('choice'));
+        });
+
+        // make sure we're on the first page
+        $choice_modal.removeClass('choice-modal-interstitial')
+        $choice_modal.find('.choice-body-container').css('height', 'auto');
+
+        // center it vertically
+        $choice_modal.css('display', 'block');
+        var $dialog = $choice_modal.find('.modal-dialog');
+
+        setTimeout(function() {
+            var offset = Math.max(
+                // 150 pixels to approximately account for share buttons
+                ($(window).height() - $dialog.height() - 150) / 2,
+                20
+            );
+            $dialog.css('margin-top', offset);
+        }, 20);
+    }
+
+    $choice_modal.on('show.bs.modal', handleChoiceModalOpen);
 
     var hash = window.location.hash;
 
@@ -116,7 +242,7 @@ $(document).ready(function () {
 
         // if we're on australis and there's no hash tag, show the choice modal
         if (hash.indexOf("#") === -1) {
-            $('#choice-modal').modal();
+            $choice_modal.modal();
         }
     } else {
         $('html').addClass('non-australis');
@@ -124,7 +250,7 @@ $(document).ready(function () {
 
     if (hash.indexOf("choice") != -1) {
         // if #choice is in the URL, show the choice modal
-        $( '#choice-modal' ).modal();
+        $choice_modal.modal();
     } else if (hash.indexOf("video") != -1) {
         // if #video is in the URL, show the video modal
         $( '#video-modal' ).modal();
@@ -145,7 +271,7 @@ $(document).ready(function () {
 
     // turn on fading for choice modal after initial load so it fades
     // on subsequent open/closes, but not the first time
-    $('#choice-modal').addClass('fade');
+    $choice_modal.addClass('fade');
 
     // "Share the map" popopver
     $('.popover-markup > .trigger').popover({
@@ -172,7 +298,6 @@ $(document).ready(function () {
         });
     });
 
-    var $choices = $('.choices .btn');
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
@@ -185,24 +310,8 @@ $(document).ready(function () {
         window.open(href, '_blank', "height=420,width=550");
     }
 
-    function openInterstitialModal(choice) {
-        $( '#choice-modal' ).modal('hide');
-
-        $interstitial_modal = $('.interstitial-modal');
-
-        $choices.each(function(i) {
-            $interstitial_modal.removeClass('interstitial-modal-' + $(this).data('choice'));
-        });
-
-        if (choice) {
-            $interstitial_modal.addClass('interstitial-modal-' + choice);
-        }
-
-        $interstitial_modal.modal('show');
-    }
-
     function shareChoice(choice) {
-        var url = $('#choice-modal').data('share-url');
+        var url = $choice_modal.data('share-url');
         if (url) {
             $.post(url, { 'issue': choice });
         }
@@ -239,22 +348,6 @@ $(document).ready(function () {
             shareChoice($selected.data('choice'));
         }
     });
-
-    function showShareButtons() {
-        var height = $('.choice-footer-container .modal-footer').outerHeight();
-        $('.choice-footer-container')
-            .bind(
-                'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
-                function (event) {
-                    if (event.target === event.currentTarget) {
-                        $(this).css('height', 'auto');
-                        $('.choice-footnotes').css('display', 'block');
-                        $('.choice-footer-content, .choice-footnotes').css('opacity', '1');
-                    }
-                }
-            )
-            .css('height', height);
-    }
 
     // Insert YouTube video into #video modal
     function insertVideo(autoplay) {
