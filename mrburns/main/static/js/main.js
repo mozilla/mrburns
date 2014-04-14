@@ -163,6 +163,7 @@ $(document).ready(function () {
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
+        $('.choices').addClass('in-progress');
         showShareButtons();
     });
 

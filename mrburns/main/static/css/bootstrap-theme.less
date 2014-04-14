@@ -66,7 +66,11 @@
 .btn {
     min-height: 2.9em;
     border-radius: 25px;
-    .transition(@transitionIn);
+    .transition(@transitionOut);
+    &:hover,
+    &:focus {
+        .transition(@transitionIn);
+    }
 }
 
 .btn.btn-primary {
