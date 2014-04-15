@@ -1,86 +1,89 @@
 {% load i18n %}
-<div class="choices-module visible-xs">
-  <p>{{ _('I want a Web that:') }}</p>
-  <ul class="choices">
-    <li class="choice-privacy">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_privacy }}"
-          data-facebook="{{ share_facebook_privacy }}"
-          data-choice="privacy">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="choice-title"><span>{{ _('Safeguards privacy') }}</span></span>
-      </button>
-    </li>
-    <li class="choice-opportunity">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_opportunity }}"
-          data-facebook="{{ share_facebook_opportunity }}"
-          data-choice="opportunity">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="choice-title"><span>{{ _('Creates opportunity') }}</span></span>
-      </button>
-    </li>
-    <li class="choice-access">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_access }}"
-          data-facebook="{{ share_facebook_access }}"
-          data-choice="access">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="choice-title"><span>{{ _('Is available to all') }}</span></span>
-      </button>
-    </li>
-    <li class="choice-freedom">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_freedom }}"
-          data-facebook="{{ share_facebook_freedom }}"
-          data-choice="freedom">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
-        </span>
-      <span class="choice-title"><span>{{ _('Promotes freedom') }}</span></span>
-      </button>
-    </li>
-    <li class="choice-learning">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_learning }}"
-          data-facebook="{{ share_facebook_learning }}"
-          data-choice="learning">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="choice-title"><span>{{ _('Inspires learning') }}</span></span>
-      </button>
-    </li>
-    <li class="choice-control">
-      <button type="button"
-          class="btn btn-default"
-          data-twitter="{{ share_twitter_control }}"
-          data-facebook="{{ share_facebook_control }}"
-          data-choice="control">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="choice-title"><span>{{ _('Puts me in control') }}</span></span>
-      </button>
-    </li>
-  </ul>
+<div class="choices-mobile visible-xs">
+
+  <div class="choices-wrapper">
+    <p>{{ _('I want a Web that:') }}</p>
+    <ul class="choices">
+      <li class="choice-privacy">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_privacy }}"
+            data-facebook="{{ share_facebook_privacy }}"
+            data-choice="privacy">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Safeguards privacy') }}</span></span>
+        </button>
+      </li>
+      <li class="choice-opportunity">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_opportunity }}"
+            data-facebook="{{ share_facebook_opportunity }}"
+            data-choice="opportunity">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Creates opportunity') }}</span></span>
+        </button>
+      </li>
+      <li class="choice-access">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_access }}"
+            data-facebook="{{ share_facebook_access }}"
+            data-choice="access">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Is available to all') }}</span></span>
+        </button>
+      </li>
+      <li class="choice-freedom">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_freedom }}"
+            data-facebook="{{ share_facebook_freedom }}"
+            data-choice="freedom">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
+          </span>
+        <span class="choice-title"><span>{{ _('Promotes freedom') }}</span></span>
+        </button>
+      </li>
+      <li class="choice-learning">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_learning }}"
+            data-facebook="{{ share_facebook_learning }}"
+            data-choice="learning">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Inspires learning') }}</span></span>
+        </button>
+      </li>
+      <li class="choice-control">
+        <button type="button"
+            class="btn btn-default"
+            data-twitter="{{ share_twitter_control }}"
+            data-facebook="{{ share_facebook_control }}"
+            data-choice="control">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+          </span>
+          <span class="choice-title"><span>{{ _('Puts me in control') }}</span></span>
+        </button>
+      </li>
+    </ul>
+  </div>
 
   <div class="choice-footer-container">
     <div class="modal-footer">
@@ -104,7 +107,5 @@
     </div>
     <p class="note">{{ _('When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community.') }}</p>
   </div>
-
-</div>
 
 </div>
