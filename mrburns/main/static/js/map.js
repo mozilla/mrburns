@@ -351,7 +351,7 @@ function displaySubsetOfGlows(places, projection, svg) {
     console.log("loading subchunk of glows");
     svg.selectAll(".glow")
             .data(places)
-            .enter().append("circle")
+            .enter().insert("circle", ":nth-child(7)")
                 .attr("class", "glow")
                 .attr("r", 0)
                 .style("opacity", 0.8)
