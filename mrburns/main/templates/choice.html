@@ -7,8 +7,6 @@
       <li class="choice-privacy">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_privacy }}"
-            data-facebook="{{ share_facebook_privacy }}"
             data-choice="privacy">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -20,8 +18,6 @@
       <li class="choice-opportunity">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_opportunity }}"
-            data-facebook="{{ share_facebook_opportunity }}"
             data-choice="opportunity">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -33,8 +29,6 @@
       <li class="choice-access">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_access }}"
-            data-facebook="{{ share_facebook_access }}"
             data-choice="access">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -46,8 +40,6 @@
       <li class="choice-freedom">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_freedom }}"
-            data-facebook="{{ share_facebook_freedom }}"
             data-choice="freedom">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -59,8 +51,6 @@
       <li class="choice-learning">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_learning }}"
-            data-facebook="{{ share_facebook_learning }}"
             data-choice="learning">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -72,8 +62,6 @@
       <li class="choice-control">
         <button type="button"
             class="btn btn-default"
-            data-twitter="{{ share_twitter_control }}"
-            data-facebook="{{ share_facebook_control }}"
             data-choice="control">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -83,29 +71,7 @@
         </button>
       </li>
     </ul>
-  </div>
-
-  <div class="choice-footer-container">
-    <div class="modal-footer">
-      <div class="choice-footer-content">
-        <span class="title">{{ _('Share your Web on:') }}</span>
-        <button type="button" class="btn btn-primary share-facebook">
-          <i class="fa fa-facebook"></i>
-          <span class="title">{{ _('Facebook') }}</span>
-        </button>
-        <button type="button" class="btn btn-primary share-twitter">
-          <i class="fa fa-twitter"></i>
-          <span class="title">{{ _('Twitter') }}</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="choice-footnotes">
-    <div class="link"><a href="#" class="share-local">
-      {% blocktrans with site='webwewant.mozilla.org' %}Share only on {{ site }}{% endblocktrans %}</a>
-    </div>
-    <p class="note">{{ _('When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community.') }}</p>
+    <div class="choice-footnotes">{{ _('When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community.') }}</div>
   </div>
 
 </div>

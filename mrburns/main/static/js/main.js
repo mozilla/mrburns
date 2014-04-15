@@ -127,13 +127,11 @@ $(document).ready(function () {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
-            $('.choice-footer-container').appendTo($('#choice-modal .modal-content'));
-            $('.choice-footnotes').appendTo($('#choice-modal .modal-dialog'));
+            showGlows();
         } else {
+            hideGlows();
             $choices_mobile = $('.choices-mobile');
             $('.choices-wrapper').prependTo($choices_mobile);
-            $('.choice-footer-container').appendTo($choices_mobile);
-            $('.choice-footnotes').appendTo($choices_mobile);
         }
     }
 
@@ -166,48 +164,6 @@ $(document).ready(function () {
 
         return null;
     })();
-
-    $('.choice-footer-container').on(
-        events,
-        function (event) {
-            if (event.target === event.currentTarget) {
-                var state = $(this).data('state');
-                if (state === 'opening-height') {
-                    $(this).data('state', '');
-                    $('.choice-footnotes').css('display', 'block');
-                    $('.choice-footer-content, .choice-footnotes')
-                        .data('state', 'opening-opacity')
-                        .css('opacity', 1);
-                }
-            }
-        }
-    );
-
-    $('.choice-footnotes').on(
-        events,
-        function (event) {
-            if (event.target === event.currentTarget) {
-                var state = $(this).data('state');
-                if (state === 'closing-opacity') {
-                    $(this).data('state', '').css('display', 'none');
-                }
-            }
-        }
-    );
-
-    $('.choice-footer-content').on(
-        events,
-        function (event) {
-            if (event.target === event.currentTarget) {
-                var state = $(this).data('state');
-                if (state === 'closing-opacity') {
-                    $('.choice-footer-container')
-                        .data('state', 'closing-height')
-                        .css('height', 0);
-                }
-            }
-        }
-    );
 
     $choice_modal.find('.choice-body-container').on(
         events,
@@ -262,21 +218,7 @@ $(document).ready(function () {
         }
     );
 
-    function showShareButtons() {
-        var height = $('.choice-footer-container .modal-footer').outerHeight();
-        $('.choice-footer-container').data('state', 'opening-height').height(height);
-    }
-
-    function hideShareButtons() {
-        $('.choice-footnotes, .choice-footer-content')
-            .data('state', 'closing-opacity')
-            .css('opacity', 0);
-    }
-
-
     function openInterstitialModal(choice) {
-        hideShareButtons();
-
         $choice_modal.find('.choice-body-container')
             .data('state', 'opening-opacity-out')
             .css('opacity', 0);
@@ -308,8 +250,7 @@ $(document).ready(function () {
 
         setTimeout(function() {
             var offset = Math.max(
-                // 150 pixels to approximately account for share buttons
-                ($(window).height() - $dialog.height() - 150) / 2,
+                ($(window).height() - $dialog.height()) / 2,
                 20
             );
             $dialog.css('margin-top', offset);
@@ -384,13 +325,6 @@ $(document).ready(function () {
         });
     });
 
-    $choices.click(function() {
-        $choices.removeClass('selected');
-        $(this).addClass('selected');
-        $('.choices').addClass('in-progress');
-        showShareButtons();
-    });
-
     function openShareWindow(href) {
         $('.popover-markup  .trigger').popover('hide');
         window.open(href, '_blank', "height=420,width=550");
@@ -403,36 +337,18 @@ $(document).ready(function () {
         }
     }
 
+    $choices.click(function() {
+        $choices.removeClass('selected');
+        $(this).addClass('selected');
+        $('.choices').addClass('in-progress');
+        openInterstitialModal($(this).data('choice'));
+        shareChoice($(this).data('choice'));
+    });
+
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
         openShareWindow(this.href);
-    });
-
-    $('.modal-footer .share-twitter').click(function(e) {
-        var $selected = $('.choices .selected');
-        if ($selected.length) {
-            openShareWindow($selected.data('twitter'));
-            openInterstitialModal($selected.data('choice'));
-            shareChoice($selected.data('choice'));
-        }
-    });
-
-    $('.modal-footer .share-facebook').click(function(e) {
-        var $selected = $('.choices .selected');
-        if ($selected.length) {
-            openShareWindow($selected.data('facebook'));
-            openInterstitialModal($selected.data('choice'));
-            shareChoice($selected.data('choice'));
-        }
-    });
-
-    $('.choice-footnotes .share-local').click(function(e) {
-        var $selected = $('.choices .selected');
-        if ($selected.length) {
-            openInterstitialModal($selected.data('choice'));
-            shareChoice($selected.data('choice'));
-        }
     });
 
     // Insert YouTube video into #video modal
