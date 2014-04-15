@@ -126,13 +126,9 @@ $(document).ready(function () {
     function setMode(mode) {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
-            $('.choices-module')
-                .appendTo($('#choice-modal-choice-page'))
-                .removeClass('visible-xs');
+            $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
         } else {
-            $('.choices-module')
-                .prependTo($('.wrapper'))
-                .addClass('visible-xs');
+            $('.choices-wrapper').prependTo($('.choices-mobile'));
         }
     }
 
