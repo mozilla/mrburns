@@ -125,6 +125,15 @@ $(document).ready(function () {
 
     function setMode(mode) {
         console.log('setting mode to ', mode);
+        if (mode === 'desktop') {
+            $('.choices-module')
+                .appendTo($('#choice-modal-choice-page'))
+                .removeClass('visible-xs');
+        } else {
+            $('.choices-module')
+                .prependTo($('.wrapper'))
+                .addClass('visible-xs');
+        }
     }
 
     if (hasMediaQueries) {
