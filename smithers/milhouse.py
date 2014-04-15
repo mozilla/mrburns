@@ -85,6 +85,7 @@ def get_data_for_timestamp(timestamp):
     issue_countries = get_issue_dict()
     data = {
         'map_total': int(redis.get(rkeys.MAP_TOTAL) or 0),
+        'map_previous_total': int(redis.get(rkeys.MAP_TOTAL_SNAPSHOT) or 0),
         'map_geo': [],
         'share_total': int(redis.get(rkeys.SHARE_TOTAL) or 0),
         'continent_issues': {},
@@ -92,6 +93,7 @@ def get_data_for_timestamp(timestamp):
         'country_issues': {},
         'issue_countries': issue_countries,
     }
+    redis.set(rkeys.MAP_TOTAL_SNAPSHOT, data['map_total'])
     map_geo_key = rkeys.MAP_GEO.format(timestamp)
     geo_data = redis.hgetall(map_geo_key)
     for latlon, count in geo_data.iteritems():

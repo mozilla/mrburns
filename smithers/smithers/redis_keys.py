@@ -7,6 +7,9 @@ IPLOGS = getenv('REDIS_KEY_IPLOGS', 'geoip')
 # integer to increment
 MAP_TOTAL = 'map:total'
 
+# holds the previously used total
+MAP_TOTAL_SNAPSHOT = 'map:total:snap'
+
 # hash with keys == 'lat:lon', values == count, per minute
 MAP_GEO = 'map:geo:{}'
 
