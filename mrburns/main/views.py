@@ -28,7 +28,7 @@ COUNT_FOOTNOTE = (u'<a href="#number-modal" class="number-help" '
 
 
 def get_tw_share_url(**kwargs):
-    kwargs.setdefault('hashtags', '#firefox')
+    kwargs.setdefault('hashtags', 'firefox')
     kwargs.setdefault('dnt', 'true')
     text = kwargs.get('text')
     if text:
