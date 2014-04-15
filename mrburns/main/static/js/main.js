@@ -133,7 +133,6 @@ $(document).ready(function () {
         function (event) {
             if (event.target === event.currentTarget) {
                 var state = $(this).data('state');
-                console.log('choice-footer-container animation ended with ' + state);
                 if (state === 'opening-height') {
                     $(this).data('state', '');
                     $('.choice-footnotes').css('display', 'block');
@@ -150,7 +149,6 @@ $(document).ready(function () {
         function (event) {
             if (event.target === event.currentTarget) {
                 var state = $(this).data('state');
-                console.log('choice-footnotes animation ended with ' + state);
                 if (state === 'closing-opacity') {
                     $(this).data('state', '').css('display', 'none');
                 }
@@ -163,7 +161,6 @@ $(document).ready(function () {
         function (event) {
             if (event.target === event.currentTarget) {
                 var state = $(this).data('state');
-                console.log('choice-footer-content animation ended with ' + state);
                 if (state === 'closing-opacity') {
                     $('.choice-footer-container')
                         .data('state', 'closing-height')
@@ -179,7 +176,6 @@ $(document).ready(function () {
             var $body = $(this);
             if (event.target === event.currentTarget) {
                 var state = $body.data('state');
-                console.log('choice-body-container animation ended with ' + state);
                 if (state === 'opening-opacity-out') {
                     $('.choices').removeClass('in-progress');
                     $choices.each(function(i) {
