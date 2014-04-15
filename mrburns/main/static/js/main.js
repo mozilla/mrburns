@@ -127,8 +127,13 @@ $(document).ready(function () {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
+            $('.choice-footer-container').appendTo($('#choice-modal .modal-content'));
+            $('.choice-footnotes').appendTo($('#choice-modal .modal-dialog'));
         } else {
-            $('.choices-wrapper').prependTo($('.choices-mobile'));
+            $choices_mobile = $('.choices-mobile');
+            $('.choices-wrapper').prependTo($choices_mobile);
+            $('.choice-footer-container').appendTo($choices_mobile);
+            $('.choice-footnotes').appendTo($choices_mobile);
         }
     }
 
