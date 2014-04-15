@@ -21,10 +21,10 @@ else:
 
 TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
-COUNT_FOOTNOTE = ('<a href="#number-modal" class="number-help" '
-                  'data-toggle="modal" title="{}">'
-                  '<span class="share_total"></span>'
-                  '<i class="fa fa-question-circle"></i></a>')
+COUNT_FOOTNOTE = (u'<a href="#number-modal" class="number-help" '
+                  u'data-toggle="modal" title="{}">'
+                  u'<span class="share_total"></span>'
+                  u'<i class="fa fa-question-circle"></i></a>')
 
 
 def get_tw_share_url(**kwargs):
