@@ -25,10 +25,6 @@ var icon = new Object();
     icon['control'] = 'fa-cogs';
 
 $(document).ready(function () {
-    $('#country').select2({
-        width: 200
-    });
-    
     //set rhs
     $('.what-is-mozilla-doing-about-it .seperator')
         .css('background-color', color[current_choice]);
@@ -98,6 +94,14 @@ function drawCharts() {
 
     d3.json(getJsonDataUrl(), function(json_data) {
         data = json_data;
+        
+        //disable menu items for which we don't have data
+        $.each($('#country option'), function(i, d) {
+            if(eval('data.country_issues.' + d.value) == undefined) {
+                $(d).remove();
+            }
+        });     
+        $('#country').select2({ width: 200 });
         
         //add donut prose, all of them, to the html page
         $.each(json_data.country_issues.GLOBAL, function(i, d) {
