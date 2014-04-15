@@ -5,7 +5,7 @@ var width,
     showing_regions = false,
     showing_glows = true;
 
-var max_simultaneous_glows = 600,
+var max_simultaneous_glows = 500,
     glow_tick = 60000; //in ms
 
 var continent_centers;
@@ -46,7 +46,6 @@ function assignEventListeners() {
         showing_regions = !showing_regions;
         
         var top_issues = new Object();
-        
         d3.selectAll(".continent").each(function(d, i) {
             var country_attribs = data.continent_issues[d.name];
             var top_issue_for_this_continent = d3.entries(country_attribs).sort()[0].key;
@@ -179,14 +178,8 @@ function drawMap(ht) {
             return "continent " + d.name.replace(/ /g, "_");
         }).attr("d", path).attr("id", function(d, i) {
             return d.id;
-        }).attr("title", function(d, i) {
-            return d.name;
         });
 
-        continent.on("mouseenter", function(d, i) {
-            console.log(d.name);
-        });
-        
         $.each($('.continent'), function(i, d) {
             var continent_code = $(d).attr('class').split(' ')[1].toLowerCase();
             
@@ -292,9 +285,23 @@ function addTopIssueLabels(top_issues) {
     $(".continent-label").show();
 }
 
+function animateCounterContinuous(last_count, current_count) {
+    //console.log(last_count, current_count);
+    $({the_value: last_count}) //from
+        .animate({the_value: current_count}, { //to
+            duration: glow_tick,
+            easing: 'swing',
+            step: function() {
+                $(".share_total")
+                    .html(addCommas(Math.round(this.the_value)));
+            }
+    });
+}
+
 function populateGlowsFromLastTick(projection, svg) {
     d3.json(getJsonDataUrl(), function(places) {
-        $(".share_total").html(addCommas(places.share_total));
+        //animate the counter
+        animateCounterContinuous(places.map_previous_total, places.map_total);
         
         //split map_geos by 6 for use below, we don't want to overwhelm the browser, and
         //so regardless of how many we actually have, they're capped by 
