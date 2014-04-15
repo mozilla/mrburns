@@ -6,9 +6,9 @@ from .base import *  # noqa
 
 
 # set this to something unique
+# use ./manage.py generate_secret_key
 SECRET_KEY = 'it is a sekrit'
 DEBUG = TEMPLATE_DEBUG = True
 
 # uncomment to use JSON data from another source
 #MAP_DATA_URL = 'https://webwewant.allizom.org/static/data/'
-#LATEST_TIMESTAMP_URL = 'https://webwewant.allizom.org/latest-timestamp/'

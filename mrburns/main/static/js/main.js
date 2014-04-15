@@ -1,5 +1,3 @@
-console.log('Calmer than you are.');
-
 //get Master firefox version
 function getFirefoxMasterVersion(userAgent) {
     var version = 0;
@@ -37,37 +35,50 @@ function isAustralis() {
     }
 }
 
-Date.prototype.addHours= function(h){
-    this.setHours(this.getHours()+h);
-    return this;
+var _currentDataTimestamp = 0;
+
+// TODO: make this better and less hacky
+// should not be in global scope, nor should
+// most of this file.
+window.setInterval(function(){
+    // bump forward 1 minute
+    if (_currentDataTimestamp) {
+        // only move forward if it's been set
+        _currentDataTimestamp += 60;
+    }
+}, 60000);  // 60s
+
+function getDevTimestamp() {
+    // TODO REMOVE ME
+    // confirmed manually that this is equal to
+    // smithers.utils.get_epoch_minute()
+    var unixtime = (new Date()).getTime() / 1000  // seconds since epoch
+    return Math.floor(unixtime / 60) * 60  // round down to minute
 }
 
 function getJsonDataUrl() {
     var $body = $('body');
     var staticDataUrl = $body.data('staticDataUrl');
-    var latestTimestampUrl = $body.data('latestTimestampUrl');
 
-    //TODO get the timestamp this way once deployed on dev
-    // TODO make everything async so this will work
-    /**
-     * NOTE: data.timestamp will be 0 when redis is
-     *       off, so this can be used to switch to the
-     *       "2 minutes ago" method. Alternately you
-     *       can set the LATEST_TIMESTAMP_URL setting
-     *       to the dev instance, and this will work.
-    $.getJSON(latestTimestampUrl).done(function(data){
-        rounded_timestamp = data.timestamp;
-    });
-    */
+    if (!_currentDataTimestamp) {
+        // NOTE: will be 0 when redis is off or returns nothing
+        var latestTimestamp = $body.data('timestamp'); // an int
 
-    var coeff = 1000 * 60;
-    var date = new Date().addHours(7);
+        if (!latestTimestamp) {
+            // TODO REMOVE ME
+            // guess at the latest timestamp (for dev)
+            console.log('USING DEV TIMESTAMP!');
+            // take off 3 extra minutes for fewer 404s
+            latestTimestamp = getDevTimestamp() - 180;
+        }
 
-    //get data file from 2 mins ago
-    rounded_timestamp = new Date(Math.round(date.getTime() / coeff) * 60).getTime() - 120;
-    console.log(staticDataUrl + 'stats_' + rounded_timestamp + '.json');
-    
-    return staticDataUrl + 'stats_' + rounded_timestamp + '.json';
+        // two minutes ago
+        _currentDataTimestamp = latestTimestamp - 120;
+    }
+    console.log('Current timestamp', _currentDataTimestamp);
+    var url = staticDataUrl + 'stats_' + _currentDataTimestamp + '.json';
+    console.log(url);
+    return url;
 }
 
 var $stats_panel_tab_title = $('.stats-panel-tab .title');

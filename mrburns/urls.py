@@ -4,17 +4,16 @@
 
 from django.conf.urls import patterns, url
 from django.conf.urls.i18n import i18n_patterns
+from django.views.decorators.cache import cache_page
 
-from mrburns.main.views import (GlowView, LatestTimestampView,
-                                ShareView, StringsView)
+from mrburns.main.views import GlowView, ShareView, StringsView
 
 
 urlpatterns = i18n_patterns('',
-    url('^$', GlowView.as_view(), name='glow.home'),
+    url('^$', cache_page(60)(GlowView.as_view()), name='glow.home'),
     url('^l10n_strings/$', StringsView.as_view(), name='glow.strings')
 )
 
 urlpatterns += patterns('',
     url('^share/$', ShareView.as_view(), name='glow.share'),
-    url('^latest-timestamp/$', LatestTimestampView.as_view(), name='glow.latest')
 )

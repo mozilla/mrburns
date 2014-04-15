@@ -2,7 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import json
 from urllib import urlencode
 
 from django.conf import settings
@@ -45,8 +44,13 @@ class GlowView(TemplateView):
     template_name = 'base.html'
 
     def get_context_data(self, **kwargs):
+        if redis:
+            timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
+        else:
+            timestamp = 0
         context = super(GlowView, self).get_context_data(**kwargs)
         context.update({
+            'data_timestamp': timestamp,
             'share_map_twitter': get_tw_share_url(
                 url='http://mzl.la/1g5k6OK',
                 text=_('Join millions of Firefox users around the world '
@@ -117,18 +121,3 @@ class ShareView(View):
 class StringsView(TemplateView):
     content_type = 'text/plain'
     template_name = 'strings.html'
-
-
-class LatestTimestampView(View):
-    def get(self, request):
-        if redis:
-            timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
-        else:
-            timestamp = 0
-
-        response_data = {
-            'status': 'OK',
-            'timestamp': timestamp,
-        }
-        return HttpResponse(json.dumps(response_data),
-                            content_type='application/json')
