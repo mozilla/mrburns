@@ -2,10 +2,6 @@
     clear: both;
 }
 
-circle {
-    fill: #28d917;
-}
-
 .continent {
     fill: rgba(0,0,0,.25);
     stroke-width: 0px;
@@ -22,6 +18,10 @@ circle {
     z-index: 6;
 }
 
+.continent-label text {
+    fill: #fff;
+}
+
 .continent-label .header {
     display: block;
     font-size: 13px;
@@ -29,17 +29,13 @@ circle {
 }
 
 .continent-for-issue-label {
-    background-color: white;
-    border-radius: 50%;
-    color: #3b3b3b;
     display: none;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: bold;
-    padding: 10px;
+    fill: #fff;
     position: absolute;
-    text-align: center;
-    z-index: 6;
+}
+
+.glow {
+    fill: #28d917;
 }
 
 .key {

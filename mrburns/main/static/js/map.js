@@ -5,8 +5,10 @@ var width,
     showing_regions = false,
     showing_glows = true;
 
-var max_simultaneous_glows = 400,
+var max_simultaneous_glows = 600,
     glow_tick = 60000; //in ms
+
+var continent_centers;
 
 $(document).ready(function() {
     assignEventListeners();
@@ -87,14 +89,6 @@ function addIssueBreakOutOverContinents(choice, choice_data) {
     $(".continent-for-issue-label").hide();
     $(".continent-label").hide();
 
-    var top_offset = 0;
-    var na_position = [width / 5, top_offset + height / 4.6],
-        sa_position = [width / 3.2, top_offset + height / 1.65],
-        af_position = [width / 1.9, top_offset + height / 2.2],
-        eu_position = [width / 1.95, top_offset + height / 4.6],
-        as_position = [width / 1.42, top_offset + height / 3.2],
-        oc_position = [width / 1.19, top_offset + height / 1.46];
-
     //remove antarctica
     choice_data = choice_data.filter(function(d) { return d.continent != "AN"; })
     
@@ -114,32 +108,51 @@ function addIssueBreakOutOverContinents(choice, choice_data) {
             .style("stroke", function() {
                 return color_issue_per_continent(d.count);
             });
-            
-        $("#" + d.continent.toLowerCase() + "-perc-for-issue")
-            .css("margin-left", eval(d.continent.toLowerCase() + "_position")[0] + "px")
-            .css("margin-top", eval(d.continent.toLowerCase() + "_position")[1] + "px")
-            .css("color", color[choice])
-            .html((d.count * 100).toFixed(1) + "%");
+                    
+        d3.select('#' + d.continent.toLowerCase() + '-perc-for-issue text')
+            .text(function() {
+                return (d.count * 100).toFixed(1) + "%";
+            })
+            .style("fill", function(d, i) {
+                return color[choice];
+            })
+            .style("stroke", function(d, i) {
+                return color[choice];
+            });
             
         $(".continent-for-issue-label").show();
     });
+}
+
+function getContinentPositions() {
+    width = $('#map-container').parent().width() + 35;
+
+    var pos = new Object();
+    pos['na'] = [width / 4.6, height / 4.8];
+    pos['sa'] = [width / 3.2, height / 1.65];
+    pos['af'] = [width / 1.85, height / 2.2];
+    pos['eu'] = [width / 1.95, height / 6.7];
+    pos['as'] = [width / 1.36, height / 3.2];
+    pos['oc'] = [width / 1.19, height / 1.46];
+    
+    return pos;
 }
 
 function drawMap(ht) {
     width = $('#map-container').parent().width() + 35;
     height = ht;
     
+    continent_centers = getContinentPositions();
+    
     $('#map-container')
         .html(
-            "<svg id='map-vector' preserveAspectRatio='xMaxYMin meet' viewBox='0 0 "
-            + width + " "
-            + ht + "' "
+            "<svg id='map-vector' preserveAspectRatio='xMidYMin meet' viewBox='0 0 "
+            + Math.floor(width) + " "
+            + Math.floor(ht) + "' "
             + "xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
             + ht + "'></svg>");
         
     var svg = d3.select("svg");
-
-    
 
     var projection = d3.geo.equirectangular()
         .scale((width / 628) * 100)
@@ -149,9 +162,6 @@ function drawMap(ht) {
     var path = d3.geo.path().projection(projection);
 
     d3.json("/static/data/world-continents-110m.json", function(error, world) {
-        console.log(world);
-        console.log(topojson);
-
         var countries = topojson.feature(world, world.objects.countries);
 
         //http://geojson.org/geojson-spec.html#introduction
@@ -176,6 +186,58 @@ function drawMap(ht) {
         continent.on("mouseenter", function(d, i) {
             console.log(d.name);
         });
+        
+        $.each($('.continent'), function(i, d) {
+            var continent_code = $(d).attr('class').split(' ')[1].toLowerCase();
+            
+            var g = svg.append('g')
+                .attr('class', function() {
+                    return 'continent-for-issue-label';
+                })
+                .attr('id', function() {
+                    return continent_code + '-perc-for-issue';
+                })
+                .attr('transform', function(d) {
+                    return 'translate(' + continent_centers[continent_code][0] 
+                        + ',' 
+                        + continent_centers[continent_code][1]
+                        + ')';
+                });
+            
+            g.append('circle')
+                .attr('r', 30);
+                
+            g.append('text')
+              .attr('text-anchor', 'middle')
+              .attr('transform', 'translate(0, 6)');
+              
+              
+            //top issue
+            var g2 = svg.append('g')
+                .attr('class', function() {
+                    return 'continent-label';
+                })
+                .attr('id', function() {
+                    return continent_code + '-top-issue';
+                })
+                .attr('transform', function(d) {
+                    return 'translate(' + continent_centers[continent_code][0] 
+                        + ',' 
+                        + continent_centers[continent_code][1]
+                        + ')';
+                });
+            
+            g2.append('text')
+                .attr('class', 'header')
+                .attr('text-anchor', 'start')
+                .attr('transform', 'translate(-20, 0)')
+                .text('Top Issue');
+                
+            g2.append('text')
+                .attr('class', 'top-issue-text')
+                .attr('text-anchor', 'start')
+                .attr('transform', 'translate(-20, 18)');
+        });
 
         //add glows
         populateGlowsFromLastTick(projection, svg);
@@ -190,50 +252,42 @@ function drawMap(ht) {
 function addTopIssueLabels(top_issues) {
     $(".continent-for-issue-label").hide();
     $(".continent-label").hide();
-    
-    var top_offset = 0;
-    var na_position = [width / 5, top_offset + height / 4.6],
-        sa_position = [width / 3.2, top_offset + height / 1.65],
-        af_position = [width / 1.9, top_offset + height / 2.2],
-        eu_position = [width / 1.95, top_offset + height / 4.6],
-        as_position = [width / 1.42, top_offset + height / 3.2],
-        oc_position = [width / 1.19, top_offset + height / 1.46];
+         
+    d3.select('#na-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["NA"] 
+                + " .choice-title span").html();
+        });
         
-    $("#na-top-issue")
-        .css("margin-left", na_position[0] + "px")
-        .css("margin-top", na_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["NA"] 
-            + " .choice-title span").html());
-            
-    $("#sa-top-issue")
-        .css("margin-left", sa_position[0] + "px")
-        .css("margin-top", sa_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["SA"] 
-            + " .choice-title span").html());
-            
-    $("#af-top-issue")
-        .css("margin-left", af_position[0] + "px")
-        .css("margin-top", af_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["AF"] 
-            + " .choice-title span").html());
-            
-    $("#as-top-issue")
-        .css("margin-left", as_position[0] + "px")
-        .css("margin-top", as_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["AS"] 
-            + " .choice-title span").html());
-    
-    $("#eu-top-issue")
-        .css("margin-left", eu_position[0] + "px")
-        .css("margin-top", eu_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["EU"] 
-            + " .choice-title span").html());
-
-    $("#oc-top-issue")
-        .css("margin-left", oc_position[0] + "px")
-        .css("margin-top", oc_position[1] + "px")
-        .html("<div class='header'>Top Issue</div>" + $(".choice-" + top_issues["OC"] 
-            + " .choice-title span").html());
+    d3.select('#sa-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["SA"] 
+                + " .choice-title span").html();
+        });
+        
+    d3.select('#af-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["AF"] 
+                + " .choice-title span").html();
+        });
+        
+    d3.select('#as-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["AS"] 
+                + " .choice-title span").html();
+        });
+        
+    d3.select('#oc-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["OC"] 
+                + " .choice-title span").html();
+        });
+        
+    d3.select('#eu-top-issue .top-issue-text')
+        .text(function() {
+            return $(".choice-" + top_issues["EU"] 
+                + " .choice-title span").html();
+        });
             
     $(".continent-label").show();
 }
@@ -295,9 +349,10 @@ function populateGlowsFromLastTick(projection, svg) {
 
 function displaySubsetOfGlows(places, projection, svg) {
     console.log("loading subchunk of glows");
-    svg.selectAll(".pin")
+    svg.selectAll(".glow")
             .data(places)
             .enter().append("circle")
+                .attr("class", "glow")
                 .attr("r", 0)
                 .style("opacity", 0.8)
                 .attr("transform", function(d) {
@@ -316,18 +371,22 @@ function displaySubsetOfGlows(places, projection, svg) {
                             return randomRange(0, 10000, 0);
                     })
                     .duration(function(d, i) {
-                        return 1000; //show for 1s
+                        return 1000;
                     })
                     .attr("r", 2)
                     .transition()
-                        .duration(function(d, i) {
+                        .duration(function(d, i) {    
                             if(d.count > 30) 
                                 return glow_tick; //show for 60s
                             else
-                                return 4000;
+                                return 0;
                         })
-                        .style("opacity", 0)
-                        .remove();
+                        .transition()
+                            .duration(function(d, i) {
+                                return 3000;
+                            })
+                            .style("opacity", 0)
+                            .remove();
 }
 
 function randomRange(minVal, maxVal, floatVal) {
