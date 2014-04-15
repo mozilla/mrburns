@@ -3,8 +3,7 @@
 var width,
     height,
     showing_regions = false,
-    showing_glows = true,
-    last_count = 0;
+    showing_glows = true;
 
 var max_simultaneous_glows = 500,
     glow_tick = 60000; //in ms
@@ -301,12 +300,8 @@ function animateCounterContinuous(last_count, current_count) {
 
 function populateGlowsFromLastTick(projection, svg) {
     d3.json(getJsonDataUrl(), function(places) {
-        //artificial last_count on first load
-        if(last_count == 0)
-            last_count = places.share_total - 1000;
-            
-        animateCounterContinuous(last_count, places.share_total);
-        last_count = places.share_total;
+        //animate the counter
+        animateCounterContinuous(places.map_previous_total, places.map_total);
         
         //split map_geos by 6 for use below, we don't want to overwhelm the browser, and
         //so regardless of how many we actually have, they're capped by 
