@@ -1,3 +1,16 @@
+// Don't show complex components to mobile
+#map-container,
+.key {
+    display: none;
+}
+
+@media (min-width: @screen-sm-min) {
+    #map-container,
+    .key {
+        display: block;
+    }
+}
+
 .c {
     clear: both;
 }

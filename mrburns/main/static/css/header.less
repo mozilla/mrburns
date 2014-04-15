@@ -4,9 +4,6 @@ header {
     padding: 20px 40px;
     .transition(all .3s ease-in-out);
     h1 {
-        position: absolute;
-        top: 20px;
-        left: 40px;
         height: 75px;
         width: 200px;
         margin: 0;
@@ -16,8 +13,6 @@ header {
     h2 {
         margin-top: 10px;
         margin-bottom: 10px;
-        margin-left: 240px;
-        margin-right: 390px;
         font-weight: 300;
         .number-help {
             &:hover,
@@ -102,13 +97,23 @@ header {
     font-weight: bold;
 }
 
-.australis {
+@media (min-width: @screen-sm-min) {
     header {
+        h1 {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
         h2 {
-            margin-right: 180px;
+            margin-left: 240px;
+            margin-right: 390px;
         }
     }
+    .australis header h2 {
+        margin-right: 180px;
+    }
 }
+
 
 .non-australis {
     .btn-download {
