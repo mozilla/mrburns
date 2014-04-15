@@ -6,18 +6,24 @@ from .base import *  # noqa
 
 SERVER_ENV = os.getenv('DJANGO_SERVER_ENV')
 SECRET_KEY = os.getenv('SECRET_KEY')
-STATIC_URL = os.getenv('STATIC_URL', STATIC_URL)
 DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = [
-    'webwewant.mozilla.org',
-    'webwewant.allizom.org',
-    'glow.cdn.mozilla.net',
-    'glow-origin.cdn.mozilla.net',
     # the server's IP (for monitors)
     socket.gethostbyname(socket.gethostname()),
 ]
 
+if SERVER_ENV == 'prod':
+    ALLOWED_HOSTS.extend([
+        'webwewant.mozilla.org',
+        'glow.cdn.mozilla.net',
+        'glow-origin.cdn.mozilla.net',
+    ])
+    STATIC_URL = 'https://glow.cdn.mozilla.net/static/'
+elif SERVER_ENV == 'dev':
+    ALLOWED_HOSTS.append('webwewant.allizom.org')
+
 CACHES = {
+    # DB 1 is for the site cache
     'default': {
         'BACKEND': 'redis_cache.cache.RedisCache',
         'LOCATION': 'unix:/var/run/redis/redis.sock:1',
@@ -25,6 +31,7 @@ CACHES = {
             'PARSER_CLASS': 'redis.connection.HiredisParser',
         }
     },
+    # DB 0 is for the glow data
     'smithers': {
         'BACKEND': 'redis_cache.cache.RedisCache',
         'LOCATION': 'unix:/var/run/redis/redis.sock:0',
