@@ -6,7 +6,7 @@ var width,
     showing_glows = true,
     last_count = 0;
 
-var max_simultaneous_glows = 1000,
+var max_simultaneous_glows = 500,
     glow_tick = 60000; //in ms
 
 var continent_centers;
@@ -47,7 +47,6 @@ function assignEventListeners() {
         showing_regions = !showing_regions;
         
         var top_issues = new Object();
-        
         d3.selectAll(".continent").each(function(d, i) {
             var country_attribs = data.continent_issues[d.name];
             var top_issue_for_this_continent = d3.entries(country_attribs).sort()[0].key;
@@ -180,14 +179,8 @@ function drawMap(ht) {
             return "continent " + d.name.replace(/ /g, "_");
         }).attr("d", path).attr("id", function(d, i) {
             return d.id;
-        }).attr("title", function(d, i) {
-            return d.name;
         });
 
-        continent.on("mouseenter", function(d, i) {
-            console.log(d.name);
-        });
-        
         $.each($('.continent'), function(i, d) {
             var continent_code = $(d).attr('class').split(' ')[1].toLowerCase();
             
@@ -293,17 +286,26 @@ function addTopIssueLabels(top_issues) {
     $(".continent-label").show();
 }
 
+function animateCounterContinuous(last_count, current_count) {
+    //console.log(last_count, current_count);
+    $({the_value: last_count}) //from
+        .animate({the_value: current_count}, { //to
+            duration: glow_tick,
+            easing: 'swing',
+            step: function() {
+                $(".share_total")
+                    .html(addCommas(Math.round(this.the_value)));
+            }
+    });
+}
+
 function populateGlowsFromLastTick(projection, svg) {
     d3.json(getJsonDataUrl(), function(places) {
-        //animate total share counter
-        $({someValue: last_count}).animate({someValue: places.share_total}, {
-            duration: 3500,
-            easing:'swing',
-            step: function() {
-                $(".share_total").html(addCommas(Math.round(this.someValue)));
-            }
-        });
-        
+        //artificial last_count on first load
+        if(last_count == 0)
+            last_count = places.share_total - 1000;
+            
+        animateCounterContinuous(last_count, places.share_total);
         last_count = places.share_total;
         
         //split map_geos by 6 for use below, we don't want to overwhelm the browser, and
