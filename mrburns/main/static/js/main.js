@@ -105,6 +105,35 @@ function openStatsPanel() {
 
 $(document).ready(function () {
 
+    var hasMediaQueries = ('matchMedia' in window);
+    var mode = 'mobile';
+
+    function checkMode() {
+        var current_mode = getMode();
+        if (mode !== current_mode) {
+            mode = current_mode;
+            setMode(mode);
+        }
+    }
+
+    function getMode() {
+        if (hasMediaQueries && matchMedia('(min-width: 768px)').matches) {
+            return 'desktop';
+        }
+        return 'mobile';
+    }
+
+    function setMode(mode) {
+        console.log('setting mode to ', mode);
+    }
+
+    if (hasMediaQueries) {
+        checkMode();
+        $(window).on('resize', function () {
+            checkMode();
+        });
+    }
+
     var $choice_modal = $('.choice-modal');
     var $choices = $('.choices .btn');
     var events = 'transitionend';
