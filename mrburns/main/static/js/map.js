@@ -3,9 +3,10 @@
 var width,
     height,
     showing_regions = false,
-    showing_glows = true;
+    showing_glows = true,
+    last_count = 0;
 
-var max_simultaneous_glows = 600,
+var max_simultaneous_glows = 1000,
     glow_tick = 60000; //in ms
 
 var continent_centers;
@@ -294,7 +295,16 @@ function addTopIssueLabels(top_issues) {
 
 function populateGlowsFromLastTick(projection, svg) {
     d3.json(getJsonDataUrl(), function(places) {
-        $(".share_total").html(addCommas(places.share_total));
+        //animate total share counter
+        $({someValue: last_count}).animate({someValue: places.share_total}, {
+            duration: 3500,
+            easing:'swing',
+            step: function() {
+                $(".share_total").html(addCommas(Math.round(this.someValue)));
+            }
+        });
+        
+        last_count = places.share_total;
         
         //split map_geos by 6 for use below, we don't want to overwhelm the browser, and
         //so regardless of how many we actually have, they're capped by 
