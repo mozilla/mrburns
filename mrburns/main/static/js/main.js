@@ -107,7 +107,26 @@ $(document).ready(function () {
 
     var $choice_modal = $('.choice-modal');
     var $choices = $('.choices .btn');
-    var events = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
+    var events = 'transitionend';
+
+    var events = (function() {
+        var el = document.createElement('div');
+        var transitions = {
+            'transition': 'transitionend',
+            'OTransition': 'oTransitionEnd',
+            'MSTransition': 'msTransitionEnd',
+            'MozTransition': 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd'
+        }
+
+        for (var selector in transitions){
+            if (el.style[selector] !== undefined) {
+                return transitions[selector];
+            }
+        }
+
+        return null;
+    })();
 
     $('.choice-footer-container').on(
         events,
@@ -119,7 +138,7 @@ $(document).ready(function () {
                     $('.choice-footnotes').css('display', 'block');
                     $('.choice-footer-content, .choice-footnotes')
                         .data('state', 'opening-opacity')
-                        .css('opacity', '1');
+                        .css('opacity', 1);
                 }
             }
         }
@@ -165,17 +184,35 @@ $(document).ready(function () {
 
                     var from_height = $body.height();
 
-                    // TODO: we need to ignore this transition
-                    $body.css('height', from_height);
+                    // We need to ignore this transition for Safari. Otherwise
+                    // it will animate from height 0 to from_height.
+                    var transition = $body.css('transition');
+                    $body
+                        .css('transition', 'none')
+                        .css('height', from_height);
 
                     $choice_modal.addClass('choice-modal-interstitial');
 
                     var to_height = $body.find('.modal-body').outerHeight();
 
+                    // Hack for Safari 7. If this is not added, the CSS
+                    // transitions on the $body do not run.
+                    $choice_modal.find('.modal-dialog').css('transform', 'translate(0, 1px)');
+
+                    // Yield to allow the browser to draw at from_height
                     setTimeout(function() {
-                        // TODO: this gets triggered on initial height event
-                        $body.data('state', 'opening-height');
-                        $body.css('height', to_height);
+                        // Re-enable transitions. Yield to allow the browser
+                        // to register the transitions.
+                        $body.css('transition', transition);
+                        setTimeout(function() {
+                            $body
+                                .data('state', 'opening-height')
+                                .css('height', to_height);
+
+                            // Hack for Safari 7. If this is not added, the CSS
+                            // transitions on the $body do not run.
+                            $choice_modal.find('.modal-dialog').css('transform', 'translate(0, 0)');
+                        }, 0);
                     }, 0);
                 } else if (state === 'opening-height') {
                     $body.data('state', 'opening-opacity-in').css('opacity', 1);
