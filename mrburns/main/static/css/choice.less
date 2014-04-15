@@ -1,8 +1,16 @@
 @import "mixins.less";
 
 
-.choices-mobile .choices-wrapper {
-    padding: 0 20px;
+.choices-mobile {
+    .choices-wrapper {
+        padding: 0 20px;
+    }
+    .choices.in-progress li .btn {
+        display: none;
+        &.selected {
+            display: block;
+        }
+    }
 }
 
 .choice-footer-container {
@@ -74,18 +82,6 @@
     }
 }
 
-.choices.in-progress li .btn {
-    opacity: .6;
-    .scale(.95,.95);
-    &.selected {
-        opacity: 1;
-        .scale(1.05,1.05);
-    }
-    &:hover,
-    &:active {
-        opacity: 1;
-    }
-}
 
 .choice-footnotes {
     display: none;

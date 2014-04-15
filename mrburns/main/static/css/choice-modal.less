@@ -31,6 +31,19 @@
     );
 }
 
+.choices.in-progress li .btn {
+    opacity: .6;
+    .scale(.95,.95);
+    &.selected {
+        opacity: 1;
+        .scale(1.05,1.05);
+    }
+    &:hover,
+    &:active {
+        opacity: 1;
+    }
+}
+
 .choice-modal .modal-footer {
     position: relative;
     text-align: center;
