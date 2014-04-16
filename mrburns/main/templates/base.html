@@ -39,22 +39,23 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
       {% blocktrans with count=count_footnote|safe %}
         Join {{ count }} people shaping the future of the Web{% endblocktrans %}
     </h2>
-    <div class="actions hidden-xs">
-      <a href="#video-modal" class="video-panel-link" data-toggle="modal">
-        <i class="fa fa-play"></i>
-        <span class="title">{{ _('The Web we want') }}</span>
-      </a>
-      <a class="btn btn-download" href="http://www.mozilla.org/firefox/new/#download-fx">
+    <ul class="actions hidden-xs list-unstyled">
+      <li><a class="btn btn-download" href="https://www.mozilla.org/firefox/new/#download-fx">
         <span class="title">{{ _('Get Firefox') }}</span>
         <span class="sub-title">{{ _('Free Download') }}</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
 
     <div class="btn-group mobile-menu visible-xs">
       <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bars"></i>
       </button>
       <ul class="dropdown-menu pull-right" role="menu">
+        <li class="video-panel-link"><a href="#video-modal" data-toggle="modal">
+          <i class="fa fa-play"></i>
+          <span class="title">{{ _('The Web we want') }}</span>
+        </a></li>
+        <li><a href="https://www.mozilla.org/firefox/new/">{{ _('Get Firefox') }}</a></li>
         <li class="divider"></li>
         <li class="privacy-link footer-link"><a href="https://www.mozilla.org/privacy/policies/websites/">
           {{ _('Privacy') }}
@@ -74,7 +75,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   {% include 'stats-panel.html' %}
 
   <footer class="hidden-xs">
-    <ul></ul>
+    <ul style="list-unstyled"></ul>
   </footer>
 
 </div>
@@ -86,6 +87,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 {% compress js %}
   <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script src="{% static 'js/libs/jquery.fitvids.js' %}" type="text/javascript" charset="utf-8"></script>
   <script src="{% static 'js/libs/d3.v3.min.js' %}" type="text/javascript" charset="utf-8"></script>
   <script src="{% static 'js/libs/topojson.v1.min.js' %}" type="text/javascript" charset="utf-8"></script>
   <script src="{% static 'js/libs/bootstrap.js' %}" type="text/javascript" charset="utf-8"></script>

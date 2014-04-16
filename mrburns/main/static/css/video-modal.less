@@ -1,9 +1,6 @@
 @import "mixins.less";
 
 .video-modal {
-    .modal-dialog {
-        width: 853px;
-    }
     .modal-header {
         min-height: 0;
         height: 0;
@@ -26,5 +23,20 @@
         iframe {
             display: block;
         }
+    }
+    .modal-content {
+        position: relative;
+        top: 50px;
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+   .video-modal {
+        .modal-dialog {
+            width: 853px;
+        }
+            .modal-content {
+                top: auto;
+            }
     }
 }

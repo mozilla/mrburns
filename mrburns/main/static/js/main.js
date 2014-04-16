@@ -129,12 +129,14 @@ $(document).ready(function () {
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
             $('.footer-link').appendTo($('footer ul'));
             $('.mobile-menu').removeClass('open');
+            $('.video-panel-link').prependTo($('.actions'));
             showGlows();
         } else {
             hideGlows();
             $choices_mobile = $('.choices-mobile');
             $('.choices-wrapper').prependTo($choices_mobile);
             $('.footer-link').appendTo($('.mobile-menu .dropdown-menu'));
+            $('.video-panel-link').prependTo($('.mobile-menu .dropdown-menu'));
         }
     }
 
@@ -365,9 +367,10 @@ $(document).ready(function () {
         var height = 480;
         var id = 'WB98kYqQt9c';
         $('#video-modal .modal-body').html('<iframe width="' + width + '" height="' +
-            height + '" src="//www.youtube-nocookie.com/embed/' +
+            height + '" class="youtube-embed" src="//www.youtube-nocookie.com/embed/' +
             id + '?autoplay=' + autoplay + '&' +
             '" frameborder="0" allowfullscreen></iframe>')
+        $("#video-modal .modal-body").fitVids();
     }
 
     $('#video-modal').on('show.bs.modal', function (e) {
