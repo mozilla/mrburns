@@ -1,8 +1,17 @@
 {% load i18n %}
 {% load staticfiles %}
 <div class="stats-mobile visible-xs">
-  <div class="stats-mobile-picker visible-xs">
-  </div>
+  <label class="stats-mobile-picker visible-xs stats-picker-privacy">
+    <p class="picker-label">{% trans 'View by:' %}</p>
+    <select size="1">
+      <option value="privacy" selected="selected">{% trans 'Privacy' %}</option>
+      <option value="opportunity">{% trans 'Opportunity' %}</option>
+      <option value="access">{% trans 'Accessibility' %}</option>
+      <option value="freedom">{% trans 'Freedom' %}</option>
+      <option value="learning">{% trans 'Learning' %}</option>
+      <option value="control">{% trans 'User control' %}</option>
+    </select>
+  </label>
   <div class="stats-mobile-content">
     <div class="stats-panel-column">
 
