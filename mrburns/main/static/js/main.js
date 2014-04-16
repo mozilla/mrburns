@@ -85,20 +85,12 @@ var $stats_panel_tab_title = $('.stats-panel-tab .title');
 var stats_panel_opened_title = $stats_panel_tab_title.data('open-title');
 var stats_panel_closed_title = $stats_panel_tab_title.text();
 
-function openStatsPanel() {
-    // hide glows on stats panel open
-    if (showing_glows) {
-        hideGlows();
-    } else {
-        showGlows();
-    }
-
-    showing_glows = !showing_glows;
-
-    // update tab title
+function updateStatsPanel() {
     if ($('body').hasClass('stats-panel-open')) {
+        hideGlows();
         $stats_panel_tab_title.text(stats_panel_opened_title);
     } else {
+        showGlows();
         $stats_panel_tab_title.text(stats_panel_closed_title);
     }
 }
@@ -311,13 +303,13 @@ $(document).ready(function () {
         $( '#number-modal' ).modal();
     } else if (hash.indexOf("stats") != -1) {
         // if #number is in the URL, show the number modal
-        $( 'body' ).addClass('stats-panel-open');
-        openStatsPanel();
+        $('body').addClass('stats-panel-open');
+        updateStatsPanel();
     }
 
     $( '.stats-panel-tab' ).click(function() {
-        $( 'body' ).toggleClass( "stats-panel-open" );
-        openStatsPanel();
+        $('body').toggleClass('stats-panel-open');
+        updateStatsPanel();
     });
 
     // turn on fading for choice modal after initial load so it fades
@@ -365,8 +357,15 @@ $(document).ready(function () {
         $choices.removeClass('selected');
         $(this).addClass('selected');
         $('.choices').addClass('in-progress');
-        openInterstitialModal($(this).data('choice'));
+
         shareChoice($(this).data('choice'));
+
+        if (getMode() === 'mobile') {
+            $('body').addClass('stats-panel-open');
+            updateStatsPanel();
+        } else {
+            openInterstitialModal($(this).data('choice'));
+        }
     });
 
     // Open .share-window links in a new window, and close any popovers
