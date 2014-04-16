@@ -1,13 +1,15 @@
 #!/bin/sh
 
+MY_DIR=`dirname $0`
 EPOCH=`date +%s`
-NEW_LOG="/var/log/glowmo/syslog/glow.${EPOCH}.log"
+MAIN_LOG_FILE="/var/log/glow.log"
+LOG_FILE_NAME="glow.${EPOCH}.log"
+NEW_LOG="/tmp/${LOG_FILE_NAME}"
+ARCHIVE_LOG="/mnt/glow/log/${LOG_FILE_NAME}"
 
-mv -f /var/log/glow.log ${NEW_LOG}
+mv -f ${MAIN_LOG_FILE} ${NEW_LOG}
 kill -HUP `cat /var/run/syslogd.pid`
 
-cat ${NEW_LOG} | grep ' 302 ' | grep -iE 'firefox-(28|latest)' | awk '{print "lpush geoip 0," $3}' >> /tmp/redis-commands.txt
+${MY_DIR}/bart_process_log.sh ${NEW_LOG}
 
-cat /tmp/redis-commands.txt | redis-cli && rm /tmp/redis-commands.txt
-
-gzip ${NEW_LOG}
+mv ${NEW_LOG} ${ARCHIVE_LOG}
