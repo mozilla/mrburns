@@ -126,18 +126,36 @@ $(document).ready(function () {
     function setMode(mode) {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
+            // move choices to choice-modal
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
+
+            // move links from hamburger menu to desktop UI
             $('.footer-link').appendTo($('footer ul'));
-            $('.mobile-menu').removeClass('open');
             $('.video-panel-link').prependTo($('.actions'));
+
+            // move stats panel to desktop
+            $('.stats-panel-contents')
+                .append($('.stats-panel-column'))
+                .append($('.stats-panel-column-right'));
+
+            // hide the menu if it is open
+            $('.mobile-menu').removeClass('open');
+
             showGlows();
         } else {
             hideGlows();
-            $choices_mobile = $('.choices-mobile');
-            $('.choices-wrapper').prependTo($choices_mobile);
+
+            // move choices to mobile
+            $('.choices-wrapper').prependTo($('.choices-mobile'));
+
+            // move links from main UI to hanburger menu
             $('.mobile-menu .dropdown-menu')
               .append($('.footer-link'))
               .prepend($('.video-panel-link'));
+
+            // move stats content to mobile
+            $('.stats-mobile-content').append($('.stats-panel-column'));
+            $('.stats-panel-column-right').before('.stats-panel-column .chart2');
         }
     }
 
