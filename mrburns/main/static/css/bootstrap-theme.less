@@ -1,19 +1,30 @@
 @import "mixins.less";
 
-.modal-dialog {
-    margin-top: 140px;
-    width: 720px;
+.modal-backdrop {
+    background: #1876bb url(/static/img/grain.png);
+    &.in {
+        opacity: .95;
+    }
 }
 
-.modal-backdrop {
-    background: #1876bb;
-    background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
-                      url(/static/img/grain.png);
-    background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
-                      url(/static/img/grain.png);
-    &.in {
-        opacity: .8;
+@media (min-width: @screen-sm-min) {
+
+    .modal-dialog {
+        margin-top: 100px;
+        width: 720px;
     }
+
+    .modal-backdrop {
+        background: #1876bb;
+        background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
+                          url(/static/img/grain.png);
+        background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
+                          url(/static/img/grain.png);
+        &.in {
+            opacity: .8;
+        }
+    }
+
 }
 
 .modal-content {
