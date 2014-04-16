@@ -85,20 +85,12 @@ var $stats_panel_tab_title = $('.stats-panel-tab .title');
 var stats_panel_opened_title = $stats_panel_tab_title.data('open-title');
 var stats_panel_closed_title = $stats_panel_tab_title.text();
 
-function openStatsPanel() {
-    // hide glows on stats panel open
-    if (showing_glows) {
-        hideGlows();
-    } else {
-        showGlows();
-    }
-
-    showing_glows = !showing_glows;
-
-    // update tab title
+function updateStatsPanel() {
     if ($('body').hasClass('stats-panel-open')) {
+        hideGlows();
         $stats_panel_tab_title.text(stats_panel_opened_title);
     } else {
+        showGlows();
         $stats_panel_tab_title.text(stats_panel_closed_title);
     }
 }
@@ -126,18 +118,36 @@ $(document).ready(function () {
     function setMode(mode) {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
+            // move choices to choice-modal
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
+
+            // move links from hamburger menu to desktop UI
             $('.footer-link').appendTo($('footer ul'));
-            $('.mobile-menu').removeClass('open');
             $('.video-panel-link').prependTo($('.actions'));
+
+            // move stats panel to desktop
+            $('.stats-panel-contents')
+                .append($('.stats-panel-column'))
+                .append($('.stats-panel-column-right'));
+
+            // hide the menu if it is open
+            $('.mobile-menu').removeClass('open');
+
             showGlows();
         } else {
             hideGlows();
-            $choices_mobile = $('.choices-mobile');
-            $('.choices-wrapper').prependTo($choices_mobile);
+
+            // move choices to mobile
+            $('.choices-wrapper').prependTo($('.choices-mobile'));
+
+            // move links from main UI to hanburger menu
             $('.mobile-menu .dropdown-menu')
               .append($('.footer-link'))
               .prepend($('.video-panel-link'));
+
+            // move stats content to mobile
+            $('.stats-mobile-content').append($('.stats-panel-column'));
+            $('.stats-panel-column-right').before('.stats-panel-column .chart2');
         }
     }
 
@@ -293,13 +303,13 @@ $(document).ready(function () {
         $( '#number-modal' ).modal();
     } else if (hash.indexOf("stats") != -1) {
         // if #number is in the URL, show the number modal
-        $( 'body' ).addClass('stats-panel-open');
-        openStatsPanel();
+        $('body').addClass('stats-panel-open');
+        updateStatsPanel();
     }
 
     $( '.stats-panel-tab' ).click(function() {
-        $( 'body' ).toggleClass( "stats-panel-open" );
-        openStatsPanel();
+        $('body').toggleClass('stats-panel-open');
+        updateStatsPanel();
     });
 
     // turn on fading for choice modal after initial load so it fades
@@ -347,8 +357,38 @@ $(document).ready(function () {
         $choices.removeClass('selected');
         $(this).addClass('selected');
         $('.choices').addClass('in-progress');
-        openInterstitialModal($(this).data('choice'));
+
         shareChoice($(this).data('choice'));
+
+        if (getMode() === 'mobile') {
+            $('body')
+                .addClass('stats-panel-open')
+                .scrollTop(0);
+
+            updateStatsPanel();
+        } else {
+            openInterstitialModal($(this).data('choice'));
+        }
+    });
+
+    $('.stats-mobile-picker').click(function(event) {
+        var n = event.target;
+        var pass_click = true;
+        while (n !== this) {
+            if (n.nodeName === 'SELECT') {
+                pass_click = false;
+                break;
+            }
+            n = n.parentNode;
+        }
+        if (pass_click) {
+            // Using a regular $.click() doesn't work here. We use the DOM
+            // Level 2 Events API instead.
+            var e = document.createEvent('MouseEvents');
+            e.initMouseEvent('mousedown', true, true, window);
+            var $select = $(this).find('select');
+            $select.get(0).dispatchEvent(e);
+        }
     });
 
     // Open .share-window links in a new window, and close any popovers

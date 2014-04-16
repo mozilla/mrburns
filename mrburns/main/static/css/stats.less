@@ -1,0 +1,49 @@
+@import "mixins.less";
+
+.stats-mobile {
+    display: none;
+}
+
+.stats-panel-open .stats-mobile {
+    @media (max-width: @screen-xs-max) {
+        display: block;
+    }
+}
+
+.stats-mobile-picker {
+    display: block;
+    margin: 0;
+    padding: 0 20px;
+    .clearfix();
+    .picker-label {
+        float: left;
+        margin: 0;
+        padding: 20px 0;
+    }
+    select {
+        float: right;
+        vertical-align: middle;
+        background: transparent;
+        border: 0;
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.stats-picker-privacy     { background: @color-privacy; }
+.stats-picker-opportunity { background: @color-opportunity; }
+.stats-picker-access      { background: @color-access; }
+.stats-picker-freedom     { background: @color-freedom; }
+.stats-picker-learning    { background: @color-learning; }
+.stats-picker-control     { background: @color-control; }
+
+.stats-mobile-content {
+    .clearfix();
+    background: @darkBackground;
+    padding: 20px;
+}

@@ -90,7 +90,7 @@ function assignStatsEventListeners() {
 }
 
 function drawCharts() {
-    $('.stats-panel-contents svg').empty();
+    $('.stats-panel-column svg').empty();
 
     d3.json(getJsonDataUrl(), function(json_data) {
         data = json_data;
