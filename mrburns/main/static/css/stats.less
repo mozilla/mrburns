@@ -1,7 +1,13 @@
 @import "mixins.less";
 
 .stats-mobile {
-    display: block;
+    display: none;
+}
+
+.stats-panel-open .stats-mobile {
+    @media (max-width: @screen-xs-max) {
+        display: block;
+    }
 }
 
 .stats-mobile-picker {

@@ -112,6 +112,15 @@ header {
     font-weight: bold;
 }
 
+@media (max-width: @screen-xs-max) {
+    .header-join-content {
+        display: none;
+    }
+    .stats-panel-open .header-join-content {
+        display: block;
+    }
+}
+
 @media (min-width: @screen-sm-min) {
     header {
         h1 {
