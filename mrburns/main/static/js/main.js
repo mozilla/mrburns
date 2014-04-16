@@ -361,7 +361,10 @@ $(document).ready(function () {
         shareChoice($(this).data('choice'));
 
         if (getMode() === 'mobile') {
-            $('body').addClass('stats-panel-open');
+            $('body')
+                .addClass('stats-panel-open')
+                .scrollTop(0);
+
             updateStatsPanel();
         } else {
             openInterstitialModal($(this).data('choice'));
