@@ -1,5 +1,12 @@
 @import "mixins.less";
 
+.modal-backdrop {
+    background: #1876bb url(/static/img/grain.png);
+    &.in {
+        opacity: .95;
+    }
+}
+
 @media (min-width: @screen-sm-min) {
 
     .modal-dialog {
@@ -18,13 +25,6 @@
         }
     }
 
-}
-
-.modal-backdrop {
-    background: #1876bb url(/static/img/grain.png);
-    &.in {
-        opacity: .95;
-    }
 }
 
 .modal-content {
