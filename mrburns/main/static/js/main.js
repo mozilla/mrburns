@@ -371,6 +371,26 @@ $(document).ready(function () {
         }
     });
 
+    $('.stats-mobile-picker').click(function(event) {
+        var n = event.target;
+        var pass_click = true;
+        while (n !== this) {
+            if (n.nodeName === 'SELECT') {
+                pass_click = false;
+                break;
+            }
+            n = n.parentNode;
+        }
+        if (pass_click) {
+            // Using a regular $.click() doesn't work here. We use the DOM
+            // Level 2 Events API instead.
+            var e = document.createEvent('MouseEvents');
+            e.initMouseEvent('mousedown', true, true, window);
+            var $select = $(this).find('select');
+            $select.get(0).dispatchEvent(e);
+        }
+    });
+
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
