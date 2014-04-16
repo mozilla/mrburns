@@ -28,7 +28,7 @@ COUNT_FOOTNOTE = (u'<a href="#number-modal" class="number-help" '
 
 
 def get_tw_share_url(**kwargs):
-    kwargs.setdefault('hashtags', '#firefox')
+    kwargs.setdefault('hashtags', 'firefox')
     kwargs.setdefault('dnt', 'true')
     text = kwargs.get('text')
     if text:
@@ -54,12 +54,12 @@ class GlowView(TemplateView):
             'share_map_twitter': get_tw_share_url(
                 url='http://mzl.la/1g5k6OK',
                 text=_('Join millions of Firefox users around the world '
-                       'who are shaping the future of the Web.'),
+                       'who are shaping the future of the Web:'),
             ),
             'share_stats_twitter': get_tw_share_url(
                 url='http://mzl.la/1n0x8lA',
                 text=_('Join millions of Firefox users around the world '
-                       'who are shaping the future of the Web.'),
+                       'who are shaping the future of the Web:'),
             ),
             'share_map_facebook': get_fb_share_url('http://mzl.la/1oKbBCb'),
             'share_stats_facebook': get_fb_share_url('http://mzl.la/1sxET6z'),
