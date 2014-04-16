@@ -3,25 +3,34 @@
 
 .choices-mobile {
     .choices-wrapper {
-        padding: 0 20px;
-    }
-    .choices.in-progress li .btn {
-        display: none;
-        &.selected {
-            display: block;
+        padding: 0 20px 20px 20px;
+        h1 {
+            font-weight: bold;
+            text-align: center;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+        h2 {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        p {
+            margin: 30px 40px 20px 40px;
         }
     }
 }
 
 .choices {
-    margin: 0 -10px;
+    margin: 0 40px;
     padding: 0;
     .clearfix();
 }
 
 .choices li {
     list-style-type: none;
-    padding: 15px 10px;
+    padding: 0;
     font-style: normal;
     font-size: 14px;
     &:nth-child(4) {
@@ -32,6 +41,7 @@
         min-height: 2.9em;
         position: relative;
         display: block;
+        margin-bottom: 20px;
         width: 100%;
         background: #fff;
         border: 0;
@@ -70,11 +80,11 @@
     }
 }
 
-
 .choice-footnotes {
     font-size: 12px;
     opacity: .5;
     margin: 20px 0 0;
+    text-align: center;
 }
 
 .choices {

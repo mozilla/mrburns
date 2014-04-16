@@ -41,22 +41,28 @@ body {
 
 .wrapper {
     background: url(/static/img/grain.png) repeat;
-    height: 100%;
-    width: 100%;
     position: relative;
-    overflow: hidden;
+    min-height: 100%;
+    width: 100%;
 }
 
-footer {
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
-    text-align: right;
-    font-size: 12px;
-    a {
-        opacity: .5;
-        display: inline-block;
-        margin: auto 1em;
+@media (min-width: @screen-sm-min) {
+    .wrapper {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        text-align: right;
+        font-size: 12px;
+        a {
+            opacity: .5;
+            display: inline-block;
+            margin: auto 1em;
+        }
     }
 }
 
