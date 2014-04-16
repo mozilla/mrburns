@@ -127,11 +127,14 @@ $(document).ready(function () {
         console.log('setting mode to ', mode);
         if (mode === 'desktop') {
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
+            $('.footer-link').appendTo($('footer ul'));
+            $('.mobile-menu').removeClass('open');
             showGlows();
         } else {
             hideGlows();
             $choices_mobile = $('.choices-mobile');
             $('.choices-wrapper').prependTo($choices_mobile);
+            $('.footer-link').appendTo($('.mobile-menu .dropdown-menu'));
         }
     }
 

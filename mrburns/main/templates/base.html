@@ -32,7 +32,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
   <header class="animated fadeInDown">
     <h1>{{ _('Firefox') }}</h1>
-    <h2>
+    <h2 class="hidden-xs">
       {% comment %}
       question-circle link can't have a space after title string
       {% endcomment %}
@@ -49,6 +49,22 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
         <span class="sub-title">{{ _('Free Download') }}</span>
       </a>
     </div>
+
+    <div class="btn-group mobile-menu visible-xs">
+      <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+      <ul class="dropdown-menu pull-right" role="menu">
+        <li class="divider"></li>
+        <li class="privacy-link footer-link"><a href="https://www.mozilla.org/privacy/policies/websites/">
+          {{ _('Privacy') }}
+        </a></li>
+        <li class="legal-link footer-link"><a href="https://www.mozilla.org/about/legal.html">
+          {{ _('Legal') }}
+        </a></li>
+      </ul>
+    </div>
+
   </header>
 
   {% include 'choice.html' %}
@@ -57,13 +73,8 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
   {% include 'stats-panel.html' %}
 
-  <footer>
-    <a href="https://www.mozilla.org/privacy/policies/websites/" class="privacy-link">
-      {{ _('Privacy') }}
-    </a>
-    <a href="https://www.mozilla.org/about/legal.html" class="legal-link">
-      {{ _('Legal') }}
-    </a>
+  <footer class="hidden-xs">
+    <ul></ul>
   </footer>
 
 </div>

@@ -11,9 +11,16 @@
     #choice-modal-interstitial-page {
         display: none;
     }
-    .choices li {
-        float: left;
-        width: 33.3%;
+    .choices {
+        margin: 0 -10px;
+        li {
+            float: left;
+            width: 33.3%;
+            padding: 15px 10px;
+            .btn {
+                margin: 0;
+            }
+        }
     }
 }
 
@@ -29,19 +36,6 @@
         opacity 0.25s ease-in-out,
         height 0.25s ease-in-out;
     );
-}
-
-.choices.in-progress li .btn {
-    opacity: .6;
-    .scale(.95,.95);
-    &.selected {
-        opacity: 1;
-        .scale(1.05,1.05);
-    }
-    &:hover,
-    &:active {
-        opacity: 1;
-    }
 }
 
 .choice-modal-interstitial {
