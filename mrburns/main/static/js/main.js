@@ -407,10 +407,10 @@ $(document).ready(function () {
         var height = 480;
         var id = 'WB98kYqQt9c';
         $('#video-modal .modal-body')
-            .html('<iframe width="' + width + '" height="' +
-                height + '" src="//www.youtube-nocookie.com/embed/' +
-                id + '?autoplay=' + autoplay + '&' +
-                '" frameborder="0" allowfullscreen></iframe>')
+            .html('<iframe src="//www.youtube-nocookie.com/embed/' + id +
+                  '?autoplay=' + autoplay + '&showinfo=0" frameborder="0" ' +
+                   'width="' + width + '" height="' + height + '" ' +
+                   'allowfullscreen></iframe>')
             .fitVids();
     }
 
