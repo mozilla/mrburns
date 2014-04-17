@@ -12,11 +12,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-from unipath import Path
+from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR.child('sub', 'dirs')
-BASE_DIR = Path(__file__).ancestor(3).absolute()
+BASE_DIR = Path(__file__).resolve().parents[2]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = False
@@ -86,14 +86,14 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 LOCALE_PATHS = (
-    BASE_DIR.child('locale'),
+    str(BASE_DIR / 'locale'),
 )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR.child('static')
+STATIC_ROOT = str(BASE_DIR / 'static')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
