@@ -13,7 +13,7 @@ var width,
 var glow_tick = 60000, //in ms
     chunks = 1, //how many chunks are showing the glows in during a tick
     high_download_count_threshold = 50,
-    max_simultaneous_glows = 1000,
+    max_simultaneous_glows = 700,
     number_of_medium_count_geos_to_show = 0;
 
 $(document).ready(function() {
@@ -22,22 +22,13 @@ $(document).ready(function() {
 });
 
 function assignEventListeners() {
-    //toggle listener
-    //TODO for demo purposes for jslater, will change later
-    $(".toggle-geos a").on("click", function(e) {
-        if($(this).html() == 'SHOW TOP GEOS') {
-            $(this).html('SHOW ALL GEOS');
-            
-            //show top geos
-            showing_top_geos = true;
-            user_just_switched_geos = true;
-            chunks = 1;
-            clearInterval(display_subsets_of_glows_interval);
-            $('.glows circle').hide();
-            populateGlowsFromLastTick();
-        }
-        else {
-            $(this).html('SHOW TOP GEOS');
+    //toggle glows listener
+    $(".toggle-geos").on("click", function(e) {
+        //if we're showing top geos, then switch to showing all geos
+        if($(".toggle-geos span").hasClass('currently-showing-top-geo')) {
+            $(".toggle-geos span")
+                .toggleClass('currently-showing-top-geo')
+                .html($('.show-top-cities').html());
             
             //show all geos
             showing_top_geos = false;
@@ -45,6 +36,19 @@ function assignEventListeners() {
             chunks = 6;
             clearInterval(display_subsets_of_glows_interval);
             $('.glows circle').fadeOut();
+            populateGlowsFromLastTick();
+        }
+        else {
+            $(".toggle-geos span")
+                .toggleClass('currently-showing-top-geo')
+                .html($('.show-all-cities').html());
+            
+            //show top geos
+            showing_top_geos = true;
+            user_just_switched_geos = true;
+            chunks = 1;
+            clearInterval(display_subsets_of_glows_interval);
+            $('.glows circle').hide();
             populateGlowsFromLastTick();
         }
 
