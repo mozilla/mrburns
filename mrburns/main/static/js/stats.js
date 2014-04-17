@@ -76,14 +76,16 @@ function updateStatsPanelChoice(choice) {
     $('.key-stats-panel a').removeClass('selected');
     $('.key-stats-panel .choice-' + choice + ' > a').toggleClass('selected');
 
-    // update selected class for stats panel content
+    // update selected class for stats panel content and picker
     var $contents = $('.stats-panel-contents');
-    console.log($contents);
+    var $picker = $('.stats-mobile-picker');
     $('.key-stats-panel > ul > li').each(function() {
         var choice = this.className.split('choice-')[1];
         $contents.removeClass('stats-panel-' + choice);
+        $picker.removeClass('stats-picker-' + choice);
     });
     $contents.addClass('stats-panel-' + choice);
+    $picker.addClass('stats-picker-' + choice);
 }
 
 function assignStatsEventListeners() {
@@ -93,6 +95,11 @@ function assignStatsEventListeners() {
         updateStatsPanelChoice(choice);
 
         return false;
+    });
+
+    $('.stats-mobile-picker select').change(function(event) {
+        var choice = $(this).val();
+        updateStatsPanelChoice(choice);
     });
 
     $('select').on('change', function(d) {
