@@ -19,6 +19,10 @@ MAP_TIMESTAMPS = 'map:timestamps'
 # last timestamp processed
 LATEST_TIMESTAMP = 'latest:timestamp'
 
+# last log file processed
+# for sharing between dev and prod
+LATEST_LOG_FILE = 'latest:logfile'
+
 # SHARE #
 
 SHARE_TOTAL = 'share:total'

@@ -68,7 +68,7 @@ def rate_limit_ip(ip, timestamp):
     if current >= conf.IP_RATE_LIMIT_MAX:
         log.warning('Rate limited {}'.format(ip))
         if statsd:
-            statsd.incr('ratelimit')
+            statsd.incr('lisa.ratelimit')
         return True
 
     pipe = redis.pipeline()

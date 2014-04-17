@@ -17,3 +17,14 @@ COUNTRY_MIN_SHARE = 500
 IP_RATE_LIMIT_MAX = 20
 
 REDIS_UNIX_SOCKET_PATH = '/var/run/redis/redis.sock'
+
+# bart
+MAIN_LOG_FILE = Path('/var/log/glow.log')
+LOG_FILE_NAME = 'glow.{}.log'
+TMP_DIR = Path('/tmp')
+ARCHIVE_DIR = Path('/mnt/glow')
+ARCHIVE_LOG_PATH = ARCHIVE_DIR / 'log'
+ARCHIVE_JSON_PATH = ARCHIVE_DIR / 'json'
+SYSLOG_PID_FILE = '/var/run/syslogd.pid'
+FIREFOX_VERSION = '28'
+LOG_HTTP_STATUS = '302'  # only redirects count for d.m.o logs
