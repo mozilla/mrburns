@@ -34,50 +34,67 @@ $(document).ready(function () {
         .html($('.choice-' + current_choice + '-prose-rhs1').html());
     $('.what-is-mozilla-doing-about-it .paragraph2')
         .html($('.choice-' + current_choice + '-prose-rhs2').html());
-    
+
     assignStatsEventListeners();
     drawCharts();
-  
-    $('.key-stats-panel ul .choice-privacy a')
-        .toggleClass('selected')
+
+    // default choice to privacy
+    updateStatsPanelChoice('privacy');
 });
 
-function assignStatsEventListeners() {
-    $('.key-stats-panel a').on('click', function () {
-        var choice = $(this)[0].parentNode.className.split('choice-')[1];
-        current_choice = choice;
-        
-        //update right-hand-side
-        $('.what-is-mozilla-doing-about-it .seperator')
-            .css('background-color', color[current_choice]);
-        $('.what-is-mozilla-doing-about-it h2')
-            .html($('.choice-' + current_choice + '-prose-title-rhs').html());
-        $('.what-is-mozilla-doing-about-it .paragraph1')
-            .html($('.choice-' + current_choice + '-prose-rhs1').html());
-        $('.what-is-mozilla-doing-about-it .paragraph2')
-            .html($('.choice-' + current_choice + '-prose-rhs2').html());
-        
+function updateStatsPanelChoice(choice) {
+    current_choice = choice;
+
+    //update right-hand-side
+    $('.what-is-mozilla-doing-about-it .seperator')
+        .css('background-color', color[current_choice]);
+    $('.what-is-mozilla-doing-about-it h2')
+        .html($('.choice-' + current_choice + '-prose-title-rhs').html());
+    $('.what-is-mozilla-doing-about-it .paragraph1')
+        .html($('.choice-' + current_choice + '-prose-rhs1').html());
+    $('.what-is-mozilla-doing-about-it .paragraph2')
+        .html($('.choice-' + current_choice + '-prose-rhs2').html());
+
+    if (data) {
         //update chart 1
         updateDonut(data.country_issues.GLOBAL[choice], choice);
         $('.donut-icon i')
             .removeClass('fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs')
             .addClass(icon[choice]);
-        
+
         //update chart 2
         $('.tippy').hide();
         $('.tippytext').hide();
         $('.tippy_' + current_choice).show();
         $('.tippytext_' + current_choice).show();
-        
+
         //update chart 3
         updateCountryComparisonChart(eval('data.issue_countries.' + current_choice));
-        
-        $('.key-stats-panel a').removeClass('selected');
-        $(this).toggleClass('selected');
-    
+    }
+
+    // update selected link in left menu
+    $('.key-stats-panel a').removeClass('selected');
+    $('.key-stats-panel .choice-' + choice + ' > a').toggleClass('selected');
+
+    // update selected class for stats panel content
+    var $contents = $('.stats-panel-contents');
+    console.log($contents);
+    $('.key-stats-panel > ul > li').each(function() {
+        var choice = this.className.split('choice-')[1];
+        $contents.removeClass('stats-panel-' + choice);
+    });
+    $contents.addClass('stats-panel-' + choice);
+}
+
+function assignStatsEventListeners() {
+    $('.key-stats-panel a').on('click', function () {
+        var choice = $(this)[0].parentNode.className.split('choice-')[1];
+
+        updateStatsPanelChoice(choice);
+
         return false;
     });
-    
+
     $('select').on('change', function(d) {
         current_country = d.val;
         
