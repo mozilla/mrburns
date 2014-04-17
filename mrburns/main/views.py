@@ -61,8 +61,44 @@ class GlowView(TemplateView):
                 text=_('Join millions of Firefox users around the world '
                        'who are shaping the future of the Web:'),
             ),
+            'share_stats_twitter_privacy': get_tw_share_url(
+                url='http://mzl.la/1hq7RRe',
+                text='#Firefox {}'
+                     .format(_('fights for government surveillance reform and was the only major browser not targeted by the NSA scandal.')),
+            ),
+            'share_stats_twitter_opportunity': get_tw_share_url(
+                url='http://mzl.la/1lQpeeD',
+                text='#Firefox {}'
+                     .format(_('is made by a global volunteer community 6,000 strong, open to participation from anyone.')),
+            ),
+            'share_stats_twitter_access': get_tw_share_url(
+                url='http://mzl.la/1lQpudA',
+                text='#Firefox {}'
+                     .format(_('disrupted the mobile industry with the first Web-based OS to help bring the next billion people online')),
+            ),
+            'share_stats_twitter_freedom': get_tw_share_url(
+                url='http://mzl.la/1qGWpl2',
+                text='#Firefox {}'
+                     .format(_('protested against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web.')),
+            ),
+            'share_stats_twitter_learning': get_tw_share_url(
+                url='http://mzl.la/1hysQTb',
+                text='#Firefox {}'
+                     .format(_('teaches digital skills to millions of people to help them move from using the Web to actively making it.')),
+            ),
+            'share_stats_twitter_control': get_tw_share_url(
+                url='http://mzl.la/PXXz0j',
+                text='#Firefox {}'
+                     .format(_('leads the way in giving users greater control online. They pioneered features like Do Not Track and Lightbeam.')),
+            ),
             'share_map_facebook': get_fb_share_url('http://mzl.la/1oKbBCb'),
             'share_stats_facebook': get_fb_share_url('http://mzl.la/1sxET6z'),
+            'share_stats_facebook_privacy': get_fb_share_url('http://mzl.la/1n14u6H'),
+            'share_stats_facebook_opportunity': get_fb_share_url('http://mzl.la/1hGzq48'),
+            'share_stats_facebook_access': get_fb_share_url('http://mzl.la/1qo3icx'),
+            'share_stats_facebook_freedom': get_fb_share_url('http://mzl.la/OPDh7Y'),
+            'share_stats_facebook_learning': get_fb_share_url('http://mzl.la/1n14T8X'),
+            'share_stats_facebook_control': get_fb_share_url('http://mzl.la/R9IaL7'),
             'count_footnote': COUNT_FOOTNOTE.format(_('What does this number mean?')),
         })
         return context
