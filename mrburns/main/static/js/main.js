@@ -116,7 +116,6 @@ $(document).ready(function () {
     }
 
     function setMode(mode) {
-        console.log('setting mode to ', mode);
         if (mode === 'desktop') {
             // move choices to choice-modal
             $('.choices-wrapper').appendTo($('#choice-modal-choice-page'));
@@ -147,7 +146,7 @@ $(document).ready(function () {
 
             // move stats content to mobile
             $('.stats-mobile-content').append($('.stats-panel-column'));
-            $('.stats-panel-column-right').before('.stats-panel-column .chart2');
+            $('.stats-panel-column-right').insertBefore($('.stats-panel-column .chart2'));
         }
     }
 
