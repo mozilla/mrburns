@@ -16,10 +16,8 @@
 
     .modal-backdrop {
         background: #1876bb;
-        background-image: -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
-                          url(/static/img/grain.png);
-        background-image: radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%),
-                          url(/static/img/grain.png);
+        background-image: url(/static/img/grain.png), -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+        background-image: url(/static/img/grain.png), radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
         &.in {
             opacity: .8;
         }
