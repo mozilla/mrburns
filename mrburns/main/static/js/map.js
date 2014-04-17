@@ -2,13 +2,19 @@
 
 var width,
     height,
+    projection,
+    continent_centers,
+    display_subsets_of_glows_interval,
+    user_just_switched_geos = false,
     showing_regions = false,
-    showing_glows = true;
+    showing_glows = true,
+    showing_top_geos = true;
 
-var max_simultaneous_glows = 500,
-    glow_tick = 60000; //in ms
-
-var continent_centers;
+var glow_tick = 60000, //in ms
+    chunks = 1, //how many chunks are showing the glows in during a tick
+    high_download_count_threshold = 50,
+    max_simultaneous_glows = 1000,
+    number_of_medium_count_geos_to_show = 0;
 
 $(document).ready(function() {
     assignEventListeners();
@@ -16,6 +22,35 @@ $(document).ready(function() {
 });
 
 function assignEventListeners() {
+    //toggle listener
+    //TODO for demo purposes for jslater, will change later
+    $(".toggle-geos a").on("click", function(e) {
+        if($(this).html() == 'SHOW TOP GEOS') {
+            $(this).html('SHOW ALL GEOS');
+            
+            //show top geos
+            showing_top_geos = true;
+            user_just_switched_geos = true;
+            chunks = 1;
+            clearInterval(display_subsets_of_glows_interval);
+            $('.glows circle').hide();
+            populateGlowsFromLastTick();
+        }
+        else {
+            $(this).html('SHOW TOP GEOS');
+            
+            //show all geos
+            showing_top_geos = false;
+            user_just_switched_geos = true;
+            chunks = 6;
+            clearInterval(display_subsets_of_glows_interval);
+            $('.glows circle').fadeOut();
+            populateGlowsFromLastTick();
+        }
+
+        return false;
+    });
+    
     //view by choice listener
     $(".key-map a").on("click", function(e) {
         $(".key-map a").removeClass("selected");
@@ -143,17 +178,19 @@ function drawMap(ht) {
     
     continent_centers = getContinentPositions();
     
+    //add svg
     $('#map-container')
         .html(
             "<svg id='map-vector' preserveAspectRatio='xMidYMin meet' viewBox='0 0 "
-            + Math.floor(width) + " "
-            + Math.floor(ht) + "' "
+            + width + " "
+            + ht + "' "
             + "xmlns='http://www.w3.org/2000/svg' width='100%' height='" 
             + ht + "'></svg>");
         
     var svg = d3.select("svg");
-
-    var projection = d3.geo.equirectangular()
+    
+    //define the projection
+    projection = d3.geo.equirectangular()
         .scale((width / 628) * 100)
         .translate([width / 2, height / 2 + 40])
         .precision(.1);
@@ -191,9 +228,9 @@ function drawMap(ht) {
                     return continent_code + '-perc-for-issue';
                 })
                 .attr('transform', function(d) {
-                    return 'translate(' + continent_centers[continent_code][0] 
+                    return 'translate(' + continent_centers[continent_code][0].toFixed(2) 
                         + ',' 
-                        + continent_centers[continent_code][1]
+                        + continent_centers[continent_code][1].toFixed(2)
                         + ')';
                 });
             
@@ -202,8 +239,7 @@ function drawMap(ht) {
                 
             g.append('text')
               .attr('text-anchor', 'middle')
-              .attr('transform', 'translate(0, 6)');
-              
+              .attr('transform', 'translate(0, 6)'); 
               
             //top issue
             var g2 = svg.append('g')
@@ -214,9 +250,9 @@ function drawMap(ht) {
                     return continent_code + '-top-issue';
                 })
                 .attr('transform', function(d) {
-                    return 'translate(' + continent_centers[continent_code][0] 
+                    return 'translate(' + continent_centers[continent_code][0].toFixed(2) 
                         + ',' 
-                        + continent_centers[continent_code][1]
+                        + continent_centers[continent_code][1].toFixed(2)
                         + ')';
                 });
             
@@ -232,12 +268,16 @@ function drawMap(ht) {
                 .attr('transform', 'translate(-20, 18)');
         });
 
+        //add group for glows
+        svg.append('g')
+            .attr('class', 'glows');
+        
         //add glows
-        populateGlowsFromLastTick(projection, svg);
+        populateGlowsFromLastTick();
 
         //repull the glow data and show new ones does that after 60s
-        setInterval(function() {
-            populateGlowsFromLastTick(projection, svg);
+        var populate_glows_interval = setInterval(function() {
+            populateGlowsFromLastTick();
         }, glow_tick);
     });
 }
@@ -286,19 +326,28 @@ function addTopIssueLabels(top_issues) {
 }
 
 function animateCounterContinuous(last_count, current_count) {
-    //console.log(last_count, current_count);
+    //don't reset if the user switched geos rather than the 60s being up
+    if(user_just_switched_geos) {
+        user_just_switched_geos = false;
+        return;
+    }
+    
     $({the_value: last_count}) //from
         .animate({the_value: current_count}, { //to
             duration: glow_tick,
             easing: 'swing',
-            step: function() {
-                $(".share_total")
-                    .html(addCommas(Math.round(this.the_value)));
+            step: function(i) {
+                if(Math.floor(i-last_count) % 10 == 0) {
+                    $(".share_total")
+                        .html(addCommas(Math.round(this.the_value)));
+                }
             }
     });
 }
 
-function populateGlowsFromLastTick(projection, svg) {
+function populateGlowsFromLastTick() {
+    var svg = d3.select("svg")
+    
     d3.json(getJsonDataUrl(), function(places) {
         //animate the counter
         animateCounterContinuous(places.map_previous_total, places.map_total);
@@ -308,60 +357,68 @@ function populateGlowsFromLastTick(projection, svg) {
         //max_simultaneous_flows, we do not use just the constant so that in the case that
         //it is erroneously set too high, we don't end up showing all the map_geos in the
         //first 10 seconds
-        var glows_per_subtick = Math.floor(places.map_geo.length / 6);
-        max_simultaneous_glows = Math.min(glows_per_subtick, max_simultaneous_glows);
-        console.log(max_simultaneous_glows);
         
         //we sort by count to give preference to locations that have the most downloads
         //dots for locations that have a lot of downloads persist for the entire length 
         //of the tick, for now, cycle through subsets of max_simultaneous_glows 
         //glows every 10s, any more and the animation becomes less graceful
-        places.map_geo.sort(function(a, b) { return a.count - b.count; })
+        places.map_geo.sort(function(a, b) { return b.count - a.count; })
+        //console.log(places);
         
-        displaySubsetOfGlows(places.map_geo.splice(
-            places.map_geo.length-max_simultaneous_glows, 
-                places.map_geo.length), projection, svg);
         
-        setTimeout(function() {
+        //are we showing all glows, if so do the sub-chunking every 10s as before
+        if(showing_top_geos == false) {
+            var glows_per_subtick = Math.floor(places.map_geo.length / chunks);
+            max_simultaneous_glows = Math.min(glows_per_subtick, max_simultaneous_glows);
+            
+            //show it the first time
             displaySubsetOfGlows(places.map_geo.splice(
-                places.map_geo.length-max_simultaneous_glows, 
-                    places.map_geo.length), projection, svg);
-        }, 10000);
+                    places.map_geo.length-max_simultaneous_glows, 
+                        max_simultaneous_glows), projection, svg); 
+            
+            //load each sub-chunk every 10s
+            var i = 1;
+            display_subsets_of_glows_interval = setInterval(function() {
+                //console.log(places.map_geo.length);
+                displaySubsetOfGlows(places.map_geo.splice(
+                    places.map_geo.length-max_simultaneous_glows, 
+                        max_simultaneous_glows), projection, svg);
+            
+                i++;
+                areWeClearingTheInterval(i);
+            }, glow_tick / chunks);
+        }
+        //are we showing a subset of highly engaged geos
+        else {
+            //get just the subset of high-count ones 
+            $.each(places.map_geo, function(i, d) {
+                if(d.count < high_download_count_threshold) {
+                    places.map_geo.splice(i + number_of_medium_count_geos_to_show, 
+                        places.map_geo.length - i);
+                    
+                    displaySubsetOfGlows(places.map_geo, projection, svg);
+                
+                    return false;
+                }
+            });
+        }
         
-        setTimeout(function() {
-            displaySubsetOfGlows(places.map_geo.splice(
-                places.map_geo.length-max_simultaneous_glows, 
-                    places.map_geo.length), projection, svg);
-        }, 20000);
-        
-        setTimeout(function() {
-            displaySubsetOfGlows(places.map_geo.splice(
-                places.map_geo.length-max_simultaneous_glows, 
-                    places.map_geo.length), projection, svg);
-        }, 30000);
-        
-        setTimeout(function() {
-            displaySubsetOfGlows(places.map_geo.splice(
-                places.map_geo.length-max_simultaneous_glows, 
-                    places.map_geo.length), projection, svg);
-        }, 40000);
-        
-        setTimeout(function() {
-            displaySubsetOfGlows(places.map_geo.splice(
-                places.map_geo.length-max_simultaneous_glows, 
-                    places.map_geo.length), projection, svg);
-        }, 50000);
+        function areWeClearingTheInterval(i) {
+            if(i == chunks) {
+                clearInterval(display_subsets_of_glows_interval);
+            }
+        }
     });
 }
-
+    
 function displaySubsetOfGlows(places, projection, svg) {
     console.log("loading subchunk of glows");
-    svg.selectAll(".glow")
+
+    d3.select('.glows').selectAll('.glow')
             .data(places)
-            .enter().insert("circle", ":nth-child(7)")
-                .attr("class", "glow")
+            .enter().append("circle")
                 .attr("r", 0)
-                .style("opacity", 0.8)
+                .style("opacity", 1)
                 .attr("transform", function(d) {
                     return "translate(" + projection([d.lon, d.lat]) + ")"
                 })
@@ -371,25 +428,35 @@ function displaySubsetOfGlows(places, projection, svg) {
                 })
                 .transition()
                     .delay(function(d, i) {
-                        if(d.count > 30)
-                            return randomRange(0, 2000, 0);
+                        if(d.count > high_download_count_threshold)
+                            //start high-count geos within 3s
+                            return randomRange(0, 3000, 0);
                         else
-                            //10s is the sub-tick length
-                            return randomRange(0, 10000, 0);
+                            //start the rest of of the geos within 60s
+                            //if showing_top_geos is true, otherwise show
+                            //it within 10s
+                            if(showing_top_geos)
+                                return randomRange(0, glow_tick, 0);
+                            else
+                                return randomRange(0, glow_tick / chunks, 0);
                     })
                     .duration(function(d, i) {
+                        //appear in 1s
                         return 1000;
                     })
                     .attr("r", 2)
                     .transition()
                         .duration(function(d, i) {    
-                            if(d.count > 30) 
-                                return glow_tick; //show for 60s
+                            //show high-count geos for 60s, there will be some overlap
+                            //fade out the others after 0s
+                            if(d.count > high_download_count_threshold) 
+                                return glow_tick;
                             else
-                                return 0;
+                                return 1000;
                         })
                         .transition()
                             .duration(function(d, i) {
+                                //fade out geos in 3s
                                 return 3000;
                             })
                             .style("opacity", 0)
