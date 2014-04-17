@@ -1,11 +1,13 @@
-import os.path
 from os import getenv
 
+from unipath import Path
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-JSON_OUTPUT_DIR = os.path.join(BASE_DIR, 'JSON')
-GEOIP_DB_FILE = os.path.join(BASE_DIR, 'GeoIP2-City.mmdb')
+SMITHERS_BASE_DIR = Path(__file__).ancestor(3).absolute()
+PROJ_BASE_DIR = SMITHERS_BASE_DIR.parent
+
+JSON_OUTPUT_DIR = PROJ_BASE_DIR.child('static', 'data', 'stats')
+GEOIP_DB_FILE = SMITHERS_BASE_DIR.child('GeoIP2-City.mmdb')
 LOG_LEVEL = getenv('SMITHERS_LOG_LEVEL', 'INFO')
 
 COUNTRY_MIN_SHARE = 500

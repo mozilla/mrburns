@@ -1,6 +1,6 @@
 
 # where to put your JSON files.
-# defaults to /mrburns/smithers/JSON
+# defaults to /static/data/stats
 #JSON_OUTPUT_DIR = '/var/www/some/dir'
 
 # where is your maxmind geoip db file?

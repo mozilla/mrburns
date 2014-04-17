@@ -138,6 +138,7 @@ function getContinentPositions() {
 }
 
 function drawMap(ht) {
+    var staticDataUrl = $('body').data('staticDataUrl');
     width = $('#map-container').parent().width() + 35;
     height = ht;
     
@@ -160,7 +161,7 @@ function drawMap(ht) {
         
     var path = d3.geo.path().projection(projection);
 
-    d3.json("/static/data/world-continents-110m.json", function(error, world) {
+    d3.json(staticDataUrl + "world-continents-110m.json", function(error, world) {
         var countries = topojson.feature(world, world.objects.countries);
 
         //http://geojson.org/geojson-spec.html#introduction

@@ -76,7 +76,7 @@ function getJsonDataUrl() {
         _currentDataTimestamp = latestTimestamp - 120;
     }
     console.log('Current timestamp', _currentDataTimestamp);
-    var url = staticDataUrl + 'stats_' + _currentDataTimestamp + '.json';
+    var url = staticDataUrl + 'stats/' + _currentDataTimestamp + '.json';
     console.log(url);
     return url;
 }

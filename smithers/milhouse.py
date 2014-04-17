@@ -5,6 +5,7 @@ from __future__ import division
 import argparse
 import json
 import logging
+import os
 import signal
 import sys
 import time
@@ -157,7 +158,7 @@ def write_json_for_timestamp(timestamp):
     Write a json file for the given timestamp and data.
     """
     data = get_data_for_timestamp(timestamp)
-    filename = path.join(conf.JSON_OUTPUT_DIR, 'stats_{}.json'.format(timestamp))
+    filename = path.join(conf.JSON_OUTPUT_DIR, '{}.json'.format(timestamp))
     with open(filename, 'w') as fh:
         json.dump(data, fh)
 
@@ -169,6 +170,13 @@ def write_json_for_timestamp(timestamp):
 
 def main():
     counter = 0
+
+    # make sure output dir exists
+    try:
+        conf.JSON_OUTPUT_DIR.mkdir(parents=True)
+    except OSError:
+        log.exception('Can not create output dir: {}'.format(conf.JSON_OUTPUT_DIR))
+        return 1
 
     while True:
         if KILLED:
