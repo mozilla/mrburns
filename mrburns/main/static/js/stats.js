@@ -81,10 +81,10 @@ function updateStatsPanelChoice(choice) {
     var $picker = $('.stats-mobile-picker');
     $('.key-stats-panel > ul > li').each(function() {
         var choice = this.className.split('choice-')[1];
-        $contents.removeClass('stats-panel-' + choice);
+        $('body').removeClass('stats-panel-' + choice);
         $picker.removeClass('stats-picker-' + choice);
     });
-    $contents.addClass('stats-panel-' + choice);
+    $('body').addClass('stats-panel-' + choice);
     $picker.addClass('stats-picker-' + choice);
 }
 
