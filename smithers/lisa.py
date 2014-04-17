@@ -61,11 +61,28 @@ signal.signal(signal.SIGINT, handle_signals)
 signal.signal(signal.SIGTERM, handle_signals)
 
 
+def rate_limit_ip(ip, timestamp):
+    """Return boolean whether the IP is rate limited"""
+    key = 'ratelimit:{}:{}'.format(ip, timestamp)
+    current = int(redis.get(key) or 0)
+    if current >= conf.IP_RATE_LIMIT_MAX:
+        log.warning('Rate limited {}'.format(ip))
+        if statsd:
+            statsd.incr('ratelimit')
+        return True
+
+    pipe = redis.pipeline()
+    pipe.incr(key).expire(key, 60)
+    pipe.execute()
+
+    return False
+
+
 def round_map_coord(coord):
     return math.floor(coord * 10) / 10
 
 
-def process_map(geo_data):
+def process_map(geo_data, timestamp):
     """Add download aggregate data to redis."""
     redis.incr(rkeys.MAP_TOTAL)
     try:
@@ -82,13 +99,12 @@ def process_map(geo_data):
 
     geo_key = '{lat}:{lon}'.format(**location)
     log.debug('Got location: ' + geo_key)
-    unix_min = get_epoch_minute()
-    time_key = rkeys.MAP_GEO.format(unix_min)
-    log.debug('Got timestamp: %s' % unix_min)
+    time_key = rkeys.MAP_GEO.format(timestamp)
+    log.debug('Got timestamp: %s' % timestamp)
     redis.hincrby(time_key, geo_key, 1)
 
     # store the timestamp used in a sorted set for use in milhouse
-    redis.zadd(rkeys.MAP_TIMESTAMPS, unix_min, unix_min)
+    redis.zadd(rkeys.MAP_TIMESTAMPS, timestamp, timestamp)
 
 
 def process_share(geo_data, share_type):
@@ -128,10 +144,16 @@ def main():
             rtype, ip = ip_info[1].split(',')
         except ValueError:
             continue
+
+        timestamp = get_epoch_minute()
+
+        if rate_limit_ip(ip, timestamp):
+            continue
+
         record = geo.get(ip)
         if record:
             # everything goes for total count and map
-            process_map(record)
+            process_map(record, timestamp)
             # only shares get more processing
             if rtype != data_types.DOWNLOAD:
                 process_share(record, rtype)
