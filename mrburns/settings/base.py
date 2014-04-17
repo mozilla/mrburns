@@ -44,11 +44,15 @@ CACHES = {
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
+
+    # 3rd party
     'compressor',
-    'mrburns.main',
     'django_extensions',
     'django_countries',
     'django_nose',
+
+    # project apps
+    'mrburns.main',
 )
 
 MIDDLEWARE_CLASSES = (
