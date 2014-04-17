@@ -11,7 +11,7 @@ class TestViewHelpers(TestCase):
         url = views.get_tw_share_url(url='http://example.com', text='The Dude abides.')
         ok_(url.startswith(views.TWITTER_URL + '?'))
         ok_('dnt=true' in url)
-        ok_('hashtags=%23firefox' in url)
+        ok_('hashtags=firefox' in url)
         ok_('url=http%3A%2F%2Fexample.com' in url)
         ok_('text=The+Dude+abides.' in url)
 
