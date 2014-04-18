@@ -5,7 +5,6 @@ from __future__ import division
 import argparse
 import json
 import logging
-import signal
 import sys
 import time
 
@@ -13,8 +12,9 @@ from statsd import StatsClient
 
 from smithers import conf
 from smithers import data_types
-from smithers.redis_client import client as redis
 from smithers import redis_keys as rkeys
+from smithers.redis_client import client as redis
+from smithers.utils import register_signals
 
 
 log = logging.getLogger('milhouse')
@@ -46,12 +46,6 @@ def handle_signals(signum, frame):
     global KILLED
     KILLED = True
     log.info('Attempting to shut down')
-
-
-# register signals
-signal.signal(signal.SIGHUP, handle_signals)
-signal.signal(signal.SIGINT, handle_signals)
-signal.signal(signal.SIGTERM, handle_signals)
 
 
 def get_timestamps_to_process():
@@ -195,4 +189,5 @@ def main():
 
 
 if __name__ == '__main__':
+    register_signals(handle_signals)
     sys.exit(main())

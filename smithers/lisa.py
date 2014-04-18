@@ -8,7 +8,6 @@ from __future__ import division
 import argparse
 import logging
 import math
-import signal
 import sys
 
 import maxminddb
@@ -17,9 +16,9 @@ from statsd import StatsClient
 
 from smithers import conf
 from smithers import data_types
-from smithers.redis_client import client as redis
 from smithers import redis_keys as rkeys
-from smithers.utils import get_epoch_minute
+from smithers.redis_client import client as redis
+from smithers.utils import get_epoch_minute, register_signals
 
 
 log = logging.getLogger('lisa')
@@ -53,12 +52,6 @@ def handle_signals(signum, frame):
     global KILLED
     KILLED = True
     log.info('Attempting to shut down')
-
-
-# register signals
-signal.signal(signal.SIGHUP, handle_signals)
-signal.signal(signal.SIGINT, handle_signals)
-signal.signal(signal.SIGTERM, handle_signals)
 
 
 def rate_limit_ip(ip, timestamp):
@@ -170,6 +163,7 @@ def main():
 
 
 if __name__ == '__main__':
+    register_signals(handle_signals)
     try:
         geo = maxminddb.Reader(args.file)
     except IOError:

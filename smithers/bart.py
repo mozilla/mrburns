@@ -18,8 +18,9 @@ from pathlib import Path
 from statsd import StatsClient
 
 from smithers import conf
-from smithers.redis_client import client as redis
 from smithers import redis_keys as rkeys
+from smithers.redis_client import client as redis
+from smithers.utils import register_signals
 
 
 log = logging.getLogger('lisa')
@@ -65,12 +66,6 @@ def handle_signals(signum, frame):
     global KILLED
     KILLED = True
     log.info('Attempting to shut down')
-
-
-# register signals
-signal.signal(signal.SIGHUP, handle_signals)
-signal.signal(signal.SIGINT, handle_signals)
-signal.signal(signal.SIGTERM, handle_signals)
 
 
 def get_syslog_pid(pid_file=None):
@@ -170,5 +165,6 @@ def main():
 
 
 if __name__ == '__main__':
+    register_signals(handle_signals)
     current_event = scheduler.enter(0, 1, main, ())
     scheduler.run()
