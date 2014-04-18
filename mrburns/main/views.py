@@ -62,6 +62,11 @@ class GlowView(TemplateView):
                 text=_('Join millions of Firefox users around the world '
                        'who are shaping the future of the Web:'),
             ),
+            'share_video_twitter': get_tw_share_url(
+                url='http://mzl.la/1hpOzMW',
+                text=_('Watch the next generation of Internet users talk '
+                       'about the Web they want!'),
+            ),
             'share_stats_twitter_privacy': get_tw_share_url(
                 url='http://mzl.la/1hq7RRe',
                 text='#Firefox {}'
@@ -99,6 +104,7 @@ class GlowView(TemplateView):
                                'They pioneered features like Do Not Track and Lightbeam.')),
             ),
             'share_map_facebook': get_fb_share_url('http://mzl.la/1oKbBCb'),
+            'share_video_facebook': get_fb_share_url('http://mzl.la/1hpOzMW'),
             'share_stats_facebook': get_fb_share_url('http://mzl.la/1sxET6z'),
             'share_stats_facebook_privacy': get_fb_share_url('http://mzl.la/1n14u6H'),
             'share_stats_facebook_opportunity': get_fb_share_url('http://mzl.la/1hGzq48'),
