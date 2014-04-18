@@ -12,6 +12,7 @@ import sched
 import signal
 import sys
 import time
+from collections import Counter
 from subprocess import call
 
 from pathlib import Path
@@ -115,13 +116,24 @@ def filter_logs(log_file):
     """Extract valid downlods from logs and return IPs."""
     log.debug('Filtering logs in {}'.format(log_file))
     with log_file.open() as fh:
+        ip_counter = Counter()
         for line in fh:
             _, timestamp, ip, status_code, request = line.strip().split()
             if status_code != conf.LOG_HTTP_STATUS:
+                log.debug('Not the status code we want: {}'.format(status_code))
                 continue
 
             if not firefox_re.search(request):
+                log.debug('Not the Firefox we\'re looking for: {}'.format(request))
                 continue
+
+            if ip_counter[ip] >= conf.IP_RATE_LIMIT_MAX:
+                log.info('Skipped {} due to rate limit'.format(ip))
+                if statsd:
+                    statsd.incr('bart.ratelimit')
+                continue
+
+            ip_counter[ip] += 1
 
             yield ip
 
