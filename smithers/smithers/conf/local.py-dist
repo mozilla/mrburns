@@ -1,7 +1,8 @@
+from pathlib import Path
 
 # where to put your JSON files.
-# defaults to /mrburns/smithers/JSON
-#JSON_OUTPUT_DIR = '/var/www/some/dir'
+# defaults to /static/data/stats
+#JSON_OUTPUT_DIR = Path('/var/www/some/dir')
 
 # where is your maxmind geoip db file?
 # defaults to /mrburns/smithers/GeoIP2-City.mmdb

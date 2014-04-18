@@ -8,7 +8,6 @@ import logging
 import signal
 import sys
 import time
-from os import path
 
 from statsd import StatsClient
 
@@ -157,18 +156,26 @@ def write_json_for_timestamp(timestamp):
     Write a json file for the given timestamp and data.
     """
     data = get_data_for_timestamp(timestamp)
-    filename = path.join(conf.JSON_OUTPUT_DIR, 'stats_{}.json'.format(timestamp))
-    with open(filename, 'w') as fh:
+    jsonfile = conf.JSON_OUTPUT_DIR / '{}.json'.format(timestamp)
+    with jsonfile.open('w') as fh:
         json.dump(data, fh)
 
     # update the last processed timestamp for use in mrburns.
     redis.set(rkeys.LATEST_TIMESTAMP, timestamp)
     log.debug('Wrote file for {}'.format(timestamp))
-    log.debug(filename)
+    log.debug(jsonfile)
 
 
 def main():
     counter = 0
+
+    # make sure output dir exists
+    try:
+        if not conf.JSON_OUTPUT_DIR.exists():
+            conf.JSON_OUTPUT_DIR.mkdir(parents=True)
+    except OSError:
+        log.exception('Can not create output dir: {}'.format(conf.JSON_OUTPUT_DIR))
+        return 1
 
     while True:
         if KILLED:
