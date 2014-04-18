@@ -405,7 +405,7 @@ $(document).ready(function () {
         }
         var width = 853;
         var height = 480;
-        var id = 'WB98kYqQt9c';
+        var id = 'Xm5i5kbIXzc';
         $('#video-modal .modal-body')
             .html('<iframe src="//www.youtube-nocookie.com/embed/' + id +
                   '?autoplay=' + autoplay + '&showinfo=0" frameborder="0" ' +
