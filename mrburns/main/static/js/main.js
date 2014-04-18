@@ -424,4 +424,16 @@ $(document).ready(function () {
         $('#video-modal .modal-body').html('');
     });
 
+    // Hide glows when opening modals
+    $('.modal').on('show.bs.modal', function (e) {
+        hideGlows();
+    });
+
+    // Show glows when closing modals
+    $('.modal').on('hidden.bs.modal', function (e) {
+        if (!$('body').hasClass('stats-panel-open')) {
+            showGlows();
+        }
+    });
+
 });
