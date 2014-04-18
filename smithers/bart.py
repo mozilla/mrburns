@@ -118,7 +118,12 @@ def filter_logs(log_file):
     with log_file.open() as fh:
         ip_counter = Counter()
         for line in fh:
-            _, timestamp, ip, status_code, request = line.strip().split()
+            try:
+                _, timestamp, ip, status_code, request = line.strip().split()
+            except ValueError:
+                # wrong format
+                continue
+
             if status_code != conf.LOG_HTTP_STATUS:
                 log.debug('Not the status code we want: {}'.format(status_code))
                 continue
