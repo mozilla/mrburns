@@ -466,6 +466,14 @@ function displaySubsetOfGlows(places, projection, svg) {
                             })
                             .style("opacity", 0)
                             .remove();
+
+    // If the Choice modal is visible, hide the Glows
+    if ($('.choice-modal').hasClass('in')) {
+        hideGlows();
+        console.log('Hide glow because choice modal was open');
+
+    }
+
 }
 
 function randomRange(minVal, maxVal, floatVal) {
