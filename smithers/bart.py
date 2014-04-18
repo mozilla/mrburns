@@ -39,8 +39,9 @@ current_event = None
 parser = argparse.ArgumentParser(description='Bart flings IPs at Lisa.')
 parser.add_argument('--log', default=conf.LOG_LEVEL, metavar='LOG_LEVEL',
                     help='Log level (default: %s)' % conf.LOG_LEVEL)
+parser.add_argument('--logfile', default=None, help='Log file to process')
 parser.add_argument('--env', default=SERVER_ENV, choices=['dev', 'prod'],
-                    help='Running mode: dev or prod (default: %s)' % SERVER_ENV)
+                    help='Running mode (default: %s)' % SERVER_ENV)
 parser.add_argument('-v', '--verbose', action='store_true')
 args = parser.parse_args()
 
@@ -56,9 +57,6 @@ else:
 
 
 def handle_signals(signum, frame):
-    # NOTE: Makes this thing non-thread-safe
-    # Should not be too difficult to fix if we
-    # need/want threads.
     try:
         scheduler.cancel(current_event)
     except ValueError:
@@ -75,8 +73,7 @@ def get_syslog_pid(pid_file=None):
         try:
             return fh.read().strip()
         except IOError:
-            log.exception('Can not get syslogd PID')
-            return None
+            raise IOError('Can not get syslog PID from {}'.format(pid_file))
 
 
 def poke_syslogd(sig=signal.SIGHUP):
@@ -86,6 +83,9 @@ def poke_syslogd(sig=signal.SIGHUP):
 
 def get_newest_shared_log():
     """Return the name of the newest non-gzipped log file in NFS."""
+    if args.logfile:
+        return Path(args.logfile)
+
     return conf.ARCHIVE_LOG_PATH / redis.get(rkeys.LATEST_LOG_FILE)
 
 
@@ -97,7 +97,9 @@ def get_fresh_log_file():
     if args.env == 'dev':
         return get_newest_shared_log()
 
-    raise ValueError('Unknown server environment: %s' % args.env)
+    # Fatal error
+    log.error('Unknown server environment: %s' % args.env)
+    sys.exit(1)
 
 
 def rotate_syslog_file():
@@ -127,6 +129,9 @@ def filter_logs(log_file):
 def throw_at_lisa(log_file):
     """Put IPs on a queue in redis for Lisa to process."""
     log.debug('Throwing {} at Lisa'.format(log_file))
+    if not log_file.exists():
+        raise IOError('Log file not found: {}'.format(log_file))
+
     count = 0
     pipe = redis.pipeline()
     for ip in filter_logs(log_file):
@@ -134,7 +139,8 @@ def throw_at_lisa(log_file):
         count += 1
 
     pipe.execute()
-    statsd.incr('bart.ips_processed', count)
+    if statsd:
+        statsd.incr('bart.ips_processed', count)
 
 
 def finalize_log_file(log_file):
@@ -160,8 +166,10 @@ def main():
         log_file = get_fresh_log_file()
         throw_at_lisa(log_file)
         finalize_log_file(log_file)
-    except Exception:
-        log.exception('An error occurred')
+    except Exception as e:
+        log.error('ERROR: ' + e.message)
+
+    log.debug('Waiting...')
 
 
 if __name__ == '__main__':
