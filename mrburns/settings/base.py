@@ -75,8 +75,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ROOT_URLCONF = 'mrburns.urls'
 
-WSGI_APPLICATION = 'mrburns.wsgi.application'
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
