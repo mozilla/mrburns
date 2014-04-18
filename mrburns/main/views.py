@@ -1,6 +1,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from __future__ import unicode_literals
 
 from urllib import urlencode
 
@@ -21,10 +22,10 @@ else:
 
 TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'
-COUNT_FOOTNOTE = (u'<a href="#number-modal" class="number-help" '
-                  u'data-toggle="modal" title="{}">'
-                  u'<span class="share_total"></span>'
-                  u'<i class="fa fa-question-circle"></i></a>')
+COUNT_FOOTNOTE = ('<a href="#number-modal" class="number-help" '
+                  'data-toggle="modal" title="{}">'
+                  '<span class="share_total"></span>'
+                  '<i class="fa fa-question-circle"></i></a>')
 
 
 def get_tw_share_url(**kwargs):
@@ -64,32 +65,38 @@ class GlowView(TemplateView):
             'share_stats_twitter_privacy': get_tw_share_url(
                 url='http://mzl.la/1hq7RRe',
                 text='#Firefox {}'
-                     .format(_('fights for government surveillance reform and was the only major browser not targeted by the NSA scandal.')),
+                     .format(_('fights for government surveillance reform '
+                               'and was the only major browser not targeted by the NSA scandal.')),
             ),
             'share_stats_twitter_opportunity': get_tw_share_url(
                 url='http://mzl.la/1lQpeeD',
                 text='#Firefox {}'
-                     .format(_('is made by a global volunteer community 6,000 strong, open to participation from anyone.')),
+                     .format(_('is made by a global volunteer community 6,000 strong, '
+                               'open to participation from anyone.')),
             ),
             'share_stats_twitter_access': get_tw_share_url(
                 url='http://mzl.la/1lQpudA',
                 text='#Firefox {}'
-                     .format(_('disrupted the mobile industry with the first Web-based OS to help bring the next billion people online')),
+                     .format(_('disrupted the mobile industry with the first Web-based OS to '
+                               'help bring the next billion people online')),
             ),
             'share_stats_twitter_freedom': get_tw_share_url(
                 url='http://mzl.la/1qGWpl2',
                 text='#Firefox {}'
-                     .format(_('protested against SOPA and PIPA, dangerous copyright legislation that threatened the freedom of the Web.')),
+                     .format(_('protested against SOPA and PIPA, dangerous copyright legislation '
+                               'that threatened the freedom of the Web.')),
             ),
             'share_stats_twitter_learning': get_tw_share_url(
                 url='http://mzl.la/1hysQTb',
                 text='#Firefox {}'
-                     .format(_('teaches digital skills to millions of people to help them move from using the Web to actively making it.')),
+                     .format(_('teaches digital skills to millions of people to help them move '
+                               'from using the Web to actively making it.')),
             ),
             'share_stats_twitter_control': get_tw_share_url(
                 url='http://mzl.la/PXXz0j',
                 text='#Firefox {}'
-                     .format(_('leads the way in giving users greater control online. They pioneered features like Do Not Track and Lightbeam.')),
+                     .format(_('leads the way in giving users greater control online. '
+                               'They pioneered features like Do Not Track and Lightbeam.')),
             ),
             'share_map_facebook': get_fb_share_url('http://mzl.la/1oKbBCb'),
             'share_stats_facebook': get_fb_share_url('http://mzl.la/1sxET6z'),
