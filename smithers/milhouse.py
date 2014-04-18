@@ -157,7 +157,7 @@ def write_json_for_timestamp(timestamp):
     """
     data = get_data_for_timestamp(timestamp)
     jsonfile = conf.JSON_OUTPUT_DIR / '{}.json'.format(timestamp)
-    with jsonfile.open('w') as fh:
+    with jsonfile.open('wb') as fh:
         json.dump(data, fh)
 
     # update the last processed timestamp for use in mrburns.

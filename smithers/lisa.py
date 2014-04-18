@@ -28,7 +28,7 @@ log = logging.getLogger('lisa')
 KILLED = False
 
 parser = argparse.ArgumentParser(description='Lisa does smart things with IPs.')
-parser.add_argument('--file', default=conf.GEOIP_DB_FILE,
+parser.add_argument('--file', default=str(conf.GEOIP_DB_FILE),
                     help='path to mmdb file (default: %s)' % conf.GEOIP_DB_FILE)
 parser.add_argument('--log', default=conf.LOG_LEVEL, metavar='LOG_LEVEL',
                     help='Log level (default: %s)' % conf.LOG_LEVEL)
