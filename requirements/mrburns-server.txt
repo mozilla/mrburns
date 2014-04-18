@@ -12,3 +12,6 @@ hiredis==0.1.2
 
 # sha256: QEExjkSAyzPXvAVv8Ld4OHoIIgHsqXrwujoIXBGj714
 newrelic==2.18.1.15
+
+# sha256: gWkLCOKSFpssAluoIgpprnT6Aj7YoQmL_QIKBBOeneM
+raven==3.6.1

@@ -43,3 +43,9 @@ CACHES = {
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = False
 ENABLE_REDIS = True
+
+# Sentry
+INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+RAVEN_CONFIG = {
+    'dsn': os.getenv('SENTRY_DSN'),
+}
