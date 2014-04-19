@@ -80,7 +80,13 @@ def get_newest_shared_log():
     if args.logfile:
         return Path(args.logfile)
 
-    return conf.ARCHIVE_LOG_PATH / redis.get(rkeys.LATEST_LOG_FILE)
+    with conf.ARCHIVE_LOG_LATEST_FILE.open() as fh:
+        try:
+            latest_logfile = fh.read().strip()
+        except IOError:
+            raise IOError('Can not get latest log file name')
+
+    return conf.ARCHIVE_LOG_PATH / latest_logfile
 
 
 def get_fresh_log_file():
@@ -157,7 +163,8 @@ def finalize_log_file(log_file):
     if args.env == 'prod':
         # move it to the shared drive
         log_file.rename(conf.ARCHIVE_LOG_PATH / log_file.name)
-        redis.set(rkeys.LATEST_LOG_FILE, log_file.name)
+        with conf.ARCHIVE_LOG_LATEST_FILE.open('w') as fh:
+            fh.write(log_file.name)
     else:
         # gzip the file on dev
         call(['gzip', str(log_file)])
