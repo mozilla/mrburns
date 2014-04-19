@@ -1,9 +1,14 @@
 @import "mixins.less";
 
-.number-modal {
-    .modal-dialog {
-        width: 980px;
+@media (min-width: @screen-sm-min) {
+    .number-modal {
+        .modal-dialog {
+            width: 980px;
+        }
     }
+}
+
+.number-modal {
     h1 {
         margin-bottom: 20px;
     }

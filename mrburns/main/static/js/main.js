@@ -282,9 +282,12 @@ $(document).ready(function () {
         var $html = $(document.documentElement);
         $('html').addClass('australis');
 
-        // if we're on australis and there's no hash tag, show the choice modal
+        // if we're on australis, and not mobile,
+        // and there's no hash tag, show the choice modal
         if (hash.indexOf("#") === -1) {
-            $choice_modal.modal();
+            if (getMode() === 'desktop') {
+                $choice_modal.modal();
+            }
         }
     } else {
         $('html').addClass('non-australis');
