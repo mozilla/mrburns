@@ -58,7 +58,7 @@ function updateStatsPanelChoice(choice) {
     if (data) {
         //update chart 1
         updateDonut(data.country_issues.GLOBAL[choice], choice);
-        $('.donut-icon i')
+        $('.donut-icon i, .picker-label i')
             .removeClass('fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs')
             .addClass(icon[choice]);
 
