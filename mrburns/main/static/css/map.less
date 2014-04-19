@@ -15,6 +15,11 @@
     clear: both;
 }
 
+canvas {
+    position: absolute;
+    z-index: 6;
+}
+
 .continent {
     fill: rgba(0,0,0,.25);
     stroke-width: 0px;
@@ -45,10 +50,6 @@
     display: none;
     fill: #fff;
     position: absolute;
-}
-
-.glows circle {
-    fill: #28d917;
 }
 
 .key {
@@ -103,4 +104,14 @@
 
 #map-container {
     z-index: 2;
+}
+
+#map-vector {
+    position: absolute;
+    z-index: 5;
+}
+
+#map-vector-overlays {
+    position: absolute;
+    z-index: 7;
 }
