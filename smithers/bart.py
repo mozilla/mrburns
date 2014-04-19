@@ -16,11 +16,11 @@ from collections import Counter
 from subprocess import call
 
 from pathlib import Path
-from statsd import StatsClient
 
 from smithers import conf
 from smithers import redis_keys as rkeys
 from smithers.redis_client import client as redis
+from smithers.statsd_client import statsd
 from smithers.utils import register_signals
 
 
@@ -48,13 +48,6 @@ args = parser.parse_args()
 
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
-
-if hasattr(conf, 'STATSD_HOST'):
-    statsd = StatsClient(host=conf.STATSD_HOST,
-                         port=conf.STATSD_PORT,
-                         prefix=conf.STATSD_PREFIX)
-else:
-    statsd = False
 
 
 def handle_signals(signum, frame):
@@ -134,8 +127,7 @@ def filter_logs(log_file):
 
             if ip_counter[ip] >= conf.IP_RATE_LIMIT_MAX:
                 log.info('Skipped {} due to rate limit'.format(ip))
-                if statsd:
-                    statsd.incr('bart.ratelimit')
+                statsd.incr('bart.ratelimit')
                 continue
 
             ip_counter[ip] += 1
@@ -156,8 +148,7 @@ def throw_at_lisa(log_file):
         count += 1
 
     pipe.execute()
-    if statsd:
-        statsd.incr('bart.ips_processed', count)
+    statsd.incr('bart.ips_processed', count)
 
 
 def finalize_log_file(log_file):

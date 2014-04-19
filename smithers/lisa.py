@@ -12,12 +12,12 @@ import sys
 
 import maxminddb
 from redis import RedisError
-from statsd import StatsClient
 
 from smithers import conf
 from smithers import data_types
 from smithers import redis_keys as rkeys
 from smithers.redis_client import client as redis
+from smithers.statsd_client import statsd
 from smithers.utils import get_epoch_minute, register_signals
 
 
@@ -37,13 +37,6 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-if hasattr(conf, 'STATSD_HOST'):
-    statsd = StatsClient(host=conf.STATSD_HOST,
-                         port=conf.STATSD_PORT,
-                         prefix=conf.STATSD_PREFIX)
-else:
-    statsd = False
-
 
 def handle_signals(signum, frame):
     # NOTE: Makes this thing non-thread-safe
@@ -60,8 +53,7 @@ def rate_limit_ip(ip, timestamp):
     current = int(redis.get(key) or 0)
     if current >= conf.IP_RATE_LIMIT_MAX:
         log.warning('Rate limited {}'.format(ip))
-        if statsd:
-            statsd.incr('lisa.ratelimit')
+        statsd.incr('lisa.ratelimit')
         return True
 
     pipe = redis.pipeline()
@@ -155,11 +147,10 @@ def main():
             sys.stdout.write('.')
             sys.stdout.flush()
 
-        if statsd:
-            counter += 1
-            if counter >= 1000:
-                counter = 0
-                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        counter += 1
+        if counter >= 1000:
+            counter = 0
+            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
