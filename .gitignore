@@ -8,6 +8,7 @@
 /smithers/JSON
 **/conf/local.py
 **/settings/local.py
+.locale_revision
 
 
 *.py[cod]
