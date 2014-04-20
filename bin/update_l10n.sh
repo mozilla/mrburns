@@ -13,8 +13,9 @@ new_revision=$(svn info locale | grep "Revision:")
 if [ "$locale_revision" != "$new_revision" ]; then
     echo $new_revision > $REV_FILE
     if dennis-cmd lint locale; then
-        python manage.py compilemessages
-        sudo supervisorctl restart mrburns
+        if python manage.py compilemessages; then
+            sudo supervisorctl restart mrburns
+        fi
     else
         echo "There is a problem with the .po files in r${new_revision}." | mail -s "Glow l10n error" pmac@mozilla.com
     fi
