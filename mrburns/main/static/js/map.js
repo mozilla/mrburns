@@ -11,6 +11,8 @@ $(document).ready(function() {
         time_passed_interval,
         selected_choice_map_view = '',
         showing_regions = false,
+        map_geo_previous = [], //previous set of map_geos 
+        glow_size = 1.5,
         glow_tick = 60000; //in ms
 
     var staticDataUrl = $('body').data('staticDataUrl');
@@ -341,6 +343,7 @@ $(document).ready(function() {
         //add glows
         clearInterval(populate_glows_interval);
         clearGlowIntervals();
+        
         populateGlowsFromLastTick();
 
         //repull the glow data and show new ones, does that after 60s
@@ -363,7 +366,7 @@ $(document).ready(function() {
         
         d3.json(getJsonDataUrl(), function(places) {
             //places.map_geo.splice(100, places.map_geo.length-100);
-            console.log('places length -->', places.map_geo.length);
+            //console.log('places length -->', places.map_geo.length);
             
             //animate the counter
             animateCounterContinuous(places.map_previous_total, places.map_total);
@@ -372,18 +375,31 @@ $(document).ready(function() {
             //we do this only once per tick, i.e. once per 60s
             $.each(places.map_geo, function(i, d) {
                 if(places.map_geo[i].count >= 60) {
-                    places.map_geo[i].delay = 0; //show immediately
+                    places.map_geo[i].delay = 500; //show right away
                 }
                 else if(places.map_geo[i].count > 30 && places.map_geo[i].count < 60) {
                     //delay is in ms
                     places.map_geo[i].delay = glow_tick - (places.map_geo[i].count * 1000);
                 }
                 else {
-                    places.map_geo[i].delay = i * 100 % glow_tick;
-                    //console.log(i * 100 % glow_tick);
+                    places.map_geo[i].delay = (i * (1000 / multiplier)) % glow_tick;
                 }
             });
-
+            
+            //append non-dead map_geos to this new places array
+            //so that we get a smooth transition between minutes
+            $.each(map_geo_previous, function(i, d) {
+                if(d.dead != 1 && d.count < 10) {
+                    d.count = 0; //immediately transition this fine gentleman out
+                    d.delay = 0;
+                    d.transitioning = 1;
+                    places.map_geo.push(d);
+                }
+                
+                if(i == map_geo_previous.length)
+                    map_geo_previous = [];
+            });
+            
             //repaint our canvas
             var i = 0;
             let_it_glow_interval = setInterval(function() {
@@ -401,23 +417,23 @@ $(document).ready(function() {
         //clear the canvas
         ctx.clearRect(0, 0, width, height);
         
-        var glow_size = 1.5;
+        var x = 0, y = 0;
         
         for(var i=0; i<places.length; i++) {
             if(places[i].dead == 1) continue;
         
-            var x = projection([places[i].lon, places[i].lat])[0];
-            var y = projection([places[i].lon, places[i].lat])[1];
+            x = projection([places[i].lon, places[i].lat])[0];
+            y= projection([places[i].lon, places[i].lat])[1];
 
             //if the glow doesn't have an opacity, assume it is 0
             if(places[i].opacity == undefined)
                 places[i].opacity = 0;
 
             //if it's a high-count glow, we show it for the entirety of the tick
-            if(places[i].delay == 0) {
+            if(places[i].delay == 0 && !places[i].transitioning) {
                 places[i].opacity = 1;
             }       
-            //if it's our glow's time to shine, display it and reduce its age henceforth
+            //if it's our glow's time to shine, display it and reduce its opacity henceforth
             else if(time_in_ms >= places[i].delay && places[i].count > 0) {
                 //if our glow is about to be born
                 if(places[i].opacity <= 0.9) {
@@ -425,7 +441,7 @@ $(document).ready(function() {
                 }
                 else {
                     //decrement every 1s, since each count is worth 1s of screen time
-                    if((time_in_ms * multiplier % 1000) == 0) {
+                    if((time_in_ms % (1000 / multiplier)) == 0) {
                         places[i].count = places[i].count - 1;
                     }
                     
@@ -449,6 +465,8 @@ $(document).ready(function() {
             ctx.arc(x, y, glow_size, 0, 2 * Math.PI, false);
             ctx.fill();
         }
+    
+        map_geo_previous = places;
     }
 
     function resizeCanvasAndSvg() {
