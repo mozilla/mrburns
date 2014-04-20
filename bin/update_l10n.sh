@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /data/venvs/mrburns/bin/activate
+source /home/mrburns/mrburns_env
 
 svn up locale
 

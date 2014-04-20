@@ -3,8 +3,6 @@ set -e
 oldrev=$1
 newrev=$2
 
-source /data/venvs/mrburns/bin/activate
-
 # delete pyc files
 find . -name "*.pyc" -delete
 

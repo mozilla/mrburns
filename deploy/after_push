@@ -13,5 +13,8 @@ umask 002
 
 git submodule sync && git submodule update --init --recursive
 
+source /data/venvs/mrburns/bin/activate
+source /home/mrburns/mrburns_env
+
 run deploy/before_restart
 run deploy/restart && run deploy/after_restart
