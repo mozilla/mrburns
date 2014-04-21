@@ -9,6 +9,7 @@ import logging
 import os
 import re
 import sched
+import shutil
 import signal
 import sys
 import time
@@ -65,7 +66,7 @@ def get_syslog_pid(pid_file=None):
     pid_file = Path(pid_file or conf.SYSLOG_PID_FILE)
     with pid_file.open() as fh:
         try:
-            return fh.read().strip()
+            return int(fh.read().strip())
         except IOError:
             raise IOError('Can not get syslog PID from {}'.format(pid_file))
 
@@ -105,8 +106,8 @@ def get_fresh_log_file():
 def rotate_syslog_file():
     """Move the main syslog file to a new one, signal syslogd, and return new file."""
     log.debug('Rotating Syslog')
-    new_log_file = conf.TMP_DIR / 'glow.{}.log'.format(time.time())
-    conf.MAIN_LOG_FILE.rename(new_log_file)
+    new_log_file = conf.TMP_DIR / 'glow.{}.log'.format(int(time.time()))
+    shutil.move(str(conf.MAIN_LOG_FILE), str(new_log_file))
     poke_syslogd()
     return new_log_file
 
@@ -162,7 +163,7 @@ def finalize_log_file(log_file):
     log.debug('Finalizing {}'.format(log_file))
     if args.env == 'prod':
         # move it to the shared drive
-        log_file.rename(conf.ARCHIVE_LOG_PATH / log_file.name)
+        shutil.move(str(log_file), str(conf.ARCHIVE_LOG_PATH / log_file.name))
         with conf.ARCHIVE_LOG_LATEST_FILE.open('w') as fh:
             fh.write(log_file.name)
     else:
