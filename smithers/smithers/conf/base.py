@@ -8,7 +8,7 @@ PROJ_BASE_DIR = SMITHERS_BASE_DIR.parent
 
 JSON_OUTPUT_DIR = PROJ_BASE_DIR.joinpath('static', 'data', 'stats')
 GEOIP_DB_FILE = SMITHERS_BASE_DIR.joinpath('GeoIP2-City.mmdb')
-LOG_LEVEL = getenv('SMITHERS_LOG_LEVEL', 'INFO')
+LOG_LEVEL = getenv('MRBURNS_LOG_LEVEL', 'INFO')
 
 COUNTRY_MIN_SHARE = 500
 
@@ -16,7 +16,7 @@ COUNTRY_MIN_SHARE = 500
 # MAX of the same IP per minute
 IP_RATE_LIMIT_MAX = 50
 
-REDIS_UNIX_SOCKET_PATH = '/var/run/redis/redis.sock'
+REDIS_UNIX_SOCKET_PATH = getenv('REDIS_UNIX_SOCKET_PATH', '/tmp/redis.sock')
 
 # bart
 MAIN_LOG_FILE = Path('/var/log/glow.log')
