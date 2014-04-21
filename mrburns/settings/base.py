@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     # 3rd party
     'compressor',
     'django_extensions',
-    'django_countries',
+    'product_details',
     'django_nose',
 
     # project apps

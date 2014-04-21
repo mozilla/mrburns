@@ -17,6 +17,7 @@ from raven.contrib.django.raven_compat.middleware.wsgi import Sentry
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 site.addsitedir(os.path.join(BASE_DIR, 'smithers'))
+site.addsitedir(os.path.join(BASE_DIR, 'vendor'))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrburns.settings")
 
 from django.core.wsgi import get_wsgi_application
