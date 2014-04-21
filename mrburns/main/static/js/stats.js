@@ -372,7 +372,13 @@ function updateStackedBarChart(new_data) {
             })
 }
 
-function drawCountryComparisonChart(data) {
+function drawCountryComparisonChart(data) {console.log(data.length);
+    if(data.length < 50) {
+        $('.chart3 svg').remove();
+        $('.stats-chart3-loading-data').show();
+        return;
+    }
+    
     var width = 565,
         height = 350,
         x_padding_left = 120,

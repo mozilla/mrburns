@@ -383,6 +383,11 @@
         <img src="{% static 'img/shadow.png' %}" class="shadow-seperator">
         <h2>{% trans 'How does that compare globally?' %}</h2>
         <!-- stats pane is appended here -->
+        <div class='stats-chart3-loading-data'>
+            <img src="{% static 'img/stats-country-compare-placeholder.png' %}" 
+                class='stats-chart3-loading-data-background'>
+            <i class='fa fa-cog fa-spin fa-5x'></i>
+        </div>
         <svg></svg>
       </div>
 
