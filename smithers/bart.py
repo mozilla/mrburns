@@ -182,7 +182,7 @@ def main():
         throw_at_lisa(log_file)
         finalize_log_file(log_file)
     except Exception as e:
-        log.error('ERROR: ' + e.message)
+        log.error('ERROR: ' + str(e))
 
     log.debug('Waiting...')
 
