@@ -12,6 +12,7 @@ import sys
 
 import maxminddb
 from redis import RedisError
+from setproctitle import setproctitle
 
 from smithers import conf
 from smithers import data_types
@@ -21,6 +22,7 @@ from smithers.statsd_client import statsd
 from smithers.utils import get_epoch_minute, register_signals
 
 
+setproctitle('lisa.py')
 log = logging.getLogger('lisa')
 
 # has the system requested shutdown

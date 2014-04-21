@@ -46,3 +46,6 @@ dennis==0.3.11
 
 # sha256: L29VCf4YCuMJL9xVlYWoOjz84wr7qd4lzO_F7Pv-2_w
 blessings==1.5.1
+
+# sha256: tWTPZIghfHpGMqn-ZG_Do76i-XErTmZ-ljK4cNGlghE
+setproctitle

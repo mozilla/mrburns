@@ -17,6 +17,7 @@ from collections import Counter
 from subprocess import call
 
 from pathlib import Path
+from setproctitle import setproctitle
 
 from smithers import conf
 from smithers import redis_keys as rkeys
@@ -25,7 +26,8 @@ from smithers.statsd_client import statsd
 from smithers.utils import register_signals
 
 
-log = logging.getLogger('lisa')
+setproctitle('bart.py')
+log = logging.getLogger('bart')
 firefox_re = re.compile(r'firefox-(?:latest|{})'.format(conf.FIREFOX_VERSION),
                         re.IGNORECASE)
 
@@ -106,7 +108,7 @@ def get_fresh_log_file():
 def rotate_syslog_file():
     """Move the main syslog file to a new one, signal syslogd, and return new file."""
     log.debug('Rotating Syslog')
-    new_log_file = conf.TMP_DIR / 'glow.{}.log'.format(int(time.time()))
+    new_log_file = conf.TMP_DIR / conf.LOG_FILE_NAME.format(int(time.time()))
     shutil.move(str(conf.MAIN_LOG_FILE), str(new_log_file))
     poke_syslogd()
     return new_log_file
