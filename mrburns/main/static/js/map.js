@@ -206,6 +206,14 @@ $(document).ready(function() {
         //clear our friend the map container
         $('#map-container').empty();
 
+        // Adjust top position to vertically center
+        var headerHeight = $('header').height();
+        var containerHeight = $('#map-container').parent().height();
+        var mapOffset = Math.round(((containerHeight - ht) / 2) - headerHeight);
+        if (mapOffset > 0) {
+            $('#map-container').css('top', mapOffset);
+        }
+
         width = $('#map-container').parent().width() + 35;
         height = ht;
         
