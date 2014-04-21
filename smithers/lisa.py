@@ -65,7 +65,7 @@ def rate_limit_ip(ip, timestamp):
 
 
 def round_map_coord(coord):
-    return math.floor(coord * 100) / 100
+    return math.floor(coord * 10) / 10
 
 
 def process_map(geo_data, timestamp):
