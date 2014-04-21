@@ -373,7 +373,7 @@ function updateStackedBarChart(new_data) {
 }
 
 function drawCountryComparisonChart(data) {console.log(data.length);
-    if(data.length < 50) {
+    if(data.length < 15) {
         $('.chart3 svg').remove();
         $('.stats-chart3-loading-data').show();
         return;
