@@ -11,6 +11,7 @@ bin/peep.py install -r requirements/mrburns.txt -r requirements/mrburns-server.t
 
 python manage.py collectstatic --noinput
 python manage.py compress
+python manage.py update_product_details
 
 if [ -n $newrev ]; then
     echo $newrev > static/revision.txt

@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from __future__ import unicode_literals
 
+from operator import itemgetter
 from urllib import urlencode
 
 from django.conf import settings
@@ -10,7 +11,9 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
 
+from product_details import product_details
 from redis_cache import get_redis_connection
+
 from smithers import data_types
 from smithers import redis_keys as rkeys
 
@@ -115,8 +118,15 @@ class GlowView(TemplateView):
             'share_stats_facebook_learning': get_fb_share_url('http://mzl.la/1rkanJU'),
             'share_stats_facebook_control': get_fb_share_url('http://mzl.la/1k45KCq'),
             'count_footnote': COUNT_FOOTNOTE.format(_('What does this number mean?')),
+            'countries_list': self.get_countries_list(),
         })
         return context
+
+    def get_countries_list(self):
+        lang = getattr(self.request, 'LANGUAGE_CODE', 'en-US')
+        countries = product_details.get_regions(lang)
+        return sorted([(code.upper(), name) for code, name in countries.iteritems()],
+                      key=itemgetter(1))
 
 
 class ShareView(View):
