@@ -5,16 +5,15 @@ from __future__ import division
 import argparse
 import json
 import logging
-import signal
 import sys
 import time
 
-from statsd import StatsClient
-
 from smithers import conf
 from smithers import data_types
-from smithers.redis_client import client as redis
 from smithers import redis_keys as rkeys
+from smithers.redis_client import client as redis
+from smithers.statsd_client import statsd
+from smithers.utils import register_signals
 
 
 log = logging.getLogger('milhouse')
@@ -28,13 +27,6 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-if hasattr(conf, 'STATSD_HOST'):
-    statsd = StatsClient(host=conf.STATSD_HOST,
-                         port=conf.STATSD_PORT,
-                         prefix=conf.STATSD_PREFIX)
-else:
-    statsd = False
-
 # has the system requested shutdown
 KILLED = False
 
@@ -46,12 +38,6 @@ def handle_signals(signum, frame):
     global KILLED
     KILLED = True
     log.info('Attempting to shut down')
-
-
-# register signals
-signal.signal(signal.SIGHUP, handle_signals)
-signal.signal(signal.SIGINT, handle_signals)
-signal.signal(signal.SIGTERM, handle_signals)
 
 
 def get_timestamps_to_process():
@@ -92,6 +78,7 @@ def get_data_for_timestamp(timestamp):
         'country_issues': {},
         'issue_countries': issue_countries,
     }
+    statsd.gauge('milhouse.map_total', data['map_total'])
     redis.set(rkeys.MAP_TOTAL_SNAPSHOT, data['map_total'])
     map_geo_key = rkeys.MAP_GEO.format(timestamp)
     geo_data = redis.hgetall(map_geo_key)
@@ -195,4 +182,5 @@ def main():
 
 
 if __name__ == '__main__':
+    register_signals(handle_signals)
     sys.exit(main())

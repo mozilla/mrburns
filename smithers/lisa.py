@@ -8,18 +8,17 @@ from __future__ import division
 import argparse
 import logging
 import math
-import signal
 import sys
 
 import maxminddb
 from redis import RedisError
-from statsd import StatsClient
 
 from smithers import conf
 from smithers import data_types
-from smithers.redis_client import client as redis
 from smithers import redis_keys as rkeys
-from smithers.utils import get_epoch_minute
+from smithers.redis_client import client as redis
+from smithers.statsd_client import statsd
+from smithers.utils import get_epoch_minute, register_signals
 
 
 log = logging.getLogger('lisa')
@@ -38,13 +37,6 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
-if hasattr(conf, 'STATSD_HOST'):
-    statsd = StatsClient(host=conf.STATSD_HOST,
-                         port=conf.STATSD_PORT,
-                         prefix=conf.STATSD_PREFIX)
-else:
-    statsd = False
-
 
 def handle_signals(signum, frame):
     # NOTE: Makes this thing non-thread-safe
@@ -55,20 +47,13 @@ def handle_signals(signum, frame):
     log.info('Attempting to shut down')
 
 
-# register signals
-signal.signal(signal.SIGHUP, handle_signals)
-signal.signal(signal.SIGINT, handle_signals)
-signal.signal(signal.SIGTERM, handle_signals)
-
-
 def rate_limit_ip(ip, timestamp):
     """Return boolean whether the IP is rate limited"""
     key = 'ratelimit:{}:{}'.format(ip, timestamp)
     current = int(redis.get(key) or 0)
     if current >= conf.IP_RATE_LIMIT_MAX:
         log.warning('Rate limited {}'.format(ip))
-        if statsd:
-            statsd.incr('ratelimit')
+        statsd.incr('lisa.ratelimit')
         return True
 
     pipe = redis.pipeline()
@@ -162,14 +147,14 @@ def main():
             sys.stdout.write('.')
             sys.stdout.flush()
 
-        if statsd:
-            counter += 1
-            if counter >= 1000:
-                counter = 0
-                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        counter += 1
+        if counter >= 1000:
+            counter = 0
+            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
+    register_signals(handle_signals)
     try:
         geo = maxminddb.Reader(args.file)
     except IOError:
