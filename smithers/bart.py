@@ -17,16 +17,15 @@ from collections import Counter
 from subprocess import call
 
 from pathlib import Path
-from setproctitle import setproctitle
 
 from smithers import conf
 from smithers import redis_keys as rkeys
 from smithers.redis_client import client as redis
 from smithers.statsd_client import statsd
-from smithers.utils import register_signals
+from smithers.utils import register_signals, set_process_name
 
 
-setproctitle('bart.py')
+set_process_name(__file__)
 log = logging.getLogger('bart')
 firefox_re = re.compile(r'firefox-(?:latest|{})'.format(conf.FIREFOX_VERSION),
                         re.IGNORECASE)

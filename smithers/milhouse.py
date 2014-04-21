@@ -8,17 +8,15 @@ import logging
 import sys
 import time
 
-from setproctitle import setproctitle
-
 from smithers import conf
 from smithers import data_types
 from smithers import redis_keys as rkeys
 from smithers.redis_client import client as redis
 from smithers.statsd_client import statsd
-from smithers.utils import register_signals
+from smithers.utils import register_signals, set_process_name
 
 
-setproctitle('milhouse.py')
+set_process_name(__file__)
 log = logging.getLogger('milhouse')
 
 parser = argparse.ArgumentParser(description='Milhouse makes things Lisa tells him to.')

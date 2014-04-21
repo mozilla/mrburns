@@ -15,3 +15,6 @@ newrelic==2.18.1.15
 
 # sha256: gWkLCOKSFpssAluoIgpprnT6Aj7YoQmL_QIKBBOeneM
 raven==3.6.1
+
+# sha256: tWTPZIghfHpGMqn-ZG_Do76i-XErTmZ-ljK4cNGlghE
+setproctitle
