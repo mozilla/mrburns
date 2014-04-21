@@ -7,6 +7,7 @@ $(document).ready(function() {
         world,
         continent_centers,
         continents,
+        populate_glows_interval,
         let_it_glow_interval,
         time_passed_interval,
         selected_choice_map_view = '',
@@ -347,7 +348,7 @@ $(document).ready(function() {
         populateGlowsFromLastTick();
 
         //repull the glow data and show new ones, does that after 60s
-        var populate_glows_interval = setInterval(function() {
+        populate_glows_interval = setInterval(function() {
             clearGlowIntervals();
             populateGlowsFromLastTick();
         }, glow_tick);
@@ -388,6 +389,7 @@ $(document).ready(function() {
             
             //append non-dead map_geos to this new places array
             //so that we get a smooth transition between minutes
+            //console.log("map_previous -->", map_geo_previous.length);
             $.each(map_geo_previous, function(i, d) {
                 if(d.dead != 1 && d.count < 10) {
                     d.count = 0; //immediately transition this fine gentleman out
@@ -399,6 +401,8 @@ $(document).ready(function() {
                 if(i == map_geo_previous.length)
                     map_geo_previous = [];
             });
+            
+            //console.log("places map geo -->", places.map_geo.length);
             
             //repaint our canvas
             var i = 0;
