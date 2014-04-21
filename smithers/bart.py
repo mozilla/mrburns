@@ -164,8 +164,8 @@ def finalize_log_file(log_file):
     if args.env == 'prod':
         # move it to the shared drive
         shutil.move(str(log_file), str(conf.ARCHIVE_LOG_PATH / log_file.name))
-        with conf.ARCHIVE_LOG_LATEST_FILE.open('w') as fh:
-            fh.write(log_file.name)
+        with conf.ARCHIVE_LOG_LATEST_FILE.open('w', encoding='utf8') as fh:
+            fh.write(log_file.name.decode('utf8'))
     else:
         # gzip the file on dev
         call(['gzip', str(log_file)])
