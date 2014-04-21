@@ -534,21 +534,22 @@ function updateCountryComparisonChart(data) {
             });
 }
 
-function gimmeUniquePosition(random_i_map, start, end) {
+function gimmeUniquePosition(random_i_map, start, end, countries_data) {
     var i = randomRange(start, end);
     if(random_i_map[i] != 1)
         return i;
     else
-        return probeForUnique(i, random_i_map);
+        return probeForUnique(i, random_i_map, countries_data);
 }
 
-function probeForUnique(i, random_i_map) {
+function probeForUnique(i, random_i_map, countries_data) {
     if(random_i_map[i] != 1) {
         return i;
     }
     
+    //if the index already exists, look for another
     while(random_i_map[i] == 1) {
-        if(i+1 == data.length - 1) i = 0;
+        if(i+1 == countries_data.length) i = 0;
         else  i++;
             
         if(random_i_map[i] != 1) {
@@ -579,10 +580,10 @@ function getDataSubsetForCountryComparisonChart(data) {
 
     for(var i=0; i<4; i++) {
         random_i_map[gimmeUniquePosition(
-            random_i_map, 0, end)] = 1;
+            random_i_map, 0, end, data)] = 1;
             
         random_i_map[gimmeUniquePosition(
-            random_i_map, start, data.length - 1)] = 1;
+            random_i_map, start, data.length - 1, data)] = 1;
     }
     
     var random_i_arr = d3.keys(random_i_map);
