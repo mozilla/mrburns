@@ -86,6 +86,11 @@ function updateStatsPanelChoice(choice) {
     });
     $('body').addClass('stats-panel-' + choice);
     $picker.addClass('stats-picker-' + choice);
+
+    // update selected option in picker
+    $picker.find('select option').each(function() {
+        this.selected = (this.value === choice);
+    });
 }
 
 function assignStatsEventListeners() {

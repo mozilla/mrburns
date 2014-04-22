@@ -375,6 +375,7 @@ $(document).ready(function () {
                 .addClass('stats-panel-open')
                 .scrollTop(0);
 
+            updateStatsPanelChoice($(this).data('choice'));
             updateStatsPanel();
         } else {
             openInterstitialModal($(this).data('choice'));
