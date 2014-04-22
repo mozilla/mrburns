@@ -38,8 +38,15 @@ $(document).ready(function () {
     assignStatsEventListeners();
     drawCharts();
 
-    // default choice to privacy
-    updateStatsPanelChoice('privacy');
+    var hash = window.location.hash;
+    var valid_panels = [ 'privacy', 'opportunity', 'access', 'freedom', 'learning', 'control' ];
+    var panel = 'privacy'; // default panel is privacy if not specified
+    var expression = '^#stats-(' + valid_panels.join('|') + ')$';
+    var matches = (new RegExp(expression)).exec(hash);
+    if (matches) {
+        panel = matches[1];
+    }
+    updateStatsPanelChoice(panel);
 });
 
 function updateStatsPanelChoice(choice) {

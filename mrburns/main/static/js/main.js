@@ -293,18 +293,15 @@ $(document).ready(function () {
         $('html').addClass('non-australis');
     }
 
-    if (hash.indexOf("choice") != -1) {
-        // if #choice is in the URL, show the choice modal
+    if (hash === '#choice') {
         $choice_modal.modal();
-    } else if (hash.indexOf("video") != -1) {
-        // if #video is in the URL, show the video modal
-        $( '#video-modal' ).modal();
+    } else if (hash === '#video') {
+        $('#video-modal').modal();
         insertVideo();
-    } else if (hash.indexOf("number") != -1) {
-        // if #number is in the URL, show the number modal
-        $( '#number-modal' ).modal();
-    } else if (hash.indexOf("stats") != -1) {
-        // if #number is in the URL, show the number modal
+    } else if (hash === '#number') {
+        $('#number-modal').modal();
+    } else if (/^#stats/.test(hash)) {
+        // if URL starts with #stats, show the stats modal
         $('body').addClass('stats-panel-open');
         updateStatsPanel();
     }
