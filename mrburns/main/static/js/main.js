@@ -278,17 +278,7 @@ $(document).ready(function () {
 
     if (isAustralis()) {
         // if the browser is Australis, add a class to HTML tag
-        // and show the primary choice modal
-        var $html = $(document.documentElement);
         $('html').addClass('australis');
-
-        // if we're on australis, and not mobile,
-        // and there's no hash tag, show the choice modal
-        if (hash.indexOf("#") === -1) {
-            if (getMode() === 'desktop') {
-                $choice_modal.modal();
-            }
-        }
     } else {
         $('html').addClass('non-australis');
     }
@@ -305,6 +295,10 @@ $(document).ready(function () {
         // if URL starts with #stats, show the stats modal
         $('body').addClass('stats-panel-open');
         updateStatsPanel();
+    } else if (getMode() === 'desktop') {
+        // if there are no known URL fragments and we're on desktop,
+        // then open choice modal
+        $choice_modal.modal();
     }
 
     $( '.stats-panel-tab' ).click(function() {
