@@ -16,8 +16,10 @@ if [ "$locale_revision" != "$new_revision" ]; then
     if dennis-cmd lint locale; then
         if python manage.py compilemessages; then
             sudo supervisorctl restart mrburns
+        else
+            echo "The .po files failed to compile in r${new_revision}." | mail -s "Glow l10n error" pmac@mozilla.com
         fi
     else
-        echo "There is a problem with the .po files in r${new_revision}." | mail -s "Glow l10n error" pmac@mozilla.com
+        echo "Dennis found a problem with the .po files in r${new_revision}." | mail -s "Glow l10n error" pmac@mozilla.com
     fi
 fi
