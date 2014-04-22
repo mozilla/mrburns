@@ -434,7 +434,7 @@ $(document).ready(function () {
 
     $('#video-modal').on('hidden.bs.modal', function (e) {
         // Stop YouTube player when video modal is closed
-        $('video-player').tubeplayer('destroy');
+        $('#video-player').tubeplayer('destroy');
     });
 
     // Hide glows when opening modals
