@@ -418,6 +418,7 @@ $(document).ready(function () {
             initialVideo: "Xm5i5kbIXzc", // the video that is loaded into the player
             showinfo: 0,
             autoPlay: 1,
+            protocol: 'https',
             onPlayerEnded: function(){
                 proceedToChoiceModal();
             }, // after the player is stopped
