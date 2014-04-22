@@ -6,7 +6,6 @@ import sys
 
 BASE_DIR = os.path.dirname(__file__)
 site.addsitedir(os.path.join(BASE_DIR, 'smithers'))
-site.addsitedir(os.path.join(BASE_DIR, 'vendor'))
 
 
 if __name__ == "__main__":

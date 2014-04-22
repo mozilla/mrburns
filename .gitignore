@@ -9,7 +9,8 @@
 **/conf/local.py
 **/settings/local.py
 .locale_revision
-
+prod_details_json/**/*.json
+.last_update
 
 *.py[cod]
 

@@ -1,0 +1,9 @@
+# Peep can't yet handle git urls for installation.
+# The combination of https urls and git hashes gives
+# us similar confidence in repeatable installation.
+
+# product_details
+git+https://github.com/pmclanahan/django-mozilla-product-details.git@a801ec5fe51980e57dac4a5e488979ada349a300
+
+# pyuca (pmac's fork)
+git+https://github.com/pmclanahan/pyuca.git@43eb0a0666b4e5cfe0c4628e480cbb137530d0c0
