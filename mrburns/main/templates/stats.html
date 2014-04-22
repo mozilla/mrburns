@@ -19,11 +19,12 @@
     <div class="stats-panel-column">
 
       <div class="chart1">
-        <div class="donut-icon">
-          <i class="fa fa-fw fa-eye fa-4x fa-inverse"></i>
+        <div class="donut">
+          <div class="donut-icon">
+            <i class="fa fa-fw fa-eye fa-4x fa-inverse"></i>
+          </div>
         </div>
-        <div class="donut"></div>
-        <div class="donut-prose"><p></p></div>
+        <h3 class="donut-prose"></h3>
       </div>
 
       <div class="stats-panel-column-right">
@@ -110,7 +111,7 @@
           </div>
 
           <h2></h2>
-          <div class="seperator"></div>
+          <div class="separator"></div>
 
           <p class="paragraph1"></p>
           <p class="did-you-know">{% trans 'Did you know?' %}</p>
@@ -119,7 +120,7 @@
       </div>
 
       <div class="chart2">
-        <img src="{% static 'img/shadow.png' %}" class="shadow-seperator">
+        <img src="{% static 'img/shadow.png' %}" class="shadow-separator">
         <h2>{% trans 'What matters most by country?' %}</h2>
 
         <div class="country-picker">
@@ -380,7 +381,7 @@
       </div>
 
       <div class="chart3">
-        <img src="{% static 'img/shadow.png' %}" class="shadow-seperator">
+        <img src="{% static 'img/shadow.png' %}" class="shadow-separator">
         <h2>{% trans 'How does that compare globally?' %}</h2>
         <!-- stats pane is appended here -->
         <svg></svg>
