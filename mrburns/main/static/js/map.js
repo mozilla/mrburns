@@ -87,7 +87,7 @@ $(document).ready(function() {
         var min = d3.min(choice_data, function(d) { return d.count; }),
             max = d3.max(choice_data, function(d) { return d.count; });
         
-        //todo color continents per issue data per continent
+        //color continents per issue data per continent
         var color_issue_per_continent = d3.scale.linear()
             .domain([min,max])
             .range([d3.hcl(color[choice]).brighter(1), color[choice]]);
