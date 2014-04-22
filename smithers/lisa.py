@@ -113,6 +113,7 @@ def process_share(geo_data, share_type):
 
 def main():
     counter = 0
+    timer = statsd.timer('lisa.process_ip', rate=0.01)  # 1% sample rate
 
     while True:
         if KILLED:
@@ -124,6 +125,9 @@ def main():
         except RedisError as e:
             log.error('Error with Redis: {}'.format(e))
             return 1
+
+        # don't start above redis call as it will block to wait
+        timer.start()
 
         log.debug('Got log data: ' + ip_info[1])
         try:
@@ -144,10 +148,16 @@ def main():
             if rtype != data_types.DOWNLOAD:
                 process_share(record, rtype)
 
+        timer.stop()
+        statsd.incr('lisa.process_ip', rate=0.01)  # 1% sample rate
+
         if args.verbose:
             sys.stdout.write('.')
             sys.stdout.flush()
 
+        # using a counter and if statement here instead of the
+        # `rate` param on the gauge to avoid getting the length
+        # of the Redis list every time.
         counter += 1
         if counter >= 1000:
             counter = 0
