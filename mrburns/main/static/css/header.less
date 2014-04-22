@@ -116,11 +116,15 @@ header {
 }
 
 @media (max-width: @screen-xs-max) {
-    .header-join-content {
+    .header-join-content,
+    .dropdown-menu > li> .mobile-choice-link {
         display: none;
+    }
+    .header-join-content {
         font-size: 28px;
     }
-    .stats-panel-open .header-join-content {
+    .stats-panel-open .header-join-content,
+    .stats-panel-open .dropdown-menu > li> .mobile-choice-link {
         display: block;
     }
 }

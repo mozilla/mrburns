@@ -355,6 +355,14 @@ $(document).ready(function () {
         }
     }
 
+    $('.mobile-choice-link').click(function(e) {
+        e.preventDefault();
+        $choices.removeClass('selected');
+        $('.choices').removeClass('in-progress');
+        $('body').removeClass('stats-panel-open');
+        updateStatsPanel();
+    });
+
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
