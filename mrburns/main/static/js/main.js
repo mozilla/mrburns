@@ -352,6 +352,14 @@ $(document).ready(function () {
         }
     }
 
+    $('.mobile-choice-link').click(function(e) {
+        e.preventDefault();
+        $choices.removeClass('selected');
+        $('.choices').removeClass('in-progress');
+        $('body').removeClass('stats-panel-open');
+        updateStatsPanel();
+    });
+
     $choices.click(function() {
         $choices.removeClass('selected');
         $(this).addClass('selected');
@@ -364,6 +372,7 @@ $(document).ready(function () {
                 .addClass('stats-panel-open')
                 .scrollTop(0);
 
+            updateStatsPanelChoice($(this).data('choice'));
             updateStatsPanel();
         } else {
             openInterstitialModal($(this).data('choice'));
