@@ -23,3 +23,6 @@ pep8==1.5.4
 
 # sha256: WioXDkfeVZOmq_rh6VQr0sOSSsYrvk5u2WyVPANSJDo
 mccabe==0.2.1
+
+# sha256: uDndLZwRfHAUMMFJlWkYpCOphjtIsJyQ4wpgE-fS9E8
+mock==1.0.1

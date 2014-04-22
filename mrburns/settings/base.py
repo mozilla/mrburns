@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     # 3rd party
     'compressor',
     'django_extensions',
-    'django_countries',
+    'product_details',
     'django_nose',
 
     # project apps
@@ -105,3 +105,5 @@ COMPRESS_PRECOMPILERS = (
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
 ENABLE_REDIS = False
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+PROD_DETAILS_DIR = str(BASE_DIR / 'prod_details_json')

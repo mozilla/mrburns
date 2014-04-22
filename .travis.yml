@@ -6,6 +6,7 @@ before_script:
 script: coverage run manage.py test && cd smithers && NOSE_WITH_COV=1 nosetests
 install:
   - bin/peep.py install -r requirements/qa.txt
+  - pip install -r requirements/github.txt
 after_success:
   # Report coverage results to coveralls.io
   - pip install coveralls

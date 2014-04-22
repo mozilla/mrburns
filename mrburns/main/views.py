@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from __future__ import unicode_literals
 
+from operator import itemgetter
 from urllib import urlencode
 
 from django.conf import settings
@@ -10,7 +11,10 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
 
+from product_details import product_details
+from pyuca import Collator
 from redis_cache import get_redis_connection
+
 from smithers import data_types
 from smithers import redis_keys as rkeys
 
@@ -26,6 +30,12 @@ COUNT_FOOTNOTE = ('<a href="#number-modal" class="number-help" '
                   'data-toggle="modal" title="{}">'
                   '<span class="share_total"></span>'
                   '<i class="fa fa-question-circle"></i></a>')
+uca_collator = Collator()
+
+
+def uca_sort_key(country):
+    """Sort key function using pyuca on the 2nd element of the argument."""
+    return uca_collator.sort_key(country[1])
 
 
 def get_tw_share_url(**kwargs):
@@ -38,6 +48,14 @@ def get_tw_share_url(**kwargs):
 
 def get_fb_share_url(url):
     return '?'.join([FB_URL, urlencode({'u': url})])
+
+
+def get_sorted_countries_list(locale):
+    """Return a localized list of all countries sorted by name."""
+    countries = product_details.get_regions(locale)
+    countries_list = ((code.upper(), name) for code, name in countries.iteritems())
+    key_function = itemgetter(1) if locale.startswith('en') else uca_sort_key
+    return sorted(countries_list, key=key_function)
 
 
 class GlowView(TemplateView):
@@ -115,8 +133,13 @@ class GlowView(TemplateView):
             'share_stats_facebook_learning': get_fb_share_url('http://mzl.la/1rkanJU'),
             'share_stats_facebook_control': get_fb_share_url('http://mzl.la/1k45KCq'),
             'count_footnote': COUNT_FOOTNOTE.format(_('What does this number mean?')),
+            'countries_list': self.get_countries_list(),
         })
         return context
+
+    def get_countries_list(self):
+        lang = getattr(self.request, 'LANGUAGE_CODE', 'en-US')
+        return get_sorted_countries_list(lang)
 
 
 class ShareView(View):
