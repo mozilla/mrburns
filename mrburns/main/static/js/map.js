@@ -7,6 +7,7 @@ $(document).ready(function() {
         world,
         continent_centers,
         continents,
+        counter_interval,
         populate_glows_interval,
         let_it_glow_interval,
         time_passed_interval,
@@ -189,17 +190,28 @@ $(document).ready(function() {
     }
 
     function animateCounterContinuous(last_count, current_count) {
-        $({the_value: last_count}) //from
-            .animate({the_value: current_count}, { //to
-                duration: glow_tick,
-                easing: 'swing',
-                step: function(i) {
-                    //if(Math.floor(i-last_count) % 10 == 0) {
+        clearInterval(counter_interval);
+
+        //update every 10s
+        var increment_by = Math.floor((current_count - last_count) / 6);
+        var intermediate_count = last_count + increment_by;
+        
+        $('.share_total')
+            .html(addCommas(Math.round(last_count)));
+            
+        counter_interval = setInterval(function() {
+            $({the_value: intermediate_count - increment_by}) //from
+                .animate({the_value: intermediate_count}, { //to
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function(i) {
                         $('.share_total')
                             .html(addCommas(Math.round(this.the_value)));
-                    //}
-                }
-        });
+                    }
+            });
+            
+            intermediate_count += increment_by;
+        }, glow_tick / 6);  
     }
 
     function drawMap(ht, just_resized) {
