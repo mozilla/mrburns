@@ -42,3 +42,6 @@ dennis==0.3.11
 
 # sha256: L29VCf4YCuMJL9xVlYWoOjz84wr7qd4lzO_F7Pv-2_w
 blessings==1.5.1
+
+# sha256: izJ291zi_OlELifbOuY9hCQW4X8OIJXzn_UtxzXldJo
+polib==1.0.4
