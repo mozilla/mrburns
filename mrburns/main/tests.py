@@ -8,7 +8,8 @@ from mrburns.main import views
 class TestViewHelpers(TestCase):
     def test_twitter_share_url_fn(self):
         """Should return a proper and endoded twitter share url."""
-        url = views.get_tw_share_url(url='http://example.com', text='The Dude abides.')
+        url = views.get_tw_share_url(url='http://example.com', text='The Dude abides.',
+                                     hashtags='firefox')
         ok_(url.startswith(views.TWITTER_URL + '?'))
         ok_('dnt=true' in url)
         ok_('hashtags=firefox' in url)
