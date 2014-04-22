@@ -397,14 +397,6 @@ $(document).ready(function () {
     // Open .share-window links in a new window, and close any popovers
     $(document).on('click', '.share-window', function(event) {
         event.preventDefault();
-
-        // TODO: This is hackey, due to how coded i cant access events
-        // in ga_event-tracking.js so putting here.
-        var shareType = $(this).data('ga');
-        var shareChoice = $(this).find('span.title').html();
-
-        ga('send', 'event', shareType, shareChoice);
-
         openShareWindow(this.href);
     });
 

@@ -101,4 +101,18 @@
         ga('send', 'event', 'Facts and Figures Tab', 'Geo Filter', $(this).val());
     });
 
+    /* Share Pop-Up Links
+    ***************************************************************************/
+    $(document).on('click', '.share-window', function(event) {
+        var shareType = $(this).data('ga');
+        var shareChoice = $(this).find('span.title').html();
+
+        // Add nav state for stats - relies on Global current_choice from stats.js
+        if(shareType !== "share-map") {
+            ga('send', 'event', shareType, shareChoice, current_choice);
+        } else {
+            ga('send', 'event', shareType, shareChoice);
+        }
+    });
+
 })(jQuery);
