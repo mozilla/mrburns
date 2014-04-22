@@ -296,6 +296,7 @@ $(document).ready(function () {
     if (hash === '#choice') {
         $choice_modal.modal();
     } else if (hash === '#video') {
+        var onVideoPath = true;
         $('#video-modal').modal();
         insertVideo();
     } else if (hash === '#number') {
@@ -406,31 +407,40 @@ $(document).ready(function () {
     });
 
     // Insert YouTube video into #video modal
-    function insertVideo(autoplay) {
-        if (autoplay) {
-            autoplay = '1';
-        } else {
-            autoplay = '0';
+    function insertVideo() {
+
+        $('#video-player').tubeplayer({
+            width: 853, // the width of the player
+            height: 480, // the height of the player
+            allowFullScreen: "true", // true by default, allow user to go full screen
+            initialVideo: "Xm5i5kbIXzc", // the video that is loaded into the player
+            showinfo: 0,
+            autoPlay: 1,
+            onPlayerEnded: function(){
+                proceedToChoiceModal();
+            }, // after the player is stopped
+        });
+
+        function proceedToChoiceModal() {
+            if (onVideoPath) {
+                $('#video-modal').modal('hide');
+                $('#choice-modal').modal('show');
+            }
+            onVideoPath = false;
         }
-        var width = 853;
-        var height = 480;
-        var id = 'Xm5i5kbIXzc';
-        $('#video-modal .modal-body')
-            .html('<iframe src="//www.youtube-nocookie.com/embed/' + id +
-                  '?autoplay=' + autoplay + '&showinfo=0" frameborder="0" ' +
-                   'width="' + width + '" height="' + height + '" ' +
-                   'allowfullscreen></iframe>')
-            .fitVids();
+
+        $('#video-player').fitVids();
+
     }
 
     $('#video-modal').on('show.bs.modal', function (e) {
         // Insert YouTube player when video modal is opened
-        insertVideo(true);
+        insertVideo();
     });
 
     $('#video-modal').on('hidden.bs.modal', function (e) {
         // Stop YouTube player when video modal is closed
-        $('#video-modal .modal-body').html('');
+        $('video-player').tubeplayer('destroy');
     });
 
     // Hide glows when opening modals
