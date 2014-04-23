@@ -384,7 +384,7 @@ function updateStackedBarChart(new_data) {
             })
 }
 
-function drawCountryComparisonChart(data) {console.log(data.length);
+function drawCountryComparisonChart(data) {
     if(data.length < 15) {
         $('.chart3 svg').remove();
         $('.stats-chart3-loading-data').show();
@@ -418,7 +418,10 @@ function drawCountryComparisonChart(data) {console.log(data.length);
     //add min, median, max lines and labels
     addVerticalLine(min, 'min', x_scale_country_comparison, height, bar_width);
     addVerticalLine(max, 'max', x_scale_country_comparison, height, bar_width);
-    addVerticalLine(median, 'med', x_scale_country_comparison, height, bar_width);
+    addVerticalLine(median, 'med',
+        x_scale_country_comparison, 
+        (median - min < 0.04) ? height - 20 : height,
+        bar_width);
     
     //add country comparison data
     svg.selectAll('.country-bar')
