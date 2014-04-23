@@ -128,7 +128,6 @@
 
 .chart2 {
     position: relative;
-    overflow: scroll;
     .clearfix();
     .country-picker {
         font-size: 18px;
@@ -144,58 +143,11 @@
 
 .chart3 {
     position: relative;
-    overflow: scroll;
     .clearfix();
 }
 
 .chart3 svg {
     margin-top: 10px;
-}
-
-@media (min-width: @screen-sm-min) {
-    .chart1,
-    .chart2,
-    .chart3 {
-        width: 570px;
-        h2 {
-            float: left;
-        }
-    }
-    .chart1 {
-        padding-top: 0;
-    }
-    .chart2 {
-        .country-picker {
-            font-size: 18px;
-            position: absolute;
-            right: 0;
-            top: 40px;
-        }
-    }
-    .chart3 {
-        float: left;
-        height: 650px;
-    }
-    .stats-panel-column {
-        float: left;
-        width: 570px;
-        margin-right: 40px;
-    }
-    .donut {
-        float: left;
-        text-align: inherit;
-    }
-    .donut-prose {
-        float: left;
-        padding-top: 45px;
-        width: 320px;
-        text-align: inherit;
-    }
-    .stats-panel-column-right {
-        float: left;
-        width: 230px;
-    }
-
 }
 
 .shadow-separator {
@@ -330,5 +282,54 @@ select.country {
         height: 2px;
         margin-bottom: 10px;
         width: 100%;
+    }
+}
+
+
+@media (min-width: @screen-sm-min) {
+    .chart1,
+    .chart2,
+    .chart3 {
+        width: 570px;
+        h2 {
+            float: left;
+        }
+    }
+    .chart1 {
+        padding-top: 0;
+    }
+    .chart2 {
+        .country-picker {
+            font-size: 18px;
+            position: absolute;
+            right: 0;
+            top: 40px;
+        }
+    }
+    .chart3 {
+        float: left;
+        height: 650px;
+    }
+    .stats-panel-column {
+        float: left;
+        width: 570px;
+        margin-right: 40px;
+    }
+    .donut {
+        float: left;
+        text-align: inherit;
+    }
+    .donut-prose {
+        float: left;
+        padding-top: 45px;
+        width: 320px;
+        text-align: inherit;
+    }
+    .stats-panel-column-right {
+        float: left;
+        width: 230px;
+    }
+    .stats-share-link {
+        position: static;
     }
 }

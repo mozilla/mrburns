@@ -28,21 +28,11 @@
     margin: 0;
     padding: 0;
     .clearfix();
-    .picker-label {
-        margin: 0;
-        padding: 20px 0 20px 20px;
-        display: inline-block;
-        vertical-align: middle;
-        .fa {
-            font-size: 1.3em;
-            margin-left: 10px;
-        }
-    }
     .select-wrapper {
-        display: inline-block;
-        vertical-align: middle;
+        display: block;
         position: relative;
         overflow: hidden;
+        width: 100%;
     }
     select {
         -webkit-appearance: none;
@@ -60,6 +50,7 @@
     }
     .fa-caret-down {
         position: absolute;
+        pointer-events: none;
         right: 20px;
         top: 50%;
         margin-top: -.5em;
