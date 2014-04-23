@@ -2,15 +2,14 @@
 {% load staticfiles %}
 <div class="stats-mobile">
   <label class="stats-mobile-picker visible-xs stats-picker-privacy">
-    <p class="picker-label">{% trans 'View by:' %} <i class="fa fa-eye"></i></p>
     <div class="select-wrapper">
       <select size="1">
-        <option value="privacy" selected="selected">{% trans 'Privacy' %}</option>
-        <option value="opportunity">{% trans 'Opportunity' %}</option>
-        <option value="access">{% trans 'Accessibility' %}</option>
-        <option value="freedom">{% trans 'Freedom' %}</option>
-        <option value="learning">{% trans 'Learning' %}</option>
-        <option value="control">{% trans 'User control' %}</option>
+        <option value="privacy" selected="selected">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'Privacy' %}</option>
+        <option value="opportunity">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'Opportunity' %}</option>
+        <option value="access">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'Accessibility' %}</option>
+        <option value="freedom">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'Freedom' %}</option>
+        <option value="learning">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'Learning' %}</option>
+        <option value="control">{% trans 'View by:' %}&nbsp;&nbsp;{% trans 'User control' %}</option>
       </select>
     </div>
     <i class="fa fa-caret-down"></i>
