@@ -428,14 +428,44 @@ $(document).ready(function () {
 
     }
 
-    $('#video-modal').on('show.bs.modal', function (e) {
+    $('#video-modal').on('show.bs.modal', function () {
         // Insert YouTube player when video modal is opened
         insertVideo();
+
+        var $modal = $(this);
+        $modal.css('display', 'block');
+        var $dialog = $modal.find('.modal-dialog');
+
+        setTimeout(function() {
+
+        // center video modal vertically
+        console.log($(window).height(), $dialog.height());
+            var offset = Math.max(
+                ($(window).height() - $dialog.height()) / 2,
+                20
+            );
+            $dialog.css('margin-top', offset);
+        }, 250); // delay to allow video to initialize
     });
 
-    $('#video-modal').on('hidden.bs.modal', function (e) {
+    $('#video-modal').on('hidden.bs.modal', function () {
         // Stop YouTube player when video modal is closed
         $('#video-player').tubeplayer('destroy');
+    });
+
+    // center all other modals vertically
+    $('.modal').not('#choice-modal, #video-modal').on('show.bs.modal', function () {
+        var $modal = $(this);
+        $modal.css('display', 'block');
+        var $dialog = $modal.find('.modal-dialog');
+
+        setTimeout(function() {
+            var offset = Math.max(
+                ($(window).height() - $dialog.height()) / 2,
+                20
+            );
+            $dialog.css('margin-top', offset);
+        }, 20);
     });
 
     // Hide glows when opening modals
