@@ -9,7 +9,7 @@ REV_FILE=".locale_revision"
 test ! -e $REV_FILE && touch $REV_FILE
 
 locale_revision=$(cat $REV_FILE)
-new_revision=$(svn info locale | grep "Revision:")
+new_revision=$(svnversion -cn locale | cut -d ':' -f 2)
 
 if [ "$locale_revision" != "$new_revision" ]; then
     echo $new_revision > $REV_FILE
