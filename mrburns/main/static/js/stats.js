@@ -26,7 +26,7 @@ var icon = new Object();
 
 $(document).ready(function () {
     //set rhs
-    $('.what-is-mozilla-doing-about-it .seperator')
+    $('.what-is-mozilla-doing-about-it .separator')
         .css('background-color', color[current_choice]);
     $('.what-is-mozilla-doing-about-it h2')
         .html($('.choice-' + current_choice + '-prose-title-rhs').html());
@@ -53,7 +53,7 @@ function updateStatsPanelChoice(choice) {
     current_choice = choice;
 
     //update right-hand-side
-    $('.what-is-mozilla-doing-about-it .seperator')
+    $('.what-is-mozilla-doing-about-it .separator')
         .css('background-color', color[current_choice]);
     $('.what-is-mozilla-doing-about-it h2')
         .html($('.choice-' + current_choice + '-prose-title-rhs').html());
@@ -151,7 +151,7 @@ function drawCharts() {
 }
 
 function updateDonut(data, current_choice) {
-    $('.donut-prose p').html($('.choice-' + current_choice + '-prose').html());
+    $('.donut-prose').html($('.choice-' + current_choice + '-prose').html());
 
     d3.select('.donut-foreground')
         .transition()
@@ -172,7 +172,7 @@ function updateDonut(data, current_choice) {
 }
 
 function drawDonut(data) {
-    $('.donut-prose p').html($('.choice-' + current_choice + '-prose').html());
+    $('.donut-prose').html($('.choice-' + current_choice + '-prose').html());
   
     var width = 170,
         height = 200;

@@ -111,15 +111,8 @@
 }
 
 .stats-panel-column {
-    float: left;
-    width: 570px;
-    margin-right: 40px;
+    position: relative;
     .clearfix();
-}
-
-.stats-panel-column-right {
-    float: left;
-    width: 230px;
 }
 
 .band {
@@ -129,41 +122,90 @@
 
 .chart1 {
     position: relative;
-    width: 570px;
+    padding-top: 20px;
     .clearfix();
 }
 
 .chart2 {
     position: relative;
-    width: 570px;
+    overflow: scroll;
     .clearfix();
     .country-picker {
         font-size: 18px;
-        position: absolute;
-        right: 0;
-        top: 40px;
+        .clearfix();
     }
 }
 
 .chart2 h2,
 .chart3 h2 {
-    color: #f4f4f4;
     font-size: 18px;
-    font-style: italic;
-    font-weight: 200;
-    float:left;
+    font-weight: 300;
 }
 
 .chart3 {
-    float: left;
     position: relative;
-    height: 650px;
-    width: 570px;
+    overflow: scroll;
     .clearfix();
 }
 
 .chart3 svg {
     margin-top: 10px;
+}
+
+@media (min-width: @screen-sm-min) {
+    .chart1,
+    .chart2,
+    .chart3 {
+        width: 570px;
+        h2 {
+            float: left;
+        }
+    }
+    .chart1 {
+        padding-top: 0;
+    }
+    .chart2 {
+        .country-picker {
+            font-size: 18px;
+            position: absolute;
+            right: 0;
+            top: 40px;
+        }
+    }
+    .chart3 {
+        float: left;
+        height: 650px;
+    }
+    .stats-panel-column {
+        float: left;
+        width: 570px;
+        margin-right: 40px;
+    }
+    .donut {
+        float: left;
+        text-align: inherit;
+    }
+    .donut-prose {
+        float: left;
+        padding-top: 45px;
+        width: 320px;
+        text-align: inherit;
+    }
+    .stats-panel-column-right {
+        float: left;
+        width: 230px;
+    }
+
+}
+
+.shadow-separator {
+    max-width: 100%;
+}
+
+.stats-share-link {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .choice-prose,
@@ -193,7 +235,7 @@ select.country {
 }
 
 .donut {
-    float: left;
+    position: relative;
     width: 190px;
 }
 
@@ -212,17 +254,10 @@ select.country {
 }
 
 .donut-prose {
-    float: left;
-    padding-top: 45px;
-    width: 320px;
-    
-    p {
-        color: #f4f4f4;
-        font-size: 29px;
-        font-style: italic;
-        font-weight: 300;
-        line-height: 28px;
-    }
+    font-size: 26px;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
 }
 
 .key-stats-panel {
@@ -268,8 +303,7 @@ select.country {
 }
 
 .what-is-mozilla-doing-about-it {
-    position: relative;
-    
+
     h2 {
         font-size: 26px;
         font-style: italic;
@@ -291,7 +325,7 @@ select.country {
         padding-bottom: 1px;
     }
     
-    .seperator {
+    .separator {
         background-color: #f4f4f4;
         height: 2px;
         margin-bottom: 10px;
