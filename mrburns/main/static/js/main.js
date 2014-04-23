@@ -274,6 +274,56 @@ $(document).ready(function () {
 
     $choice_modal.on('show.bs.modal', handleChoiceModalOpen);
 
+    $('#video-modal').on('show.bs.modal', function () {
+        // Insert YouTube player when video modal is opened
+        insertVideo();
+
+        var $modal = $(this);
+        $modal.css('display', 'block');
+        var $dialog = $modal.find('.modal-dialog');
+
+        // center video modal vertically
+        setTimeout(function() {
+            var offset = Math.max(
+                ($(window).height() - $dialog.height()) / 2,
+                20
+            );
+            $dialog.css('margin-top', offset);
+        }, 250); // delay to allow video to initialize
+    });
+
+    $('#video-modal').on('hidden.bs.modal', function (e) {
+        // Stop YouTube player when video modal is closed
+        $('#video-player').tubeplayer('destroy');
+    });
+
+    // Hide glows when opening modals
+    $('.modal').on('show.bs.modal', function (e) {
+        hideGlows();
+    });
+
+    // Show glows when closing modals
+    $('.modal').on('hidden.bs.modal', function (e) {
+        if (!$('body').hasClass('stats-panel-open')) {
+            showGlows();
+        }
+    });
+
+    // center all other modals vertically
+    $('.modal').not('#choice-modal, #video-modal').on('show.bs.modal', function () {
+        var $modal = $(this);
+        $modal.css('display', 'block');
+        var $dialog = $modal.find('.modal-dialog');
+
+        setTimeout(function() {
+            var offset = Math.max(
+                ($(window).height() - $dialog.height()) / 2,
+                20
+            );
+            $dialog.css('margin-top', offset);
+        }, 20);
+    });
+
     var hash = window.location.hash;
 
     if (isAustralis()) {
@@ -295,10 +345,18 @@ $(document).ready(function () {
         // if URL starts with #stats, show the stats modal
         $('body').addClass('stats-panel-open');
         updateStatsPanel();
-    } else if (hash !== '#map' && getMode() === 'desktop') {
+    } else if (hash === '#map') {
+        showGlows();
+    } else if (getMode() === 'desktop') {
         // if there are no known URL fragments and we're on desktop,
         // then open choice modal
         $choice_modal.modal();
+
+        // Bootstrap doesn't natively support changing the fade style on
+        // an existing modal. We must manually add the fade class to the
+        // backdrop element that is created when a modal dialog is opened. If
+        // this is omitted, the closing animation will be broken.
+        $('.modal-backdrop').addClass('fade');
     }
 
     $( '.stats-panel-tab' ).click(function() {
@@ -425,57 +483,4 @@ $(document).ready(function () {
         }
 
     }
-
-    $('#video-modal').on('show.bs.modal', function () {
-        // Insert YouTube player when video modal is opened
-        insertVideo();
-
-        var $modal = $(this);
-        $modal.css('display', 'block');
-        var $dialog = $modal.find('.modal-dialog');
-
-        setTimeout(function() {
-
-        // center video modal vertically
-        console.log($(window).height(), $dialog.height());
-            var offset = Math.max(
-                ($(window).height() - $dialog.height()) / 2,
-                20
-            );
-            $dialog.css('margin-top', offset);
-        }, 250); // delay to allow video to initialize
-    });
-
-    $('#video-modal').on('hidden.bs.modal', function () {
-        // Stop YouTube player when video modal is closed
-        $('#video-player').tubeplayer('destroy');
-    });
-
-    // center all other modals vertically
-    $('.modal').not('#choice-modal, #video-modal').on('show.bs.modal', function () {
-        var $modal = $(this);
-        $modal.css('display', 'block');
-        var $dialog = $modal.find('.modal-dialog');
-
-        setTimeout(function() {
-            var offset = Math.max(
-                ($(window).height() - $dialog.height()) / 2,
-                20
-            );
-            $dialog.css('margin-top', offset);
-        }, 20);
-    });
-
-    // Hide glows when opening modals
-    $('.modal').on('show.bs.modal', function (e) {
-        hideGlows();
-    });
-
-    // Show glows when closing modals
-    $('.modal').on('hidden.bs.modal', function (e) {
-        if (!$('body').hasClass('stats-panel-open')) {
-            showGlows();
-        }
-    });
-
 });
