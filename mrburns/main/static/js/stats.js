@@ -247,8 +247,11 @@ function drawStackedBarChart(data_unsorted) {
        .range([0, width - x_padding_right]);
   
     var svg = d3.select('.chart2 svg')
-        .attr('width', width + 50)
+        .attr('width', $('.chart2').width())
         .attr('height', height);
+        
+    svg.attr('viewBox', '0 0 615 90')
+        .attr('preserveAspectRatio', 'xMinYMin meet');
         
     var x_marker = 0;
     
@@ -410,8 +413,11 @@ function drawCountryComparisonChart(data) {
        .range([x_padding_left, width - x_padding_right]);
   
     var svg = d3.select('.chart3 svg')
-        .attr('width', width + 50)
+        .attr('width', $('.chart3').width())
         .attr('height', height);
+        
+    svg.attr('viewBox', '0 0 615 350')
+        .attr('preserveAspectRatio', 'xMinYMin meet');
     
     var data_subset = getDataSubsetForCountryComparisonChart(data);
 
@@ -532,7 +538,7 @@ function updateCountryComparisonChart(data) {
                 d3.select('.country-value-stats_' + i)
                     .transition()
                     .duration(1000)
-                        .text(function() {
+                        .text(function() { 
                             return (data_subset[i].count * 100).toFixed(1) + '%';
                         })
                         .attr('x', function() {
@@ -673,3 +679,11 @@ function updateVerticalLine(data, label, x_scale_country_comparison, bar_width) 
                 return label + ' (' + (data * 100).toFixed(1) + '%)';
             });
 }
+
+$(window).resize(function() {
+    $('.chart2 svg')
+        .attr('width', $('.chart2').width());
+        
+    $('.chart3 svg')
+        .attr('width', $('.chart3').width());
+});
