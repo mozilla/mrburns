@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -107,3 +108,16 @@ ENABLE_REDIS = False
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 PROD_DETAILS_DIR = str(BASE_DIR / 'prod_details_json')
+
+# Source: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+EXTRA_COUNTRIES = {
+    u'CW': u'Curaçao',
+    u'XK': u'Kosovo',
+    u'BQ': u'British Antarctic Territory',
+    u'SS': u'South Sudan',
+}
+# codes that are nearly the same as a code we have
+# put them here intstead of above to get translations
+COUNTRY_CODE_MAP = {
+    u'SX': u'MF',  # SX = St. Marteen (Dutch Side)
+}

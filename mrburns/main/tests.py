@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.test.utils import override_settings
 
 from mock import patch
 from nose.tools import ok_
@@ -23,28 +24,41 @@ class TestViewHelpers(TestCase):
         ok_(url.startswith(views.FB_URL + '?'))
         ok_('u=http%3A%2F%2Fexample.com' in url)
 
+    @override_settings(EXTRA_COUNTRIES={})
     def test_sorted_countries_list_en(self):
         """Should return a properly sorted list of countries by name."""
         with patch.object(views, 'product_details') as mock_get:
             mock_get.get_regions.return_value = {
-                'us': 'United States',
-                'ca': 'Canada',
-                'mx': 'Mexico',
+                u'us': u'United States',
+                u'ca': u'Canada',
+                u'mx': u'Mexico',
             }
             c_list = views.get_sorted_countries_list('en-us')
-            self.assertListEqual(c_list, [('CA', 'Canada'),
-                                          ('MX', 'Mexico'),
-                                          ('US', 'United States')])
+            self.assertListEqual(c_list, [(u'CA', u'Canada'),
+                                          (u'MX', u'Mexico'),
+                                          (u'US', u'United States')])
 
+    @override_settings(EXTRA_COUNTRIES={})
     def test_sorted_countries_list_unicode(self):
         """Should return a properly sorted list of countries by name."""
         with patch.object(views, 'product_details') as mock_get:
             mock_get.get_regions.return_value = {
-                'us': u'\xc9tats-Unis',
-                'ca': u'Canada',
-                'mx': u'Mexique',
+                u'us': u'\xc9tats-Unis',
+                u'ca': u'Canada',
+                u'mx': u'Mexique',
             }
             c_list = views.get_sorted_countries_list('fr')
             self.assertListEqual(c_list, [(u'CA', u'Canada'),
                                           (u'US', u'\xc9tats-Unis'),
                                           (u'MX', u'Mexique')])
+
+    @override_settings(COUNTRY_CODE_MAP={u'SX': u'MF'})
+    def test_sorted_countries_list_map(self):
+        """Mapped codes in settings should show correctly in list."""
+        with patch.object(views, 'product_details') as mock_get:
+            mock_get.get_regions.return_value = {
+                u'mf': u'Saint Martin',
+            }
+            c_list = views.get_sorted_countries_list('en')
+            self.assertIn((u'MF', u'Saint Martin'), c_list)
+            self.assertIn((u'SX', u'Saint Martin'), c_list)
