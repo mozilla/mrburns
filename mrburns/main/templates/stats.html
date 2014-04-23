@@ -126,7 +126,7 @@
           <i class="fa fa-globe fa-x fa-inverse"></i>
           <select id="country">
           {% for code, name in countries_list %}
-            <option value="{{ code }}" class="country-{{ code }}">{{ name }}</option>
+            <option value="{{ code }}" class="country-{{ code }}"{% if code == 'US' %}selected="selected"{% endif %}>{{ name }}</option>
           {% endfor %}
           </select>
         </div>
