@@ -27,7 +27,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   <meta property="og:title" content="{% block og_title %}{{ _('The Web We Want') }}{% endblock %}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{% block page_image %}{% static 'img/glow-og-thumb.jpg' %}{% endblock %}">
-  <meta property="og:url" content="{% block og_url %}https://webwewant.mozilla.org{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ OG_ABS_URL }}{% endblock %}">
   <meta property="og:site_name" content="{{ _('The Web We Want') }}">
 
   <script>
