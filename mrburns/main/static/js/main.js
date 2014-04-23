@@ -295,7 +295,7 @@ $(document).ready(function () {
         // if URL starts with #stats, show the stats modal
         $('body').addClass('stats-panel-open');
         updateStatsPanel();
-    } else if (getMode() === 'desktop') {
+    } else if (hash !== '#map' && getMode() === 'desktop') {
         // if there are no known URL fragments and we're on desktop,
         // then open choice modal
         $choice_modal.modal();
