@@ -1,3 +1,5 @@
+var showing_glows = false;
+
 $(document).ready(function() {
     'use strict';
 
@@ -234,6 +236,13 @@ $(document).ready(function() {
         //add canvas
         $('#map-container').prepend("<canvas id='map-canvas'></canvas>");
         var ctx = $('#map-canvas')[0].getContext('2d');
+
+        //initialize canvas display
+        if (showing_glows) {
+            ctx.canvas.style.display = 'block';
+        } else {
+            ctx.canvas.style.display = 'none';
+        }
 
         //set canvas' width and height
         ctx.canvas.width = width;
@@ -521,10 +530,12 @@ $(document).ready(function() {
 
 function showGlows() {
     $('#map-canvas').show();
+    showing_glows = true;
 }
 
 function hideGlows() {
     $('#map-canvas').hide();
+    showing_glows = false;
 }
 
 function randomRange(minVal, maxVal, floatVal) {
