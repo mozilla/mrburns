@@ -351,6 +351,12 @@ $(document).ready(function () {
         // if there are no known URL fragments and we're on desktop,
         // then open choice modal
         $choice_modal.modal();
+
+        // Bootstrap doesn't natively support changing the fade style on
+        // an existing modal. We must manually add the fade class to the
+        // backdrop element that is created when a modal dialog is opened. If
+        // this is omitted, the closing animation will be broken.
+        $('.modal-backdrop').addClass('fade');
     }
 
     $( '.stats-panel-tab' ).click(function() {
