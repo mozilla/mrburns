@@ -424,8 +424,6 @@ $(document).ready(function () {
             onVideoPath = false;
         }
 
-        $('#video-player').fitVids();
-
     }
 
     $('#video-modal').on('show.bs.modal', function () {
