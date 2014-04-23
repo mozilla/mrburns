@@ -7,7 +7,7 @@ github_url="https://github.com/mozilla/mrburns/compare/${oldrev:0:10}...${newrev
 git_log=$(git log --oneline ${oldrev}..${newrev})
 
 echo "== Change Log =="
-echo $git_log
+printf "$git_log"
 
 if [ -n "$NEW_RELIC_API_KEY" ]; then
     # Notify New Relic of the deployment
