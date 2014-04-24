@@ -458,9 +458,16 @@ $(document).ready(function () {
         openShareWindow(this.href);
     });
 
+    function proceedToChoiceModal() {
+        if (onVideoPath) {
+            $('#video-modal').modal('hide');
+            $('#choice-modal').modal('show');
+        }
+        onVideoPath = false;
+    }
+
     // Insert YouTube video into #video modal
     function insertVideo() {
-
         $('#video-player').tubeplayer({
             width: 853, // the width of the player
             height: 480, // the height of the player
@@ -473,14 +480,12 @@ $(document).ready(function () {
                 proceedToChoiceModal();
             }, // after the player is stopped
         });
-
-        function proceedToChoiceModal() {
-            if (onVideoPath) {
-                $('#video-modal').modal('hide');
-                $('#choice-modal').modal('show');
-            }
-            onVideoPath = false;
-        }
-
     }
+
+    if(onVideoPath) {
+        $('.video-modal').on('hidden.bs.modal', function(e) {
+            proceedToChoiceModal();
+        });
+    }
+    
 });
