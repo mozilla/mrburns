@@ -470,7 +470,7 @@ function drawCountryComparisonChart(data) {
                     return (d.count * 100).toFixed(1) + '%';
                 });
             
-            return x_scale_country_comparison(d.count);
+            return x_scale_country_comparison(min) + 11;
         })
         .attr('y', function(d, i) {
             return i * (bar_height + 15) + y_padding_top;
