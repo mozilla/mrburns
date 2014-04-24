@@ -53,6 +53,11 @@ def get_fb_share_url(url):
 def get_sorted_countries_list(locale):
     """Return a localized list of all countries sorted by name."""
     countries = product_details.get_regions(locale)
+    countries.update(settings.EXTRA_COUNTRIES)
+    for c_new, c_old in settings.COUNTRY_CODE_MAP.items():
+        c_old = c_old.lower()
+        if c_old in countries:
+            countries[c_new] = countries[c_old]
     countries_list = ((code.upper(), name) for code, name in countries.iteritems())
     key_function = itemgetter(1) if locale.startswith('en') else uca_sort_key
     return sorted(countries_list, key=key_function)
