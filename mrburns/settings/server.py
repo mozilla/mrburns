@@ -1,6 +1,8 @@
 import os
 import socket
 
+from django.utils.translation import ugettext_lazy as _
+
 from .base import *  # noqa
 
 
@@ -19,6 +21,22 @@ if SERVER_ENV == 'prod':
         'glow-origin.cdn.mozilla.net',
     ])
     STATIC_URL = 'https://glow.cdn.mozilla.net/static/'
+
+    LANGUAGES = (
+        ('de', _('German')),
+        ('en', _('English')),
+        ('es', _('Spanish')),
+        ('fr', _('French')),
+        ('he', _('Hebrew')),
+        ('hu', _('Hungarian')),
+        ('it', _('Italian')),
+        ('ja', _('Japanese')),
+        ('ko', _('Korean')),
+        ('nl', _('Dutch')),
+        ('pt-br', _('Brazilian Portuguese')),
+        ('zh-cn', _('Simplified Chinese')),
+        ('zh-tw', _('Traditional Chinese')),
+    )
 elif SERVER_ENV == 'dev':
     ALLOWED_HOSTS.append('webwewant.allizom.org')
 
