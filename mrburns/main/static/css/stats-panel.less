@@ -20,7 +20,7 @@
     background: @darkBackground;
     height: 100%;
     width: 100%;
-    padding: 40px 40px 40px 200px;
+    padding: 40px 270px 40px 170px;
     clear: left;
     overflow: scroll;
     // don't show scroll bar when stats panel is closed
@@ -301,19 +301,19 @@ select.country {
     .chart2 {
         .country-picker {
             font-size: 18px;
-            position: absolute;
-            right: 0;
-            top: 40px;
-        }
+            float: right;
+            margin-top: 20px;
+            padding-right: 30px;
+            padding-left: 30px;
+       }
     }
     .chart3 {
         float: left;
         height: 650px;
     }
     .stats-panel-column {
-        float: left;
         width: 570px;
-        margin-right: 40px;
+        margin: auto;
     }
     .donut {
         float: left;
@@ -326,10 +326,19 @@ select.country {
         text-align: inherit;
     }
     .stats-panel-column-right {
-        float: left;
-        width: 230px;
+        width: 570px;
+        padding-bottom: 240px;
     }
     .stats-share-link {
         position: static;
+    }
+}
+
+@media (min-width: @screen-md-min) {
+    .stats-panel-column-right {
+        position: absolute;
+        width: 230px;
+        top: 40px;
+        right: 40px;
     }
 }
