@@ -71,9 +71,9 @@ def round_map_coord(coord):
     return math.floor(coord * 10) / 10
 
 
-def process_map(geo_data, timestamp):
+def process_map(geo_data, timestamp, pipe):
     """Add download aggregate data to redis."""
-    redis.incr(rkeys.MAP_TOTAL)
+    pipe.incr(rkeys.MAP_TOTAL)
     try:
         # rounding to aid in geo aggregation
         location = {
@@ -90,28 +90,28 @@ def process_map(geo_data, timestamp):
     log.debug('Got location: ' + geo_key)
     time_key = rkeys.MAP_GEO.format(timestamp)
     log.debug('Got timestamp: %s' % timestamp)
-    redis.hincrby(time_key, geo_key, 1)
+    pipe.hincrby(time_key, geo_key, 1)
 
     # store the timestamp used in a sorted set for use in milhouse
-    redis.zadd(rkeys.MAP_TIMESTAMPS, timestamp, timestamp)
+    pipe.zadd(rkeys.MAP_TIMESTAMPS, timestamp, timestamp)
 
 
-def process_share(geo_data, share_type):
+def process_share(geo_data, share_type, pipe):
     """Add share aggregate data to redis."""
     log.debug('Processing as SHARE')
-    redis.incr(rkeys.SHARE_TOTAL)
-    redis.hincrby(rkeys.SHARE_ISSUES, share_type)
+    pipe.incr(rkeys.SHARE_TOTAL)
+    pipe.hincrby(rkeys.SHARE_ISSUES, share_type)
     country = geo_data.get('country', geo_data.get('registered_country'))
     if country:
         country = country['iso_code']
-        redis.hincrby(rkeys.SHARE_COUNTRIES, country)
-        redis.hincrby(rkeys.SHARE_COUNTRY_ISSUES.format(country), share_type)
+        pipe.hincrby(rkeys.SHARE_COUNTRIES, country)
+        pipe.hincrby(rkeys.SHARE_COUNTRY_ISSUES.format(country), share_type)
 
     continent = geo_data.get('continent')
     if continent:
         continent = continent['code']
-        redis.hincrby(rkeys.SHARE_CONTINENTS, continent)
-        redis.hincrby(rkeys.SHARE_CONTINENT_ISSUES.format(continent), share_type)
+        pipe.hincrby(rkeys.SHARE_CONTINENTS, continent)
+        pipe.hincrby(rkeys.SHARE_CONTINENT_ISSUES.format(continent), share_type)
 
 
 counter = 0
@@ -155,11 +155,14 @@ def main():
 
         record = geo.get(ip)
         if record:
+            pipe = redis.pipeline()
             # everything goes for total count and map
-            process_map(record, timestamp)
+            process_map(record, timestamp, pipe)
             # only shares get more processing
             if rtype != data_types.DOWNLOAD:
-                process_share(record, rtype)
+                process_share(record, rtype, pipe)
+
+            pipe.execute()
 
         timer.stop()
         statsd.incr('lisa.process_ip', rate=0.01)  # 1% sample rate
