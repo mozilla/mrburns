@@ -1,8 +1,12 @@
+header.visible h2 {
+    opacity: 1;
+    .transition(all .3s ease-in-out);
+}
+
 header {
     position: relative;
     z-index: 2;
     padding: 20px 40px 5px 40px;
-    .transition(all .3s ease-in-out);
     h1 {
         height: 75px;
         width: 200px;
@@ -14,6 +18,7 @@ header {
         background-size: 100% auto;
     }
     h2 {
+        opacity: 0;
         margin-top: 10px;
         margin-bottom: 10px;
         font-weight: 300;

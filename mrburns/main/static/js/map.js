@@ -1,4 +1,5 @@
 var showing_glows = false;
+var header_visible = false;
 
 $(document).ready(function() {
     'use strict';
@@ -213,6 +214,11 @@ $(document).ready(function() {
 
             intermediate_count += increment_by;
         }, glow_tick / 6);
+
+        // Once we have the share_total, show the site header
+        if (!header_visible) {
+            $('header').addClass('visible');
+        }
     }
 
     function drawMap(ht, just_resized) {
