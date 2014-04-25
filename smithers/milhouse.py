@@ -31,6 +31,15 @@ logging.basicConfig(level=getattr(logging, args.log.upper()),
 # has the system requested shutdown
 KILLED = False
 
+CONTINENTS = {
+    'AF': 'Africa',
+    'AS': 'Asia',
+    'EU': 'Europe',
+    'NA': 'North America',
+    'OC': 'Oceania',
+    'SA': 'South America',
+}
+
 
 def handle_signals(signum, frame):
     # NOTE: Makes this thing non-thread-safe
@@ -54,8 +63,8 @@ def get_timestamps_to_process():
     return redis.zrange(rkeys.MAP_TIMESTAMPS, 0, -2)
 
 
-def get_issue_dict():
-    return dict((issue, []) for issue in data_types.types_map.values())
+def get_issue_dict(value_type):
+    return {issue: value_type() for issue in data_types.types_map.itervalues()}
 
 
 def get_percent(part, total):
@@ -67,15 +76,14 @@ def get_data_for_timestamp(timestamp):
     """
     Return aggregate map and share data dict for a timestamp.
     """
-    issue_continents = get_issue_dict()
-    issue_countries = get_issue_dict()
+    issue_countries = get_issue_dict(list)
     data = {
         'map_total': int(redis.get(rkeys.MAP_TOTAL) or 0),
         'map_previous_total': int(redis.get(rkeys.MAP_TOTAL_SNAPSHOT) or 0),
         'map_geo': [],
         'share_total': int(redis.get(rkeys.SHARE_TOTAL) or 0),
-        'continent_issues': {},
-        'issue_continents': issue_continents,
+        # prefill for bug 999729
+        'continent_issues': {c: get_issue_dict(int) for c in CONTINENTS},
         'country_issues': {},
         'issue_countries': issue_countries,
     }
@@ -97,16 +105,18 @@ def get_data_for_timestamp(timestamp):
     for continent, count in continent_totals.iteritems():
         count = int(count)
         issues = redis.hgetall(rkeys.SHARE_CONTINENT_ISSUES.format(continent))
-        continent_issues[continent] = {}
         for issue, issue_count in issues.iteritems():
             issue_count = int(issue_count)
             issue = data_types.types_map[issue]
             percent = get_percent(issue_count, count)
             continent_issues[continent][issue] = percent
-            issue_continents[issue].append({
-                'continent': continent,
-                'count': percent,
-            })
+
+    # prefill issue_continents: bug 999729
+    data['issue_continents'] = {
+        issue: [{'continent': code, 'count': continent_issues[code][issue]}
+                for code in CONTINENTS]
+        for issue in data_types.types_map.itervalues()
+    }
 
     # COUNTRIES #
     country_totals = redis.hgetall(rkeys.SHARE_COUNTRIES)
