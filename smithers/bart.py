@@ -22,12 +22,19 @@ from smithers import conf
 from smithers import redis_keys as rkeys
 from smithers.redis_client import client as redis
 from smithers.statsd_client import statsd
-from smithers.utils import register_signals, set_process_name
+from smithers.utils import (get_firefox_version, register_signals,
+                            set_process_name)
 
 
 set_process_name(__file__)
 log = logging.getLogger('bart')
-firefox_re = re.compile(r'firefox-(?:latest|{})'.format(conf.FIREFOX_VERSION),
+
+PRE_LAUNCH_RE = r'firefox-{}'
+LAUNCH_RE = r'firefox-(?:latest|{})'
+
+FX_RE = PRE_LAUNCH_RE if conf.LAUNCH_STATE == 'pre' else LAUNCH_RE
+
+firefox_re = re.compile(FX_RE.format(get_firefox_version()),
                         re.IGNORECASE)
 
 # has the system requested shutdown

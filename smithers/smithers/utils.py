@@ -2,10 +2,13 @@
 Utilities common to all of Smithers' little minions.
 """
 
+import json
 import math
 import signal
 import time
 from os.path import basename
+
+from smithers import conf
 
 
 DEFAULT_SIGNALS = (
@@ -34,3 +37,14 @@ def set_process_name(title):
         setproctitle(basename(title))
     except ImportError:
         pass
+
+
+def get_firefox_version():
+    """Return latest version from product details JSON."""
+    try:
+        with conf.PROD_DETAILS_DIR.joinpath('firefox_versions.json').open() as fh:
+            prod_details = json.load(fh)
+    except IOError:
+        return conf.FIREFOX_VERSION
+
+    return prod_details.get('LATEST_FIREFOX_VERSION', conf.FIREFOX_VERSION)

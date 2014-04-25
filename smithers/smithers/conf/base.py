@@ -9,6 +9,9 @@ PROJ_BASE_DIR = SMITHERS_BASE_DIR.parent
 JSON_OUTPUT_DIR = PROJ_BASE_DIR.joinpath('static', 'data', 'stats')
 GEOIP_DB_FILE = SMITHERS_BASE_DIR.joinpath('GeoIP2-City.mmdb')
 LOG_LEVEL = getenv('MRBURNS_LOG_LEVEL', 'INFO')
+LAUNCH_STATE = getenv('MRBURNS_LAUNCH_STATE', 'dev')  # dev, pre, final
+
+PROD_DETAILS_DIR = PROJ_BASE_DIR / 'prod_details_json'
 
 COUNTRY_MIN_SHARE = 500
 
