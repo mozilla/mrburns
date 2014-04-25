@@ -32,7 +32,16 @@
     /* Video Modal
     ***************************************************************************/
     $('#video-modal').on('shown.bs.modal', function () {
-        ga('send', 'event', 'Main Map Page Interactions', 'Watch The Video','open video');
+        //Check if event was triggered via url if so specify non interaction & send virtual page view
+        var hash = window.location.hash;
+
+        if (hash === '#video') {
+            ga('send', 'event', 'Main Map Page Interactions', 'Watch The Video','open video', {'nonInteraction': 1});
+            ga('send', 'pageview', {'page': window.location.pathname + window.location.search  + window.location.hash});
+        } else {
+            ga('send', 'event', 'Main Map Page Interactions', 'Watch The Video','open video');
+        }
+
     });
 
     $('#video-modal').on('hidden.bs.modal', function () {
