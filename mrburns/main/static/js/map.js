@@ -15,6 +15,7 @@ $(document).ready(function() {
         let_it_glow_interval,
         time_passed_interval,
         selected_choice_map_view = '',
+        showing_choice = false,
         showing_regions = false,
         map_geo_previous = [], //previous set of map_geos
         glow_size = 1.5,
@@ -38,10 +39,20 @@ $(document).ready(function() {
 
             //did we click one of the choices, as opposed to the region view
             if ($(this).attr('id') != 'view-by-region') {
+                //are we turning this fine gentleman off?
+                if(showing_choice) {
+                    $(this).toggleClass('selected');
+                    removeMapOverlays();
+                    showing_choice = !showing_choice;
+
+                    return;
+                }
+            
                 var choice = $(this)[0].parentNode.className.split('choice-')[1];
                 selected_choice_map_view = choice;
                 removeMapOverlays();
                 showing_regions = false;
+                showing_choice = true;
 
                 //color continents per that choice and show percentages
                 addIssueBreakOutOverContinents(choice, eval('data.issue_continents.' + choice));
@@ -56,11 +67,13 @@ $(document).ready(function() {
                 $(this).toggleClass('selected');
                 removeMapOverlays();
                 showing_regions = !showing_regions;
-
+                showing_choice = false;
+                
                 return;
             }
 
             showing_regions = !showing_regions;
+            showing_choice = false;
             addTopIssueLabels();
 
             return false;

@@ -304,8 +304,8 @@ function drawStackedBarChart(data_unsorted) {
                     return bar_y_position + bar_height + 22;
                 })
                 .text(function() {
-                    return $('.choice-' + [d.key]
-                        + ' .choice-title span').html()
+                    return $('.key-map ul .choice-' + [d.key]
+                        + ' a .choice-title span').html()
                         + ' (' + Math.round(d.value*100) + '%)';
                 })
                 .style('fill', function () {
@@ -380,8 +380,8 @@ function updateStackedBarChart(new_data) {
                                 x_marker_this + ((x_marker - x_marker_this) / 2));
                         })
                         .text(function() {
-                            return $('.choice-' + [d.key] + 
-                                ' .choice-title span').html() + ' (' 
+                            return $('.key-map ul .choice-' + [d.key]
+                                + ' a .choice-title span').html()
                                 + Math.round(new_data[d.key]*100) + '%)';
                         });
                 
