@@ -384,7 +384,7 @@ function updateStackedBarChart(new_data) {
                         .text(function() {
                             return $('.key-map ul .choice-' + [d.key]
                                 + ' a .choice-title span').html()
-                                + Math.round(new_data[d.key]*100) + '%)';
+                                + ' (' + Math.round(d.value*100) + '%)';
                         });
                 
                 return x_padding_left + x_scale_stacked_bar(x_marker_this);
