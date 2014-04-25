@@ -8,7 +8,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% load i18n %}
 {% load glow_extras %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ LANGUAGE_CODE }}" lang-dir="{{ LANGUAGE_BIDI|yesno:"rtl,ltr" }}">
 <head>
   <title>{{ _('The Web we want')|title_lang }}</title>
   {% compress css %}
