@@ -6,3 +6,6 @@ maxminddb==0.3.2
 
 # sha256: RdsWgxKmgg_XhpfHtv0BlvOvkiyOvIhUDt0Nb6_tVU0
 statsd==2.1.2
+
+# sha256: D3oyO_cW08tss5EM1PzL7gs9N5MyJzhWbszhY7AbvTE
+repoze.lru==0.6

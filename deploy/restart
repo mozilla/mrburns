@@ -1,5 +1,5 @@
 #!/bin/sh
 touch tmp/restart.txt
-echo "restarting mrburns, lisa, and milhouse"
+echo "restarting mrburns, bart, lisa, and milhouse"
 
 sudo supervisorctl restart all

@@ -9,9 +9,11 @@ import argparse
 import logging
 import math
 import sys
+import time
 
 import maxminddb
 from redis import RedisError
+from repoze.lru import ExpiringLRUCache
 
 from smithers import conf
 from smithers import data_types
@@ -33,10 +35,14 @@ parser.add_argument('--file', default=str(conf.GEOIP_DB_FILE),
 parser.add_argument('--log', default=conf.LOG_LEVEL, metavar='LOG_LEVEL',
                     help='Log level (default: %s)' % conf.LOG_LEVEL)
 parser.add_argument('-v', '--verbose', action='store_true')
+parser.add_argument('--benchmark', action='store_true',
+                    help='Process queue then print stats and exit')
 args = parser.parse_args()
 
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
+
+rate_limiter = ExpiringLRUCache(10000, 60)
 
 
 def handle_signals(signum, frame):
@@ -48,19 +54,16 @@ def handle_signals(signum, frame):
     log.info('Attempting to shut down')
 
 
-def rate_limit_ip(ip, timestamp):
+def rate_limit_ip(ip):
     """Return boolean whether the IP is rate limited"""
-    key = 'ratelimit:{}:{}'.format(ip, timestamp)
-    current = int(redis.get(key) or 0)
-    if current >= conf.IP_RATE_LIMIT_MAX:
-        log.warning('Rate limited {}'.format(ip))
-        statsd.incr('lisa.ratelimit')
-        return True
+    calls = rate_limiter.get(ip, 0)
+    if calls:
+        if calls >= conf.IP_RATE_LIMIT_MAX:
+            log.debug('Rate limited {}'.format(ip))
+            statsd.incr('lisa.ratelimit', 0.5)
+            return True
 
-    pipe = redis.pipeline()
-    pipe.incr(key).expire(key, 60)
-    pipe.execute()
-
+    rate_limiter.put(ip, calls + 1)
     return False
 
 
@@ -68,9 +71,9 @@ def round_map_coord(coord):
     return math.floor(coord * 10) / 10
 
 
-def process_map(geo_data, timestamp):
+def process_map(geo_data, timestamp, pipe):
     """Add download aggregate data to redis."""
-    redis.incr(rkeys.MAP_TOTAL)
+    pipe.incr(rkeys.MAP_TOTAL)
     try:
         # rounding to aid in geo aggregation
         location = {
@@ -87,66 +90,80 @@ def process_map(geo_data, timestamp):
     log.debug('Got location: ' + geo_key)
     time_key = rkeys.MAP_GEO.format(timestamp)
     log.debug('Got timestamp: %s' % timestamp)
-    redis.hincrby(time_key, geo_key, 1)
+    pipe.hincrby(time_key, geo_key, 1)
 
     # store the timestamp used in a sorted set for use in milhouse
-    redis.zadd(rkeys.MAP_TIMESTAMPS, timestamp, timestamp)
+    pipe.zadd(rkeys.MAP_TIMESTAMPS, timestamp, timestamp)
 
 
-def process_share(geo_data, share_type):
+def process_share(geo_data, share_type, pipe):
     """Add share aggregate data to redis."""
     log.debug('Processing as SHARE')
-    redis.incr(rkeys.SHARE_TOTAL)
-    redis.hincrby(rkeys.SHARE_ISSUES, share_type)
+    pipe.incr(rkeys.SHARE_TOTAL)
+    pipe.hincrby(rkeys.SHARE_ISSUES, share_type)
     country = geo_data.get('country', geo_data.get('registered_country'))
     if country:
         country = country['iso_code']
-        redis.hincrby(rkeys.SHARE_COUNTRIES, country)
-        redis.hincrby(rkeys.SHARE_COUNTRY_ISSUES.format(country), share_type)
+        pipe.hincrby(rkeys.SHARE_COUNTRIES, country)
+        pipe.hincrby(rkeys.SHARE_COUNTRY_ISSUES.format(country), share_type)
 
     continent = geo_data.get('continent')
     if continent:
         continent = continent['code']
-        redis.hincrby(rkeys.SHARE_CONTINENTS, continent)
-        redis.hincrby(rkeys.SHARE_CONTINENT_ISSUES.format(continent), share_type)
+        pipe.hincrby(rkeys.SHARE_CONTINENTS, continent)
+        pipe.hincrby(rkeys.SHARE_CONTINENT_ISSUES.format(continent), share_type)
+
+
+counter = 0
 
 
 def main():
-    counter = 0
+    global counter
     timer = statsd.timer('lisa.process_ip', rate=0.01)  # 1% sample rate
+    pipe = redis.pipeline()
 
     while True:
         if KILLED:
+            pipe.execute()
             log.info('Shutdown successful')
             return 0
 
         try:
-            ip_info = redis.brpop(rkeys.IPLOGS)
+            if args.benchmark:
+                ip_info = redis.rpop(rkeys.IPLOGS)
+            else:
+                ip_info = redis.brpop(rkeys.IPLOGS)[1]
         except RedisError as e:
             log.error('Error with Redis: {}'.format(e))
+            pipe.execute()
             return 1
+
+        if ip_info is None:
+            # benchmark run is over
+            pipe.execute()
+            return 0
 
         # don't start above redis call as it will block to wait
         timer.start()
 
-        log.debug('Got log data: ' + ip_info[1])
+        log.debug('Got log data: ' + ip_info)
         try:
-            rtype, ip = ip_info[1].split(',')
+            rtype, ip = ip_info.split(',')
         except ValueError:
             continue
 
         timestamp = get_epoch_minute()
 
-        if rate_limit_ip(ip, timestamp):
+        if rate_limit_ip(ip):
             continue
 
         record = geo.get(ip)
         if record:
             # everything goes for total count and map
-            process_map(record, timestamp)
+            process_map(record, timestamp, pipe)
             # only shares get more processing
             if rtype != data_types.DOWNLOAD:
-                process_share(record, rtype)
+                process_share(record, rtype, pipe)
 
         timer.stop()
         statsd.incr('lisa.process_ip', rate=0.01)  # 1% sample rate
@@ -159,9 +176,14 @@ def main():
         # `rate` param on the gauge to avoid getting the length
         # of the Redis list every time.
         counter += 1
-        if counter >= 1000:
-            counter = 0
-            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        if args.benchmark:
+            if not counter % 1000:
+                pipe.execute()
+        else:
+            if counter >= 1000:
+                pipe.execute()
+                counter = 0
+                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
@@ -172,4 +194,21 @@ if __name__ == '__main__':
         log.error('ERROR: Can\'t find MaxMind Database file (%s). '
                   'Try setting the --file flag.' % args.file)
         sys.exit(1)
-    sys.exit(main())
+
+    if args.benchmark:
+        bench_count = redis.llen(rkeys.IPLOGS)
+        if not bench_count:
+            print 'No IPs to process'
+            sys.exit(1)
+        print 'Starting benchmark of {} records'.format(bench_count)
+        bench_start = time.time()
+
+    return_code = main()
+
+    if args.benchmark:
+        bench_time = time.time() - bench_start
+        print 'Total Processed: {}'.format(counter)
+        print 'Total Time:      {}s'.format(bench_time)
+        print 'IPs per minute:  {}'.format(counter / (bench_time / 60))
+
+    sys.exit(return_code)
