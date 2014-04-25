@@ -12,6 +12,7 @@ import sys
 
 import maxminddb
 from redis import RedisError
+import time
 
 from smithers import conf
 from smithers import data_types
@@ -33,6 +34,8 @@ parser.add_argument('--file', default=str(conf.GEOIP_DB_FILE),
 parser.add_argument('--log', default=conf.LOG_LEVEL, metavar='LOG_LEVEL',
                     help='Log level (default: %s)' % conf.LOG_LEVEL)
 parser.add_argument('-v', '--verbose', action='store_true')
+parser.add_argument('--benchmark', action='store_true',
+                    help='Process queue then print stats and exit')
 args = parser.parse_args()
 
 logging.basicConfig(level=getattr(logging, args.log.upper()),
@@ -111,8 +114,11 @@ def process_share(geo_data, share_type):
         redis.hincrby(rkeys.SHARE_CONTINENT_ISSUES.format(continent), share_type)
 
 
+counter = 0
+
+
 def main():
-    counter = 0
+    global counter
     timer = statsd.timer('lisa.process_ip', rate=0.01)  # 1% sample rate
 
     while True:
@@ -121,17 +127,24 @@ def main():
             return 0
 
         try:
-            ip_info = redis.brpop(rkeys.IPLOGS)
+            if args.benchmark:
+                ip_info = redis.rpop(rkeys.IPLOGS)
+            else:
+                ip_info = redis.brpop(rkeys.IPLOGS)[1]
         except RedisError as e:
             log.error('Error with Redis: {}'.format(e))
             return 1
 
+        if ip_info is None:
+            # benchmark run is over
+            return 0
+
         # don't start above redis call as it will block to wait
         timer.start()
 
-        log.debug('Got log data: ' + ip_info[1])
+        log.debug('Got log data: ' + ip_info)
         try:
-            rtype, ip = ip_info[1].split(',')
+            rtype, ip = ip_info.split(',')
         except ValueError:
             continue
 
@@ -159,9 +172,13 @@ def main():
         # `rate` param on the gauge to avoid getting the length
         # of the Redis list every time.
         counter += 1
-        if counter >= 1000:
-            counter = 0
-            statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
+        if args.benchmark:
+            if not counter % 1000:
+                print counter
+        else:
+            if counter >= 1000:
+                counter = 0
+                statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
 
 if __name__ == '__main__':
@@ -172,4 +189,21 @@ if __name__ == '__main__':
         log.error('ERROR: Can\'t find MaxMind Database file (%s). '
                   'Try setting the --file flag.' % args.file)
         sys.exit(1)
-    sys.exit(main())
+
+    if args.benchmark:
+        bench_count = redis.llen(rkeys.IPLOGS)
+        if not bench_count:
+            print 'No IPs to process'
+            sys.exit(1)
+        print 'Starting benchmark of {} records'.format(bench_count)
+        bench_start = time.time()
+
+    return_code = main()
+
+    if args.benchmark:
+        bench_time = time.time() - bench_start
+        print 'Total Processed: {}'.format(counter)
+        print 'Total Time:      {}s'.format(bench_time)
+        print 'IPs per minute:  {}'.format(counter / (bench_time / 60))
+
+    sys.exit(return_code)
