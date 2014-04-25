@@ -459,7 +459,7 @@ $(document).ready(function () {
     });
 
     function proceedToChoiceModal() {
-        if (onVideoPath) {
+        if (onVideoPath && (getMode() === 'desktop')) {
             $('#video-modal').modal('hide');
             $('#choice-modal').modal('show');
         }
@@ -487,5 +487,5 @@ $(document).ready(function () {
             proceedToChoiceModal();
         });
     }
-    
+
 });
