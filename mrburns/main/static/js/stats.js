@@ -433,10 +433,14 @@ function drawCountryComparisonChart(data) {
     svg.selectAll('.country-bar')
         .data(data_subset)
         .enter().append('rect')
-        .attr('class', function(d, i) {
-            return 'country-bar country-bar_' + i;
+        .attr('class', 'band')
+        .attr('width', function() {
+            return x_scale_country_comparison(max) + (bar_width / 2) 
+                - (x_scale_country_comparison(min) + 11);
         })
-        .attr('width', bar_width)
+        .attr('height', function (d) {
+            return bar_height;
+        })
         .attr('x', function (d, i) {
             //append country name
             svg.append('text')
@@ -466,22 +470,19 @@ function drawCountryComparisonChart(data) {
                     return (d.count * 100).toFixed(1) + '%';
                 });
             
-            return x_scale_country_comparison(d.count);
+            return x_scale_country_comparison(min) + 11;
         })
-        .attr('y', function (d, i) {
+        .attr('y', function(d, i) {
             return i * (bar_height + 15) + y_padding_top;
         })
-        .attr('height', function (d) {
-            return bar_height;
-        })
-        .style('fill', function (d) {
-            return color[current_choice];
-        })
         .each(function(d, i) {
+            //add the rects at the end so that they're on top
             svg.append('rect')
-                .attr('class', 'band')
+                .attr('class', function(d, i) {
+                    return 'country-bar country-bar_' + i;
+                })
                 .attr('x', function() {
-                    return x_scale_country_comparison(min) + 11;
+                    return x_scale_country_comparison(d.count);
                 })
                 .attr('y', function() {
                     return i * (bar_height + 15) + y_padding_top;
@@ -489,9 +490,9 @@ function drawCountryComparisonChart(data) {
                 .attr('height', function (d) {
                     return bar_height;
                 })
-                .attr('width', function() {
-                    return x_scale_country_comparison(max) + (bar_width / 2) 
-                        - (x_scale_country_comparison(min) + 11);
+                .attr('width', bar_width)
+                .style('fill', function (d) {
+                    return color[current_choice];
                 });
         });
 }
