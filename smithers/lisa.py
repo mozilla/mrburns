@@ -9,10 +9,11 @@ import argparse
 import logging
 import math
 import sys
+import time
 
 import maxminddb
 from redis import RedisError
-import time
+from repoze.lru import ExpiringLRUCache
 
 from smithers import conf
 from smithers import data_types
@@ -41,6 +42,8 @@ args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()),
                     format='%(asctime)s: %(message)s')
 
+rate_limiter = ExpiringLRUCache(10000, 60)
+
 
 def handle_signals(signum, frame):
     # NOTE: Makes this thing non-thread-safe
@@ -51,19 +54,16 @@ def handle_signals(signum, frame):
     log.info('Attempting to shut down')
 
 
-def rate_limit_ip(ip, timestamp):
+def rate_limit_ip(ip):
     """Return boolean whether the IP is rate limited"""
-    key = 'ratelimit:{}:{}'.format(ip, timestamp)
-    current = int(redis.get(key) or 0)
-    if current >= conf.IP_RATE_LIMIT_MAX:
-        log.warning('Rate limited {}'.format(ip))
-        statsd.incr('lisa.ratelimit')
-        return True
+    calls = rate_limiter.get(ip, 0)
+    if calls:
+        if calls >= conf.IP_RATE_LIMIT_MAX:
+            log.debug('Rate limited {}'.format(ip))
+            statsd.incr('lisa.ratelimit', 0.5)
+            return True
 
-    pipe = redis.pipeline()
-    pipe.incr(key).expire(key, 60)
-    pipe.execute()
-
+    rate_limiter.put(ip, calls + 1)
     return False
 
 
@@ -154,7 +154,7 @@ def main():
 
         timestamp = get_epoch_minute()
 
-        if rate_limit_ip(ip, timestamp):
+        if rate_limit_ip(ip):
             continue
 
         record = geo.get(ip)
@@ -179,7 +179,6 @@ def main():
         if args.benchmark:
             if not counter % 1000:
                 pipe.execute()
-                print counter
         else:
             if counter >= 1000:
                 pipe.execute()
