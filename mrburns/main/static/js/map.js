@@ -32,6 +32,8 @@ $(document).ready(function() {
     function assignEventListeners() {
         //view by choice listener
         $('.key-map a').on('click', function(e) {
+            var previous_choice = selected_choice_map_view;
+            
             selected_choice_map_view = '';
 
             $('.key-map a').removeClass('selected');
@@ -39,8 +41,10 @@ $(document).ready(function() {
 
             //did we click one of the choices, as opposed to the region view
             if ($(this).attr('id') != 'view-by-region') {
+                var choice = $(this)[0].parentNode.className.split('choice-')[1];
+
                 //are we turning this fine gentleman off?
-                if(showing_choice) {
+                if(choice == previous_choice) {
                     $(this).toggleClass('selected');
                     removeMapOverlays();
                     showing_choice = !showing_choice;
@@ -48,7 +52,6 @@ $(document).ready(function() {
                     return;
                 }
             
-                var choice = $(this)[0].parentNode.className.split('choice-')[1];
                 selected_choice_map_view = choice;
                 removeMapOverlays();
                 showing_regions = false;
