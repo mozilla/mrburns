@@ -120,9 +120,11 @@ counter = 0
 def main():
     global counter
     timer = statsd.timer('lisa.process_ip', rate=0.01)  # 1% sample rate
+    pipe = redis.pipeline()
 
     while True:
         if KILLED:
+            pipe.execute()
             log.info('Shutdown successful')
             return 0
 
@@ -133,10 +135,12 @@ def main():
                 ip_info = redis.brpop(rkeys.IPLOGS)[1]
         except RedisError as e:
             log.error('Error with Redis: {}'.format(e))
+            pipe.execute()
             return 1
 
         if ip_info is None:
             # benchmark run is over
+            pipe.execute()
             return 0
 
         # don't start above redis call as it will block to wait
@@ -155,14 +159,11 @@ def main():
 
         record = geo.get(ip)
         if record:
-            pipe = redis.pipeline()
             # everything goes for total count and map
             process_map(record, timestamp, pipe)
             # only shares get more processing
             if rtype != data_types.DOWNLOAD:
                 process_share(record, rtype, pipe)
-
-            pipe.execute()
 
         timer.stop()
         statsd.incr('lisa.process_ip', rate=0.01)  # 1% sample rate
@@ -177,9 +178,11 @@ def main():
         counter += 1
         if args.benchmark:
             if not counter % 1000:
+                pipe.execute()
                 print counter
         else:
             if counter >= 1000:
+                pipe.execute()
                 counter = 0
                 statsd.gauge('queue.geoip', redis.llen(rkeys.IPLOGS))
 
