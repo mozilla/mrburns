@@ -347,7 +347,7 @@ $(document).ready(function() {
                 .attr('class', 'header')
                 .attr('text-anchor', 'start')
                 .attr('transform', 'translate(-20, 0)')
-                .text('Top Issue');
+                .text($('.top-issue-literal').html());
 
             g2.append('text')
                 .attr('class', 'top-issue-text')
