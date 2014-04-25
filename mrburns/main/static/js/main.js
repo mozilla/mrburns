@@ -129,6 +129,7 @@ $(document).ready(function () {
                 .append($('.stats-panel-column'))
                 .append($('.stats-panel-column-right'));
 
+
             // hide the menu if it is open
             $('.mobile-menu').removeClass('open');
 
@@ -150,10 +151,17 @@ $(document).ready(function () {
         }
     }
 
+    var setStatsPanelContentHeight = function() {
+        var newBodyHeight = $('body').height() - 200;
+        $('.stats-panel-contents').css('height', newBodyHeight);
+    }
+
     if (hasMediaQueries) {
         checkMode();
+        setStatsPanelContentHeight();
         $(window).on('resize', function () {
             checkMode();
+            setStatsPanelContentHeight();
         });
     }
 
