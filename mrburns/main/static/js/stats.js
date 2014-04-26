@@ -219,7 +219,15 @@ function drawDonut(data) {
 function drawStackedBarChart(data_unsorted) {
     data_unsorted = d3.entries(data_unsorted);
     
-    var data = new Array();
+    //handle the first few mins when we don't yet have share data for
+    //all choices for the US
+    var data = [{'key': 'privacy', 'value': 0},
+        {'key': 'opportunity', 'value': 0},
+        {'key': 'access', 'value': 0},
+        {'key': 'freedom', 'value': 0},
+        {'key': 'learning', 'value': 0},
+        {'key': 'control', 'value': 0}];
+        
     $.each(data_unsorted, function(i, d) {
         if(d.key == 'privacy')
             data[0] = d;
@@ -499,6 +507,11 @@ function drawCountryComparisonChart(data) {
 }
 
 function updateCountryComparisonChart(data) {
+    //if we have fewer than 15 countries, all bets are off
+    if(data.length < 15) {
+        return;
+    }
+    
     $('.country-bar')
         .css('fill', color[current_choice]);
           
