@@ -248,9 +248,7 @@ function drawStackedBarChart(data_unsorted) {
   
     var svg = d3.select('.chart2 svg')
         .attr('width', function() {
-            setTimeout(function() {
-                return ($('.chart2').width() == 0) ? 320 : $('.chart2').width();
-            }, 500);
+            return ($('.chart2').width() == 0) ? 320 : $('.chart2').width();
         })
         .attr('height', height);
         
@@ -418,9 +416,7 @@ function drawCountryComparisonChart(data) {
   
     var svg = d3.select('.chart3 svg')
         .attr('width', function() {
-            setTimeout(function() {
-                return ($('.chart3').width() == 0) ? 320 : $('.chart3').width();
-            }, 500);
+            return ($('.chart3').width() == 0) ? 320 : $('.chart3').width();
         })
         .attr('height', height);
         
