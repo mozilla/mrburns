@@ -431,14 +431,14 @@ $(document).ready(function () {
         if (getMode() === 'mobile') {
             $('body')
                 .addClass('stats-panel-open');
-                
+
             //firefox requires us to do this on html
             $('body,html')
                 .scrollTop(0);
 
             $('.chart2 svg')
                 .attr('width', $('.chart2').width())
-        
+
             $('.chart3 svg')
                 .attr('width', $('.chart3').width());
 
@@ -504,5 +504,10 @@ $(document).ready(function () {
             proceedToChoiceModal();
         });
     }
+
+    //Interstitial back button
+    $('#choice-modal-interstitial-back-button').click(function() {
+        $('#choice-modal').modal('show');
+    });
 
 });
