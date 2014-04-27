@@ -48,29 +48,12 @@ window.setInterval(function(){
     }
 }, 60000);  // 60s
 
-function getDevTimestamp() {
-    // TODO REMOVE ME
-    // confirmed manually that this is equal to
-    // smithers.utils.get_epoch_minute()
-    var unixtime = (new Date()).getTime() / 1000  // seconds since epoch
-    return Math.floor(unixtime / 60) * 60  // round down to minute
-}
-
 function getJsonDataUrl() {
     var $body = $('body');
     var staticDataUrl = $body.data('staticDataUrl');
 
     if (!_currentDataTimestamp) {
-        // NOTE: will be 0 when redis is off or returns nothing
         var latestTimestamp = $body.data('timestamp'); // an int
-
-        if (!latestTimestamp) {
-            // TODO REMOVE ME
-            // guess at the latest timestamp (for dev)
-            console.log('USING DEV TIMESTAMP!');
-            // take off 3 extra minutes for fewer 404s
-            latestTimestamp = getDevTimestamp() - 180;
-        }
 
         // two minutes ago
         _currentDataTimestamp = latestTimestamp - 120;
