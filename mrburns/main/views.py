@@ -17,6 +17,7 @@ from redis_cache import get_redis_connection
 
 from smithers import data_types
 from smithers import redis_keys as rkeys
+from smithers.utils import get_epoch_minute
 
 
 if settings.ENABLE_REDIS:
@@ -72,7 +73,7 @@ class GlowView(TemplateView):
         if redis:
             timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
         else:
-            timestamp = 0
+            timestamp = get_epoch_minute() - 600  # 10 min ago
         context = super(GlowView, self).get_context_data(**kwargs)
         context.update({
             'data_timestamp': timestamp,
