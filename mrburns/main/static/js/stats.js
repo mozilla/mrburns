@@ -406,7 +406,7 @@ function drawCountryComparisonChart(data) {
     
     var width = 565,
         height = 350,
-        x_padding_left = 120,
+        x_padding_left = 220,
         x_padding_right = 25,
         y_padding_top = 20,
         bar_height = 17,
@@ -517,7 +517,7 @@ function updateCountryComparisonChart(data) {
           
     var width = 565,
         height = 350,
-        x_padding_left = 120,
+        x_padding_left = 220,
         x_padding_right = 20,
         bar_width = 20;
   
