@@ -38,6 +38,7 @@ CONTINENTS = {
     'NA': 'North America',
     'OC': 'Oceania',
     'SA': 'South America',
+    'AN': 'Antarctica',
 }
 
 
