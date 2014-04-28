@@ -37,7 +37,6 @@
 
         if (hash === '#video') {
             ga('send', 'event', 'Main Map Page Interactions', 'Watch The Video','open video', {'nonInteraction': 1});
-            ga('send', 'pageview', {'page': window.location.pathname + window.location.search  + window.location.hash});
         } else {
             ga('send', 'event', 'Main Map Page Interactions', 'Watch The Video','open video');
         }

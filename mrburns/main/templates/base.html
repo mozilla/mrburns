@@ -40,7 +40,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-35433268-35', 'mozilla.org');
-    ga('send', 'pageview');
+    ga('send', 'pageview', {'page': window.location.pathname + window.location.search  + window.location.hash});
   </script>
 </head>
 <body data-static-data-url="{{ MAP_DATA_URL }}"
