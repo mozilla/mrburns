@@ -698,7 +698,18 @@ function updateVerticalLine(data, label, x_scale_country_comparison, bar_width) 
 $(window).resize(function() {
     $('.chart2 svg')
         .attr('width', $('.chart2').width());
-        
+
     $('.chart3 svg')
         .attr('width', $('.chart3').width());
+
+    //compensate for the extra space due to the viewbox
+    //by reducing the svg's height on resize
+    if($(window).width() > 320) {
+        $('.chart3 svg')
+            .attr('height', '350px');
+    }
+    else {
+        $('.chart3 svg')
+            .attr('height', '250px');
+    }
 });
