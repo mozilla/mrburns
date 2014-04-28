@@ -51,7 +51,7 @@
     #choice-modal-interstitial-back-button {
         display: block;
         color: #FFF;
-        padding: 4px 0 0 10px;
+        padding: 4px 10px;
         background: none;
         border: 0px none;
         float: left;
@@ -73,7 +73,7 @@
         h1,
         h2,
         p {
-            padding-left: 200px;
+            padding: 0 0 0 200px;
         }
         h1 {
             padding-top: 40px;
@@ -118,3 +118,28 @@
 .interstitial-modal-learning .choice-learning { display: block; }
 .interstitial-modal-control .choice-control { display: block; }
 
+html[dir="rtl"] {
+    .choice-modal .choices li {
+        float: right;
+    }
+    .choice-modal-interstitial {
+        #choice-modal-interstitial-back-button {
+            float: right;
+            .rotate(180deg);
+        }
+        .modal-body {
+            h1,
+            h2,
+            p {
+                padding: 0 200px 0 0;
+            }
+            h2 .fa-stack {
+                right: 20px;
+                left: auto;
+            }
+        }
+        .close {
+            float: left;
+        }
+    }
+}
