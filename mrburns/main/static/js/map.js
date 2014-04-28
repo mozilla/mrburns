@@ -153,7 +153,9 @@ $(document).ready(function() {
         var top_issues = new Object();
         d3.selectAll('.continent').each(function(d, i) {
             var country_attribs = data.continent_issues[d.name];
-            var top_issue_for_this_continent = d3.entries(country_attribs).sort()[0].key;
+            var top_issue_for_this_continent = 
+                d3.entries(country_attribs).sort(
+                    function(a, b) { return b.value - a.value; })[0].key;
 
             top_issues[d.name] = top_issue_for_this_continent;
 
