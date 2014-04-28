@@ -24,6 +24,7 @@ header {
         font-weight: 300;
 
         .number-help {
+            white-space: nowrap;
             &:hover,
             &:active {
                 text-decoration: none;
@@ -188,6 +189,9 @@ html[dir="rtl"] {
             margin: 10px 0 10px 200px;
             width: 400px;
             font-size: 28px;
+            &.header-long {
+                font-size: 24px;
+            }
         }
     }
 
@@ -211,7 +215,10 @@ html[dir="rtl"] {
         h2 {
             margin: 10px 0 10px 240px;
             width: 500px;
-            font-size: 38px;
+            font-size: 36px;
+            &.header-long {
+                font-size: 28px;
+            }
         }
         .video-panel-link {
             margin-top: -4px;
