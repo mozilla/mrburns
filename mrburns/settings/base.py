@@ -110,14 +110,8 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 PROD_DETAILS_DIR = str(BASE_DIR / 'prod_details_json')
 
 # Source: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-EXTRA_COUNTRIES = {
-    u'CW': u'Curaçao',
-    u'XK': u'Kosovo',
-    u'BQ': u'British Antarctic Territory',
-    u'SS': u'South Sudan',
-}
+EXTRA_COUNTRIES = {}
+
 # codes that are nearly the same as a code we have
 # put them here intstead of above to get translations
-COUNTRY_CODE_MAP = {
-    u'SX': u'MF',  # SX = St. Marteen (Dutch Side)
-}
+COUNTRY_CODE_MAP = {}
