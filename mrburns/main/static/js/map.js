@@ -114,11 +114,10 @@ $(document).ready(function() {
         $.each(choice_data, function(i, d) {
             d3.select('.continent.' + d.continent)
                 .style('fill', function() {
-                    var rgb = d3.rgb(color_issue_per_continent(d.count));
-                    return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',.90)';
+                    return color_issue_per_continent(d.count);
                 })
                 .style('stroke', function() {
-                    return 'none';
+                    return color_issue_per_continent(d.count);
                 });
 
             d3.select('#' + d.continent.toLowerCase() + '-perc-for-issue text')
