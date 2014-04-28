@@ -29,13 +29,12 @@ from smithers.utils import (get_firefox_version, register_signals,
 set_process_name(__file__)
 log = logging.getLogger('bart')
 
-PRE_LAUNCH_RE = r'firefox-{}'
-LAUNCH_RE = r'firefox-(?:latest|{})'
+PRE_LAUNCH_RE = r'firefox-29.0(?:[^b]|$)'
+LAUNCH_RE = r'firefox-(?:latest|{}(?:[^b]|$))'
 
 FX_RE = PRE_LAUNCH_RE if conf.LAUNCH_STATE == 'pre' else LAUNCH_RE
 
-firefox_re = re.compile(FX_RE.format(get_firefox_version()),
-                        re.IGNORECASE)
+firefox_re = re.compile(FX_RE.format(get_firefox_version()), re.IGNORECASE)
 
 # has the system requested shutdown
 KILLED = False
