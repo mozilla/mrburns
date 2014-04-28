@@ -33,7 +33,7 @@ $(document).ready(function() {
         //view by choice listener
         $('.key-map a').on('click', function(e) {
             var previous_choice = selected_choice_map_view;
-            
+
             selected_choice_map_view = '';
 
             $('.key-map a').removeClass('selected');
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
                     return;
                 }
-            
+
                 selected_choice_map_view = choice;
                 removeMapOverlays();
                 showing_regions = false;
@@ -71,7 +71,7 @@ $(document).ready(function() {
                 removeMapOverlays();
                 showing_regions = !showing_regions;
                 showing_choice = false;
-                
+
                 return;
             }
 
@@ -570,7 +570,38 @@ var commasRgx = /(\d+)(\d{3})/;
 function addCommas(nStr) {
     nStr += '';
     while (commasRgx.test(nStr)) {
-        nStr = nStr.replace(commasRgx, '$1' + ',' + '$2');
+        nStr = nStr.replace(commasRgx, '$1' + getSeparator() + '$2');
     }
     return nStr;
+}
+
+/* L10N Number SEPARATOR - Uses html attr lang to determine if , . or space is used
+ * Uses globals to minimize DOM queries and array searches. Trying to be fast here.
+ */
+var LANG = document.documentElement.lang;
+var SEPARATOR = null;
+var COMMA  = ['en', 'he', 'ko', 'ja', 'zh-cn', 'zh-tw'];
+var DOT = ['de', 'es', 'id', 'it', 'nl', 'pt-br', 'ro', 'sl'];
+//var space = ['cs', 'fr', 'hu', 'lt', 'pl', 'ru', 'sk', 'sq'];
+
+function getSeparator() {
+
+    //Return if value set - we only do this once per page load.
+    if(SEPARATOR != null) {
+        return SEPARATOR;
+    } else {
+        if(COMMA.indexOf(LANG) != -1) {
+            SEPARATOR = ',';
+            return SEPARATOR;
+        }
+
+        if(DOT.indexOf(LANG) != -1) {
+            SEPARATOR = '.';
+            return SEPARATOR;
+        }
+
+        //Default SEPARATOR is space
+        SEPARATOR = '\xA0';
+        return SEPARATOR;
+    }
 }
