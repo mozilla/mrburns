@@ -18,6 +18,8 @@ $(document).ready(function() {
         showing_choice = false,
         showing_regions = false,
         map_geo_previous = [], //previous set of map_geos
+        locale = document.documentElement.lang,
+        formatNumber,
         glow_size = 1.5,
         glow_tick = 60000; //in ms
 
@@ -216,7 +218,7 @@ $(document).ready(function() {
         var intermediate_count = last_count + increment_by;
 
         var shareTotal = $('.share_total')[0];
-        shareTotal.textContent = addCommas(Math.round(last_count));
+        shareTotal.textContent = formatNumber(Math.round(last_count));
 
         counter_interval = setInterval(function() {
             $({the_value: intermediate_count - increment_by}) //from
@@ -224,7 +226,7 @@ $(document).ready(function() {
                     duration: 2000,
                     easing: 'swing',
                     step: function(i) {
-                        shareTotal.textContent = addCommas(Math.round(this.the_value));
+                        shareTotal.textContent = formatNumber(Math.round(this.the_value));
                     }
             });
 
@@ -539,6 +541,47 @@ $(document).ready(function() {
         canvas.height = height;
     }
 
+    var numberSeparator = {
+        'de': '.',
+        'es': '.',
+        'id': '.',
+        'it': '.',
+        'nl': '.',
+        'pt-br': '.',
+        'ro': '.',
+        'sl': '.',
+        'en': ',',
+        'he': ',',
+        'ko': ',',
+        'ja': ',',
+        'zh-cn': ',',
+        'zh-tw': ','
+    }[locale] || '\xA0'; // &nbsp;
+
+    // For the best performance, define the formatNumber function first based
+    // on the browser ability before it is used in the counter code.
+    if (typeof Intl === 'object' && typeof Intl.NumberFormat === 'function') {
+        // If the ECMAScript Internationalization API is enabled, numbers can be
+        // automatically formatted depending on the locale.
+        var numberFormatter = new Intl.NumberFormat(locale);
+
+        formatNumber = function(num) {
+            return numberFormatter.format(num);
+        };
+    } else if (numberSeparator !== ',') {
+        // In older browsers, Number.toLocaleString usually returns a comma-
+        // separated number string. In some locales, the number separator is not
+        // a comma, so replace it. Older IEs append .00, so remove it.
+        formatNumber = function(num) {
+            return num.toLocaleString().replace(/\.00$/, '')
+                                       .replace(/,/g, numberSeparator);
+        };
+    } else {
+        formatNumber = function(num) {
+            return num.toLocaleString().replace(/\.00$/, '');
+        };
+    }
+
     //http://stackoverflow.com/questions/2854407/
     //javascript-jquery-window-resize-how-to-fire-after-the-resize-is-completed
     $(window).resize(function() {
@@ -564,13 +607,4 @@ function randomRange(minVal, maxVal, floatVal) {
     return typeof floatVal == 'undefined'
         ? Math.round(randVal)
         : randVal.toFixed(floatVal);
-}
-
-var commasRgx = /(\d+)(\d{3})/;
-function addCommas(nStr) {
-    nStr += '';
-    while (commasRgx.test(nStr)) {
-        nStr = nStr.replace(commasRgx, '$1' + ',' + '$2');
-    }
-    return nStr;
 }
