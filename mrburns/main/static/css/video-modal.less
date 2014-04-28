@@ -56,6 +56,19 @@
     }
 }
 
+html[dir="rtl"] {
+    .video-modal {
+        .modal-header .close {
+            right: auto;
+            left: -10px;
+        }
+        .modal-footer .btn .fa {
+            right: -.2em;
+            left: auto;
+        }
+    }
+}
+
 @media (min-width: @screen-sm-min) {
    .video-modal {
         .modal-dialog {

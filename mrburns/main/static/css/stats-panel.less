@@ -47,7 +47,7 @@
     position: absolute;
     top: -48px;
     .title {
-        margin-left: .2em;
+        margin: 0 .2em;
     }
     a:hover,
     a:active,
@@ -101,7 +101,7 @@
     float: left;
     height: 48px;
     padding: 10px;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
     &.popover-markup {
         padding: 0;
         .trigger {
@@ -149,6 +149,7 @@
 
 .chart3 svg {
     margin-top: 10px;
+    direction: ltr;
 }
 
 .shadow-separator {
@@ -285,6 +286,20 @@ select.country {
     }
 }
 
+html[dir="rtl"] {
+    .stats-panel-tab,
+    .stats-panel-link {
+        float: right;
+    }
+    .stats-panel-link {
+        margin: 0 0 0 10px;
+    }
+    .donut-icon {
+        right: 44px;
+        left: auto;
+    }
+}
+
 
 @media (min-width: @screen-sm-min) {
     .chart1,
@@ -331,6 +346,23 @@ select.country {
     }
     .stats-share-link {
         position: static;
+    }
+
+    html[dir="rtl"] {
+        .chart1,
+        .chart2,
+        .chart3 {
+            h2 {
+                float: right;
+            }
+        }
+        .chart2 .country-picker {
+            float: left;
+        }
+        .donut,
+        .donut-prose {
+            float: right;
+        }
     }
 }
 

@@ -40,7 +40,7 @@ header {
                 top: 0;
                 left: 0;
                 padding: .2em;
-                margin-right: -.3em;
+                margin: 0 -.3em 0 0;
             }
         }
     }
@@ -133,6 +133,34 @@ header {
     font-weight: bold;
 }
 
+html[dir="rtl"] {
+    header {
+        h2 .number-help .fa {
+            margin: 0 0 0 -.3em;
+        }
+        .actions {
+            right: auto;
+            left: 30px;
+            .video-panel-link a {
+                padding: 10px 34px 10px 10px;
+                .fa {
+                    right: 12px;
+                    left: auto;
+                    .rotate(180deg);
+                }
+            }
+        }
+    }
+    .mobile-menu {
+        right: auto;
+        left: 10px;
+        .dropdown-menu.pull-right {
+            right: auto;
+            left: 0;
+        }
+    }
+}
+
 @media (max-width: @screen-xs-max) {
     .header-join-content,
     .dropdown-menu > li> .mobile-choice-link {
@@ -157,9 +185,19 @@ header {
             width: 160px;
         }
         h2 {
-            margin-left: 200px;
+            margin: 10px 0 10px 200px;
             width: 400px;
             font-size: 28px;
+        }
+    }
+
+    html[dir="rtl"] header {
+        h1 {
+            right: 40px;
+            left: auto;
+        }
+        h2 {
+            margin: 10px 200px 10px 0;
         }
     }
 }
@@ -171,13 +209,17 @@ header {
             width: 200px;
         }
         h2 {
-            margin-left: 240px;
+            margin: 10px 0 10px 240px;
             width: 500px;
             font-size: 38px;
         }
         .video-panel-link {
             margin-top: -4px;
         }
+    }
+
+    html[dir="rtl"] header h2 {
+        margin: 10px 240px 10px 0;
     }
 }
 
@@ -191,9 +233,13 @@ header {
                 margin-top: auto;
             }
             .btn-download {
-                margin-left: 20px;
+                margin: 0 0 0 20px;
             }
         }
+    }
+
+    html[dir="rtl"] header .actions .btn-download {
+        margin: 0 20px 0 0;
     }
 }
 
