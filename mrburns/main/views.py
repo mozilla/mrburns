@@ -51,10 +51,21 @@ def get_fb_share_url(url):
     return '?'.join([FB_URL, urlencode({'u': url})])
 
 
+def fix_locale(locale):
+    """Return locale suitable for product details."""
+    if locale == 'es':
+        return 'es-ES'
+
+    locale_parts = locale.split('-')
+    if len(locale_parts) == 2:
+        return '-'.join([locale_parts[0], locale_parts[1].upper()])
+
+    return locale
+
+
 def get_sorted_countries_list(locale):
     """Return a localized list of all countries sorted by name."""
-    if locale == 'es':
-        locale = 'es-ES'
+    locale = fix_locale(locale)
     countries = product_details.get_regions(locale)
     countries.update(settings.EXTRA_COUNTRIES)
     for c_new, c_old in settings.COUNTRY_CODE_MAP.items():

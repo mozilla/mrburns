@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.utils import override_settings
 
 from mock import patch
-from nose.tools import ok_
+from nose.tools import ok_, eq_
 
 from mrburns.main import views
 
@@ -62,3 +62,10 @@ class TestViewHelpers(TestCase):
             c_list = views.get_sorted_countries_list('en')
             self.assertIn((u'MF', u'Saint Martin'), c_list)
             self.assertIn((u'SX', u'Saint Martin'), c_list)
+
+    def test_fix_locale(self):
+        """Should correct certain locales."""
+        eq_(views.fix_locale('es'), 'es-ES')
+        eq_(views.fix_locale('pt-br'), 'pt-BR')
+        eq_(views.fix_locale('zh-tw'), 'zh-TW')
+        eq_(views.fix_locale('he'), 'he')
