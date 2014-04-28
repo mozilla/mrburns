@@ -425,6 +425,11 @@ $(document).ready(function () {
             $('.chart3 svg')
                 .attr('width', $('.chart3').width());
 
+            //due to viewbox, compensate for the extra space by
+            //reducing the height of the svg 
+            $('.chart3 svg')
+                .attr('height', '250px');
+                
             updateStatsPanelChoice($(this).data('choice'));
             updateStatsPanel();
         } else {
