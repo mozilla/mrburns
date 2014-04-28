@@ -153,12 +153,18 @@ class GlowView(TemplateView):
             'share_stats_facebook_control': get_fb_share_url('http://mzl.la/1k45KCq'),
             'count_footnote': COUNT_FOOTNOTE.format(_('What does this number mean?')),
             'countries_list': self.get_countries_list(),
+            'is_long_headline': self.is_long_headline(),
         })
         return context
 
     def get_countries_list(self):
         lang = getattr(self.request, 'LANGUAGE_CODE', 'en-US')
         return get_sorted_countries_list(lang)
+
+    def is_long_headline(self):
+        trans_str = _('\n        Join %(count)s people shaping the future of the Web')
+        trans_str = trans_str.strip() % {'count': 1}
+        return len(trans_str) >= 55
 
 
 class ShareView(View):

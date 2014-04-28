@@ -50,7 +50,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
   <header>
     <h1>{{ _('Firefox') }}</h1>
-    <h2 class="header-join-content">
+    <h2 class="header-join-content{% if is_long_headline %} header-long{% endif %}">
       {% comment %}
       question-circle link can't have a space after title string
       {% endcomment %}
