@@ -46,7 +46,6 @@ $(document).ready(function () {
     if (matches) {
         panel = matches[1];
     }
-    data.current_choice = panel;
     updateStatsPanelChoice(panel);
 });
 
@@ -63,12 +62,14 @@ function updateStatsPanelChoice(choice) {
     $('.what-is-mozilla-doing-about-it .paragraph2')
         .html($('.choice-' + current_choice + '-prose-rhs2').html());
 
+    // update icon in chart 1
+    $('.donut-icon i, .picker-label i')
+        .removeClass('fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs')
+        .addClass(icon[choice]);
+
     if (data) {
         //update chart 1
         updateDonut(data.country_issues.GLOBAL[choice], choice);
-        $('.donut-icon i, .picker-label i')
-            .removeClass('fa-eye fa-heart fa-user fa-check-circle-o fa-book fa-cogs')
-            .addClass(icon[choice]);
 
         //update chart 2
         $('.tippy').hide();
