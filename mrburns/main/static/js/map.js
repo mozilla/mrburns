@@ -491,7 +491,9 @@ $(document).ready(function() {
                     places[i].dead = 1; //r.i.p. glow, until next...minute
                 }
             }
-
+            if (places[i].opacity === 0) {
+                continue;
+            }
             ctx.fillStyle = 'rgba(40, 217, 23, ' + places[i].opacity + ')';
             ctx.beginPath();
             ctx.arc(x, y, glow_size, 0, 2 * Math.PI, false);
