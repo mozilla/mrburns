@@ -46,6 +46,7 @@ $(document).ready(function () {
     if (matches) {
         panel = matches[1];
     }
+    data.current_choice = panel;
     updateStatsPanelChoice(panel);
 });
 
