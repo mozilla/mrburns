@@ -46,6 +46,7 @@ if SERVER_ENV == 'prod':
         ('sr', _('Serbian')),
         ('zh-cn', _('Simplified Chinese')),
         ('zh-tw', _('Traditional Chinese')),
+        ('xx', 'Pirate'),
     )
 elif SERVER_ENV == 'dev':
     ALLOWED_HOSTS.append('webwewant.allizom.org')
