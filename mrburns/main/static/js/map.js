@@ -153,7 +153,7 @@ $(document).ready(function() {
         var top_issues = new Object();
         d3.selectAll('.continent').each(function(d, i) {
             var country_attribs = data.continent_issues[d.name];
-            var top_issue_for_this_continent = 
+            var top_issue_for_this_continent =
                 d3.entries(country_attribs).sort(
                     function(a, b) { return b.value - a.value; })[0].key;
 
@@ -474,51 +474,56 @@ $(document).ready(function() {
         ctx.clearRect(0, 0, width, height);
 
         var x = 0, y = 0;
-
+        var o, place;
         for(var i=0; i<places.length; i++) {
-            if(places[i].dead == 1) continue;
+            place = places[i];
+            if(place.dead == 1) continue;
 
-            x = projection([places[i].lon, places[i].lat])[0];
-            y = projection([places[i].lon, places[i].lat])[1];
+            x = projection([place.lon, place.lat])[0];
+            y = projection([place.lon, place.lat])[1];
 
             //if the glow doesn't have an opacity, assume it is 0
-            if(places[i].opacity == undefined)
-                places[i].opacity = 0;
+            if(place.opacity == undefined)
+                place.opacity = 0;
 
             //if it's a high-count glow, we show it for the entirety of the tick
-            if(places[i].delay == 0 && !places[i].transitioning) {
-                places[i].opacity = 1;
+            if(place.delay == 0 && !place.transitioning) {
+                place.opacity = 1;
             }
             //if it's our glow's time to shine, display it and reduce its opacity henceforth
-            else if(time_in_ms >= places[i].delay && places[i].count > 0) {
+            else if(time_in_ms >= place.delay && place.count > 0) {
                 //if our glow is about to be born
-                if(places[i].opacity <= 0.9) {
-                    places[i].opacity = places[i].opacity + 0.2;
+                if(place.opacity <= 0.9) {
+                    place.opacity = place.opacity + 0.2;
                 }
                 else {
                     //decrement every 1s, since each count is worth 1s of screen time
-                    if((time_in_ms % (1000 / multiplier)) == 0) {
-                        places[i].count = places[i].count - 1;
+                    if((time_in_ms % (1000 / multiplier)) === 0) {
+                        place.count = place.count - 1;
                     }
 
-                    places[i].opacity = 1;
+                    place.opacity = 1;
                 }
             }
             //if our glow had its time to shine and is now, sadly, dying...
-            else if(time_in_ms >= places[i].delay && places[i].count <= 0) {
+            else if(time_in_ms >= place.delay && place.count <= 0) {
                //if our glow is dying
-                if(places[i].opacity > 0.1) {
-                    places[i].opacity = places[i].opacity - 0.05;
+                if(place.opacity > 0.1) {
+                    place.opacity = place.opacity - 0.05;
                 }
                 else {
-                    places[i].opacity = 0;
-                    places[i].dead = 1; //r.i.p. glow, until next...minute
+                    place.opacity = 0;
+                    place.dead = 1; //r.i.p. glow, until next...minute
                 }
             }
             if (places[i].opacity === 0) {
                 continue;
             }
-            ctx.fillStyle = 'rgba(40, 217, 23, ' + places[i].opacity + ')';
+            // set fillStyle as infrequently as possible, it's an expensive operation.
+            if (place.opacity !== o) {
+                o = place.opacity;
+                ctx.fillStyle = 'rgba(40, 217, 23, ' + o + ')';
+            }
             ctx.beginPath();
             ctx.arc(x, y, glow_size, 0, 2 * Math.PI, false);
             ctx.fill();
