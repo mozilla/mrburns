@@ -498,7 +498,7 @@ $(document).ready(function() {
                 }
                 else {
                     //decrement every 1s, since each count is worth 1s of screen time
-                    if((time_in_ms % (1000 / multiplier)) === 0) {
+                    if((time_in_ms % 1000) === 0) {
                         place.count = place.count - 1;
                     }
 
