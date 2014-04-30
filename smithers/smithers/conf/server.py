@@ -6,4 +6,4 @@ STATSD_HOST = 'graphite1.private.phx1.mozilla.com'
 STATSD_PORT = 8125
 STATSD_PREFIX = 'glow-workers-{}'.format(getenv('DJANGO_SERVER_ENV'))
 
-COUNTRY_MIN_SHARE = 1  # basically off
+COUNTRY_MIN_SHARE = 500
