@@ -109,8 +109,8 @@ class GlowView(TemplateView):
             'share_stats_twitter_privacy': get_tw_share_url(
                 url='http://mzl.la/1i6jEol',
                 text='#Firefox {}'
-                     .format(_('fights for government surveillance reform '
-                               'and was the only major browser not targeted by the NSA scandal.')),
+                     .format(_('leads the way in giving users greater control online. '
+                               'They pioneered features like Do Not Track and Lightbeam.')),
             ),
             'share_stats_twitter_opportunity': get_tw_share_url(
                 url='http://mzl.la/1nEMbBx',
