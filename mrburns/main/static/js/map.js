@@ -22,7 +22,7 @@ $(document).ready(function() {
         glow_tick = 60000; //in ms
 
     var staticDataUrl = $('body').data('staticDataUrl');
-    d3.json(staticDataUrl + "world-continents-110m.json", function(error, d) {
+    d3.json(staticDataUrl + "world-continents-110m.json?20140430", function(error, d) {
         assignEventListeners();
 
         world = d;
