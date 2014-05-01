@@ -11,7 +11,6 @@ bin/peep.py install -r requirements/mrburns.txt -r requirements/mrburns-server.t
 pip install -r requirements/github.txt
 
 python manage.py collectstatic --noinput
-python manage.py compress
 python manage.py update_product_details
 
 if [ -n $newrev ]; then
