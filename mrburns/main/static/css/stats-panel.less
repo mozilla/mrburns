@@ -23,7 +23,6 @@
     width: 100%;
     padding: 40px 270px 40px 170px;
     clear: left;
-    overflow: scroll;
     // don't show scroll bar when stats panel is closed
     overflow: hidden;
 }
@@ -35,7 +34,7 @@
 
 .stats-panel-open {
     .stats-panel-contents {
-        overflow: scroll;
+        overflow-y: scroll;
         >div {
             opacity: 1;
             .transition(all .1s ease-in-out);
