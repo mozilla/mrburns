@@ -4,17 +4,14 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% endcomment %}
 {% load staticfiles %}
-{% load compress %}
+{% load compressed %}
 {% load i18n %}
 {% load glow_extras %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" dir="{{ LANGUAGE_BIDI|yesno:"rtl,ltr" }}">
 <head>
   <title>{{ _('The Web we want')|title_lang }}</title>
-  {% compress css %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.less' %}" type="text/less" charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/main.less' %}" type="text/less" charset="utf-8">
-  {% endcompress %}
+  {% compressed_css 'main' %}
 
   <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
 
@@ -105,18 +102,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% include 'number-modal.html' %}
 {% include 'video-modal.html' %}
 
-{% compress js %}
-  <script src="{% static 'js/libs/jquery-2.1.0.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/libs/d3.v3.min.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/libs/topojson.v1.min.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/libs/bootstrap.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/libs/select2.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/libs/jQuery.tubeplayer.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/map.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/stats.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script src="{% static 'js/ga_event-tracking.js' %}" type="text/javascript" charset="utf-8"></script>
-{% endcompress %}
+{% compressed_js 'main' %}
 
 <script type='text/javascript'>
 var ebRand = Math.random()+'';
@@ -126,7 +112,7 @@ document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServe
 //]]>
 </script>
 <noscript>
-<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=481347&amp;ns=1"/>
+<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=481347&amp;ns=1">
 </noscript>
 
 </body>
