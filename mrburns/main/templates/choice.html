@@ -6,72 +6,19 @@
       <h2>{{ _('What kind of Web do you want?') }}</h2>
     <p>{{ _('I want a Web that:') }}</p>
     <ul class="choices">
-      <li class="choice-privacy">
+      {% for issue in issue_choices %}
+      <li class="choice-{{ issue.name }}">
         <button type="button"
             class="btn btn-default"
-            data-choice="privacy">
+            data-choice="{{  issue.name }}">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+            <i class="fa {{ issue.icon }} fa-stack-1x fa-inverse"></i>
           </span>
-          <span class="choice-title"><span>{{ _('Safeguards privacy') }}</span></span>
+          <span class="choice-title"><span>{{ issue.title }}</span></span>
         </button>
       </li>
-      <li class="choice-opportunity">
-        <button type="button"
-            class="btn btn-default"
-            data-choice="opportunity">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
-          </span>
-          <span class="choice-title"><span>{{ _('Creates opportunity') }}</span></span>
-        </button>
-      </li>
-      <li class="choice-access">
-        <button type="button"
-            class="btn btn-default"
-            data-choice="access">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-          </span>
-          <span class="choice-title"><span>{{ _('Is available to all') }}</span></span>
-        </button>
-      </li>
-      <li class="choice-freedom">
-        <button type="button"
-            class="btn btn-default"
-            data-choice="freedom">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
-          </span>
-        <span class="choice-title"><span>{{ _('Promotes freedom') }}</span></span>
-        </button>
-      </li>
-      <li class="choice-learning">
-        <button type="button"
-            class="btn btn-default"
-            data-choice="learning">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-          </span>
-          <span class="choice-title"><span>{{ _('Inspires learning') }}</span></span>
-        </button>
-      </li>
-      <li class="choice-control">
-        <button type="button"
-            class="btn btn-default"
-            data-choice="control">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-          </span>
-          <span class="choice-title"><span>{{ _('Puts me in control') }}</span></span>
-        </button>
-      </li>
+      {% endfor %}
     </ul>
     <div class="choice-footnotes">{{ _('When you select any of the sharing links, we add your location to the map to show the worldwide impact of our community.') }}</div>
   </div>

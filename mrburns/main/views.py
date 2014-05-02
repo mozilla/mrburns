@@ -3,12 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from __future__ import unicode_literals
 
+from collections import namedtuple
 from operator import itemgetter
+from random import shuffle
 from urllib import urlencode
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, ugettext_lazy as _lazy
 from django.views.generic import TemplateView, View
 
 from product_details import product_details
@@ -31,6 +33,15 @@ COUNT_FOOTNOTE = ('<a href="#number-modal" class="number-help" '
                   'data-toggle="modal" title="{}">'
                   '<span class="share_total"></span>'
                   '<i class="fa fa-question-circle"></i></a>')
+Issue = namedtuple('Issue', ['name', 'icon', 'title'])
+ISSUE_CHOICES = (
+    Issue('privacy', 'fa-eye', _lazy('Safeguards privacy')),
+    Issue('opportunity', 'fa-heart', _lazy('Creates opportunity')),
+    Issue('access', 'fa-user', _lazy('Is available to all')),
+    Issue('freedom', 'fa-check-circle-o', _lazy('Promotes freedom')),
+    Issue('learning', 'fa-book', _lazy('Inspires learning')),
+    Issue('control', 'fa-cogs', _lazy('Puts me in control')),
+)
 uca_collator = Collator()
 
 
@@ -86,7 +97,10 @@ class GlowView(TemplateView):
         else:
             timestamp = get_epoch_minute() - 600  # 10 min ago
         context = super(GlowView, self).get_context_data(**kwargs)
+        issue_choices_list = list(ISSUE_CHOICES)
+        shuffle(issue_choices_list)
         context.update({
+            'issue_choices': issue_choices_list,
             'data_timestamp': timestamp,
             'share_map_twitter': get_tw_share_url(
                 url='http://mzl.la/1g5k6OK',
