@@ -23,6 +23,7 @@ if SERVER_ENV == 'prod':
     STATIC_URL = 'https://glow.cdn.mozilla.net/static/'
 
     LANGUAGES = (
+        ('ca', _('Catalan')),
         ('cs', _('Czech')),
         ('de', _('German')),
         ('en', _('English')),
