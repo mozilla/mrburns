@@ -33,6 +33,19 @@ class TestFirefoxRegex(TestCase):
         self.assertTrue(self.fx_pre_re.search(product))
         self.assertTrue(self.fx_re.search(product))
 
+    def test_patch_release(self):
+        """Should match complete auto and normal downloads for a patch release."""
+        product = 'product=firefox-29.0.1-complete'
+        self.assertTrue(self.fx_pre_re.search(product))
+        self.assertTrue(self.fx_re.search(product))
+        product = 'product=firefox-29.0.1&lang'
+        self.assertTrue(self.fx_pre_re.search(product))
+        self.assertTrue(self.fx_re.search(product))
+        # at the end of the string
+        product = 'product=firefox-29.0.1'
+        self.assertTrue(self.fx_pre_re.search(product))
+        self.assertTrue(self.fx_re.search(product))
+
     def test_latest(self):
         """Prod mode should match "latest", but pre mode should not."""
         product = 'product=firefox-latest'
