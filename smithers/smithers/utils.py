@@ -39,12 +39,16 @@ def set_process_name(title):
         pass
 
 
-def get_firefox_version():
-    """Return latest version from product details JSON."""
+def _get_fx_version_from_json():
     try:
         with conf.PROD_DETAILS_DIR.joinpath('firefox_versions.json').open() as fh:
-            prod_details = json.load(fh)
+            return json.load(fh).get('LATEST_FIREFOX_VERSION', None)
     except IOError:
-        return conf.FIREFOX_VERSION
+        return None
 
-    return prod_details.get('LATEST_FIREFOX_VERSION', conf.FIREFOX_VERSION)
+
+def get_firefox_version():
+    """Return latest version from product details JSON."""
+    version = _get_fx_version_from_json() or conf.FIREFOX_VERSION
+    # we don't care about the point release
+    return '.'.join(version.split('.')[:2])

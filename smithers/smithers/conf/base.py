@@ -30,5 +30,5 @@ ARCHIVE_LOG_PATH = ARCHIVE_DIR / 'log'
 ARCHIVE_LOG_LATEST_FILE = ARCHIVE_LOG_PATH / 'latest_log_file.txt'
 ARCHIVE_JSON_PATH = ARCHIVE_DIR / 'json'
 SYSLOG_PID_FILE = '/var/run/syslogd.pid'
-FIREFOX_VERSION = '28'
+FIREFOX_VERSION = '29.0'
 LOG_HTTP_STATUS = '302'  # only redirects count for d.m.o logs
