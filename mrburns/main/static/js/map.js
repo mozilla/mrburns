@@ -422,7 +422,7 @@ $(document).ready(function() {
             //console.log('places length -->', places.map_geo.length);
 
             //animate the counter
-            animateCounterContinuous(places.map_previous_total, places.map_total);
+            //animateCounterContinuous(places.map_previous_total, places.map_total);
 
             //first we need to modify map_geo, by setting a random delay for each glow
             //we do this only once per tick, i.e. once per 60s
