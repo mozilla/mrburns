@@ -444,7 +444,7 @@ $(document).ready(function() {
             //console.log("map_previous -->", map_geo_previous.length);
             $.each(map_geo_previous, function(i, d) {
                 if(d.dead != 1) {
-                    d.count = 1; //immediately transition this fine gentleman out
+                    d.count = 0; //immediately transition this fine gentleman out
                     d.delay = 0;
                     d.transitioning = 1;
                     places.map_geo.push(d);
