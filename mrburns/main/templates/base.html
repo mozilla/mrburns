@@ -77,7 +77,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
         <li class="get-involved-link footer-link hidden"><a href="#">
           {{ _('FAQ') }}
         </a></li>
-        <li class="get-involved-link footer-link hidden"><a href="https://www.mozilla.org/contribute/">
+        <li class="get-involved-link footer-link{% if LANGUAGE_CODE != 'en' %} hidden{% endif %}"><a href="https://www.mozilla.org/contribute/">
           {{ _('Get Involved') }}
         </a></li>
         <li class="privacy-link footer-link"><a href="https://www.mozilla.org/privacy/policies/websites/">
