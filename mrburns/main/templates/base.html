@@ -51,11 +51,9 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
   <header>
     <h1>{{ _('Firefox') }}</h1>
     <h2 class="header-join-content{% if is_long_headline %} header-long{% endif %}">
-      {% comment %}
-      question-circle link can't have a space after title string
-      {% endcomment %}
-      {% blocktrans with count=count_footnote|safe %}
-        Join {{ count }} people shaping the future of the Web{% endblocktrans %}
+    {% if LANGUAGE_CODE == 'en' %}
+      {{ _('Thanks for helping to shape the future of the Web.')}}
+    {% endif %}
     </h2>
     <ul class="actions hidden-xs list-unstyled">
       <li><a class="btn btn-download" href="https://www.mozilla.org/firefox/new/#download-fx">
@@ -76,6 +74,12 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
         </a></li>
         <li><a href="https://www.mozilla.org/firefox/new/">{{ _('Get Firefox') }}</a></li>
         <li class="divider"></li>
+        <li class="get-involved-link footer-link hidden"><a href="#">
+          {{ _('FAQ') }}
+        </a></li>
+        <li class="get-involved-link footer-link"><a href="https://www.mozilla.org/contribute/">
+          {{ _('Get Involved') }}
+        </a></li>
         <li class="privacy-link footer-link"><a href="https://www.mozilla.org/privacy/policies/websites/">
           {{ _('Privacy') }}
         </a></li>
