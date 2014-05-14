@@ -1,5 +1,5 @@
-# sha256: vZASdIhiGwQKSbehLim6IL688hSPZDFWn1KASxvrUI0
-Django==1.6.4
+# sha256: Ttop2OsMi0qDZmC17_eKDT4NxsGR6ZihQZTy_1ETDaM
+Django==1.6.5
 
 # sha256: qI7Y-5I6U8cMLEb75FCLX4Fka0sBQB8VaKghZxszIVw
 # sha256: 53T3tTehlADKaH9I01KrdGFzKsQThd2I_a1Hie-tKcU
