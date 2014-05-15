@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # 3rd party
-    'compressor',
+    'pipeline',
     'django_extensions',
     'product_details',
     'django_nose',
@@ -92,15 +92,14 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR / 'static')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
-
-# django-compressor
-COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc {infile} {outfile}'),
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.less.LessCompiler',
 )
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.slimit.SlimItCompressor'
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
 ENABLE_REDIS = False
@@ -114,3 +113,34 @@ EXTRA_COUNTRIES = {}
 # codes that are nearly the same as a code we have
 # put them here intstead of above to get translations
 COUNTRY_CODE_MAP = {}
+
+
+# MEDIA
+
+PIPELINE_CSS = {
+    'main': {
+        'source_filenames': (
+            'css/bootstrap/bootstrap.less',
+            'css/main.less',
+        ),
+        'output_filename': 'css/main.min.css'
+    }
+}
+
+PIPELINE_JS = {
+    'main': {
+        'source_filenames': (
+            'js/libs/jquery-2.1.0.js',
+            'js/libs/d3.v3.min.js',
+            'js/libs/topojson.v1.min.js',
+            'js/libs/bootstrap.js',
+            'js/libs/select2.js',
+            'js/libs/jQuery.tubeplayer.js',
+            'js/main.js',
+            'js/map.js',
+            'js/stats.js',
+            'js/ga_event-tracking.js',
+        ),
+        'output_filename': 'js/main.min.js'
+    }
+}
