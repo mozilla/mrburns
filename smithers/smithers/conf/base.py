@@ -19,7 +19,9 @@ COUNTRY_MIN_SHARE = 500
 # MAX of the same IP per minute
 IP_RATE_LIMIT_MAX = 50
 
-REDIS_UNIX_SOCKET_PATH = getenv('REDIS_UNIX_SOCKET_PATH', '/tmp/redis.sock')
+REDIS_UNIX_SOCKET_PATH = getenv('REDIS_UNIX_SOCKET_PATH', None)
+REDIS_HOST = getenv('REDIS_HOST', 'localhost')
+REDIS_PORT = getenv('REDIS_PORT', 6379)
 
 # bart
 MAIN_LOG_FILE = Path('/var/log/glow.log')
