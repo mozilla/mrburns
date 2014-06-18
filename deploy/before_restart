@@ -14,10 +14,10 @@ pip install -r requirements/github.txt
 if [ -z "$SMITHERS_ONLY" ]; then
     python manage.py collectstatic --noinput
     python manage.py compress
+    if [ -n $newrev ]; then
+        echo $newrev > static/revision.txt
+    fi
 fi
 
 python manage.py update_product_details
 
-if [ -n $newrev ]; then
-    echo $newrev > static/revision.txt
-fi
