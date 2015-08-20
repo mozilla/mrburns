@@ -13,6 +13,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 
@@ -114,3 +116,6 @@ EXTRA_COUNTRIES = {}
 # codes that are nearly the same as a code we have
 # put them here intstead of above to get translations
 COUNTRY_CODE_MAP = {}
+
+# hardcoded timestamp for posterity
+DATA_TIMESTAMP = os.getenv('DATA_TIMESTAMP', '1399812120')

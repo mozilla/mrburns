@@ -92,10 +92,11 @@ class GlowView(TemplateView):
     template_name = 'base.html'
 
     def get_context_data(self, **kwargs):
-        if redis:
-            timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
-        else:
-            timestamp = get_epoch_minute() - 600  # 10 min ago
+        # if redis:
+        #     timestamp = int(redis.get(rkeys.LATEST_TIMESTAMP) or 0)
+        # else:
+        #     timestamp = get_epoch_minute() - 600  # 10 min ago
+        timestamp = settings.DATA_TIMESTAMP
         context = super(GlowView, self).get_context_data(**kwargs)
         issue_choices_list = list(ISSUE_CHOICES)
         shuffle(issue_choices_list)
