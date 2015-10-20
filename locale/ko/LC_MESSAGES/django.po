@@ -1,0 +1,608 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: 2014-05-14 01:08+0000\n"
+"Last-Translator: Hyeonseok <hyeonseok@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1400029706.0\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr "전세계의 Firefox 사용자와 함께 웹의 미래를 만드는 활동에 동참하세요:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr "웹의 미래를 말하는 다음 세대의 인터넷 사용자들의 이야기를 들어보세요!"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"사용자가 직접 자신의 데이터를 제어할 수 있도록 Do Not Track 및 Lightbeam 같"
+"은 기술을 개발 보급하고 있습니다."
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr ""
+"6,000여명의 글로벌 자원 봉사자에 의한 커뮤니티로서 누구나에게 열려있습니다."
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"모바일 산업을 혁신하고자 최초의 웹 기반 OS를 만들어 수억명의 사람을 돕고자 합"
+"니다."
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr ""
+"SOPA 및 PIPA 같은 웹의 자유를 위협하는 위험한 저작권 보호에 반대 의견을 내고 "
+"있습니다."
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr ""
+"웹 콘텐츠를 더 활발히 만들고 이용할 수 있도록 수백만명에게 웹 제작 기술을 가"
+"르칩니다."
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "통계 숫자의 의미는?"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"        웹의 미래를 만드는 사람들 %(count)s 명"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "우리가 원하는 웹"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr "웹의 미래를 위한 전 세계 수백만 Firefox 사용자에 참여합니다."
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox"
+
+#: mrburns/main/templates/base.html:55
+msgid "Thanks for helping to shape the future of the Web."
+msgstr "웹의 미래를 만들어 주셔서 감사합니다."
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "Firefox 다운로드"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "무료 다운로드"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "내가 원하는 웹은?"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "FAQ"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "참여하기"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "개인 정보"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "법적 고지"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "닫기"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "알고 계셨습니까?"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr ""
+"Firefox는 사용자 보안 및 개인 정보 보호를 기본 원칙으로 하며, 어떤 상황에서"
+"도 예외를 두지 않습니다."
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr ""
+"Firefox는 6,000여명의 전 세계 자원 봉사자 커뮤니티에서 만들었으며, 누구에게"
+"나 열려있습니다."
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox는 모바일 산업을 혁신하고자 최초의 웹 기반 OS를 만들어 수억명의 사람"
+"을 돕고자 합니다."
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr ""
+"Firefox는 SOPA 및 PIPA 같은 웹의 자유를 위협하는 위험한 저작권 보호에 반대 의"
+"견을 내고 있습니다."
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox는 웹 콘텐츠를 더 활발히 만들고 이용할 수 있도록 각종 도구와 기법들을 "
+"제작하여, 수백만명에게 웹 제작 기술을 가르쳐 정보 격차를 해소합니다."
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox는 사용자가 직접 자신의 데이터를 제어할 수 있도록 Do Not Track 및 "
+"Lightbeam 같은 기술을 개발 보급하고 있습니다."
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "웹세상이 원하는 것 살펴보기"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr "Firefox를 사용함으로서 웹의 미래를 더 낫게 만들 수 있습니다."
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "여러분이 원하는 웹은 어떤 것인가요?"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "내가 원하는 웹:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"공유 링크를 선택하면, 여러분의 위치가 지도에 표시되어 글로벌 커뮤니티의 영향"
+"력을 전 세계에 알릴 수 있습니다."
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "주제별:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "지역"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "기회"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "접근성"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "자유"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "학습"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "자기 제어"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "주요 주제"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"Firefox를 사용하시는 누구나 웹의 미래를 만드는데 도움을 주고 계십니다. 이에 "
+"매우 감사드립니다. 현재 통계는 이 페이지를 통해 공유를 통해 다운로드 및 자동 "
+"업데이트 되는 숫자입니다. &#150; 더 자세한 사항은 <a href=\"%(url)s\">블로그 "
+"공지</a>를 참고해 주십시오."
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr "Firefox를 이용하기 위해 방문 및 공유에 감사드립니다."
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "돌아가기"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "통계 및 도표"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "지도 공유"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "공유하기"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "국가별 가장 중요한 문제는?"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "다른 국가와의 비교"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr "현재 나라별 데이터를 수집중입니다. 나중에 다시 방문해 주세요."
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox와 개인 정보"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox와 기회 증진"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox와 보편적 접근"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox와 자유의 향상"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox와 배움의 기회"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox와 자기 제어"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox는 100%% 무상인 자유로운 배포가 가능한 오픈 소스 코드로 만든 유일한 "
+"웹 브라우저로 나구누 참여하여 개발 및 재배포가 가능합니다."
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr "Firefox는 인터넷이 누구나 보편적으로 접근 가능한 개방된 전 세계 공공 자원이라는 믿음으로 만들고 있습니다."
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox는 수익이 아니라 사용자를 가장 최우선하는 비영리 재단과 커뮤니티에서 "
+"만드는 유일한 웹 브라우저입니다."
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox는 웹의 교육적 가치와 가능성을 확대하고자 일하는 비영리 재단에서 만드"
+"는 유일한 웹 브라우저입니다."
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox는 웹의 힘을 여러분의 손안에서 움직을 수 있도록 하겠다는 사명을 가진 "
+"유일한 웹 브라우저입니다."
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Firefox는 Do Not Track 및 Lightbeam 같은 혁신을 통해 사용자가 직접 자신의 정"
+"보를 온라인에서 제어할 수 있도록 도움을 주고 있습니다."
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자가 개인 정보 보호를 중요시합니다.\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자가 새로운 기회의 확대를 요구합니다.\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자가 누구나 보편적으로 웹에 접근해야한다고 생각합니다.\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자가 말할 자유와 민주주의의 교환장으로 웹을 중요시합니"
+"다.\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자가 웹을 배움과 지식의 장으로 중요시합니다.\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s 사용자는 온라인에서 자기 정보 제어를 중요시합니다.\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "개인 정보 보호"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "새로운 기회의 확대"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "누구나 쉽게 이용 가능"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "말할 자유에 대한 확대"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "학습 및 배움의 증진"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "스스로 제어할 능력 갖기"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "공유하기: "
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"웹의 미래를 만드는 사람들 %(count)s 명\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "순위 보기:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "돌아가기"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox는 NSA의 감청에 목표가 되지 않았던 유일한 웹 브라우저로서 정부의 감시"
+"를 개혁하는 데 앞장서고 있습니다."
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"NSA 감청 대상에 포함되지 않는 웹 브라우저로서 정부의 감시를 개혁하기 위해 힘"
+"쓰고 있습니다."
+
+#~ msgid "Web We Want"
+#~ msgstr "우리가 원하는 웹"
+
+#~ msgid "Show all cities"
+#~ msgstr "전체 도시 보기"
+
+#~ msgid "Show top cities"
+#~ msgstr "상위 도시 보기"

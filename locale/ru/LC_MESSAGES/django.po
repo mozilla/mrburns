@@ -1,0 +1,626 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: 2014-05-14 13:23+0000\n"
+"Last-Translator: Alexander <unghost@mozilla-russia.org>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1400073835.0\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr ""
+"Присоединяйтесь к миллионам пользователей Firefox по всему миру, формирующим "
+"будущее Интернета:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr ""
+"Взгляните на следующее поколение, рассказывающее, какой им нужен Интернет!"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"лидирует в обеспечении пользователям большего контроля за Интернетом. "
+"Изобрёл такие функции, как Отказ-от-отслеживания и Lightbeam."
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr ""
+"создан глобальным сообществом из 6000 добровольцев, открытом для участия."
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"взорвал мобильную индустрию с первой веб-ОС, чтобы помочь привести в "
+"Интернет следующий миллиард"
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr ""
+"протестовал против SOPA и PIPA, опасного законодательства о копирайте, "
+"угрожавшего свободе в Интернете."
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr ""
+"учит цифровым навыкам миллионы людей, чтобы помочь им перейти от "
+"использования Интернета к его созданию."
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "Что означает это число?"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"        Присоединяйтесь к %(count)s людей, формирующих будущее Интернета"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "Каким мы хотим видеть Интернет"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr ""
+"Присоединяйтесь к миллионам пользователей Firefox по всему миру, формирующим "
+"будущее Интернета."
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox"
+
+#: mrburns/main/templates/base.html:55
+msgid "Thanks for helping to shape the future of the Web."
+msgstr "Спасибо за помощь в формировании будущего Интернета."
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "Получите Firefox"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "Загрузить бесплатно"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "Что важно для вас?"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "FAQ"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "Присоединяйтесь к сообществу"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "Приватность"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "Правовые уведомления"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "Закрыть"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "Знаете ли вы?"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr ""
+"Firefox создан в соответствии с принципом, что безопасность и приватность "
+"фундаментальны, и не должны рассматриваться как необязательные."
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr ""
+"Firefox создан глобальным сообществом из 6000 добровольцев, открытом для "
+"участия."
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox взорвал мобильную индустрию с первой бесплатной, свободной, "
+"основанной на веб-стандартах операционной системой, чтобы помочь привести в "
+"Интернете следующий миллиард людей."
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr ""
+"Firefox протестовал и лоббировал против SOPA и PIPA, опасного "
+"законодательства о копирайте, угрожавшего свободе в Интернете."
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox учит цифровой грамотности миллионы людей по всему миру, чтобы дать "
+"им инструменты и навыки, нужные для перехода от использования Интернета к "
+"его активному созданию."
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox лидирует в обеспечении пользователям большего контроля за "
+"Интернетом. Мы изобрели такие функции, как Отказ-от-отслеживания и Lightbeam."
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "Теперь посмотрите, каким Интернет хочет видеть мир"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr "Используя Firefox, вы помогаете формировать будущее Интернета."
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "А какой Интернет вы хотите?"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "Я хочу Интернет, который:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"Когда вы выбираете любую из ссылок, чтобы поделиться, мы добавляем ваше "
+"местоположение на карту, чтобы показать влияние нашего сообщества в мире."
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "Просмотр по:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "Регион"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "Возможности"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "Доступность"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "Свобода"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "Обучение"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "Контроль для пользователей"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "Основная проблема"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"Любой, кто использует Firefox, помогает формировать будущее Интернета, и это "
+"что-то, что мы хотим отпраздновать. Вот почему это число представляет новые "
+"загрузки, автоматические обновления, и любой обмен, происходящий с этой "
+"страницы &#150; влияние нашего глобального сообщества в мире. Если вам "
+"интересно, как это всё работает, вы можете <a href=\"%(url)s\">прочесть пост "
+"в блоге.</a>"
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr "Спасибо, что посетили и поделились и что используете Firefox."
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "Вернуться к карте"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "Факты и цифры"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "Поделиться картой"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Твиттер"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Фейсбук"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "Поделиться этой страницей"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "Что важно для большинства по странам?"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "Как это соотносится глобально?"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr "Идёт процесс сбора данных по странам, пожалуйста, зайдите попозже."
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox и приватность"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox и возможность"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox и доступность"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox и свобода"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox и обучение"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox и контроль для пользователей"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox является единственным браузером, состоящим на 100%% из бесплатного, "
+"открытого исходного кода, который любой может просматривать, смешивать и "
+"улучшать."
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr ""
+"Firefox создан с верой, что Интернет является глобальным общественным "
+"ресурсом, который должен оставаться открытым и доступным для всех."
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox является единственным некоммерческим браузером, ставящий принципы "
+"выше прибыли, и не отвечающий ни перед кем, кроме вас."
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox является единственным браузером, созданным некоммерческим фондом, "
+"работающим над высвобождением полного образовательного потенциала Интернета."
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox является единственным браузером, созданным с целью поставить "
+"пользователей на первое место, и сохранить в ваших руках всю мощь Интернета."
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Такие инновации Firefox, как Отказ-от-отслеживания и Lightbeam, являются "
+"передовыми функциями по обеспечению пользователям большего контроля за "
+"Интернетом."
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s хотят, чтобы Интернет держал их информацию в безопасности и "
+"приватности.\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s хотят, чтобы Интернет создавал возможности и процветание.\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s считают, что Интернет должен быть доступен для всех и "
+"каждого.\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s хотят, чтобы Интернет был форумом для демократического обмена "
+"мнениями и свободы слова.\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s хотят, чтобы Интернет способствовал обучению и росту знаний.\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s хотят, чтобы у них была возможность контролировать их жизнь в "
+"Интернете.\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "Охраняет приватность"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "Создает возможности"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "Доступен для всех"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "Способствует свободе"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "Вдохновляет на обучение"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "Даёт мне контроль"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "Поделитесь своим Интернетом на:"
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"Присоединяйтесь к %(count)s человек, формирующих будущее Интернета\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "Большинство хотят:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "Вернуться к карте"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox является единственным крупным браузером, не затронутым скандалом с "
+"АНБ, и ради вас мы боремся за реформу программы слежки, проводимой "
+"правительством."
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"борется за реформу правительственной слежки и был единственным крупным "
+"браузером, не затронутым скандалом с АНБ."
+
+#~ msgid "Web We Want"
+#~ msgstr "Какой Интернет мы хотим"
+
+#~ msgid "Show all cities"
+#~ msgstr "Показать все города"
+
+#~ msgid "Show top cities"
+#~ msgstr "Показать топ городов"

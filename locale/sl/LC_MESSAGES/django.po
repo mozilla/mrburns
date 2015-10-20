@@ -1,0 +1,616 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: 2014-05-13 15:14+0000\n"
+"Last-Translator: Matjaž <m@owca.info>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1399994077.0\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr ""
+"Pridružite se milijonom uporabnikov Firefoxa po vsem svetu, ki soustvarjajo "
+"prihodnost spleta:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr ""
+"Poglejte si naslednjo generacijo uporabnikov interneta in njihovo željo, "
+"kakšen internet bi radi imeli!"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"uporabnikom zagotavlja več nadzora na spletu. Razvili so tehnologiji Do Not "
+"Track in Lightbeam."
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr ""
+"izdeluje ga globalna skupnost, ki šteje preko 6.000 prostovoljcev in vsakemu "
+"ponuja možnost sodelovanja."
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"razburkali trg mobilne telefonije s prvim mobilnim telefonom, ki deluje na "
+"osnovi spletne tehnologije in omogoča, da splet približamo naslednji "
+"milijardi uporabnikov"
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr ""
+"protestirali smo proti SOPA in PIPA sporazumoma in ostalim nevarnim zakonom, "
+"ki ogrožajo svobodo na spletu."
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr ""
+"milijone ljudi po svetu poučuje računalniško pismenost, ki jih potrebujejo, "
+"da lahko začnejo ustvarjati splet."
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "Kaj pomeni ta številka?"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"        Pridružite se %(count)s posameznikom, ki soustvarjajo prihodnost "
+"spleta"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "Splet, kot si ga želimo"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr ""
+"Pridružite se milijonom uporabnikov Firefoxa po vsem svetu, ki soustvarjajo "
+"prihodnost spleta."
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox"
+
+#: mrburns/main/templates/base.html:55
+msgid "Thanks for helping to shape the future of the Web."
+msgstr "Hvala za pomoč pri soustvarjanju prihodnosti spleta."
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "Namestite Firefox"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "Brezplačen prenos"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "Kaj vam je pomembno?"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "Pogosta vprašanja"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "Pridružite se"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "Zasebnost"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "Pravni pouk"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "Zapri"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "Ali ste vedeli?"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr ""
+"Firefox temelji na prepričanju, da sta varnost in zasebnost bistveni in ju "
+"ne smemo obravnavati z levo roko."
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr ""
+"Firefox izdeluje globalna skupnost, ki šteje preko 6.000 prostovoljcev in "
+"vsakemu ponuja možnost sodelovanja."
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox je razburkal trg mobilne telefonije s prvim mobilnim telefonom, ki "
+"deluje na osnovi spletne tehnologije in omogoča, da splet približamo "
+"naslednji milijardi uporabnikom."
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr ""
+"Firefox je protestiral in lobiral proti sporazumom SOPA in PIPA, nevarnima "
+"predlogoma, ki sta ogrožala svobodo na spletu."
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox milijone ljudi po svetu poučuje računalniško pismenost in jim "
+"podarja orodja in znanja, ki jih potrebujejo, da lahko začnejo ustvarjati "
+"splet."
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox uporabnikom zagotavlja več nadzora na spletu. Razvili smo "
+"tehnologiji Do Not Track in Lightbeam."
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "Zdaj pa si oglejte, kakšen splet si želimo"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr "Z uporabo Firefoxa soustvarjate prihodnost spleta."
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "Kakšen splet si želite?"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "Želim si splet, ki:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"Ko izberete povezavo, označimo vašo lokacijo na zemljevidu in tako "
+"ponazorimo učinek naše skupnosti po vsem svetu."
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "Kategorije:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "Regija"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "Priložnost"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "Dostopnost"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "Svoboda"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "Učenje"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "Uporabniški nadzor"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "Naj kategorija"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"Vsak uporabnik Firefoxa soustvarja prihodnost spleta in to želimo "
+"proslavljati. Zato številka predstavlja nove prenose, samodejne posodobitve "
+"in vsa deljenja, ki jih uporabniki opravijo na tej strani. Ponazarja učinek "
+"naše skupnosti po vsem svetu. Če vas zanimajo podrobnosti delovanja strani, "
+"lahko <a href=\"%(url)s\">preberete blog</a>."
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr "Zahvaljujemo se vam za ogled, deljenje in uporabo Firefoxa."
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "Nazaj na zemljevid"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "Dejstva in številke"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "Delite zemljevid"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "Delite to stran"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "Kaj je najbolj pomembno po državah?"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "Kako lahko to primerjamo na globalnem nivoju?"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr "Trenutno zbiramo podatke po državah. Poskusite znova pozneje."
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox in zasebnost"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox in priložnost"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox in dostopnost"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox in svoboda"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox in učenje"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox in uporabniški nadzor"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox je edini brskalnik, zgrajen iz 100%% prosto dostopne in odprte kode, "
+"ki jo lahko vsakdo vidi in izboljša."
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr ""
+"Firefox temelji na načelu, da je internet globalni javni vir, ki mora ostati "
+"odprt in dostopen vsem."
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox je edini neprofitni brskalnik, ki daje načelom prednost pred "
+"dobičkom in odgovarja samo vam."
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox je edini brskalnik, ki ga razvija neprofitna organizacija, ki želi "
+"izkoristiti celoten izobraževalni potencial spleta."
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox je edini brskalnik s poslanstvom, ki uporabnika postavlja na prvo "
+"mesto in izroča moč spleta v njegove roke."
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Firefoxovi inovaciji Do Not Track in Lightbeam uporabnikom zagotavljata več "
+"nadzora na spletu."
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov želi splet, ki ohranja njihove podatke varne in "
+"zasebne.\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov želi splet, ki omogoča priložnosti in blaginjo.\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov verjame, da bi dostop do spleta moral biti na "
+"voljo vsem.\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov želi, da je splet prostor svobode govora in "
+"izmenjave mnenj.\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov želi splet, ki promovira učenje in znanje.\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s uporabnikov želi splet, v katerem sami odločajo o nadzoru.\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "Varuje zasebnost"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "Ustvarja priložnost"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "Je na voljo vsem"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "Spodbuja svobodo"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "Navdihuje učenje"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "Mi daje nadzor"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "Delite svoj splet:"
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"Pridružite se %(count)s posameznikom, ki soustvarjajo prihodnost spleta\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "Najbolj iskani:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "Nazaj na zemljevid"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox je edini večji brskalnik, ki ni bil vpleten v afero z NSA. Borimo se "
+"za spremembo zakonodaje, ki ureja nadzor nad uporabniki spleta."
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"bori se proti vladnemu nadzoru in je bil edini večji brskalnik, ki ni bil "
+"vpleten v afero z NSA."

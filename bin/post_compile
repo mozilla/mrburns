@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -ex
+
+find static -name "*.js" -or -name "*.css" -or -name "*.json" -print0 | xargs -0 -I"{}" -P8 gzip -9k "{}"

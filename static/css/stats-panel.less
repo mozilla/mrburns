@@ -1,0 +1,375 @@
+@import "mixins.less";
+
+.stats-panel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    .translate(0px, 98%);
+    z-index: 20;
+    .transition(all .3s ease-in-out);
+}
+
+.stats-panel-open .stats-panel {
+    .translate(0px, 200px);
+    .stats-panel-tab .fa {
+        .rotate(180deg);
+    }
+}
+
+.stats-panel-contents {
+    background: @darkBackground;
+    height: 100%;
+    width: 100%;
+    padding: 40px 270px 40px 170px;
+    clear: left;
+    // don't show scroll bar when stats panel is closed
+    overflow: hidden;
+}
+
+.stats-panel-contents > div {
+    opacity: 0;
+    .transition(all .1s ease-in-out);
+}
+
+.stats-panel-open {
+    .stats-panel-contents {
+        overflow-y: scroll;
+        >div {
+            opacity: 1;
+            .transition(all .1s ease-in-out);
+        }
+    }
+}
+
+.stats-panel-nav {
+    position: absolute;
+    top: -48px;
+    .title {
+        margin: 0 .2em;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+        color: #fff;
+        text-decoration: none;
+        .title {
+            text-decoration: underline;
+        }
+    }
+}
+
+.stats-panel-tab {
+    position: relative;
+    float: left;
+    background: @darkBackground;
+    height: 48px;
+    padding: 10px 0;
+    margin: 0 56px;
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    &:hover,
+    &:active,
+    &:focus {
+        .title {
+            text-decoration: underline;
+        }
+    }
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: -56px;
+        height: 48px;
+        width: 56px;
+        background: url(/static/img/tab.png) 0 0;
+    }
+    &:after {
+        background-position: top right;
+        left: auto;
+        right: -56px;
+    }
+    .fa {
+        .rotate(0);
+    }
+}
+
+.stats-panel-link {
+    float: left;
+    height: 48px;
+    padding: 10px;
+    margin: 0 10px 0 0;
+    &.popover-markup {
+        padding: 0;
+        .trigger {
+            display: inline-block;
+            padding: 10px;
+        }
+    }
+}
+
+.stats-panel-column {
+    position: relative;
+    .clearfix();
+}
+
+.band {
+    fill: #fff;
+    opacity: 0.05;
+}
+
+.chart1 {
+    position: relative;
+    padding-top: 20px;
+    .clearfix();
+}
+
+.chart2 {
+    position: relative;
+    .clearfix();
+    .country-picker {
+        font-size: 18px;
+        .clearfix();
+    }
+}
+
+.chart2 h2,
+.chart3 h2 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.chart3 {
+    position: relative;
+    .clearfix();
+}
+
+.chart3 svg {
+    margin-top: 10px;
+    direction: ltr;
+}
+
+.shadow-separator {
+    max-width: 100%;
+}
+
+.stats-share-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.choice-prose,
+.choice-prose-rhs-title,
+.choice-prose-rhs1,
+.choice-prose-rhs2,
+.cities-label, {
+    display:none;
+}
+
+.country-label-stats {
+    fill: white;
+    font-size: 13px;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.country-value-stats {
+    fill: white;
+    font-size: 13px;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+select.country {
+    width:140px;
+}
+
+.donut {
+    position: relative;
+    width: 190px;
+}
+
+.donut-foreground {
+    stroke-width: 1;
+}
+
+.donut-global-value {
+    font-weight: 400;
+}
+
+.donut-icon {
+    position: absolute;
+    left: 44px;
+    top: 69px;
+}
+
+.donut-prose {
+    font-size: 26px;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+}
+
+.key.key-stats-panel {
+    top: 40px;
+    bottom: auto;
+    
+    a {
+        &.selected {
+            .choice-title {
+                opacity: 1;
+                .transition(all .1s ease-in-out);
+            }
+        }
+    }
+}
+
+.donut svg g path {
+    fill: #f4f4f4;
+}
+
+.stats-vertical-line {
+    opacity: 0.2;
+    shape-rendering: crispEdges;
+    stroke: #fff;
+}
+
+.stats-vertical-line-label {
+    fill: white;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.tippy,
+.tippytext {
+    display: none
+}
+
+.tippytext {
+    color: #f4f4f4;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.what-is-mozilla-doing-about-it {
+
+    h2 {
+        font-size: 26px;
+        font-weight: 200;
+        margin-top: 35px;
+    }
+    
+    p {
+        font-size: 13px;
+        font-style: italic;
+    }
+    
+    .did-you-know {
+        font-size: 15px;
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: 1px;
+        padding-top: 15px;
+        padding-bottom: 1px;
+    }
+    
+    .separator {
+        background-color: #f4f4f4;
+        height: 2px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+html[dir="rtl"] {
+    .stats-panel-tab,
+    .stats-panel-link {
+        float: right;
+    }
+    .stats-panel-link {
+        margin: 0 0 0 10px;
+    }
+    .donut-icon {
+        right: 44px;
+        left: auto;
+    }
+}
+
+
+@media (min-width: @screen-sm-min) {
+    .chart1,
+    .chart2,
+    .chart3 {
+        width: 570px;
+        h2 {
+            float: left;
+        }
+    }
+    .chart1 {
+        padding-top: 0;
+    }
+    .chart2 {
+        .country-picker {
+            font-size: 18px;
+            float: right;
+            margin-top: 20px;
+            padding-right: 30px;
+            padding-left: 30px;
+       }
+    }
+    .chart3 {
+        float: left;
+    }
+    .stats-panel-column {
+        width: 570px;
+        margin: auto;
+    }
+    .donut {
+        float: left;
+        text-align: inherit;
+    }
+    .donut-prose {
+        float: left;
+        padding-top: 45px;
+        width: 320px;
+        text-align: inherit;
+    }
+    .stats-panel-column-right {
+        width: 570px;
+        padding-bottom: 40px;
+    }
+    .stats-share-link {
+        position: static;
+    }
+
+    html[dir="rtl"] {
+        .chart1,
+        .chart2,
+        .chart3 {
+            h2 {
+                float: right;
+            }
+        }
+        .chart2 .country-picker {
+            float: left;
+        }
+        .donut,
+        .donut-prose {
+            float: right;
+        }
+    }
+}
+
+@media (min-width: @screen-md-min) {
+    .stats-panel-column-right {
+        position: absolute;
+        width: 230px;
+        top: 40px;
+        right: 40px;
+    }
+}

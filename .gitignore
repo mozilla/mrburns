@@ -2,9 +2,7 @@
 *.pot
 *.db
 /tmp
-/static
 /venv
-/locale
 /smithers/JSON
 **/conf/local.py
 **/settings/local.py
@@ -41,9 +39,6 @@ pip-log.txt
 .noseids
 nosetests.xml
 
-# Translations
-*.mo
-
 # Mr Developer
 .mr.developer.cfg
 .project
@@ -52,3 +47,4 @@ nosetests.xml
 # MaxMind
 *.mmdb
 
+node_modules

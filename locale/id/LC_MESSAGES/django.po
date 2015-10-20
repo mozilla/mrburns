@@ -1,0 +1,628 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: 2014-04-26 11:00+0000\n"
+"Last-Translator: Romi <romihardiyanto@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1398510005.0\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr ""
+"Mari bergabung dengan jutaan pengguna Firefox di seluruh dunia yang bersama "
+"membentuk masa depan Web:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr ""
+"Tonton video tentang pengguna Internet generasi mendatang, berbicara tentang "
+"Web yang mereka inginkan!"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"menjadi pemimpin dalam memberikan pengguna kendali yang lebih besar dalam "
+"dunia daring. Pionir dalam fitur Jangan Lacak dan Lightbeam."
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr ""
+"dibuat oleh lebih dari 6000 orang dalam komunitas sukarelawan global, "
+"terbuka untuk partisipasi dari siapa saja."
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"muncul industri perangkat seluler dengan sistem operasi berbasis Web "
+"pertama, dan membantu jutaan orang online di masa depan"
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr ""
+"memprotes kebijakan SOPA dan PIPA, peraturan hak cipta yang mengancam "
+"kebebasan dunia Web."
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr ""
+"mengajarkan keahlian digital ke jutaan orang untuk membantu orang dari "
+"sekedar pengguna Web untuk lebih aktif mencipta."
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "Apa artinya angka ini?"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"        Bergabung dengan %(count)s lainnya, untuk membantu membentuk masa "
+"depan Web"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "Web yang kita inginkan"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr ""
+"Mari bergabung jutaan pengguna Firefox di seluruh dunia yang membantu "
+"membentuk masa depan Web."
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox"
+
+#: mrburns/main/templates/base.html:55
+#, fuzzy
+msgid "Thanks for helping to shape the future of the Web."
+msgstr ""
+"Dengan menggunakan Firefox, Anda membantu membentuk masa depan dunia Web."
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "Dapatkan Firefox"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "Unduh Gratis"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "Mana yang berarti bagi Anda?"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "FAQ"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "Mari Berperan"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "Privasi"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "Masalah Hukum"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "Tutup"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "Tahukah Anda?"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr ""
+"Firefox dibuat dengan prinsip bahwa keamanan dan privasi merupakan hal "
+"fundamental dan tidak dapat diperlakukan secara opsional."
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr ""
+"Firefox dibuat oleh lebih dari 6000 orang dalam komunitas sukarelawan "
+"global, terbuka untuk partisipasi dari siapa saja."
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox muncul dalam industri perangkat seluler dengan sistem operasi "
+"berbasis Web pertama, dan membantu jutaan orang online di masa depan."
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr ""
+"Firefox memprotes kebijakan SOPA dan PIPA, peraturan hak cipta yang "
+"mengancam kebebasan dunia Web."
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox mengajarkan keahlian digital ke jutaan untuk membantu orang dari "
+"sekedar pengguna Web untuk lebih aktif mencipta, dengan memberikan alat dan "
+"berbagi keahlian yang diperlukan."
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox menjadi pemimpin dalam memberikan pengguna kendali yang lebih besar "
+"dalam dunia daring. Kami adalah pionir dalam fitur Jangan Lacak dan "
+"Lightbeam."
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "Kini, lihatlah apa yang diinginkan dunia untuk Web"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr ""
+"Dengan menggunakan Firefox, Anda membantu membentuk masa depan dunia Web."
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "Web apa yang Anda inginkan?"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "Saya ingin Web yang:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"Saat Anda memilih tautan berbagi, kami menambahkan lokasi Anda ke peta untuk "
+"menampilkan dampak komunitas kita ke seluruh dunia."
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "Tampilkan berdasarkan:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "Wilayah"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "Kesempatan"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "Aksesibilitas"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "Kebebasan"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "Pembelajaran"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "Kendali pengguna"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "Masalah Teratas"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"Siapa saja yang menggunakan Firefox berarti membantu membentuk masa depan "
+"Web, dan ini adalah hal yang ingin kami rayakan bersama. Ini adalah alasan "
+"tentang angka ini mewakili unduhan baru, pembaruan otomatis, dan berbagi "
+"tautan lewat halaman ini &150; dampak global komunitas kita. Jika Anda "
+"tertarik cara kerjanya, kunjungi <a href=\"%(url)s\">pos pada blog kami</a>."
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr "Terima kasih telah berkunjung, berbagi, dan menggunakan Firefox."
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "Kembali ke peta"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "Data & angka"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "Bagikan peta"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "Bagikan laman ini"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "Apa yang berarti berdasarkan negaranya?"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "Bagaimana perbandingannya secara global?"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr ""
+"Kami sedang mengumpulkan data tingkat negara, silakan kembali lagi nanti."
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox & privasi"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox & kesempatan"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox & aksesibilitas"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox & kebebasan"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox & pembelajaran"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox & kendali pengguna"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox merupakan peramban satu-satunya yang dibuat dari kode yang 100%% "
+"gratis dan terbuka, yang dapat dilihat semua orang, diolah kembali, dan "
+"terbuka bagi kontribusi."
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr ""
+"Firefox dibuat dengan prinsip bahwa Internet adalah sumber daya publik "
+"global yang harus tetap terbuka dan dapat diakses semua orang."
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox merupakan peramban nirlaba yang memprioritaskan prinsip atas "
+"keuntungan, dan hanya mengutamakan Anda."
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox merupakan peramban satu-satunya yang dibuat yayasan nirlaba, yang "
+"bekerja untuk membuka berbagai potensi edukasi dunia Web sepenuhnya."
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox merupakan peramban satu-satunya yang dibuat dengan misi untuk "
+"mengutamakan pengguna, dan menjaga agar kedigdayaan Web tetap di tangan Anda."
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Inovasi Firefox seperti fitur Jangan Lacak dan Lightbeam memimpin dunia "
+"dalam memberikan pengguna kendali lebih besar di dunia maya."
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s ingin Web yang membuat informasi tetap aman dan pribadi.\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s ingin Web yang menciptakan kesempatan dan kesejahteraan.\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s percaya bahwa Web harus tetap tersedia dan dapat diakses "
+"semua orang.\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s ingin Web sebagai forum untuk pertukaran dan kebebasan "
+"berbicara yang demokratis.\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s ingin Web yang mempromosikan pembelajaran dan pengetahuan.\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s ingin Web yang tetap memberikan kendali kehidupan dunia maya "
+"mereka pada pengguna.\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "Menjaga privasi"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "Menciptakan kesempatan"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "Tersedia bagi semua tanpa pandang bulu"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "Mempromosikan kebebasan"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "Menginspirasi pembelajaran"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "Memberi saya kendali"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "Bagikan Web Anda di:"
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"Mari bergabung dengan %(count)s lainnya, membentuk masa depan Web\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "Paling Diinginkan:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "Kembali ke Peta"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox merupakan peramban satu-satunya yang tidak diincar dalam skandal NSA "
+"dan kami memperjuangkan reformasi atas pengawasan oleh pemerintah untuk Anda."
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"memperjuangkan reformasi atas pengawasan oleh pemerintah dan merupakan "
+"peramban satu-satunya yang tidak diincar oleh skandal NSA."
+
+#~ msgid "Web We Want"
+#~ msgstr "Web yang Kita Inginkan"
+
+#~ msgid "Show all cities"
+#~ msgstr "Tampilkan semua kota"
+
+#~ msgid "Show top cities"
+#~ msgstr "Tampilkan kota teratas"

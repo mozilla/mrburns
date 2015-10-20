@@ -45,3 +45,6 @@ blessings==1.5.1
 
 # sha256: izJ291zi_OlELifbOuY9hCQW4X8OIJXzn_UtxzXldJo
 polib==1.0.4
+
+# sha256: WN0CwygZupfEB4uMEziI0w9_vTk3KW_9rVD3n7V9XNs
+django-mozilla-product-details==0.8.1

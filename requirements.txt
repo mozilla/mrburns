@@ -1,0 +1,70 @@
+# sha256: HbXa_k_oMC80RJKDhkuqdNDWQBNhOqIAkYGHv3aQLV8
+# sha256: uTV9LOvmGZcFXUF9YH-cZQ6BfNGjg7mhuIvx7a15fHU
+Django==1.7.10
+
+# sha256: uhN1-xAk6OkVR1BNQ5IyF5XJif3lALluvHyTiE94bmA
+# sha256: PZvJY9gAiuFR1sZk-f1VRCcF6puebXznfN1Av5LZHzo
+django-appconf==1.0.1
+
+# sha256: 1DkqfI2RsAXAAlaKhfr2F8ZyQcjNg5nMOV6PEAWv-A0
+# sha256: jzT1uJ4X-opuOUUxAxjL1cjLsW-iiPeOqW28cDRMsb8
+six==1.6.1
+
+# sha256: Xq3Xc16Qo9r3fzPFVMWo4pMCdDKQIWk2QedPlXqvnfw
+django-extensions==1.3.3
+
+# sha256: wbr3o-i-cPNNkx7hcyg_QGh3vT0X83K76CMYpbPFEMw
+Werkzeug==0.9.4
+
+# sha256: tb0uG3jSgFEQjrqmJIdQIh-czvUrTwVMtyfeYbBAbeA
+# sha256: EmaSHxvtX782TNg88jm217PqXDLMzLyTmA2boSzc_QI
+requests==2.2.1
+
+# sha256: hSc7h6s9uTB-OxRSsHHiXB2xzIErwzfSqX6gsM8qtro
+nose==1.3.1
+
+# sha256: mq4WtWKGak3apeiXhymrrbvtVEco2I4LnJr3sx3Qcu0
+django-nose==1.2
+
+# sha256: MGMUs3hvTFNNDPYYyw08qPHxamnbOZ0hwFcc4mYeIPY
+pathlib==1.0
+
+# sha256: Cmfp2wZbsEY3Xs9TS4l1JR3K86EHUgtFWZ6UmatYZlg
+dennis==0.3.11
+
+# sha256: L29VCf4YCuMJL9xVlYWoOjz84wr7qd4lzO_F7Pv-2_w
+blessings==1.5.1
+
+# sha256: izJ291zi_OlELifbOuY9hCQW4X8OIJXzn_UtxzXldJo
+polib==1.0.4
+
+# sha256: WN0CwygZupfEB4uMEziI0w9_vTk3KW_9rVD3n7V9XNs
+django-mozilla-product-details==0.8.1
+
+# pyuca (pmac's fork)
+# sha256: B9kR7P-V242V9hr2OP280C9ohg-w6DkAAWYBrORTq8Y
+https://github.com/pmclanahan/pyuca/archive/python-2.7.tar.gz#egg=pyuca
+
+# sha256: gA7NqmJh-V-Ea9TY-mY-o25F2HZ5XyrgGb1VzA3EdD0
+lxml==3.3.3
+
+# sha256: aoy0QBER4BG1ecjFKlHNq5cAQcxUOBS72Vd6RSn-HNs
+BeautifulSoup==3.2.1
+
+# sha256: pRec3pItK04EXuWxHocyPud9NjrkApT8glLyXWoOrwY
+# sha256: i8g1CCiCrZoBLNeQxGABHk2WvzUS2YoE09q75FOToIk
+gunicorn==19.3.0
+
+# sha256: mYNMn_fOXFsvShi8CIB1PlTqOqq8PPsWlhqS1QRmZd8
+python-decouple==3.0
+
+# sha256: HCXe64vZm2Kwo-ODYV_ohOwRTOTDu-udw53RQU7cKU0
+# sha256: fQHFIMGnwEIEv1KHtts8Zz47l6s6jlzBovzFnYahRAw
+Whitenoise==2.0.4
+
+# sha256: UWhmIk7DO_In95cYwLFU3r8pZ_4knBLXIbvixF7L40w
+# sha256: AYn9Hb-H2AL05OIevJIg8pu7d3GyUqlYrWEZ9hRT4i4
+django_compressor==1.5
+
+# sha256: 9r_SEEjH38lbOWWaPad3ddbbHB96dFgFzMbGE494O20
+django-sslify==0.2.7

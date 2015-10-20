@@ -1,0 +1,688 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: html,pirate\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural= n != 1\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr ""
+"Join millions o' Firefox usarrs around th' world who bee shapin' th' future "
+"o' th' Web yo-ho-ho❗:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr ""
+"Watch th' next genarration o' Intarrnet usarrs talk about th' Web they wants "
+"prepare to be boarded❗❗"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"leads th' way in givin' usarrs greaterr control online. They pionearr'd "
+"features like Do Not Track and Lightbeam yo-ho-ho❗."
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr ""
+"is made by a global volunteerr community 6,000 strong, open to participation "
+"from anyone ye landlubbers❗."
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"disrupt'd th' mobile industry wit' th' first Web-bas'd OS to 'elp brin' th' "
+"next billion people online ye landlubbers❗"
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr ""
+"protest'd against SOPA and PIPA, dangarrous copyright legislation that "
+"threaten'd th' freedom o' th' Web arrRRr❗."
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr ""
+"teaches digital skills to millions o' people to 'elp them move from usin' "
+"th' Web to actively makin' it arr❗."
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "What does this numberr mean arrRRRrrr❗?"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"        Join %(count)s people shapin' th' future o' th' Web cap'n❗"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "The Web we wants matey❗"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr ""
+"Join millions o' Firefox usarrs around th' world who bee shapin' th' future "
+"o' th' Web yo-ho-ho❗."
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox ye scalleywag❗"
+
+#: mrburns/main/templates/base.html:55
+#, fuzzy
+msgid "Thanks for helping to shape the future of the Web."
+msgstr "By usin' Firefox, ye' 'elp shape th' future o' th' Web matey❗."
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "Get Firefox ye landlubbers❗"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "Free Download arr❗"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "What mattarrs to ye' cap'n❗?"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "FAQ cap'n❗"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "Get Involved ye scalleywag❗"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "Privacy ye scalleywag❗"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "Legal ahoy❗"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "Close ahoy❗"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "Did ye' knoww arrRRr❗?"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr ""
+"Firefox is made underr th' principle that security and privacy bee "
+"fundamental and must not be treat'd as optional ye landlubbers❗."
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr ""
+"Firefox is made by a global volunteerr community 6,000 strong, open to "
+"participation from anyone aye❗."
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox disrupt'd th' mobile industry wit' th' first free, open-source, Web-"
+"bas'd oparratin' system to 'elp brin' th' next billion people online "
+"arrRRRrrr❗."
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr ""
+"Firefox protest'd and lobbi'd against SOPA and PIPA, dangarrous copyright "
+"legislation that threaten'd th' freedom o' th' Web cap'n❗."
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox teaches digital litarracy to millions o' people around th' world to "
+"give them th' tools and skills they need to move from usin' th' Web to "
+"actively makin' it shiver me timbers❗."
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox leads th' way in givin' usarrs greaterr control online. We "
+"pionearr'd features like Do Not Track and Lightbeam arrRRRrrr❗."
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "Noww see what kind o' Web th' world wants arrRRRrrr❗"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr "By usin' Firefox, ye' 'elp shape th' future o' th' Web matey❗."
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "What kind o' Web do ye' wants me mateys❗?"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "I wants a Web that aye❗:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"When ye' select any o' th' sharin' links, we add yerr location to th' map to "
+"showw th' worldwide impact o' ourr community ahoy❗."
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "Vieww by yo-ho-ho❗:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "Region aye❗"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "Opportunity ye landlubbers❗"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "Accessibility arr❗"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "Freedom ye scalleywag❗"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "Learnin' cap'n❗"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "Userr control arr❗"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "Top Issue yo-ho-ho❗"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"Anyone who uses Firefox 'elps shape th' future o' th' Web and that's "
+"somethin' we wants to celebrate. That's why this numberr represents neww "
+"downloads, automatic updates and any sharin' that happens from this page  ye "
+"scalleywag❗&#150; th' worldwide impact o' ourr global community. If you're "
+"intarrest'd in howw it all works, ye' can  yo-ho-ho❗<a href=\"%(url)s"
+"\">check out th' blog post ye landlubbers❗.</a>"
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr ""
+"Thanks fer visitin', sharin' and fer usin' Firefox prepare to be boarded❗."
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "Back to map ye landlubbers❗"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "Facts  aye❗& arrRRr❗ figures cap'n❗"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "Share th' map arr❗"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Twitterr cap'n❗"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Facebook cap'n❗"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "Share this page arrRRRrrr❗"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "What mattarrs most by country me mateys❗?"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "Howw does that compare globally aye❗?"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr ""
+"We bee currently gatharrin' country-level datar, please check back soon ye "
+"scalleywag❗."
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox  cap'n❗& arrRRr❗ privacy cap'n❗"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox  cap'n❗& arrRRr❗ opportunity prepare to be boarded❗"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox  cap'n❗& arrRRr❗ accessibility arrRRr❗"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox  cap'n❗& arrRRr❗ freedom cap'n❗"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox  cap'n❗& arrRRr❗ learnin' yo-ho-ho❗"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox  cap'n❗& arrRRr❗ userr control arrRRr❗"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox is th' only corsairr made o' 100%% free, open source code that "
+"anyone can vieww, remix and contribute to yo-ho-ho❗."
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr ""
+"Firefox is made wit' th' belief that th' Intarrnet is a global public "
+"resource that must remain open and accessible to all aye❗."
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox is th' only non-profit corsairr that prioritizes principles o'err "
+"profits and answarrs to nay one but ye' shiver me timbers❗."
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox is th' only corsairr made by a non-profit foundation workin' to "
+"unlock th' full educational potential o' th' Web me mateys❗."
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox is th' only corsairr made wit' a mission to put usarrs first and to "
+"keep th' powerr o' th' Web in yerr hands arr❗."
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Firefox innovations like Do Not Track and Lightbeam bee leadin' th' way to "
+"give usarrs greaterr control online ye scalleywag❗."
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s wants a Web that keeps theirr information safe and private ye "
+"landlubbers❗.\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s wants a Web that creates opportunity and prosparrity ahoy❗.\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s believe th' Web should be available and accessible to all "
+"shiver me timbers❗.\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s wants th' Web to be a forum fer democratic exchange and free "
+"speech ye scalleywag❗.\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s wants a Web that promotes learnin'  prepare to be boarded❗& "
+"arrRRr❗ knowledge prepare to be boarded❗.\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s wants a Web that keeps them in control o' theirr lives online "
+"arrRRr❗.\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "Safeguards privacy ahoy❗"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "Creates opportunity aye❗"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "Is available to all aye❗"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "Promotes freedom matey❗"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "Inspires learnin' me mateys❗"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "Puts me in control ahoy❗"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "Share yerr Web on ahoy❗:"
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"Join %(count)s people shapin' th' future o' th' Web arrRRr❗\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "Most Want shiver me timbers❗:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "Back To Map ye landlubbers❗"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox is th' only majorr corsairr not target'd by th' NSA scandal and "
+"we're fightin' to reform govarrnment surveillance fer ye' arr❗."
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"fights fer govarrnment surveillance reform and was th' only majorr corsairr "
+"not target'd by th' NSA scandal me mateys❗."
+
+#~ msgid "German"
+#~ msgstr "Garrman ye scalleywag❗"
+
+#~ msgid "English"
+#~ msgstr "English ye scalleywag❗"
+
+#~ msgid "Spanish"
+#~ msgstr "Spanish ye scalleywag❗"
+
+#~ msgid "French"
+#~ msgstr "French aye❗"
+
+#~ msgid "Hebrew"
+#~ msgstr "Hebreww ye scalleywag❗"
+
+#~ msgid "Hungarian"
+#~ msgstr "Hungarian yo-ho-ho❗"
+
+#~ msgid "Italian"
+#~ msgstr "Italian ye scalleywag❗"
+
+#~ msgid "Japanese"
+#~ msgstr "Japanese cap'n❗"
+
+#~ msgid "Korean"
+#~ msgstr "Korean aye❗"
+
+#~ msgid "Dutch"
+#~ msgstr "Dutch ahoy❗"
+
+#~ msgid "Brazilian Portuguese"
+#~ msgstr "Brazilian Portuguese ye scalleywag❗"
+
+#~ msgid "Simplified Chinese"
+#~ msgstr "Simplifi'd Chinese ahoy❗"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Traditional Chinese aye❗"
+
+#~ msgid "Czech"
+#~ msgstr "Czech ahoy❗"
+
+#~ msgid "Indonesian"
+#~ msgstr "Indonesian shiver me timbers❗"
+
+#~ msgid "Lithuanian"
+#~ msgstr "Lithuanian shiver me timbers❗"
+
+#~ msgid "Polish"
+#~ msgstr "Polish aye❗"
+
+#~ msgid "Romanian"
+#~ msgstr "Romanian cap'n❗"
+
+#~ msgid "Russian"
+#~ msgstr "Russian ye scalleywag❗"
+
+#~ msgid "Slovak"
+#~ msgstr "Slovak aye❗"
+
+#~ msgid "Slovenian"
+#~ msgstr "Slovenian yo-ho-ho❗"
+
+#~ msgid "Albanian"
+#~ msgstr "Albanian cap'n❗"
+
+#~ msgid "Serbian"
+#~ msgstr "Sarrbian cap'n❗"

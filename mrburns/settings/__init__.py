@@ -6,16 +6,11 @@ import os
 
 if 'TRAVIS' in os.environ:
     from .travis import *  # noqa
-elif 'DJANGO_SERVER_ENV' in os.environ:
-    from .server import *  # noqa
 else:
     try:
         from .local import *  # noqa
     except ImportError as exc:
-        exc.args = tuple(['%s (did you rename mrburns/settings/local.py-dist?)' %
-                          exc.args[0]])
-        raise exc
-
+        from .base import *  # noqa
 
 COMPRESS_OFFLINE = not DEBUG
 

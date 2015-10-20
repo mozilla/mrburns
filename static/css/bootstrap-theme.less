@@ -1,0 +1,128 @@
+@import "mixins.less";
+
+.modal-backdrop {
+    background: #1876bb url(/static/img/grain.png);
+    &.in {
+        opacity: .95;
+    }
+}
+
+.modal {
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+    .scale(.8,.8);
+    .transition-transform(~".2s ease-out");
+  }
+  &.in .modal-dialog {
+    .scale(1,1); 
+  }
+}
+
+
+@media (min-width: @screen-sm-min) {
+
+    .modal-dialog {
+        margin-top: 100px;
+        width: 720px;
+    }
+
+    .modal-backdrop {
+        background: #1876bb;
+        background-image: url(/static/img/grain.png), -webkit-radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+        background-image: url(/static/img/grain.png), radial-gradient(ellipse farthest-corner at center center , #0096DD 40%, #00539F 100%);
+        &.in {
+            opacity: .8;
+        }
+    }
+
+}
+
+.modal-content {
+    background: @darkBackground;
+    border-radius: 0;
+    border: 0;
+}
+
+.modal-header,
+.modal-footer {
+    border: 0;
+    .clearfix();
+}
+
+.modal-footer {
+    background: url(/static/img/grain.png) repeat;
+    margin: 0;
+}
+
+.modal-header {
+    padding: 0;
+    margin-bottom: -10px;
+    .close {
+        padding: 15px;
+        color: #fff;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 14px;
+        text-shadow: none;
+    }
+}
+
+.modal-content {
+    .box-shadow(0 3px 5px rgba(0,0,0,.2));
+    h1 {
+        font-weight: bold;
+        margin: 0;
+    }
+    h2 {
+        font-weight: 300;
+    }
+}
+
+.modal-body {
+    padding: 0 40px 40px 40px;
+}
+
+// buttons
+
+.btn {
+    min-height: 2.9em;
+    border-radius: 25px;
+    .transition(@transitionOut);
+    &:hover,
+    &:focus {
+        .transition(@transitionIn);
+    }
+}
+
+.btn.btn-primary {
+    background: #0095dd;
+    #gradient.vertical(#1fb3fb; #0095dd; 0%; 100%);
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.2);
+    &:hover,
+    &:active,
+    &:focus {
+        background: lighten(#0095dd, 10%);
+        #gradient.vertical(lighten(#1fb3fb, 10%); lighten(#0095dd, 10%); 0%; 100%);
+    }
+}
+
+// popovers
+
+.popover {
+    text-align: center;
+    .box-shadow(0 3px 5px rgba(0,0,0,.2));
+    .btn-link {
+        color: @linkBlue;
+        min-height: 0;
+        &:hover,
+        &:active {
+            text-decoration: none;
+            .title {
+                text-decoration: underline;
+            }
+        }
+    }
+}

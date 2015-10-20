@@ -1,0 +1,104 @@
+@import "mixins.less";
+
+.stats-chart3-loading-data {
+    background-image: url(/static/img/stats-country-compare-placeholder.png);
+    background-position: left 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+    height: 423px;
+    width: 100%;
+}
+
+.stats-chart3-loading-data div {
+    opacity: 0.9;
+    position: absolute;
+    text-align: center;
+    top: 200px;
+    width: 100%;
+}
+
+.stats-mobile {
+    display: none;
+}
+
+.stats-panel-open .stats-mobile {
+    @media (max-width: @screen-xs-max) {
+        display: block;
+    }
+}
+
+.stats-mobile-picker {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    .clearfix();
+    .select-wrapper {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+    select {
+        -webkit-appearance: none;
+        vertical-align: middle;
+        background: transparent;
+        border: 0;
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+        width: 120%;
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+    .fa-caret-down {
+        position: absolute;
+        pointer-events: none;
+        right: 20px;
+        top: 50%;
+        margin-top: -.5em;
+    }
+}
+
+.stats-picker-privacy     { background: @color-privacy; }
+.stats-picker-opportunity { background: @color-opportunity; }
+.stats-picker-access      { background: @color-access; }
+.stats-picker-freedom     { background: @color-freedom; }
+.stats-picker-learning    { background: @color-learning; }
+.stats-picker-control     { background: @color-control; }
+
+.stats-mobile-content {
+    .clearfix();
+    background: @darkBackground;
+    padding: 20px;
+    .chart1 {
+        width: 100%;
+        .donut {
+            float: none;
+            margin: auto;
+        }
+    }
+}
+
+.stats-share-content {
+    display: none;
+}
+
+.stats-panel-privacy     .privacy,
+.stats-panel-opportunity .opportunity,
+.stats-panel-access      .access,
+.stats-panel-freedom     .freedom,
+.stats-panel-learning    .learning,
+.stats-panel-control     .control {
+    display: block;
+}
+
+html[dir="rtl"] {
+    .stats-mobile-picker .fa-caret-down {
+        right: auto;
+        left: 20px;
+    }
+}

@@ -1,0 +1,170 @@
+// Don't show complex components to mobile
+#map-container,
+.key {
+    display: none;
+}
+
+@media (min-width: @screen-sm-min) {
+    #map-container,
+    .key {
+        display: block;
+    }
+}
+
+.c {
+    clear: both;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+
+.continent {
+    fill: rgba(0,0,0,.25);
+    stroke-width: 0px;
+    .transition(all .1s ease-in-out);
+}
+
+.continent-label {
+    color: white;
+    display: none;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    position: absolute;
+    width: 180px;
+    z-index: 6;
+}
+
+.continent-label text {
+    fill: #fff;
+}
+
+.continent-label .header {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.continent-for-issue-label {
+    display: none;
+    fill: #fff;
+    position: absolute;
+}
+
+.key {
+    bottom: 80px;
+    left: 30px;
+    position: absolute;
+    z-index: 10;
+    width: 150px;
+    font-size: 12px;
+    .transition(all .1s ease-in-out);
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style-type: none;
+        margin: 0;
+        padding: 1px 0;
+        &:nth-child(4) {
+            clear: left;
+        }
+        a {
+            .clearfix();
+            min-height: 2.9em;
+            position: relative;
+            display: block;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            white-space: normal;
+            text-align: inherit;
+            .fa-stack {
+                position: absolute;
+                top: 50%;
+                left: .1em;
+                margin-top: -1em;
+            }
+            .choice-title {
+                .transition(@transitionOut);
+                height: 2.9em;
+                line-height: 1;
+                padding: .5em 1em .5em 3em;
+                display: table;
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+            &.selected,
+            &:hover,
+            &:active {
+                .choice-title {
+                    .transition(@transitionIn);
+                    color: #fff;
+                }
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+
+    a {
+        display: block;
+        .choice-title {
+            opacity: .2;
+            .transition(all .2s ease-out);
+            font-weight: bold;
+        }
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            .choice-title {
+                opacity: 1;
+                .transition(all .1s ease-in-out);
+            }
+        }
+        &.selected {
+            .choice-title {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.stats-panel-open .key-map {
+    opacity: 0;
+}
+
+.key .title {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+#map-container {
+    z-index: 2;
+    position: relative;
+ }
+
+#map-vector {
+    position: absolute;
+    z-index: 5;
+}
+
+#map-vector-overlays {
+    position: absolute;
+    z-index: 7;
+}
+
+.top-issue-literal {
+    display: none;
+}

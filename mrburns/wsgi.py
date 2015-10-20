@@ -13,11 +13,11 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 import os
 import site
 
-from raven.contrib.django.raven_compat.middleware.wsgi import Sentry
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 site.addsitedir(os.path.join(BASE_DIR, 'smithers'))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrburns.settings")
 
 from django.core.wsgi import get_wsgi_application
-application = Sentry(get_wsgi_application())
+from mrburns.main.storage import MrBurnsNoise
+
+application = MrBurnsNoise(get_wsgi_application())

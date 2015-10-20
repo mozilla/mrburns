@@ -1,0 +1,659 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-13 14:50+0000\n"
+"PO-Revision-Date: 2014-05-13 15:34+0000\n"
+"Last-Translator: Peter <petercpg@mail.moztw.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1399995249.0\n"
+
+#: mrburns/main/views.py:107 mrburns/main/views.py:113
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web:"
+msgstr "加入全球數以百萬的 Firefox 使用者，一同型塑 Web 的未來:"
+
+#. Translators: Twitter Share Video
+#: mrburns/main/views.py:119 mrburns/main/templates/strings.html:74
+msgid ""
+"Watch the next generation of Internet users talk about the Web they want!"
+msgstr "看看下一代的網際網路使用者想要有怎樣的 Web！"
+
+#. Translators: Stats USER CONTROL Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:126 mrburns/main/views.py:156
+#: mrburns/main/templates/strings.html:150
+msgid ""
+"leads the way in giving users greater control online. They pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"讓使用者能夠更大幅度控制線上體驗，他們首先推出了 Do Not Track 與 Lightbeam 等"
+"功能。"
+
+#. Translators: Stats OPPORTUNITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:132 mrburns/main/templates/strings.html:118
+msgid ""
+"is made by a global volunteer community 6,000 strong, open to participation "
+"from anyone."
+msgstr "是由六千人所組成的強大全球性社群所打造，開放任何人參與。"
+
+#. Translators: Stats ACCESSIBILITY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:138 mrburns/main/templates/strings.html:126
+msgid ""
+"disrupted the mobile industry with the first Web-based OS to help bring the "
+"next billion people online"
+msgstr ""
+"以第一套自由且開放原始碼、以網頁為基礎的的作業系統破壞了封閉的行動裝置市場，"
+"幫助讓下十億人口能夠上網"
+
+#. Translators: Stats FREEDOM Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:144 mrburns/main/templates/strings.html:134
+msgid ""
+"protested against SOPA and PIPA, dangerous copyright legislation that "
+"threatened the freedom of the Web."
+msgstr "抗議 SOPA 與 PIPA 等威脅了網路的自由開放的危險法律。"
+
+#. Translators: Stats LEARNING Tweet: These are all preceeded with #Firefox
+#: mrburns/main/views.py:150 mrburns/main/templates/strings.html:142
+msgid ""
+"teaches digital skills to millions of people to help them move from using "
+"the Web to actively making it."
+msgstr "將數位能力傳授給全球數以百萬計的人們，透過 Web 來達成他們想做的事情。"
+
+#. Translators: Map Overlay
+#: mrburns/main/views.py:168 mrburns/main/templates/number-modal.html:19
+#: mrburns/main/templates/strings.html:56
+msgid "What does this number mean?"
+msgstr "這數字代表什麼意思？"
+
+#: mrburns/main/views.py:179
+#, python-format
+msgid ""
+"\n"
+"        Join %(count)s people shaping the future of the Web"
+msgstr ""
+"\n"
+"加入我們，與 %(count)s 人一起塑造 Web 的未來"
+
+#. Translators: Watch Video Link
+#: mrburns/main/templates/base.html:13 mrburns/main/templates/base.html:28
+#: mrburns/main/templates/base.html:32 mrburns/main/templates/base.html:73
+#: mrburns/main/templates/strings.html:71
+msgid "The Web we want"
+msgstr "我們想要的 Web"
+
+#. Translators: Facebook Open Graph Meta Text & Site Description
+#. Translators: Twitter Share Map
+#: mrburns/main/templates/base.html:23 mrburns/main/templates/strings.html:68
+msgid ""
+"Join millions of Firefox users around the world who are shaping the future "
+"of the Web."
+msgstr "加入全球數以百萬的 Firefox 使用者，一同型塑 Web 的未來。"
+
+#: mrburns/main/templates/base.html:52
+msgid "Firefox"
+msgstr "Firefox"
+
+#: mrburns/main/templates/base.html:55
+msgid "Thanks for helping to shape the future of the Web."
+msgstr "感謝您幫助我們形塑 Web 的未來。"
+
+#: mrburns/main/templates/base.html:60 mrburns/main/templates/base.html:75
+msgid "Get Firefox"
+msgstr "下載 Firefox"
+
+#: mrburns/main/templates/base.html:61
+msgid "Free Download"
+msgstr "免費下載"
+
+#. Translators: Link To Initial Start Page
+#: mrburns/main/templates/base.html:70
+#: mrburns/main/templates/stats-panel.html:11
+#: mrburns/main/templates/strings.html:62
+msgid "What matters to you?"
+msgstr "對您來說有何不同？"
+
+#: mrburns/main/templates/base.html:78
+msgid "FAQ"
+msgstr "FAQ"
+
+#: mrburns/main/templates/base.html:81
+msgid "Get Involved"
+msgstr "參與我們"
+
+#: mrburns/main/templates/base.html:84 mrburns/main/templates/map.html:24
+#: mrburns/main/templates/stats-panel.html:41
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/strings.html:79
+msgid "Privacy"
+msgstr "隱私權"
+
+#: mrburns/main/templates/base.html:87
+msgid "Legal"
+msgstr "使用條款"
+
+#: mrburns/main/templates/choice-modal.html:11
+#: mrburns/main/templates/number-modal.html:14
+#: mrburns/main/templates/video-modal.html:14
+msgid "Close"
+msgstr "關閉"
+
+#. Translators: Interstitial: Headline
+#: mrburns/main/templates/choice-modal.html:25
+#: mrburns/main/templates/stats.html:116
+#: mrburns/main/templates/strings.html:108
+#: mrburns/main/templates/strings.html:115
+#: mrburns/main/templates/strings.html:123
+#: mrburns/main/templates/strings.html:131
+#: mrburns/main/templates/strings.html:139
+#: mrburns/main/templates/strings.html:147
+msgid "Did you know?"
+msgstr "您知道嗎？"
+
+#. Translators: Interstitial: Privacy
+#: mrburns/main/templates/choice-modal.html:29
+#: mrburns/main/templates/stats.html:158
+#: mrburns/main/templates/strings.html:107
+msgid ""
+"Firefox is made under the principle that security and privacy are "
+"fundamental and must not be treated as optional."
+msgstr "打造 Firefox 時，我們將安全性與使用者的隱私奉為圭臬，絕對不能忽略。"
+
+#. Translators: Interstitial: Opportunity
+#: mrburns/main/templates/choice-modal.html:37
+#: mrburns/main/templates/stats.html:166
+#: mrburns/main/templates/strings.html:116
+msgid ""
+"Firefox is made by a global volunteer community 6,000 strong, open to "
+"participation from anyone."
+msgstr "Firefox 是由六千人所組成的強大全球性社群所打造，開放任何人參與。"
+
+#. Translators: Interstitial: Accessibility
+#: mrburns/main/templates/choice-modal.html:45
+#: mrburns/main/templates/stats.html:167
+#: mrburns/main/templates/strings.html:124
+msgid ""
+"Firefox disrupted the mobile industry with the first free, open-source, Web-"
+"based operating system to help bring the next billion people online."
+msgstr ""
+"Firefox 以第一套自由且開放原始碼、以網頁為基礎的的作業系統破壞了封閉的行動裝"
+"置市場，幫助讓下十億人口能夠上網。"
+
+#. Translators: Interstitial: Freedom
+#: mrburns/main/templates/choice-modal.html:53
+#: mrburns/main/templates/stats.html:168
+#: mrburns/main/templates/strings.html:132
+msgid ""
+"Firefox protested and lobbied against SOPA and PIPA, dangerous copyright "
+"legislation that threatened the freedom of the Web."
+msgstr "Firefox 抗議並遊說反對 SOPA 與 PIPA 等威脅了網路的自由開放的危險法律。"
+
+#. Translators: Interstitial: Learning
+#: mrburns/main/templates/choice-modal.html:61
+#: mrburns/main/templates/stats.html:169
+#: mrburns/main/templates/strings.html:140
+msgid ""
+"Firefox teaches digital literacy to millions of people around the world to "
+"give them the tools and skills they need to move from using the Web to "
+"actively making it."
+msgstr ""
+"Firefox 將數位識讀能力傳授給全球數以百萬計的人們，提供他們需要的工具與能力，"
+"透過 Web 來達成他們想做的事情。"
+
+#. Translators: Interstitial: User Control
+#: mrburns/main/templates/choice-modal.html:69
+#: mrburns/main/templates/strings.html:146
+msgid ""
+"Firefox leads the way in giving users greater control online. We pioneered "
+"features like Do Not Track and Lightbeam."
+msgstr ""
+"Firefox 帶領使用者，能夠更加控制自己的線上體驗。我們創造了 Do Not Track 等 "
+"Lightbeam 技術與產品。"
+
+#. Translators: Interstitial: Closing Line
+#: mrburns/main/templates/choice-modal.html:77
+msgid "Now see what kind of Web the world wants"
+msgstr "現在來看看這個世界想要怎樣的 Web"
+
+#. Translators: For visual reference you can use http://mozilla.seanmartell.com/glow/index.php
+#.
+#. Translators: Initial Overlay Question
+#: mrburns/main/templates/choice.html:5 mrburns/main/templates/strings.html:14
+msgid "By using Firefox, you help shape the future of the Web."
+msgstr "只要使用 Firefox，您就開始幫助我們形塑 Web 的未來。"
+
+#. Translators: Initial Overlay Subtext
+#: mrburns/main/templates/choice.html:6 mrburns/main/templates/strings.html:17
+msgid "What kind of Web do you want?"
+msgstr "您想要一個怎樣的網路？"
+
+#. Translators: Initial Overlay Subtext 2
+#: mrburns/main/templates/choice.html:7 mrburns/main/templates/strings.html:20
+msgid "I want a Web that:"
+msgstr "我想要網路可以:"
+
+#: mrburns/main/templates/choice.html:23
+msgid ""
+"When you select any of the sharing links, we add your location to the map to "
+"show the worldwide impact of our community."
+msgstr ""
+"當您選擇任何分享連結時，我們將會把您的所在地加到地圖上，展示我們的社群在全球"
+"的影響。"
+
+#. Translators: Sidebar Navigation
+#: mrburns/main/templates/map.html:10
+#: mrburns/main/templates/stats-panel.html:34
+#: mrburns/main/templates/stats.html:7 mrburns/main/templates/stats.html:8
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/stats.html:10
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/stats.html:12
+#: mrburns/main/templates/strings.html:77
+msgid "View by:"
+msgstr "檢視依照:"
+
+#: mrburns/main/templates/map.html:17 mrburns/main/templates/strings.html:78
+msgid "Region"
+msgstr "地區"
+
+#: mrburns/main/templates/map.html:31
+#: mrburns/main/templates/stats-panel.html:48
+#: mrburns/main/templates/stats.html:8 mrburns/main/templates/strings.html:80
+msgid "Opportunity"
+msgstr "機會"
+
+#: mrburns/main/templates/map.html:38
+#: mrburns/main/templates/stats-panel.html:55
+#: mrburns/main/templates/stats.html:9 mrburns/main/templates/strings.html:81
+msgid "Accessibility"
+msgstr "可用性"
+
+#: mrburns/main/templates/map.html:45
+#: mrburns/main/templates/stats-panel.html:62
+#: mrburns/main/templates/stats.html:10 mrburns/main/templates/strings.html:82
+msgid "Freedom"
+msgstr "自由"
+
+#: mrburns/main/templates/map.html:52
+#: mrburns/main/templates/stats-panel.html:69
+#: mrburns/main/templates/stats.html:11 mrburns/main/templates/strings.html:83
+msgid "Learning"
+msgstr "學習"
+
+#: mrburns/main/templates/map.html:59
+#: mrburns/main/templates/stats-panel.html:76
+#: mrburns/main/templates/stats.html:12 mrburns/main/templates/strings.html:84
+msgid "User control"
+msgstr "使用者自我控制"
+
+#: mrburns/main/templates/map.html:64
+msgid "Top Issue"
+msgstr "最熱門關注議題"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/number-modal.html:22
+#, python-format
+msgid ""
+"Anyone who uses Firefox helps shape the future of the Web and that's "
+"something we want to celebrate. That's why this number represents new "
+"downloads, automatic updates and any sharing that happens from this page "
+"&#150; the worldwide impact of our global community. If you're interested in "
+"how it all works, you can <a href=\"%(url)s\">check out the blog post.</a>"
+msgstr ""
+"所有的 Firefox 使用者都在幫忙塑造網路的未來，這就是我們想要慶祝的事情。這也就"
+"是為什麼這個數字代表了來自此頁面的全新安裝、自動更新與分享次數 &#150; 也代表"
+"我們的社群在全球造成的影響。若您有興趣想了解技術原理，請參考 <a href="
+"\"%(url)s\">我們的部落格文章。</a>"
+
+#. Translators: Map Overlay : Closing Line
+#: mrburns/main/templates/number-modal.html:24
+#: mrburns/main/templates/strings.html:59
+msgid "Thanks for visiting, sharing and for using Firefox."
+msgstr "感謝您的瀏覽、分享以及使用 Firefox。"
+
+#: mrburns/main/templates/stats-panel.html:7
+msgid "Back to map"
+msgstr "回到地圖"
+
+#. Translators: Link To Stats Page
+#: mrburns/main/templates/stats-panel.html:7
+#: mrburns/main/templates/strings.html:90
+msgid "Facts & figures"
+msgstr "事實與圖表"
+
+#. Translators: Link To Share Map
+#: mrburns/main/templates/stats-panel.html:16
+#: mrburns/main/templates/strings.html:65
+msgid "Share the map"
+msgstr "分享地圖"
+
+#: mrburns/main/templates/stats-panel.html:22
+#: mrburns/main/templates/stats.html:41 mrburns/main/templates/stats.html:53
+#: mrburns/main/templates/stats.html:65 mrburns/main/templates/stats.html:77
+#: mrburns/main/templates/stats.html:89 mrburns/main/templates/stats.html:101
+#: mrburns/main/templates/video-modal.html:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: mrburns/main/templates/stats-panel.html:27
+#: mrburns/main/templates/stats.html:46 mrburns/main/templates/stats.html:58
+#: mrburns/main/templates/stats.html:70 mrburns/main/templates/stats.html:82
+#: mrburns/main/templates/stats.html:94 mrburns/main/templates/stats.html:106
+#: mrburns/main/templates/video-modal.html:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: mrburns/main/templates/stats.html:34
+msgid "Share this page"
+msgstr "分享此頁面"
+
+#. Translators: Stat Headline: Privacy
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:123
+#: mrburns/main/templates/strings.html:100
+msgid "What matters most by country?"
+msgstr "其他國家的使用者覺得什麼事情最重要？"
+
+#. Translators: Stats Header
+#: mrburns/main/templates/stats.html:139
+#: mrburns/main/templates/strings.html:103
+msgid "How does that compare globally?"
+msgstr "這跟全球其他地方有多大差異？"
+
+#: mrburns/main/templates/stats.html:142
+msgid "We are currently gathering country-level data, please check back soon."
+msgstr "我們正在收集不同國家使用者的意見，請稍後再回來看看結果。"
+
+#. Translators: Stats PRIVACY
+#: mrburns/main/templates/stats.html:151
+#: mrburns/main/templates/strings.html:106
+msgid "Firefox & privacy"
+msgstr "Firefox 與隱私"
+
+#. Translators: Stats OPPORTUNITY
+#: mrburns/main/templates/stats.html:152
+#: mrburns/main/templates/strings.html:114
+msgid "Firefox & opportunity"
+msgstr "Firefox 與機會"
+
+#. Translators: Stats ACCESSIBILITY
+#: mrburns/main/templates/stats.html:153
+#: mrburns/main/templates/strings.html:121
+msgid "Firefox & accessibility"
+msgstr "Firefox 與可用性"
+
+#. Translators: Stats FREEDOM
+#: mrburns/main/templates/stats.html:154
+#: mrburns/main/templates/strings.html:129
+msgid "Firefox & freedom"
+msgstr "Firefox 與自由"
+
+#. Translators: Stats LEARNING
+#: mrburns/main/templates/stats.html:155
+#: mrburns/main/templates/strings.html:137
+msgid "Firefox & learning"
+msgstr "Firefox 與學習"
+
+#. Translators: Stats USER CONTROL
+#: mrburns/main/templates/stats.html:156
+#: mrburns/main/templates/strings.html:145
+msgid "Firefox & user control"
+msgstr "Firefox 與使用者控制"
+
+#: mrburns/main/templates/stats.html:159
+#, python-format
+msgid ""
+"Firefox is the only browser made of 100%% free, open source code that anyone "
+"can view, remix and contribute to."
+msgstr ""
+"Firefox 是唯一一套百分之百，完全自由、開放原始碼的瀏覽器。每個人都可以檢視、"
+"混搭功能，並作出貢獻。"
+
+#: mrburns/main/templates/stats.html:160
+#: mrburns/main/templates/strings.html:122
+msgid ""
+"Firefox is made with the belief that the Internet is a global public "
+"resource that must remain open and accessible to all."
+msgstr ""
+"我們打造 Firefox 時，相信網際網路是一個全球的公開資源，必須保持開放，讓任何人"
+"都可以使用。"
+
+#: mrburns/main/templates/stats.html:161
+#: mrburns/main/templates/strings.html:130
+msgid ""
+"Firefox is the only non-profit browser that prioritizes principles over "
+"profits and answers to no one but you."
+msgstr ""
+"Firefox 是唯一的非營利性質瀏覽器，將自己的信條放於利益之前，只回應您的需求。"
+
+#: mrburns/main/templates/stats.html:162
+#: mrburns/main/templates/strings.html:138
+msgid ""
+"Firefox is the only browser made by a non-profit foundation working to "
+"unlock the full educational potential of the Web."
+msgstr ""
+"Firefox 是唯一由非營利組織所打造的瀏覽器，致力於解開 Web 的完整教育潛力。"
+
+#: mrburns/main/templates/stats.html:163
+msgid ""
+"Firefox is the only browser made with a mission to put users first and to "
+"keep the power of the Web in your hands."
+msgstr ""
+"Firefox 是唯一將使用者置為最優先，並致力於將網路的威力保存於您的手中的瀏覽"
+"器。"
+
+#: mrburns/main/templates/stats.html:170
+#: mrburns/main/templates/strings.html:148
+msgid ""
+"Firefox innovations like Do Not Track and Lightbeam are leading the way to "
+"give users greater control online."
+msgstr ""
+"Firefox 發明了 Do Not Track 與 Lightbeam 等技術，讓使用者能夠更大幅度控制線上"
+"體驗。"
+
+#: mrburns/main/templates/stats.html:173
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps their information safe and private.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者想要一個能保障個人隱私與安全的網路。\n"
+
+#: mrburns/main/templates/stats.html:179
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that creates opportunity and prosperity.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者想要一個能創造機會與發展性的網路。\n"
+
+#: mrburns/main/templates/stats.html:185
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s believe the Web should be available and accessible to all.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者相信網路應該開放，讓任何人都能使用。\n"
+
+#: mrburns/main/templates/stats.html:191
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want the Web to be a forum for democratic exchange and free "
+"speech.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者想要一個能能夠民主地交換意見，為不同意見發聲的網路。\n"
+
+#: mrburns/main/templates/stats.html:197
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that promotes learning & knowledge.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者想要一個能夠推廣學習與知識的網路。\n"
+
+#: mrburns/main/templates/stats.html:203
+#, python-format
+msgid ""
+"\n"
+"%(percentage)s want a Web that keeps them in control of their lives online.\n"
+msgstr ""
+"\n"
+"%(percentage)s 使用者想要一個能夠自行控制線上生活的網路。\n"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:23
+msgid "Safeguards privacy"
+msgstr "保護隱私"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:26
+msgid "Creates opportunity"
+msgstr "創造機會"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:29
+msgid "Is available to all"
+msgstr "讓任何人都能使用"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:32
+msgid "Promotes freedom"
+msgstr "推廣自由"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:35
+msgid "Inspires learning"
+msgstr "啟發學習"
+
+#. Translators: Initial Overlay Answer
+#: mrburns/main/templates/strings.html:38
+msgid "Puts me in control"
+msgstr "讓我自行控制"
+
+#. Translators: Share Call To Action
+#: mrburns/main/templates/strings.html:46
+msgid "Share your Web on:"
+msgstr "分享您對 Web 的觀點到:"
+
+#. Translators: Map Headline With Count
+#: mrburns/main/templates/strings.html:51
+#, python-format
+msgid ""
+"\n"
+"Join %(count)s people shaping the future of the Web\n"
+msgstr ""
+"\n"
+"加入我們，與 %(count)s 人一起塑造 Web 的未來\n"
+
+#. Translators: Map Overlay
+#: mrburns/main/templates/strings.html:87
+msgid "Most Want:"
+msgstr "最想要:"
+
+#. Translators: Link To Map Page
+#: mrburns/main/templates/strings.html:93
+msgid "Back To Map"
+msgstr "回到地圖"
+
+#: mrburns/main/templates/strings.html:109
+msgid ""
+"Firefox is the only major browser not targeted by the NSA scandal and we're "
+"fighting to reform government surveillance for you."
+msgstr ""
+"Firefox 是唯一未受美國 NSA 醜聞影響的主要瀏覽器。我們也致力於為您改革政府監控"
+"制度。"
+
+#. Translators: Stats PRIVACY Tweet: These are all preceeded with #Firefox
+#: mrburns/main/templates/strings.html:111
+msgid ""
+"fights for government surveillance reform and was the only major browser not "
+"targeted by the NSA scandal."
+msgstr ""
+"帶領反對政府的監控，也是唯一並未成為美國國安局監聽醜聞目標的主要瀏覽器。"
+
+#~ msgid "Web We Want"
+#~ msgstr "我們想要的 Web"
+
+#~ msgid "Show all cities"
+#~ msgstr "顯示所有城市"
+
+#~ msgid "Show top cities"
+#~ msgstr "顯示熱門城市"
+
+#~ msgid ""
+#~ "The Web I want is accessible to anyone and everyone. What kind of Web do "
+#~ "you want?"
+#~ msgstr "我想要的網路是每個人都能任意使用。你想要有怎樣的網路？"
+
+#~ msgid ""
+#~ "I don't believe that other companies should control my online experience. "
+#~ "Join me in fighting for user control."
+#~ msgstr "我不覺得其他公司應該掌控我的上網體驗，快與我一起奪回掌控權。"
+
+#~ msgid "Join me in supporting a Web that promotes freedom and democracy!"
+#~ msgstr "和我一起支持讓網路成為一個推廣自由民主的平台！"
+
+#~ msgid ""
+#~ "I want a Web that people today and future generations can learn from. "
+#~ "What about you?"
+#~ msgstr "我想要一個讓現在與下一代的人們可以學習知識的網路平台。你覺得呢？"
+
+#~ msgid ""
+#~ "Shouldn't the Web provide people with more opportunity? Join us if you "
+#~ "think so too."
+#~ msgstr "網路不該給人們更多機會嗎？如果您也覺得應該的話快加入我們。"
+
+#~ msgid "Join me in fighting for privacy on the Web."
+#~ msgstr "和我一起為網路隱私而戰。"
+
+#~ msgid "Share your web on:"
+#~ msgstr "分享您所想要的網路到:"
+
+#~ msgid "Share only on %(site)s"
+#~ msgstr "只分享到 %(site)s"
+
+#, fuzzy
+#~ msgid ""
+#~ "Firefox is the only browser made of 100% free, open source code that "
+#~ "anyone can view, remix and contribute to."
+#~ msgstr ""
+#~ "Firefox 是唯一一套百分之百，完全自由、開放原始碼的瀏覽器。每個人都可以檢"
+#~ "視、混搭功能，並作出貢獻。"
+
+#~ msgid ""
+#~ "\n"
+#~ "          Anyone who uses Firefox helps shape the future of the Web and "
+#~ "that's something we want to celebrate. That's why this number represents "
+#~ "new downloads, automatic updates and any sharing that happens from this "
+#~ "page - the worldwide impact of our global community. If you're interested "
+#~ "in how it all works, you can <a href=\"%(url)s\">check out the blog post."
+#~ "</a>\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "所有正在使用 Firefox 的人都幫助我們形塑了網路的未來，這就是我們想慶祝的東"
+#~ "西。這也就是為什麼這個數字代表了全新下載、自動更新與任何來自此頁面的分享："
+#~ "我們的全球社群在世界上造成的影響。若您有興趣想知道這個的原理，您可以 <a "
+#~ "href=\"%(url)s\">參考這篇部落格文章。</a>\n"
+
+#~ msgid ""
+#~ "By sharing your choice with us, you can add your voice to our global map. "
+#~ "We use geolocation to show you how people around the world share your "
+#~ "vision for the Web."
+#~ msgstr ""
+#~ "分享您的選擇給我們後，將可以讓您的意見放到我們的全球地圖上。我們會使用地理"
+#~ "位置資訊來告訴您全球的使用者如何分享您對 Web 的觀點。"

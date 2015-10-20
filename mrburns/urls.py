@@ -6,12 +6,14 @@ from django.conf.urls import patterns, url
 from django.conf.urls.i18n import i18n_patterns
 from django.views.decorators.cache import cache_page
 
-from mrburns.main.views import GlowView, ShareView, StringsView
+from mrburns.main.views import GlowView, ShareView
+
+
+CACHE_SECONDS = 60 * 60 * 24 * 365  # 1 year
 
 
 urlpatterns = i18n_patterns('',
-    url('^$', cache_page(60)(GlowView.as_view()), name='glow.home'),
-    url('^l10n_strings/$', StringsView.as_view(), name='glow.strings')
+    url('^$', cache_page(CACHE_SECONDS)(GlowView.as_view()), name='glow.home'),
 )
 
 urlpatterns += patterns('',

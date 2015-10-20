@@ -15,17 +15,13 @@ from django.views.generic import TemplateView, View
 
 from product_details import product_details
 from pyuca import Collator
-from redis_cache import get_redis_connection
 
 from smithers import data_types
 from smithers import redis_keys as rkeys
 from smithers.utils import get_epoch_minute
 
 
-if settings.ENABLE_REDIS:
-    redis = get_redis_connection('smithers')
-else:
-    redis = False
+redis = False
 
 TWITTER_URL = 'https://twitter.com/share'
 FB_URL = 'https://www.facebook.com/sharer/sharer.php'

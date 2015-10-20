@@ -15,31 +15,31 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 import os
 
+from django.utils.translation import ugettext_lazy as _
+
 from pathlib import Path
+from decouple import config, Csv
 
 
 # Build paths inside the project like this: BASE_DIR.child('sub', 'dirs')
 BASE_DIR = Path(__file__).resolve().parents[2]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TEMPLATE_DEBUG = False
+DEBUG = TEMPLATE_DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = config('SECRET_KEY', default='itsasekrit')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='.herokuapp.com', cast=Csv())
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mrburns.db',
+        'NAME': ':memory:',
     }
 }
 
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379:0',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
-    'smithers': {
-        'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379:0',
-    }
 }
 
 # Application definition
@@ -59,6 +59,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'sslify.middleware.SSLifyMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +77,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 ROOT_URLCONF = 'mrburns.urls'
+SSLIFY_DISABLE = DEBUG
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -101,14 +104,14 @@ STATICFILES_FINDERS = (
 
 # django-compressor
 COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/less', 'node_modules/.bin/lessc {infile} {outfile}'),
 )
+
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
 ENABLE_REDIS = False
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-PROD_DETAILS_DIR = str(BASE_DIR / 'prod_details_json')
 
 # Source: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 EXTRA_COUNTRIES = {}
@@ -119,3 +122,31 @@ COUNTRY_CODE_MAP = {}
 
 # hardcoded timestamp for posterity
 DATA_TIMESTAMP = os.getenv('DATA_TIMESTAMP', '1399812120')
+
+LANGUAGES = (
+    ('ca', _('Catalan')),
+    ('cs', _('Czech')),
+    ('de', _('German')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('fr', _('French')),
+    ('he', _('Hebrew')),
+    ('hu', _('Hungarian')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('ja', _('Japanese')),
+    ('ko', _('Korean')),
+    ('lt', _('Lithuanian')),
+    ('nl', _('Dutch')),
+    ('pl', _('Polish')),
+    ('pt-br', _('Brazilian Portuguese')),
+    ('ro', _('Romanian')),
+    ('ru', _('Russian')),
+    ('sk', _('Slovak')),
+    ('sl', _('Slovenian')),
+    ('sq', _('Albanian')),
+    ('sr', _('Serbian')),
+    ('zh-cn', _('Simplified Chinese')),
+    ('zh-tw', _('Traditional Chinese')),
+    ('xx', 'Pirate'),
+)
