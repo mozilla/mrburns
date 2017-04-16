@@ -3,7 +3,7 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 {% endcomment %}
-
+{% load staticfiles %}
 <div id="map-container"></div>
 
 <div class="key key-map">
@@ -62,3 +62,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 </div>
 
 <p class="top-issue-literal">{{ _('Top Issue') }}</p>
+
+<img src="{% static 'img/aurora-top.png' %}" class="aurora-top" />
+<img src="{% static 'img/aurora.png' %}" class="aurora" />
+<img src="{% static 'img/aurora2.png' %}" class="aurora2" />
